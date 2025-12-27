@@ -1,0 +1,129 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { t } from '@/utils/i18n';
+
+const calculators = [
+  {
+    title: t('calculators:bmi.title', 'es'),
+    description: t('calculators:bmi.description', 'es'),
+    url: '/calculadoras/imc/',
+    category: t('calculators:categories.health', 'es'),
+    icon: '⚕️',
+  },
+];
+---
+
+<BaseLayout
+  title={t('site.title', 'es')}
+  description={t('site.description', 'es')}
+  lang="es"
+>
+  <div class="container">
+    <div class="hero">
+      <h1>{t('site.title', 'es')}</h1>
+      <p class="subtitle">{t('site.description', 'es')}</p>
+    </div>
+
+    <section class="calculators-grid">
+      <h2>Calculadoras Destacadas</h2>
+      <div class="grid">
+        {calculators.map((calc) => (
+          <a href={calc.url} class="calculator-card">
+            <div class="calculator-icon">{calc.icon}</div>
+            <h3>{calc.title}</h3>
+            <p>{calc.description}</p>
+            <span class="category">{calc.category}</span>
+          </a>
+        ))}
+      </div>
+    </section>
+  </div>
+
+  <style>
+    .hero {
+      text-align: center;
+      padding: 4rem 0;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      color: #333;
+      margin-bottom: 1rem;
+    }
+
+    .subtitle {
+      font-size: 1.25rem;
+      color: #666;
+    }
+
+    .calculators-grid {
+      padding: 2rem 0;
+    }
+
+    .calculators-grid h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: #333;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .calculator-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .calculator-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    }
+
+    .calculator-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .calculator-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: #333;
+    }
+
+    .calculator-card p {
+      color: #666;
+      margin-bottom: 1rem;
+      flex: 1;
+    }
+
+    .category {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      background: #e3f2fd;
+      color: #1976d2;
+      border-radius: 12px;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</BaseLayout>

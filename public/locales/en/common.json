@@ -1,0 +1,32 @@
+{
+  "site": {
+    "title": "Online Calculators",
+    "description": "Collection of free and easy-to-use calculators"
+  },
+  "nav": {
+    "home": "Home",
+    "calculators": "Calculators"
+  },
+  "common": {
+    "calculate": "Calculate",
+    "reset": "Reset",
+    "result": "Result",
+    "age": "Age",
+    "gender": "Gender",
+    "male": "Male",
+    "female": "Female",
+    "height": "Height",
+    "weight": "Weight",
+    "years": "years"
+  },
+  "units": {
+    "metric": "Metric",
+    "imperial": "Imperial",
+    "cm": "cm",
+    "m": "m",
+    "kg": "kg",
+    "ft": "feet",
+    "in": "inches",
+    "lbs": "lbs"
+  }
+}

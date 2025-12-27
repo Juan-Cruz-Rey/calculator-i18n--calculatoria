@@ -1,0 +1,473 @@
+---
+import { t, type Locale } from '@/utils/i18n';
+
+const { lang } = Astro.props as { lang: Locale };
+---
+
+<div class="bmi-calculator">
+  <div class="calculator-form">
+    <h2>{t('calculators:bmi.form.title', lang)}</h2>
+
+    <form id="bmi-form">
+      <!-- Unit System Toggle -->
+      <div class="form-group unit-toggle">
+        <label>
+          <input type="radio" name="unitSystem" value="metric" checked />
+          {t('units.metric', lang)}
+        </label>
+        <label>
+          <input type="radio" name="unitSystem" value="imperial" />
+          {t('units.imperial', lang)}
+        </label>
+      </div>
+
+      <!-- Age -->
+      <div class="form-group">
+        <label for="age">{t('calculators:bmi.form.ageLabel', lang)}</label>
+        <input
+          type="number"
+          id="age"
+          name="age"
+          min="2"
+          max="120"
+          required
+          placeholder={t('calculators:bmi.form.agePlaceholder', lang)}
+        />
+        <span class="unit">{t('common.years', lang)}</span>
+      </div>
+
+      <!-- Gender -->
+      <div class="form-group">
+        <label for="gender">{t('calculators:bmi.form.genderLabel', lang)}</label>
+        <select id="gender" name="gender" required>
+          <option value="male">{t('common.male', lang)}</option>
+          <option value="female">{t('common.female', lang)}</option>
+        </select>
+      </div>
+
+      <!-- Height (Metric) -->
+      <div class="form-group height-metric">
+        <label for="height">{t('calculators:bmi.form.heightLabel', lang)}</label>
+        <input
+          type="number"
+          id="height"
+          name="height"
+          min="50"
+          max="250"
+          step="0.1"
+          required
+          placeholder={t('calculators:bmi.form.heightPlaceholder', lang)}
+        />
+        <span class="unit">{t('units.cm', lang)}</span>
+      </div>
+
+      <!-- Height (Imperial) -->
+      <div class="form-group height-imperial" style="display: none;">
+        <label for="heightFt">{t('calculators:bmi.form.heightLabel', lang)}</label>
+        <div class="input-group">
+          <input
+            type="number"
+            id="heightFt"
+            name="heightFt"
+            min="1"
+            max="8"
+            placeholder="Feet"
+          />
+          <span class="unit">{t('units.ft', lang)}</span>
+          <input
+            type="number"
+            id="heightIn"
+            name="heightIn"
+            min="0"
+            max="11"
+            placeholder="Inches"
+          />
+          <span class="unit">{t('units.in', lang)}</span>
+        </div>
+      </div>
+
+      <!-- Weight -->
+      <div class="form-group">
+        <label for="weight">{t('calculators:bmi.form.weightLabel', lang)}</label>
+        <input
+          type="number"
+          id="weight"
+          name="weight"
+          min="10"
+          max="500"
+          step="0.1"
+          required
+          placeholder={t('calculators:bmi.form.weightPlaceholder', lang)}
+        />
+        <span class="unit weight-unit">{t('units.kg', lang)}</span>
+      </div>
+
+      <!-- Buttons -->
+      <div class="form-actions">
+        <button type="submit" class="btn-primary">{t('common.calculate', lang)}</button>
+        <button type="reset" class="btn-secondary">{t('common.reset', lang)}</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="calculator-results" id="results" style="display: none;">
+    <h2>{t('calculators:bmi.results.title', lang)}</h2>
+
+    <div class="result-card bmi-value">
+      <h3>{t('calculators:bmi.results.bmiValue', lang)}</h3>
+      <p class="value" id="bmi-value">-</p>
+      <p class="category" id="bmi-category">-</p>
+    </div>
+
+    <div class="result-grid">
+      <div class="result-item">
+        <strong>{t('calculators:bmi.results.bmiPrime', lang)}:</strong>
+        <span id="bmi-prime">-</span>
+      </div>
+      <div class="result-item">
+        <strong>{t('calculators:bmi.results.ponderalIndex', lang)}:</strong>
+        <span id="ponderal-index">-</span>
+      </div>
+      <div class="result-item">
+        <strong>{t('calculators:bmi.results.healthyRange', lang)}:</strong>
+        <span id="healthy-bmi">-</span>
+      </div>
+      <div class="result-item">
+        <strong>{t('calculators:bmi.results.healthyWeight', lang)}:</strong>
+        <span id="healthy-weight">-</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="calculator-info">
+    <h2>{t('calculators:bmi.info.title', lang)}</h2>
+    <p>{t('calculators:bmi.info.description', lang)}</p>
+    <p class="formula">{t('calculators:bmi.info.formula', lang)}</p>
+    <p class="limitations">{t('calculators:bmi.info.limitations', lang)}</p>
+  </div>
+</div>
+
+<style>
+  .bmi-calculator {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .calculator-form, .calculator-results, .calculator-info {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  h2 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #555;
+  }
+
+  .form-group input[type="number"],
+  .form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+
+  .form-group input[type="number"]:focus,
+  .form-group select:focus {
+    outline: none;
+    border-color: #4CAF50;
+  }
+
+  .unit {
+    display: inline-block;
+    margin-left: 0.5rem;
+    color: #888;
+    font-size: 0.9rem;
+  }
+
+  .unit-toggle {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    background: #f5f5f5;
+    border-radius: 4px;
+  }
+
+  .unit-toggle label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    margin: 0;
+  }
+
+  .input-group {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .input-group input {
+    flex: 1;
+  }
+
+  .form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .btn-primary, .btn-secondary {
+    flex: 1;
+    padding: 0.875rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-primary {
+    background: #4CAF50;
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: #45a049;
+  }
+
+  .btn-secondary {
+    background: #f5f5f5;
+    color: #333;
+  }
+
+  .btn-secondary:hover {
+    background: #e0e0e0;
+  }
+
+  .result-card {
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+
+  .result-card h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1.2rem;
+  }
+
+  .result-card .value {
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  .result-card .category {
+    font-size: 1.2rem;
+    margin: 0.5rem 0 0 0;
+    opacity: 0.9;
+  }
+
+  .result-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .result-item {
+    padding: 1rem;
+    background: #f9f9f9;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .result-item strong {
+    color: #555;
+    font-size: 0.9rem;
+  }
+
+  .result-item span {
+    color: #333;
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+
+  .calculator-info {
+    background: #f9f9f9;
+  }
+
+  .calculator-info p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: #555;
+  }
+
+  .formula {
+    font-family: monospace;
+    background: white;
+    padding: 1rem;
+    border-left: 4px solid #4CAF50;
+    margin: 1rem 0;
+  }
+
+  .limitations {
+    font-size: 0.9rem;
+    font-style: italic;
+  }
+
+  /* Category colors */
+  .category-underweight {
+    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+  }
+
+  .category-normal {
+    background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+  }
+
+  .category-overweight {
+    background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+  }
+
+  .category-obese {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+  }
+</style>
+
+<script>
+  // Import BMI calculation utilities
+  import type { BMIInput, BMIResult, UnitSystem, Gender } from '@/utils/calculators/bmi';
+  import { calculateBMIMetrics } from '@/utils/calculators/bmi';
+
+  const form = document.getElementById('bmi-form') as HTMLFormElement;
+  const results = document.getElementById('results') as HTMLDivElement;
+  const unitSystemInputs = document.querySelectorAll('input[name="unitSystem"]');
+  const heightMetric = document.querySelector('.height-metric') as HTMLDivElement;
+  const heightImperial = document.querySelector('.height-imperial') as HTMLDivElement;
+  const weightUnit = document.querySelector('.weight-unit') as HTMLSpanElement;
+
+  // Get translations from data attributes
+  const categoryTranslations = {
+    underweight: document.documentElement.lang === 'es' ? 'Bajo peso' : 'Underweight',
+    normal: document.documentElement.lang === 'es' ? 'Normal' : 'Normal',
+    overweight: document.documentElement.lang === 'es' ? 'Sobrepeso' : 'Overweight',
+    obese: document.documentElement.lang === 'es' ? 'Obesidad' : 'Obese',
+  };
+
+  // Handle unit system change
+  unitSystemInputs.forEach(input => {
+    input.addEventListener('change', (e) => {
+      const target = e.target as HTMLInputElement;
+      const isMetric = target.value === 'metric';
+
+      heightMetric.style.display = isMetric ? 'block' : 'none';
+      heightImperial.style.display = isMetric ? 'none' : 'block';
+
+      const heightInput = document.getElementById('height') as HTMLInputElement;
+      const heightFt = document.getElementById('heightFt') as HTMLInputElement;
+      const heightIn = document.getElementById('heightIn') as HTMLInputElement;
+
+      if (isMetric) {
+        heightInput.required = true;
+        heightFt.required = false;
+        heightIn.required = false;
+        weightUnit.textContent = document.documentElement.lang === 'es' ? 'kg' : 'kg';
+      } else {
+        heightInput.required = false;
+        heightFt.required = true;
+        heightIn.required = true;
+        weightUnit.textContent = 'lbs';
+      }
+    });
+  });
+
+  // Handle form submission
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const unitSystem = formData.get('unitSystem') as UnitSystem;
+    const age = parseInt(formData.get('age') as string);
+    const gender = formData.get('gender') as Gender;
+    const weight = parseFloat(formData.get('weight') as string);
+
+    let height: number;
+
+    if (unitSystem === 'metric') {
+      height = parseFloat(formData.get('height') as string);
+    } else {
+      const feet = parseInt(formData.get('heightFt') as string) || 0;
+      const inches = parseInt(formData.get('heightIn') as string) || 0;
+      height = feet * 12 + inches; // Total inches
+    }
+
+    const input: BMIInput = {
+      age,
+      gender,
+      height,
+      weight,
+      unitSystem,
+    };
+
+    try {
+      const result = calculateBMIMetrics(input);
+      displayResults(result, unitSystem);
+    } catch (error) {
+      alert('Error calculating BMI. Please check your inputs.');
+      console.error(error);
+    }
+  });
+
+  function displayResults(result: BMIResult, unitSystem: UnitSystem) {
+    const bmiValue = document.getElementById('bmi-value') as HTMLParagraphElement;
+    const bmiCategory = document.getElementById('bmi-category') as HTMLParagraphElement;
+    const bmiPrime = document.getElementById('bmi-prime') as HTMLSpanElement;
+    const ponderalIndex = document.getElementById('ponderal-index') as HTMLSpanElement;
+    const healthyBMI = document.getElementById('healthy-bmi') as HTMLSpanElement;
+    const healthyWeight = document.getElementById('healthy-weight') as HTMLSpanElement;
+    const resultCard = document.querySelector('.result-card') as HTMLDivElement;
+
+    bmiValue.textContent = result.bmi.toString();
+    bmiCategory.textContent = categoryTranslations[result.category];
+    bmiPrime.textContent = result.bmiPrime.toString();
+    ponderalIndex.textContent = result.ponderalIndex.toString();
+    healthyBMI.textContent = `${result.healthyBMIRange.min} - ${result.healthyBMIRange.max}`;
+
+    const weightUnit = unitSystem === 'metric' ? 'kg' : 'lbs';
+    healthyWeight.textContent = `${result.healthyWeightRange.min} - ${result.healthyWeightRange.max} ${weightUnit}`;
+
+    // Update result card color based on category
+    resultCard.className = `result-card category-${result.category}`;
+
+    // Show results
+    results.style.display = 'block';
+    results.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  // Handle form reset
+  form.addEventListener('reset', () => {
+    results.style.display = 'none';
+  });
+</script>

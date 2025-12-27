@@ -1,0 +1,32 @@
+{
+  "site": {
+    "title": "Calculadoras Online",
+    "description": "Colección de calculadoras gratuitas y fáciles de usar"
+  },
+  "nav": {
+    "home": "Inicio",
+    "calculators": "Calculadoras"
+  },
+  "common": {
+    "calculate": "Calcular",
+    "reset": "Resetear",
+    "result": "Resultado",
+    "age": "Edad",
+    "gender": "Género",
+    "male": "Masculino",
+    "female": "Femenino",
+    "height": "Altura",
+    "weight": "Peso",
+    "years": "años"
+  },
+  "units": {
+    "metric": "Métrico",
+    "imperial": "Imperial",
+    "cm": "cm",
+    "m": "m",
+    "kg": "kg",
+    "ft": "pies",
+    "in": "pulgadas",
+    "lbs": "libras"
+  }
+}
