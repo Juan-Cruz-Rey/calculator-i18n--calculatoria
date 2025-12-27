@@ -1,0 +1,30 @@
+{
+  "title": "Calcolatore del Ciclo Mestruale",
+  "description": "Prevedi il tuo prossimo ciclo e le date di ovulazione",
+  "metaDescription": "Calcolatore del ciclo mestruale gratuito - Prevedi il tuo prossimo ciclo, date di ovulazione e finestra fertile. Tieni traccia del tuo ciclo mestruale facilmente.",
+  "form": {
+    "title": "Inserisci le tue informazioni",
+    "lastPeriodLabel": "Primo giorno dell'ultimo ciclo",
+    "lastPeriodHelp": "Data in cui è iniziata l'ultima mestruazione",
+    "cycleLengthLabel": "Durata del ciclo",
+    "cycleLengthHelp": "Numero medio di giorni tra i cicli (tipicamente 28 giorni)",
+    "periodLengthLabel": "Durata del ciclo mestruale",
+    "periodLengthHelp": "Numero di giorni di durata del ciclo (tipicamente 5 giorni)"
+  },
+  "results": {
+    "title": "I Tuoi Risultati",
+    "nextPeriod": "Prossimo Ciclo",
+    "daysUntil": "Tra",
+    "cycleDay": "Giorno del Ciclo",
+    "currentPhase": "Fase Attuale",
+    "ovulationDate": "Data di Ovulazione",
+    "fertilityWindow": "Finestra Fertile",
+    "upcomingPeriods": "Prossimi Cicli"
+  },
+  "info": {
+    "title": "Informazioni sul Calcolatore del Ciclo",
+    "description": "Questo calcolatore prevede i tuoi prossimi cicli mestruali e le date di ovulazione in base al tuo ultimo ciclo e alla durata media del ciclo. L'ovulazione si verifica tipicamente 14 giorni prima del prossimo ciclo.",
+    "formula": "Formula: Prossimo ciclo = Ultimo ciclo + Durata del ciclo. Ovulazione = Prossimo ciclo - 14 giorni",
+    "limitations": "Nota: Questo calcolatore fornisce stime basate su cicli regolari. I cicli mestruali possono variare naturalmente. Per preoccupazioni mediche o irregolarità del ciclo, consulta un professionista sanitario."
+  }
+}

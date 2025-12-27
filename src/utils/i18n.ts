@@ -147,6 +147,85 @@ import hiHealthyWeight from '../../public/locales/hi/calculators/healthyWeight.j
 import deHealthyWeight from '../../public/locales/de/calculators/healthyWeight.json';
 import itHealthyWeight from '../../public/locales/it/calculators/healthyWeight.json';
 
+import esHeartRate from '../../public/locales/es/calculators/heartRate.json';
+import enHeartRate from '../../public/locales/en/calculators/heartRate.json';
+import ptHeartRate from '../../public/locales/pt/calculators/heartRate.json';
+import frHeartRate from '../../public/locales/fr/calculators/heartRate.json';
+import hiHeartRate from '../../public/locales/hi/calculators/heartRate.json';
+import deHeartRate from '../../public/locales/de/calculators/heartRate.json';
+import itHeartRate from '../../public/locales/it/calculators/heartRate.json';
+import esBodyType from '../../public/locales/es/calculators/bodyType.json';
+import enBodyType from '../../public/locales/en/calculators/bodyType.json';
+import ptBodyType from '../../public/locales/pt/calculators/bodyType.json';
+import frBodyType from '../../public/locales/fr/calculators/bodyType.json';
+import hiBodyType from '../../public/locales/hi/calculators/bodyType.json';
+import deBodyType from '../../public/locales/de/calculators/bodyType.json';
+import itBodyType from '../../public/locales/it/calculators/bodyType.json';
+
+import esProtein from '../../public/locales/es/calculators/protein.json';
+import enProtein from '../../public/locales/en/calculators/protein.json';
+import ptProtein from '../../public/locales/pt/calculators/protein.json';
+import frProtein from '../../public/locales/fr/calculators/protein.json';
+import hiProtein from '../../public/locales/hi/calculators/protein.json';
+import deProtein from '../../public/locales/de/calculators/protein.json';
+import itProtein from '../../public/locales/it/calculators/protein.json';
+
+import esCaloriesBurned from '../../public/locales/es/calculators/caloriesBurned.json';
+import enCaloriesBurned from '../../public/locales/en/calculators/caloriesBurned.json';
+import ptCaloriesBurned from '../../public/locales/pt/calculators/caloriesBurned.json';
+import frCaloriesBurned from '../../public/locales/fr/calculators/caloriesBurned.json';
+import hiCaloriesBurned from '../../public/locales/hi/calculators/caloriesBurned.json';
+import deCaloriesBurned from '../../public/locales/de/calculators/caloriesBurned.json';
+import itCaloriesBurned from '../../public/locales/it/calculators/caloriesBurned.json';
+
+import esBSA from '../../public/locales/es/calculators/bsa.json';
+import enBSA from '../../public/locales/en/calculators/bsa.json';
+import ptBSA from '../../public/locales/pt/calculators/bsa.json';
+import frBSA from '../../public/locales/fr/calculators/bsa.json';
+import hiBSA from '../../public/locales/hi/calculators/bsa.json';
+import deBSA from '../../public/locales/de/calculators/bsa.json';
+import itBSA from '../../public/locales/it/calculators/bsa.json';
+
+import esBloodType from '../../public/locales/es/calculators/bloodType.json';
+import enBloodType from '../../public/locales/en/calculators/bloodType.json';
+import ptBloodType from '../../public/locales/pt/calculators/bloodType.json';
+import frBloodType from '../../public/locales/fr/calculators/bloodType.json';
+import hiBloodType from '../../public/locales/hi/calculators/bloodType.json';
+import deBloodType from '../../public/locales/de/calculators/bloodType.json';
+import itBloodType from '../../public/locales/it/calculators/bloodType.json';
+
+import esOvulation from '../../public/locales/es/calculators/ovulation.json';
+import enOvulation from '../../public/locales/en/calculators/ovulation.json';
+import ptOvulation from '../../public/locales/pt/calculators/ovulation.json';
+import frOvulation from '../../public/locales/fr/calculators/ovulation.json';
+import hiOvulation from '../../public/locales/hi/calculators/ovulation.json';
+import deOvulation from '../../public/locales/de/calculators/ovulation.json';
+import itOvulation from '../../public/locales/it/calculators/ovulation.json';
+
+import esPeriod from '../../public/locales/es/calculators/period.json';
+import enPeriod from '../../public/locales/en/calculators/period.json';
+import ptPeriod from '../../public/locales/pt/calculators/period.json';
+import frPeriod from '../../public/locales/fr/calculators/period.json';
+import hiPeriod from '../../public/locales/hi/calculators/period.json';
+import dePeriod from '../../public/locales/de/calculators/period.json';
+import itPeriod from '../../public/locales/it/calculators/period.json';
+
+import esBodyFrame from '../../public/locales/es/calculators/bodyFrame.json';
+import enBodyFrame from '../../public/locales/en/calculators/bodyFrame.json';
+import ptBodyFrame from '../../public/locales/pt/calculators/bodyFrame.json';
+import frBodyFrame from '../../public/locales/fr/calculators/bodyFrame.json';
+import hiBodyFrame from '../../public/locales/hi/calculators/bodyFrame.json';
+import deBodyFrame from '../../public/locales/de/calculators/bodyFrame.json';
+import itBodyFrame from '../../public/locales/it/calculators/bodyFrame.json';
+
+import esWaistHip from '../../public/locales/es/calculators/waistHip.json';
+import enWaistHip from '../../public/locales/en/calculators/waistHip.json';
+import ptWaistHip from '../../public/locales/pt/calculators/waistHip.json';
+import frWaistHip from '../../public/locales/fr/calculators/waistHip.json';
+import hiWaistHip from '../../public/locales/hi/calculators/waistHip.json';
+import deWaistHip from '../../public/locales/de/calculators/waistHip.json';
+import itWaistHip from '../../public/locales/it/calculators/waistHip.json';
+
 interface Translations {
   [key: string]: any;
 }
@@ -171,6 +250,16 @@ const translations: Record<Locale, Translations> = {
     carbohydrate: esCarbohydrate,
     leanBodyMass: esLeanBodyMass,
     healthyWeight: esHealthyWeight,
+    heartRate: esHeartRate,
+    bodyType: esBodyType,
+    protein: esProtein,
+    caloriesBurned: esCaloriesBurned,
+    bsa: esBSA,
+    bloodType: esBloodType,
+    ovulation: esOvulation,
+    period: esPeriod,
+    bodyFrame: esBodyFrame,
+    waistHip: esWaistHip,
   },
   en: {
     ...enCommon,
@@ -191,6 +280,16 @@ const translations: Record<Locale, Translations> = {
     carbohydrate: enCarbohydrate,
     leanBodyMass: enLeanBodyMass,
     healthyWeight: enHealthyWeight,
+    heartRate: enHeartRate,
+    bodyType: enBodyType,
+    protein: enProtein,
+    caloriesBurned: enCaloriesBurned,
+    bsa: enBSA,
+    bloodType: enBloodType,
+    ovulation: enOvulation,
+    period: enPeriod,
+    bodyFrame: enBodyFrame,
+    waistHip: enWaistHip,
   },
   pt: {
     ...ptCommon,
@@ -211,6 +310,16 @@ const translations: Record<Locale, Translations> = {
     carbohydrate: ptCarbohydrate,
     leanBodyMass: ptLeanBodyMass,
     healthyWeight: ptHealthyWeight,
+    heartRate: ptHeartRate,
+    bodyType: ptBodyType,
+    protein: ptProtein,
+    caloriesBurned: ptCaloriesBurned,
+    bsa: ptBSA,
+    bloodType: ptBloodType,
+    ovulation: ptOvulation,
+    period: ptPeriod,
+    bodyFrame: ptBodyFrame,
+    waistHip: ptWaistHip,
   },
   fr: {
     ...frCommon,
@@ -231,6 +340,16 @@ const translations: Record<Locale, Translations> = {
     carbohydrate: frCarbohydrate,
     leanBodyMass: frLeanBodyMass,
     healthyWeight: frHealthyWeight,
+    heartRate: frHeartRate,
+    bodyType: frBodyType,
+    protein: frProtein,
+    caloriesBurned: frCaloriesBurned,
+    bsa: frBSA,
+    bloodType: frBloodType,
+    ovulation: frOvulation,
+    period: frPeriod,
+    bodyFrame: frBodyFrame,
+    waistHip: frWaistHip,
   },
   hi: {
     ...hiCommon,
@@ -251,6 +370,16 @@ const translations: Record<Locale, Translations> = {
     carbohydrate: hiCarbohydrate,
     leanBodyMass: hiLeanBodyMass,
     healthyWeight: hiHealthyWeight,
+    heartRate: hiHeartRate,
+    bodyType: hiBodyType,
+    protein: hiProtein,
+    caloriesBurned: hiCaloriesBurned,
+    bsa: hiBSA,
+    bloodType: hiBloodType,
+    ovulation: hiOvulation,
+    period: hiPeriod,
+    bodyFrame: hiBodyFrame,
+    waistHip: hiWaistHip,
   },
   de: {
     ...deCommon,
@@ -271,6 +400,16 @@ const translations: Record<Locale, Translations> = {
     carbohydrate: deCarbohydrate,
     leanBodyMass: deLeanBodyMass,
     healthyWeight: deHealthyWeight,
+    heartRate: deHeartRate,
+    bodyType: deBodyType,
+    protein: deProtein,
+    caloriesBurned: deCaloriesBurned,
+    bsa: deBSA,
+    bloodType: deBloodType,
+    ovulation: deOvulation,
+    period: dePeriod,
+    bodyFrame: deBodyFrame,
+    waistHip: deWaistHip,
   },
   it: {
     ...itCommon,
@@ -291,6 +430,16 @@ const translations: Record<Locale, Translations> = {
     carbohydrate: itCarbohydrate,
     leanBodyMass: itLeanBodyMass,
     healthyWeight: itHealthyWeight,
+    heartRate: itHeartRate,
+    bodyType: itBodyType,
+    protein: itProtein,
+    caloriesBurned: itCaloriesBurned,
+    bsa: itBSA,
+    bloodType: itBloodType,
+    ovulation: itOvulation,
+    period: itPeriod,
+    bodyFrame: itBodyFrame,
+    waistHip: itWaistHip,
   },
 };
 
@@ -517,6 +666,96 @@ export function getAlternatePath(currentPath: string, targetLocale: Locale, calc
       hi: '/hi/calculators/healthy-weight/',
       de: '/de/calculators/healthy-weight/',
       it: '/it/calculators/healthy-weight/',
+    },
+    heartRate: {
+      es: '/calculadoras/frecuencia-cardiaca/',
+      en: '/en/calculators/heart-rate/',
+      pt: '/pt/calculators/heart-rate/',
+      fr: '/fr/calculators/heart-rate/',
+      hi: '/hi/calculators/heart-rate/',
+      de: '/de/calculators/heart-rate/',
+      it: '/it/calculators/heart-rate/',
+    },
+    bloodType: {
+      es: '/calculadoras/tipo-sangre/',
+      en: '/en/calculators/blood-type/',
+      pt: '/pt/calculators/blood-type/',
+      fr: '/fr/calculators/blood-type/',
+      hi: '/hi/calculators/blood-type/',
+      de: '/de/calculators/blood-type/',
+      it: '/it/calculators/blood-type/',
+    },
+    bsa: {
+      es: '/calculadoras/superficie-corporal/',
+      en: '/en/calculators/bsa/',
+      pt: '/pt/calculators/bsa/',
+      fr: '/fr/calculators/bsa/',
+      hi: '/hi/calculators/bsa/',
+      de: '/de/calculators/bsa/',
+      it: '/it/calculators/bsa/',
+    },
+    bodyType: {
+      es: '/calculadoras/tipo-cuerpo/',
+      en: '/en/calculators/body-type/',
+      pt: '/pt/calculators/body-type/',
+      fr: '/fr/calculators/body-type/',
+      hi: '/hi/calculators/body-type/',
+      de: '/de/calculators/body-type/',
+      it: '/it/calculators/body-type/',
+    },
+    protein: {
+      es: '/calculadoras/proteinas/',
+      en: '/en/calculators/protein/',
+      pt: '/pt/calculators/protein/',
+      fr: '/fr/calculators/protein/',
+      hi: '/hi/calculators/protein/',
+      de: '/de/calculators/protein/',
+      it: '/it/calculators/protein/',
+    },
+    caloriesBurned: {
+      es: '/calculadoras/calorias-quemadas/',
+      en: '/en/calculators/calories-burned/',
+      pt: '/pt/calculators/calories-burned/',
+      fr: '/fr/calculators/calories-burned/',
+      hi: '/hi/calculators/calories-burned/',
+      de: '/de/calculators/calories-burned/',
+      it: '/it/calculators/calories-burned/',
+    },
+    ovulation: {
+      es: '/calculadoras/ovulacion/',
+      en: '/en/calculators/ovulation/',
+      pt: '/pt/calculators/ovulation/',
+      fr: '/fr/calculators/ovulation/',
+      hi: '/hi/calculators/ovulation/',
+      de: '/de/calculators/ovulation/',
+      it: '/it/calculators/ovulation/',
+    },
+    period: {
+      es: '/calculadoras/periodo/',
+      en: '/en/calculators/period/',
+      pt: '/pt/calculators/period/',
+      fr: '/fr/calculators/period/',
+      hi: '/hi/calculators/period/',
+      de: '/de/calculators/period/',
+      it: '/it/calculators/period/',
+    },
+    bodyFrame: {
+      es: '/calculadoras/estructura-corporal/',
+      en: '/en/calculators/body-frame/',
+      pt: '/pt/calculators/body-frame/',
+      fr: '/fr/calculators/body-frame/',
+      hi: '/hi/calculators/body-frame/',
+      de: '/de/calculators/body-frame/',
+      it: '/it/calculators/body-frame/',
+    },
+    waistHip: {
+      es: '/calculadoras/cintura-cadera/',
+      en: '/en/calculators/waist-hip/',
+      pt: '/pt/calculators/waist-hip/',
+      fr: '/fr/calculators/waist-hip/',
+      hi: '/hi/calculators/waist-hip/',
+      de: '/de/calculators/waist-hip/',
+      it: '/it/calculators/waist-hip/',
     },
   };
 

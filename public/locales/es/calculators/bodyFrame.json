@@ -1,0 +1,45 @@
+{
+  "title": "Calculadora de Estructura Corporal",
+  "description": "Determina el tamaño de tu estructura corporal",
+  "metaDescription": "Calculadora de estructura corporal gratuita - Determina si tienes una estructura corporal pequeña, mediana o grande usando la circunferencia de muñeca o anchura del codo.",
+  "form": {
+    "title": "Ingresa tus datos",
+    "genderLabel": "Género",
+    "heightLabel": "Altura",
+    "heightPlaceholder": "Ingresa tu altura",
+    "measurementMethod": "Método de medición",
+    "methodHelp": "Elige un método basado en qué medida puedes tomar más fácilmente",
+    "wristMethod": "Circunferencia de muñeca",
+    "elbowMethod": "Anchura del codo",
+    "wristLabel": "Circunferencia de la muñeca",
+    "wristHelp": "Mide la circunferencia de tu muñeca justo por encima del hueso sobresaliente",
+    "wristPlaceholder": "Ingresa la circunferencia de tu muñeca",
+    "elbowLabel": "Anchura del codo",
+    "elbowHelp": "Extiende tu brazo hacia adelante con la palma hacia arriba. Dobla el codo a 90°. Mide la distancia entre los dos huesos prominentes del codo",
+    "elbowPlaceholder": "Ingresa la anchura de tu codo"
+  },
+  "results": {
+    "title": "Tus Resultados",
+    "frameSize": "Tamaño de Estructura",
+    "methodUsed": "Método utilizado",
+    "height": "Altura",
+    "rValue": "Valor R (Altura/Muñeca)",
+    "wristCircumference": "Circunferencia de muñeca",
+    "elbowBreadth": "Anchura del codo",
+    "interpretation": "¿Qué significa esto?",
+    "frameSizes": {
+      "small": "Pequeña",
+      "medium": "Mediana",
+      "large": "Grande"
+    }
+  },
+  "info": {
+    "title": "Acerca de la estructura corporal",
+    "description": "La estructura corporal (o tamaño de esqueleto) se refiere al tamaño relativo de tus huesos. Las personas con huesos más grandes tienen una estructura más grande, mientras que aquellas con huesos más pequeños tienen una estructura más pequeña. Conocer tu estructura corporal puede ayudarte a establecer objetivos de peso realistas.",
+    "wristMethodTitle": "Método de circunferencia de muñeca",
+    "wristMethodDescription": "Este método calcula una relación (valor r) entre tu altura y la circunferencia de tu muñeca. Un valor r más alto indica una estructura más pequeña, mientras que un valor r más bajo sugiere una estructura más grande. Este es el método más simple y comúnmente utilizado.",
+    "elbowMethodTitle": "Método de anchura del codo",
+    "elbowMethodDescription": "Este método utiliza la anchura de tu codo en relación con tu altura para determinar el tamaño de tu estructura. Para obtener una medida precisa, extiende tu brazo hacia adelante con la palma hacia arriba, dobla el codo en un ángulo de 90 grados y mide la distancia entre los dos huesos prominentes de cada lado del codo.",
+    "limitations": "Nota: El tamaño de la estructura corporal es solo un factor para determinar el peso corporal ideal. Otros factores incluyen la composición muscular, la distribución de grasa y la salud general. Consulta con un profesional de la salud para obtener asesoramiento personalizado."
+  }
+}

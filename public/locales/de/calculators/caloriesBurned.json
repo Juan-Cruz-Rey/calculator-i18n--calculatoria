@@ -1,0 +1,56 @@
+{
+  "title": "Kalorienverbrauch-Rechner",
+  "description": "Berechnen Sie die verbrannten Kalorien bei verschiedenen Aktivitäten",
+  "metaDescription": "Kostenloser Kalorienverbrauch-Rechner - Entdecken Sie, wie viele Kalorien Sie bei Sport und täglichen Aktivitäten mit präzisen MET-Werten verbrennen.",
+  "form": {
+    "title": "Geben Sie Ihre Daten ein",
+    "activityLabel": "Aktivitätstyp",
+    "durationLabel": "Dauer",
+    "durationPlaceholder": "Dauer in Minuten eingeben",
+    "weightLabel": "Gewicht",
+    "weightPlaceholder": "Geben Sie Ihr Gewicht ein"
+  },
+  "activities": {
+    "walking": "Gehen",
+    "walking_slow": "Langsames Gehen (< 3 km/h)",
+    "walking_moderate": "Moderates Gehen (5 km/h)",
+    "walking_brisk": "Zügiges Gehen (5.5 km/h)",
+    "running": "Laufen",
+    "running_slow": "Joggen (8 km/h)",
+    "running_moderate": "Moderates Laufen (11 km/h)",
+    "running_fast": "Schnelles Laufen (13 km/h)",
+    "cycling": "Radfahren",
+    "cycling_leisure": "Freizeitradfahren (< 16 km/h)",
+    "cycling_moderate": "Moderates Radfahren (20-22 km/h)",
+    "cycling_vigorous": "Intensives Radfahren (22-26 km/h)",
+    "swimming": "Schwimmen",
+    "swimming_leisure": "Freizeitschwimmen",
+    "swimming_moderate": "Moderates Schwimmen",
+    "swimming_vigorous": "Intensives Schwimmen",
+    "other": "Weitere Aktivitäten",
+    "weightlifting": "Krafttraining",
+    "yoga": "Yoga",
+    "aerobics": "Aerobic",
+    "dancing": "Tanzen",
+    "hiking": "Wandern",
+    "rowing": "Rudern",
+    "basketball": "Basketball",
+    "soccer": "Fußball",
+    "tennis": "Tennis",
+    "golf": "Golf"
+  },
+  "results": {
+    "title": "Ihre Ergebnisse",
+    "totalCalories": "Gesamtkalorienverbrauch",
+    "caloriesUnit": "Kalorien",
+    "metValue": "MET-Wert",
+    "caloriesPerMinute": "Kalorien pro Minute",
+    "caloriesPerHour": "Kalorien pro Stunde"
+  },
+  "info": {
+    "title": "Über Kalorienverbrauch",
+    "description": "Dieser Rechner schätzt die verbrannten Kalorien bei verschiedenen körperlichen Aktivitäten unter Verwendung von MET-Werten (Metabolisches Äquivalent). MET ist eine Einheit, die die Energiemenge schätzt, die Ihr Körper bei körperlicher Aktivität verbraucht.",
+    "formula": "Formel: Kalorien/Minute = (MET × Gewicht in kg × 3.5) / 200",
+    "limitations": "Die Ergebnisse sind Schätzungen basierend auf durchschnittlichen MET-Werten. Der tatsächliche Kalorienverbrauch kann je nach Trainingsintensität, Körperzusammensetzung, Alter, Geschlecht und Fitnessniveau variieren."
+  }
+}

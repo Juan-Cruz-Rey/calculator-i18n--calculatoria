@@ -1,0 +1,671 @@
+---
+import { t, type Locale } from '@/utils/i18n';
+
+const { lang } = Astro.props as { lang: Locale };
+---
+
+<div class="ovulation-calculator">
+  <div class="calculator-form">
+    <h2>{t('ovulation:form.title', lang)}</h2>
+
+    <form id="ovulation-form">
+      <!-- Last Period Date -->
+      <div class="form-group">
+        <label for="last-period-date">{t('ovulation:form.lastPeriodLabel', lang)}</label>
+        <input
+          type="date"
+          id="last-period-date"
+          name="lastPeriodDate"
+          required
+        />
+        <p class="help-text">{t('ovulation:form.lastPeriodHelp', lang)}</p>
+      </div>
+
+      <!-- Cycle Length -->
+      <div class="form-group">
+        <label for="cycle-length">{t('ovulation:form.cycleLengthLabel', lang)}</label>
+        <input
+          type="number"
+          id="cycle-length"
+          name="cycleLength"
+          min="21"
+          max="35"
+          value="28"
+          step="1"
+        />
+        <span class="unit">{t('common.days', lang)}</span>
+        <p class="help-text">{t('ovulation:form.cycleLengthHelp', lang)}</p>
+      </div>
+
+      <!-- Buttons -->
+      <div class="form-actions">
+        <button type="submit" class="btn-primary">{t('common.calculate', lang)}</button>
+        <button type="reset" class="btn-secondary">{t('common.reset', lang)}</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="calculator-results" id="results" style="display: none;">
+    <h2>{t('ovulation:results.title', lang)}</h2>
+
+    <div class="result-card main-result">
+      <h3>{t('ovulation:results.ovulationDate', lang)}</h3>
+      <p class="value" id="ovulation-date-value">-</p>
+      <p class="subtitle fertile-status" id="fertile-status">-</p>
+    </div>
+
+    <div class="result-grid">
+      <div class="result-item">
+        <strong>{t('ovulation:results.fertileWindowStart', lang)}:</strong>
+        <span id="fertile-window-start">-</span>
+      </div>
+      <div class="result-item">
+        <strong>{t('ovulation:results.fertileWindowEnd', lang)}:</strong>
+        <span id="fertile-window-end">-</span>
+      </div>
+      <div class="result-item">
+        <strong>{t('ovulation:results.nextPeriod', lang)}:</strong>
+        <span id="next-period">-</span>
+      </div>
+      <div class="result-item">
+        <strong>{t('ovulation:results.daysUntilOvulation', lang)}:</strong>
+        <span id="days-until-ovulation">-</span>
+      </div>
+    </div>
+
+    <!-- Calendar Visualization -->
+    <div class="calendar-section">
+      <h3>{t('ovulation:results.calendar', lang)}</h3>
+      <div class="calendar-legend">
+        <div class="legend-item">
+          <span class="legend-color period"></span>
+          <span>{t('ovulation:results.periodDay', lang)}</span>
+        </div>
+        <div class="legend-item">
+          <span class="legend-color fertile"></span>
+          <span>{t('ovulation:results.fertileWindow', lang)}</span>
+        </div>
+        <div class="legend-item">
+          <span class="legend-color ovulation"></span>
+          <span>{t('ovulation:results.ovulation', lang)}</span>
+        </div>
+      </div>
+      <div class="calendar-grid" id="calendar-grid">
+        <!-- Calendar will be generated here -->
+      </div>
+    </div>
+  </div>
+
+  <div class="calculator-info">
+    <h2>{t('ovulation:info.title', lang)}</h2>
+    <p>{t('ovulation:info.description', lang)}</p>
+    <p class="formula">{t('ovulation:info.formula', lang)}</p>
+    <p class="limitations">{t('ovulation:info.limitations', lang)}</p>
+  </div>
+</div>
+
+<style>
+  .ovulation-calculator {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .calculator-form, .calculator-results, .calculator-info {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  h2 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  h3 {
+    color: #333;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #555;
+  }
+
+  .form-group input[type="number"],
+  .form-group input[type="date"] {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+
+  .form-group input[type="number"]:focus,
+  .form-group input[type="date"]:focus {
+    outline: none;
+    border-color: #ec4899;
+  }
+
+  .unit {
+    display: inline-block;
+    margin-left: 0.5rem;
+    color: #888;
+    font-size: 0.9rem;
+  }
+
+  .help-text {
+    font-size: 0.85rem;
+    color: #888;
+    margin-top: 0.25rem;
+    font-style: italic;
+  }
+
+  .form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .btn-primary, .btn-secondary {
+    flex: 1;
+    padding: 0.875rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, #ec4899 0%, #be185d 100%);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #db2777 0%, #9f1239 100%);
+  }
+
+  .btn-secondary {
+    background: #f5f5f5;
+    color: #333;
+  }
+
+  .btn-secondary:hover {
+    background: #e0e0e0;
+  }
+
+  .result-card {
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, #ec4899 0%, #be185d 100%);
+    color: white;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+
+  .result-card h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1.2rem;
+    color: white;
+  }
+
+  .result-card .value {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  .result-card .subtitle {
+    font-size: 1.1rem;
+    margin: 0.5rem 0 0 0;
+    opacity: 0.9;
+  }
+
+  .fertile-status {
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    display: inline-block;
+    margin-top: 1rem;
+  }
+
+  .fertile-status.active {
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  .result-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .result-item {
+    padding: 1rem;
+    background: #fef2f2;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .result-item strong {
+    color: #be185d;
+    font-size: 0.9rem;
+  }
+
+  .result-item span {
+    color: #333;
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+
+  .calendar-section {
+    margin-top: 2rem;
+  }
+
+  .calendar-legend {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .legend-color {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+  }
+
+  .legend-color.period {
+    background: #dc2626;
+  }
+
+  .legend-color.fertile {
+    background: #fbbf24;
+  }
+
+  .legend-color.ovulation {
+    background: #ec4899;
+  }
+
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5rem;
+  }
+
+  .calendar-day {
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    border-radius: 4px;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    font-size: 0.85rem;
+  }
+
+  .calendar-day.period {
+    background: #dc2626;
+    color: white;
+    font-weight: 600;
+  }
+
+  .calendar-day.fertile {
+    background: #fbbf24;
+    color: #78350f;
+    font-weight: 600;
+  }
+
+  .calendar-day.ovulation {
+    background: #ec4899;
+    color: white;
+    font-weight: 700;
+    border: 2px solid #be185d;
+  }
+
+  .calendar-day.today {
+    border: 2px solid #3b82f6;
+    font-weight: 600;
+  }
+
+  .day-number {
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .day-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+  }
+
+  .calculator-info {
+    background: #fef2f2;
+  }
+
+  .calculator-info p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: #555;
+  }
+
+  .formula {
+    font-family: monospace;
+    background: white;
+    padding: 1rem;
+    border-left: 4px solid #ec4899;
+    margin: 1rem 0;
+  }
+
+  .limitations {
+    font-size: 0.9rem;
+    font-style: italic;
+  }
+
+  @media (max-width: 768px) {
+    .calendar-grid {
+      gap: 0.25rem;
+    }
+
+    .calendar-day {
+      padding: 0.25rem;
+      font-size: 0.75rem;
+    }
+
+    .day-number {
+      font-size: 0.9rem;
+    }
+
+    .day-label {
+      font-size: 0.6rem;
+    }
+  }
+</style>
+
+<script>
+  import type { OvulationInput, OvulationResult } from '@/utils/calculators/ovulation';
+  import { calculateOvulation, formatDate, addDays, daysBetween } from '@/utils/calculators/ovulation';
+
+  const form = document.getElementById('ovulation-form') as HTMLFormElement;
+  const results = document.getElementById('results') as HTMLDivElement;
+
+  // Get current language
+  const currentLang = document.documentElement.lang || 'es';
+
+  // Handle form submission
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const lastPeriodDateStr = formData.get('lastPeriodDate') as string;
+    const cycleLength = parseInt(formData.get('cycleLength') as string) || 28;
+
+    const lastPeriodDate = new Date(lastPeriodDateStr);
+
+    const input: OvulationInput = {
+      lastPeriodDate,
+      cycleLength,
+    };
+
+    try {
+      const result = calculateOvulation(input);
+      displayResults(result);
+    } catch (error) {
+      alert('Error calculating ovulation. Please check your inputs.');
+      console.error(error);
+    }
+  });
+
+  function displayResults(result: OvulationResult) {
+    const ovulationDateValue = document.getElementById('ovulation-date-value') as HTMLParagraphElement;
+    const fertileStatus = document.getElementById('fertile-status') as HTMLParagraphElement;
+    const fertileWindowStart = document.getElementById('fertile-window-start') as HTMLSpanElement;
+    const fertileWindowEnd = document.getElementById('fertile-window-end') as HTMLSpanElement;
+    const nextPeriod = document.getElementById('next-period') as HTMLSpanElement;
+    const daysUntilOvulation = document.getElementById('days-until-ovulation') as HTMLSpanElement;
+    const calendarGrid = document.getElementById('calendar-grid') as HTMLDivElement;
+
+    // Get locale string for date formatting
+    const localeMap: Record<string, string> = {
+      es: 'es-ES',
+      en: 'en-US',
+      pt: 'pt-PT',
+      fr: 'fr-FR',
+      hi: 'hi-IN',
+      de: 'de-DE',
+      it: 'it-IT',
+    };
+    const locale = localeMap[currentLang] || 'es-ES';
+
+    // Display main results
+    ovulationDateValue.textContent = formatDate(result.ovulationDate, locale);
+
+    // Display fertile status
+    if (result.isInFertileWindow) {
+      fertileStatus.textContent = getFertileStatusText(true);
+      fertileStatus.classList.add('active');
+    } else {
+      fertileStatus.textContent = getFertileStatusText(false);
+      fertileStatus.classList.remove('active');
+    }
+
+    fertileWindowStart.textContent = formatDate(result.fertileWindowStart, locale);
+    fertileWindowEnd.textContent = formatDate(result.fertileWindowEnd, locale);
+    nextPeriod.textContent = formatDate(result.nextPeriodDate, locale);
+
+    // Display days until ovulation
+    const daysText = getDaysText(result.daysUntilOvulation);
+    if (result.daysUntilOvulation < 0) {
+      daysUntilOvulation.textContent = getPastOvulationText();
+    } else if (result.daysUntilOvulation === 0) {
+      daysUntilOvulation.textContent = getTodayText();
+    } else {
+      daysUntilOvulation.textContent = `${result.daysUntilOvulation} ${daysText}`;
+    }
+
+    // Generate calendar
+    generateCalendar(result, calendarGrid);
+
+    // Show results
+    results.style.display = 'block';
+    results.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function generateCalendar(result: OvulationResult, container: HTMLDivElement) {
+    container.innerHTML = '';
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    // Show 35 days starting from the last period date
+    const startDate = new Date(result.fertileWindowStart);
+    startDate.setDate(startDate.getDate() - 7); // Start a week before fertile window
+
+    const dayLabels = getDayLabels();
+
+    // Add day headers
+    dayLabels.forEach(label => {
+      const header = document.createElement('div');
+      header.className = 'calendar-day-header';
+      header.textContent = label;
+      header.style.cssText = 'font-weight: 600; text-align: center; padding: 0.5rem; font-size: 0.85rem; color: #666;';
+      container.appendChild(header);
+    });
+
+    for (let i = 0; i < 35; i++) {
+      const currentDate = addDays(startDate, i);
+      const dayEl = document.createElement('div');
+      dayEl.className = 'calendar-day';
+
+      // Check if this is period day (assume 5 days of period)
+      const periodStart = new Date(result.nextPeriodDate);
+      periodStart.setDate(periodStart.getDate() - result.ovulationDate.getDate() + startDate.getDate() - 28);
+
+      // Add classes based on day type
+      const dayNum = currentDate.getDate();
+      const month = currentDate.getMonth();
+      const year = currentDate.getFullYear();
+
+      const ovulationDay = result.ovulationDate.getDate();
+      const ovulationMonth = result.ovulationDate.getMonth();
+      const ovulationYear = result.ovulationDate.getFullYear();
+
+      // Check if ovulation day
+      if (dayNum === ovulationDay && month === ovulationMonth && year === ovulationYear) {
+        dayEl.classList.add('ovulation');
+        const dayNumber = document.createElement('div');
+        dayNumber.className = 'day-number';
+        dayNumber.textContent = dayNum.toString();
+        const dayLabel = document.createElement('div');
+        dayLabel.className = 'day-label';
+        dayLabel.textContent = getOvulationLabel();
+        dayEl.appendChild(dayNumber);
+        dayEl.appendChild(dayLabel);
+      }
+      // Check if in fertile window
+      else if (currentDate >= result.fertileWindowStart && currentDate <= result.fertileWindowEnd) {
+        dayEl.classList.add('fertile');
+        const dayNumber = document.createElement('div');
+        dayNumber.className = 'day-number';
+        dayNumber.textContent = dayNum.toString();
+        const dayLabel = document.createElement('div');
+        dayLabel.className = 'day-label';
+        dayLabel.textContent = getFertileLabel();
+        dayEl.appendChild(dayNumber);
+        dayEl.appendChild(dayLabel);
+      }
+      // Normal day
+      else {
+        const dayNumber = document.createElement('div');
+        dayNumber.className = 'day-number';
+        dayNumber.textContent = dayNum.toString();
+        dayEl.appendChild(dayNumber);
+      }
+
+      // Highlight today
+      if (dayNum === today.getDate() && month === today.getMonth() && year === today.getFullYear()) {
+        dayEl.classList.add('today');
+      }
+
+      container.appendChild(dayEl);
+    }
+  }
+
+  function getDaysText(days: number): string {
+    const texts: Record<string, Record<string, string>> = {
+      es: { singular: 'día', plural: 'días' },
+      en: { singular: 'day', plural: 'days' },
+      pt: { singular: 'dia', plural: 'dias' },
+      fr: { singular: 'jour', plural: 'jours' },
+      hi: { singular: 'दिन', plural: 'दिन' },
+      de: { singular: 'Tag', plural: 'Tage' },
+      it: { singular: 'giorno', plural: 'giorni' },
+    };
+    return Math.abs(days) === 1 ? texts[currentLang]?.singular || 'day' : texts[currentLang]?.plural || 'days';
+  }
+
+  function getFertileStatusText(isActive: boolean): string {
+    const texts: Record<string, Record<string, string>> = {
+      es: { active: 'Estás en tu ventana fértil', inactive: 'No estás en tu ventana fértil' },
+      en: { active: 'You are in your fertile window', inactive: 'You are not in your fertile window' },
+      pt: { active: 'Você está na sua janela fértil', inactive: 'Você não está na sua janela fértil' },
+      fr: { active: 'Vous êtes dans votre fenêtre fertile', inactive: 'Vous n\'êtes pas dans votre fenêtre fertile' },
+      hi: { active: 'आप अपनी उपजाऊ अवधि में हैं', inactive: 'आप अपनी उपजाऊ अवधि में नहीं हैं' },
+      de: { active: 'Sie sind in Ihrem fruchtbaren Fenster', inactive: 'Sie sind nicht in Ihrem fruchtbaren Fenster' },
+      it: { active: 'Sei nella tua finestra fertile', inactive: 'Non sei nella tua finestra fertile' },
+    };
+    return isActive ? texts[currentLang]?.active || texts.en.active : texts[currentLang]?.inactive || texts.en.inactive;
+  }
+
+  function getPastOvulationText(): string {
+    const texts: Record<string, string> = {
+      es: 'La ovulación ya ocurrió',
+      en: 'Ovulation already occurred',
+      pt: 'A ovulação já ocorreu',
+      fr: 'L\'ovulation a déjà eu lieu',
+      hi: 'ओव्यूलेशन पहले ही हो चुका है',
+      de: 'Eisprung ist bereits erfolgt',
+      it: 'L\'ovulazione è già avvenuta',
+    };
+    return texts[currentLang] || texts.en;
+  }
+
+  function getTodayText(): string {
+    const texts: Record<string, string> = {
+      es: 'Hoy',
+      en: 'Today',
+      pt: 'Hoje',
+      fr: 'Aujourd\'hui',
+      hi: 'आज',
+      de: 'Heute',
+      it: 'Oggi',
+    };
+    return texts[currentLang] || texts.en;
+  }
+
+  function getOvulationLabel(): string {
+    const texts: Record<string, string> = {
+      es: 'OVU',
+      en: 'OVU',
+      pt: 'OVU',
+      fr: 'OVU',
+      hi: 'ओव्यू',
+      de: 'EIS',
+      it: 'OVU',
+    };
+    return texts[currentLang] || texts.en;
+  }
+
+  function getFertileLabel(): string {
+    const texts: Record<string, string> = {
+      es: 'FÉRTIL',
+      en: 'FERTILE',
+      pt: 'FÉRTIL',
+      fr: 'FERTILE',
+      hi: 'उपजाऊ',
+      de: 'FRUCHT',
+      it: 'FERTILE',
+    };
+    return texts[currentLang] || texts.en;
+  }
+
+  function getDayLabels(): string[] {
+    const labels: Record<string, string[]> = {
+      es: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'],
+      en: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+      pt: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'],
+      fr: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
+      hi: ['रवि', 'सोम', 'मंगल', 'बुध', 'गुरु', 'शुक्र', 'शनि'],
+      de: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
+      it: ['Dom', 'Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab'],
+    };
+    return labels[currentLang] || labels.en;
+  }
+
+  // Handle form reset
+  form.addEventListener('reset', () => {
+    results.style.display = 'none';
+  });
+</script>

@@ -1,0 +1,56 @@
+{
+  "title": "Calculateur de Calories Brûlées",
+  "description": "Calculez les calories brûlées pendant différentes activités",
+  "metaDescription": "Calculateur gratuit de calories brûlées - Découvrez combien de calories vous brûlez pendant l'exercice et les activités quotidiennes en utilisant des valeurs MET précises.",
+  "form": {
+    "title": "Entrez vos Informations",
+    "activityLabel": "Type d'Activité",
+    "durationLabel": "Durée",
+    "durationPlaceholder": "Entrez la durée en minutes",
+    "weightLabel": "Poids",
+    "weightPlaceholder": "Entrez votre poids"
+  },
+  "activities": {
+    "walking": "Marche",
+    "walking_slow": "Marche Lente (< 3 km/h)",
+    "walking_moderate": "Marche Modérée (5 km/h)",
+    "walking_brisk": "Marche Rapide (5.5 km/h)",
+    "running": "Course",
+    "running_slow": "Jogging (8 km/h)",
+    "running_moderate": "Course Modérée (11 km/h)",
+    "running_fast": "Course Rapide (13 km/h)",
+    "cycling": "Cyclisme",
+    "cycling_leisure": "Cyclisme Loisir (< 16 km/h)",
+    "cycling_moderate": "Cyclisme Modéré (20-22 km/h)",
+    "cycling_vigorous": "Cyclisme Vigoureux (22-26 km/h)",
+    "swimming": "Natation",
+    "swimming_leisure": "Natation Loisir",
+    "swimming_moderate": "Natation Modérée",
+    "swimming_vigorous": "Natation Vigoureuse",
+    "other": "Autres Activités",
+    "weightlifting": "Musculation",
+    "yoga": "Yoga",
+    "aerobics": "Aérobic",
+    "dancing": "Danse",
+    "hiking": "Randonnée",
+    "rowing": "Aviron",
+    "basketball": "Basketball",
+    "soccer": "Football",
+    "tennis": "Tennis",
+    "golf": "Golf"
+  },
+  "results": {
+    "title": "Vos Résultats",
+    "totalCalories": "Total de Calories Brûlées",
+    "caloriesUnit": "calories",
+    "metValue": "Valeur MET",
+    "caloriesPerMinute": "Calories par Minute",
+    "caloriesPerHour": "Calories par Heure"
+  },
+  "info": {
+    "title": "À propos des Calories Brûlées",
+    "description": "Ce calculateur estime les calories brûlées pendant différentes activités physiques en utilisant les valeurs MET (Équivalent Métabolique de Tâche). Le MET est une unité qui estime la quantité d'énergie que votre corps utilise pendant l'activité physique.",
+    "formula": "Formule : Calories/minute = (MET × poids en kg × 3.5) / 200",
+    "limitations": "Les résultats sont des estimations basées sur des valeurs MET moyennes. La dépense calorique réelle peut varier en fonction de l'intensité de l'exercice, de la composition corporelle, de l'âge, du sexe et du niveau de forme physique."
+  }
+}

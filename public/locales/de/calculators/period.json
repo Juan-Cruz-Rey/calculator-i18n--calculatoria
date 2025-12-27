@@ -1,0 +1,30 @@
+{
+  "title": "Periodenrechner",
+  "description": "Sagen Sie Ihre nächste Periode und Eisprung voraus",
+  "metaDescription": "Kostenloser Periodenrechner - Sagen Sie Ihre nächste Periode, Eisprung und fruchtbare Tage voraus. Verfolgen Sie Ihren Menstruationszyklus einfach.",
+  "form": {
+    "title": "Geben Sie Ihre Informationen ein",
+    "lastPeriodLabel": "Erster Tag der letzten Periode",
+    "lastPeriodHelp": "Datum, an dem Ihre letzte Menstruation begann",
+    "cycleLengthLabel": "Zykluslänge",
+    "cycleLengthHelp": "Durchschnittliche Anzahl der Tage zwischen den Perioden (typischerweise 28 Tage)",
+    "periodLengthLabel": "Periodenlänge",
+    "periodLengthHelp": "Anzahl der Tage, die Ihre Periode dauert (typischerweise 5 Tage)"
+  },
+  "results": {
+    "title": "Ihre Ergebnisse",
+    "nextPeriod": "Nächste Periode",
+    "daysUntil": "In",
+    "cycleDay": "Zyklustag",
+    "currentPhase": "Aktuelle Phase",
+    "ovulationDate": "Eisprung",
+    "fertilityWindow": "Fruchtbare Tage",
+    "upcomingPeriods": "Kommende Perioden"
+  },
+  "info": {
+    "title": "Über den Periodenrechner",
+    "description": "Dieser Rechner sagt Ihre kommenden Menstruationsperioden und Eisprung basierend auf Ihrer letzten Periode und durchschnittlichen Zykluslänge voraus. Der Eisprung tritt typischerweise 14 Tage vor der nächsten Periode auf.",
+    "formula": "Formel: Nächste Periode = Letzte Periode + Zykluslänge. Eisprung = Nächste Periode - 14 Tage",
+    "limitations": "Hinweis: Dieser Rechner liefert Schätzungen basierend auf regelmäßigen Zyklen. Menstruationszyklen können natürlich variieren. Bei medizinischen Bedenken oder Zyklusunregelmäßigkeiten wenden Sie sich bitte an einen Arzt."
+  }
+}

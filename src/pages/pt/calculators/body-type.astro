@@ -1,0 +1,37 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import BodyTypeCalculator from '@/components/calculators/BodyTypeCalculator.astro';
+import { t } from '@/utils/i18n';
+
+const title = t('bodyType.title', 'pt') + ' - ' + t('site.title', 'pt');
+const description = t('bodyType.metaDescription', 'pt');
+---
+
+<BaseLayout title={title} description={description} lang="pt">
+  <div class="container">
+    <div class="page-header">
+      <h1>{t('bodyType.title', 'pt')}</h1>
+      <p class="page-description">{t('bodyType.description', 'pt')}</p>
+    </div>
+
+    <BodyTypeCalculator lang="pt" />
+  </div>
+
+  <style>
+    .page-header {
+      text-align: center;
+      padding: 2rem 0;
+    }
+
+    .page-header h1 {
+      font-size: 2.5rem;
+      color: #333;
+      margin-bottom: 0.5rem;
+    }
+
+    .page-description {
+      font-size: 1.25rem;
+      color: #666;
+    }
+  </style>
+</BaseLayout>

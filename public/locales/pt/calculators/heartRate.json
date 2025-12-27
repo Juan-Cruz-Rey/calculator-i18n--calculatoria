@@ -1,0 +1,39 @@
+{
+  "title": "Calculadora de Frequência Cardíaca",
+  "description": "Calcule sua frequência cardíaca máxima e zonas de treinamento",
+  "metaDescription": "Calculadora de frequência cardíaca gratuita - Calcule sua frequência cardíaca máxima e zonas de treinamento ideais para diferentes tipos de exercício.",
+  "form": {
+    "title": "Insira Suas Informações",
+    "ageLabel": "Idade",
+    "agePlaceholder": "Insira sua idade",
+    "restingHRLabel": "Frequência Cardíaca em Repouso",
+    "restingHRPlaceholder": "Insira sua frequência cardíaca em repouso",
+    "bpm": "bpm",
+    "restingHRInfo": "Para medir sua frequência cardíaca em repouso, conte suas pulsações por 60 segundos ao acordar pela manhã antes de sair da cama."
+  },
+  "results": {
+    "title": "Seus Resultados",
+    "maxHR": "Frequência Cardíaca Máxima",
+    "restingHR": "FC em Repouso",
+    "hrReserve": "Reserva de FC",
+    "zonesTitle": "Zonas de Treinamento"
+  },
+  "zones": {
+    "resting": "Repouso",
+    "warmup": "Aquecimento",
+    "fatburn": "Queima de Gordura",
+    "cardio": "Cardio",
+    "peak": "Máximo"
+  },
+  "info": {
+    "title": "Sobre a Frequência Cardíaca",
+    "description": "A frequência cardíaca máxima é o número máximo de vezes que seu coração pode bater por minuto durante o esforço físico máximo. É geralmente calculada usando a fórmula 220 - idade. As zonas de treinamento ajudam a otimizar seus treinos com base em seus objetivos.",
+    "formula": "Fórmula: FC Máxima = 220 - idade | FC Alvo = ((FC Máx - FC Repouso) × % Intensidade) + FC Repouso",
+    "zonesExplained": "Zonas de Treinamento Explicadas",
+    "warmupDesc": "Ideal para aquecimento e resfriamento. Melhora a saúde geral e auxilia na recuperação.",
+    "fatburnDesc": "Zona ideal para queimar gordura. Nesta intensidade, seu corpo usa gordura como fonte principal de energia.",
+    "cardioDesc": "Melhora a capacidade cardiovascular e resistência. Ideal para melhorar o desempenho aeróbico.",
+    "peakDesc": "Treinamento de alta intensidade. Desenvolve velocidade e potência. Apenas para sessões curtas.",
+    "limitations": "A fórmula 220 - idade é uma estimativa geral. A frequência cardíaca máxima real pode variar com base em fatores individuais como genética, nível de condicionamento físico e medicamentos. Consulte um profissional de saúde antes de iniciar um programa de exercício intenso."
+  }
+}

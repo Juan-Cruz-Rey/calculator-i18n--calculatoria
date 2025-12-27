@@ -1,0 +1,485 @@
+---
+import { t, type Locale } from '@/utils/i18n';
+
+const { lang } = Astro.props as { lang: Locale };
+---
+
+<div class="waist-hip-calculator">
+  <div class="calculator-form">
+    <h2>{t('waistHip.form.title', lang)}</h2>
+
+    <form id="waist-hip-form">
+      <!-- Unit System Toggle -->
+      <div class="form-group unit-toggle">
+        <label>
+          <input type="radio" name="unitSystem" value="metric" checked />
+          {t('units.metric', lang)}
+        </label>
+        <label>
+          <input type="radio" name="unitSystem" value="imperial" />
+          {t('units.imperial', lang)}
+        </label>
+      </div>
+
+      <!-- Gender -->
+      <div class="form-group">
+        <label for="gender">{t('waistHip.form.genderLabel', lang)}</label>
+        <select id="gender" name="gender" required>
+          <option value="male">{t('common.male', lang)}</option>
+          <option value="female">{t('common.female', lang)}</option>
+        </select>
+      </div>
+
+      <!-- Waist Circumference -->
+      <div class="form-group">
+        <label for="waist">{t('waistHip.form.waistLabel', lang)}</label>
+        <input
+          type="number"
+          id="waist"
+          name="waist"
+          min="10"
+          max="300"
+          step="0.1"
+          required
+          placeholder={t('waistHip.form.waistPlaceholder', lang)}
+        />
+        <span class="unit waist-unit">{t('units.cm', lang)}</span>
+      </div>
+
+      <!-- Hip Circumference -->
+      <div class="form-group">
+        <label for="hip">{t('waistHip.form.hipLabel', lang)}</label>
+        <input
+          type="number"
+          id="hip"
+          name="hip"
+          min="10"
+          max="300"
+          step="0.1"
+          required
+          placeholder={t('waistHip.form.hipPlaceholder', lang)}
+        />
+        <span class="unit hip-unit">{t('units.cm', lang)}</span>
+      </div>
+
+      <!-- Buttons -->
+      <div class="form-actions">
+        <button type="submit" class="btn-primary">{t('common.calculate', lang)}</button>
+        <button type="reset" class="btn-secondary">{t('common.reset', lang)}</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="calculator-results" id="results" style="display: none;">
+    <h2>{t('waistHip.results.title', lang)}</h2>
+
+    <div class="result-card whr-value">
+      <h3>{t('waistHip.results.whrValue', lang)}</h3>
+      <p class="value" id="whr-value">-</p>
+      <p class="category" id="whr-category">-</p>
+    </div>
+
+    <div class="result-grid">
+      <div class="result-item">
+        <strong>{t('waistHip.results.healthRisk', lang)}:</strong>
+        <span id="health-risk">-</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="calculator-info">
+    <h2>{t('waistHip.info.title', lang)}</h2>
+    <p>{t('waistHip.info.description', lang)}</p>
+    <p class="formula">{t('waistHip.info.formula', lang)}</p>
+
+    <h3>{t('waistHip.info.thresholdsTitle', lang)}</h3>
+    <div class="thresholds">
+      <div class="threshold-section">
+        <h4>{t('common.male', lang)}</h4>
+        <ul>
+          <li>{t('waistHip.info.thresholds.male.low', lang)}</li>
+          <li>{t('waistHip.info.thresholds.male.moderate', lang)}</li>
+          <li>{t('waistHip.info.thresholds.male.high', lang)}</li>
+          <li>{t('waistHip.info.thresholds.male.veryHigh', lang)}</li>
+        </ul>
+      </div>
+      <div class="threshold-section">
+        <h4>{t('common.female', lang)}</h4>
+        <ul>
+          <li>{t('waistHip.info.thresholds.female.low', lang)}</li>
+          <li>{t('waistHip.info.thresholds.female.moderate', lang)}</li>
+          <li>{t('waistHip.info.thresholds.female.high', lang)}</li>
+          <li>{t('waistHip.info.thresholds.female.veryHigh', lang)}</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="limitations">{t('waistHip.info.limitations', lang)}</p>
+  </div>
+</div>
+
+<style>
+  .waist-hip-calculator {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .calculator-form, .calculator-results, .calculator-info {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  h2 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  h3 {
+    color: #555;
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  h4 {
+    color: #666;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #555;
+  }
+
+  .form-group input[type="number"],
+  .form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+
+  .form-group input[type="number"]:focus,
+  .form-group select:focus {
+    outline: none;
+    border-color: #8b5cf6;
+  }
+
+  .unit {
+    display: inline-block;
+    margin-left: 0.5rem;
+    color: #888;
+    font-size: 0.9rem;
+  }
+
+  .unit-toggle {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    background: #f5f5f5;
+    border-radius: 4px;
+  }
+
+  .unit-toggle label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    margin: 0;
+  }
+
+  .form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .btn-primary, .btn-secondary {
+    flex: 1;
+    padding: 0.875rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-primary {
+    background: #8b5cf6;
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: #7c3aed;
+  }
+
+  .btn-secondary {
+    background: #f5f5f5;
+    color: #333;
+  }
+
+  .btn-secondary:hover {
+    background: #e0e0e0;
+  }
+
+  .result-card {
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+    color: white;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+
+  .result-card h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1.2rem;
+    color: white;
+  }
+
+  .result-card .value {
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  .result-card .category {
+    font-size: 1.2rem;
+    margin: 0.5rem 0 0 0;
+    opacity: 0.9;
+  }
+
+  .result-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .result-item {
+    padding: 1rem;
+    background: #f9f9f9;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .result-item strong {
+    color: #555;
+    font-size: 0.9rem;
+  }
+
+  .result-item span {
+    color: #333;
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+
+  .calculator-info {
+    background: #f9f9f9;
+  }
+
+  .calculator-info p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: #555;
+  }
+
+  .formula {
+    font-family: monospace;
+    background: white;
+    padding: 1rem;
+    border-left: 4px solid #8b5cf6;
+    margin: 1rem 0;
+  }
+
+  .thresholds {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 1rem 0;
+  }
+
+  .threshold-section {
+    background: white;
+    padding: 1rem;
+    border-radius: 4px;
+  }
+
+  .threshold-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .threshold-section li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .threshold-section li:last-child {
+    border-bottom: none;
+  }
+
+  .limitations {
+    font-size: 0.9rem;
+    font-style: italic;
+    margin-top: 1.5rem;
+  }
+
+  /* Category colors */
+  .category-low {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  }
+
+  .category-moderate {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  }
+
+  .category-high {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  }
+
+  .category-very-high {
+    background: linear-gradient(135deg, #991b1b 0%, #7f1d1d 100%);
+  }
+</style>
+
+<script>
+  // Import WHR calculation utilities
+  import type { WaistHipInput, WaistHipResult, UnitSystem, Gender } from '@/utils/calculators/waistHip';
+  import { calculateWaistHipMetrics } from '@/utils/calculators/waistHip';
+
+  const form = document.getElementById('waist-hip-form') as HTMLFormElement;
+  const results = document.getElementById('results') as HTMLDivElement;
+  const unitSystemInputs = document.querySelectorAll('input[name="unitSystem"]');
+  const waistUnit = document.querySelector('.waist-unit') as HTMLSpanElement;
+  const hipUnit = document.querySelector('.hip-unit') as HTMLSpanElement;
+
+  // Get translations from data attributes - simplified for all languages
+  const getLang = () => document.documentElement.lang || 'es';
+
+  const categoryTranslations: Record<string, Record<string, string>> = {
+    es: {
+      low: 'Bajo riesgo',
+      moderate: 'Riesgo moderado',
+      high: 'Riesgo alto',
+      'very-high': 'Riesgo muy alto',
+    },
+    en: {
+      low: 'Low risk',
+      moderate: 'Moderate risk',
+      high: 'High risk',
+      'very-high': 'Very high risk',
+    },
+    pt: {
+      low: 'Baixo risco',
+      moderate: 'Risco moderado',
+      high: 'Risco alto',
+      'very-high': 'Risco muito alto',
+    },
+    fr: {
+      low: 'Risque faible',
+      moderate: 'Risque modéré',
+      high: 'Risque élevé',
+      'very-high': 'Risque très élevé',
+    },
+    hi: {
+      low: 'कम जोखिम',
+      moderate: 'मध्यम जोखिम',
+      high: 'उच्च जोखिम',
+      'very-high': 'बहुत उच्च जोखिम',
+    },
+    de: {
+      low: 'Niedriges Risiko',
+      moderate: 'Mäßiges Risiko',
+      high: 'Hohes Risiko',
+      'very-high': 'Sehr hohes Risiko',
+    },
+    it: {
+      low: 'Rischio basso',
+      moderate: 'Rischio moderato',
+      high: 'Rischio alto',
+      'very-high': 'Rischio molto alto',
+    },
+  };
+
+  // Handle unit system change
+  unitSystemInputs.forEach(input => {
+    input.addEventListener('change', (e) => {
+      const target = e.target as HTMLInputElement;
+      const isMetric = target.value === 'metric';
+      const unitText = isMetric ? 'cm' : 'in';
+
+      waistUnit.textContent = unitText;
+      hipUnit.textContent = unitText;
+    });
+  });
+
+  // Handle form submission
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const unitSystem = formData.get('unitSystem') as UnitSystem;
+    const gender = formData.get('gender') as Gender;
+    const waist = parseFloat(formData.get('waist') as string);
+    const hip = parseFloat(formData.get('hip') as string);
+
+    const input: WaistHipInput = {
+      waist,
+      hip,
+      gender,
+      unitSystem,
+    };
+
+    try {
+      const result = calculateWaistHipMetrics(input);
+      displayResults(result);
+    } catch (error) {
+      alert('Error calculating WHR. Please check your inputs.');
+      console.error(error);
+    }
+  });
+
+  function displayResults(result: WaistHipResult) {
+    const whrValue = document.getElementById('whr-value') as HTMLParagraphElement;
+    const whrCategory = document.getElementById('whr-category') as HTMLParagraphElement;
+    const healthRisk = document.getElementById('health-risk') as HTMLSpanElement;
+    const resultCard = document.querySelector('.result-card') as HTMLDivElement;
+
+    const lang = getLang();
+    const translations = categoryTranslations[lang] || categoryTranslations['es'];
+
+    whrValue.textContent = result.whr.toString();
+    whrCategory.textContent = translations[result.category];
+    healthRisk.textContent = translations[result.healthRisk];
+
+    // Update result card color based on category
+    resultCard.className = `result-card category-${result.category}`;
+
+    // Show results
+    results.style.display = 'block';
+    results.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  // Handle form reset
+  form.addEventListener('reset', () => {
+    results.style.display = 'none';
+  });
+</script>

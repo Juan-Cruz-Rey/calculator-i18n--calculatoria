@@ -1,0 +1,37 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import BSACalculator from '@/components/calculators/BSACalculator.astro';
+import { t } from '@/utils/i18n';
+
+const title = t('bsa.title', 'hi') + ' - ' + t('site.title', 'hi');
+const description = t('bsa.metaDescription', 'hi');
+---
+
+<BaseLayout title={title} description={description} lang="hi">
+  <div class="container">
+    <div class="page-header">
+      <h1>{t('bsa.title', 'hi')}</h1>
+      <p class="page-description">{t('bsa.description', 'hi')}</p>
+    </div>
+
+    <BSACalculator lang="hi" />
+  </div>
+
+  <style>
+    .page-header {
+      text-align: center;
+      padding: 2rem 0;
+    }
+
+    .page-header h1 {
+      font-size: 2.5rem;
+      color: #333;
+      margin-bottom: 0.5rem;
+    }
+
+    .page-description {
+      font-size: 1.25rem;
+      color: #666;
+    }
+  </style>
+</BaseLayout>

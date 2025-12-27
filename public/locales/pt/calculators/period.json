@@ -1,0 +1,30 @@
+{
+  "title": "Calculadora de Período Menstrual",
+  "description": "Preveja seu próximo período e datas de ovulação",
+  "metaDescription": "Calculadora de período menstrual gratuita - Preveja seu próximo período, datas de ovulação e janela fértil. Rastreie seu ciclo menstrual facilmente.",
+  "form": {
+    "title": "Insira suas informações",
+    "lastPeriodLabel": "Primeiro dia do último período",
+    "lastPeriodHelp": "Data em que sua última menstruação começou",
+    "cycleLengthLabel": "Duração do ciclo",
+    "cycleLengthHelp": "Número médio de dias entre períodos (tipicamente 28 dias)",
+    "periodLengthLabel": "Duração do período",
+    "periodLengthHelp": "Número de dias que seu período dura (tipicamente 5 dias)"
+  },
+  "results": {
+    "title": "Seus Resultados",
+    "nextPeriod": "Próximo Período",
+    "daysUntil": "Em",
+    "cycleDay": "Dia do Ciclo",
+    "currentPhase": "Fase Atual",
+    "ovulationDate": "Data de Ovulação",
+    "fertilityWindow": "Janela Fértil",
+    "upcomingPeriods": "Próximos Períodos"
+  },
+  "info": {
+    "title": "Sobre a Calculadora de Período",
+    "description": "Esta calculadora prevê seus próximos períodos menstruais e datas de ovulação com base no seu último período e duração média do ciclo. A ovulação normalmente ocorre 14 dias antes do próximo período.",
+    "formula": "Fórmula: Próximo período = Último período + Duração do ciclo. Ovulação = Próximo período - 14 dias",
+    "limitations": "Nota: Esta calculadora fornece estimativas com base em ciclos regulares. Os ciclos menstruais podem variar naturalmente. Para preocupações médicas ou irregularidades no ciclo, consulte um profissional de saúde."
+  }
+}

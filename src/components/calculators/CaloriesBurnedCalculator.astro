@@ -1,0 +1,391 @@
+---
+import { t, type Locale } from '@/utils/i18n';
+
+const { lang } = Astro.props as { lang: Locale };
+---
+
+<div class="calories-burned-calculator">
+  <div class="calculator-form">
+    <h2>{t('caloriesBurned.form.title', lang)}</h2>
+
+    <form id="calories-burned-form">
+      <!-- Unit System Toggle -->
+      <div class="form-group unit-toggle">
+        <label>
+          <input type="radio" name="unitSystem" value="metric" checked />
+          {t('units.metric', lang)}
+        </label>
+        <label>
+          <input type="radio" name="unitSystem" value="imperial" />
+          {t('units.imperial', lang)}
+        </label>
+      </div>
+
+      <!-- Activity Type -->
+      <div class="form-group">
+        <label for="activity">{t('caloriesBurned.form.activityLabel', lang)}</label>
+        <select id="activity" name="activity" required>
+          <optgroup label={t('caloriesBurned.activities.walking', lang)}>
+            <option value="walking_slow">{t('caloriesBurned.activities.walking_slow', lang)}</option>
+            <option value="walking_moderate">{t('caloriesBurned.activities.walking_moderate', lang)}</option>
+            <option value="walking_brisk">{t('caloriesBurned.activities.walking_brisk', lang)}</option>
+          </optgroup>
+          <optgroup label={t('caloriesBurned.activities.running', lang)}>
+            <option value="running_slow">{t('caloriesBurned.activities.running_slow', lang)}</option>
+            <option value="running_moderate">{t('caloriesBurned.activities.running_moderate', lang)}</option>
+            <option value="running_fast">{t('caloriesBurned.activities.running_fast', lang)}</option>
+          </optgroup>
+          <optgroup label={t('caloriesBurned.activities.cycling', lang)}>
+            <option value="cycling_leisure">{t('caloriesBurned.activities.cycling_leisure', lang)}</option>
+            <option value="cycling_moderate">{t('caloriesBurned.activities.cycling_moderate', lang)}</option>
+            <option value="cycling_vigorous">{t('caloriesBurned.activities.cycling_vigorous', lang)}</option>
+          </optgroup>
+          <optgroup label={t('caloriesBurned.activities.swimming', lang)}>
+            <option value="swimming_leisure">{t('caloriesBurned.activities.swimming_leisure', lang)}</option>
+            <option value="swimming_moderate">{t('caloriesBurned.activities.swimming_moderate', lang)}</option>
+            <option value="swimming_vigorous">{t('caloriesBurned.activities.swimming_vigorous', lang)}</option>
+          </optgroup>
+          <optgroup label={t('caloriesBurned.activities.other', lang)}>
+            <option value="weightlifting">{t('caloriesBurned.activities.weightlifting', lang)}</option>
+            <option value="yoga">{t('caloriesBurned.activities.yoga', lang)}</option>
+            <option value="aerobics">{t('caloriesBurned.activities.aerobics', lang)}</option>
+            <option value="dancing">{t('caloriesBurned.activities.dancing', lang)}</option>
+            <option value="hiking">{t('caloriesBurned.activities.hiking', lang)}</option>
+            <option value="rowing">{t('caloriesBurned.activities.rowing', lang)}</option>
+            <option value="basketball">{t('caloriesBurned.activities.basketball', lang)}</option>
+            <option value="soccer">{t('caloriesBurned.activities.soccer', lang)}</option>
+            <option value="tennis">{t('caloriesBurned.activities.tennis', lang)}</option>
+            <option value="golf">{t('caloriesBurned.activities.golf', lang)}</option>
+          </optgroup>
+        </select>
+      </div>
+
+      <!-- Duration -->
+      <div class="form-group">
+        <label for="duration">{t('caloriesBurned.form.durationLabel', lang)}</label>
+        <input
+          type="number"
+          id="duration"
+          name="duration"
+          min="1"
+          max="1440"
+          required
+          placeholder={t('caloriesBurned.form.durationPlaceholder', lang)}
+        />
+        <span class="unit">{t('common.minutes', lang)}</span>
+      </div>
+
+      <!-- Weight -->
+      <div class="form-group">
+        <label for="weight">{t('caloriesBurned.form.weightLabel', lang)}</label>
+        <input
+          type="number"
+          id="weight"
+          name="weight"
+          min="10"
+          max="500"
+          step="0.1"
+          required
+          placeholder={t('caloriesBurned.form.weightPlaceholder', lang)}
+        />
+        <span class="unit weight-unit">{t('units.kg', lang)}</span>
+      </div>
+
+      <!-- Buttons -->
+      <div class="form-actions">
+        <button type="submit" class="btn-primary">{t('common.calculate', lang)}</button>
+        <button type="reset" class="btn-secondary">{t('common.reset', lang)}</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="calculator-results" id="results" style="display: none;">
+    <h2>{t('caloriesBurned.results.title', lang)}</h2>
+
+    <div class="result-card calories-value">
+      <h3>{t('caloriesBurned.results.totalCalories', lang)}</h3>
+      <p class="value" id="calories-value">-</p>
+      <p class="subtitle">{t('caloriesBurned.results.caloriesUnit', lang)}</p>
+    </div>
+
+    <div class="result-grid">
+      <div class="result-item">
+        <strong>{t('caloriesBurned.results.metValue', lang)}:</strong>
+        <span id="met-value">-</span>
+      </div>
+      <div class="result-item">
+        <strong>{t('caloriesBurned.results.caloriesPerMinute', lang)}:</strong>
+        <span id="calories-per-minute">-</span>
+      </div>
+      <div class="result-item">
+        <strong>{t('caloriesBurned.results.caloriesPerHour', lang)}:</strong>
+        <span id="calories-per-hour">-</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="calculator-info">
+    <h2>{t('caloriesBurned.info.title', lang)}</h2>
+    <p>{t('caloriesBurned.info.description', lang)}</p>
+    <p class="formula">{t('caloriesBurned.info.formula', lang)}</p>
+    <p class="limitations">{t('caloriesBurned.info.limitations', lang)}</p>
+  </div>
+</div>
+
+<style>
+  .calories-burned-calculator {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .calculator-form, .calculator-results, .calculator-info {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  h2 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #555;
+  }
+
+  .form-group input[type="number"],
+  .form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+
+  .form-group input[type="number"]:focus,
+  .form-group select:focus {
+    outline: none;
+    border-color: #ef4444;
+  }
+
+  .form-group select {
+    cursor: pointer;
+  }
+
+  .unit {
+    display: inline-block;
+    margin-left: 0.5rem;
+    color: #888;
+    font-size: 0.9rem;
+  }
+
+  .unit-toggle {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    background: #fef2f2;
+    border-radius: 4px;
+  }
+
+  .unit-toggle label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    margin: 0;
+  }
+
+  .form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .btn-primary, .btn-secondary {
+    flex: 1;
+    padding: 0.875rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-primary {
+    background: #ef4444;
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: #dc2626;
+  }
+
+  .btn-secondary {
+    background: #f5f5f5;
+    color: #333;
+  }
+
+  .btn-secondary:hover {
+    background: #e0e0e0;
+  }
+
+  .result-card {
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    color: white;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+
+  .result-card h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1.2rem;
+  }
+
+  .result-card .value {
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  .result-card .subtitle {
+    font-size: 1.2rem;
+    margin: 0.5rem 0 0 0;
+    opacity: 0.9;
+  }
+
+  .result-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .result-item {
+    padding: 1rem;
+    background: #fef2f2;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .result-item strong {
+    color: #555;
+    font-size: 0.9rem;
+  }
+
+  .result-item span {
+    color: #333;
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+
+  .calculator-info {
+    background: #f9f9f9;
+  }
+
+  .calculator-info p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: #555;
+  }
+
+  .formula {
+    font-family: monospace;
+    background: white;
+    padding: 1rem;
+    border-left: 4px solid #ef4444;
+    margin: 1rem 0;
+  }
+
+  .limitations {
+    font-size: 0.9rem;
+    font-style: italic;
+  }
+</style>
+
+<script>
+  // Import calories burned calculation utilities
+  import type { CaloriesBurnedInput, CaloriesBurnedResult, UnitSystem, ActivityLevel } from '@/utils/calculators/caloriesBurned';
+  import { calculateCaloriesBurned } from '@/utils/calculators/caloriesBurned';
+
+  const form = document.getElementById('calories-burned-form') as HTMLFormElement;
+  const results = document.getElementById('results') as HTMLDivElement;
+  const unitSystemInputs = document.querySelectorAll('input[name="unitSystem"]');
+  const weightUnit = document.querySelector('.weight-unit') as HTMLSpanElement;
+
+  // Handle unit system change
+  unitSystemInputs.forEach(input => {
+    input.addEventListener('change', (e) => {
+      const target = e.target as HTMLInputElement;
+      const isMetric = target.value === 'metric';
+
+      if (isMetric) {
+        weightUnit.textContent = 'kg';
+      } else {
+        weightUnit.textContent = 'lbs';
+      }
+    });
+  });
+
+  // Handle form submission
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const unitSystem = formData.get('unitSystem') as UnitSystem;
+    const activity = formData.get('activity') as ActivityLevel;
+    const duration = parseFloat(formData.get('duration') as string);
+    const weight = parseFloat(formData.get('weight') as string);
+
+    const input: CaloriesBurnedInput = {
+      activity,
+      duration,
+      weight,
+      unitSystem,
+    };
+
+    try {
+      const result = calculateCaloriesBurned(input);
+      displayResults(result);
+    } catch (error) {
+      alert('Error calculating calories burned. Please check your inputs.');
+      console.error(error);
+    }
+  });
+
+  function displayResults(result: CaloriesBurnedResult) {
+    const caloriesValue = document.getElementById('calories-value') as HTMLParagraphElement;
+    const metValue = document.getElementById('met-value') as HTMLSpanElement;
+    const caloriesPerMinute = document.getElementById('calories-per-minute') as HTMLSpanElement;
+    const caloriesPerHour = document.getElementById('calories-per-hour') as HTMLSpanElement;
+
+    caloriesValue.textContent = result.calories.toString();
+    metValue.textContent = result.met.toString();
+    caloriesPerMinute.textContent = `${result.caloriesPerMinute} cal/min`;
+    caloriesPerHour.textContent = `${result.caloriesPerHour} cal/hr`;
+
+    // Show results
+    results.style.display = 'block';
+    results.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  // Handle form reset
+  form.addEventListener('reset', () => {
+    results.style.display = 'none';
+  });
+</script>

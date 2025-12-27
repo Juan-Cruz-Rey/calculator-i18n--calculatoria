@@ -1,0 +1,720 @@
+---
+import { t, type Locale } from '@/utils/i18n';
+
+const { lang } = Astro.props as { lang: Locale };
+---
+
+<div class="bodyframe-calculator">
+  <div class="calculator-form">
+    <h2>{t('bodyFrame:form.title', lang)}</h2>
+
+    <form id="bodyframe-form">
+      <!-- Unit System Toggle -->
+      <div class="form-group unit-toggle">
+        <label>
+          <input type="radio" name="unitSystem" value="metric" checked />
+          {t('units.metric', lang)}
+        </label>
+        <label>
+          <input type="radio" name="unitSystem" value="imperial" />
+          {t('units.imperial', lang)}
+        </label>
+      </div>
+
+      <!-- Gender -->
+      <div class="form-group">
+        <label for="gender">{t('bodyFrame:form.genderLabel', lang)}</label>
+        <select id="gender" name="gender" required>
+          <option value="male">{t('common.male', lang)}</option>
+          <option value="female">{t('common.female', lang)}</option>
+        </select>
+      </div>
+
+      <!-- Height (Metric) -->
+      <div class="form-group height-metric">
+        <label for="height">{t('bodyFrame:form.heightLabel', lang)}</label>
+        <input
+          type="number"
+          id="height"
+          name="height"
+          min="100"
+          max="250"
+          step="0.1"
+          required
+          placeholder={t('bodyFrame:form.heightPlaceholder', lang)}
+        />
+        <span class="unit">{t('units.cm', lang)}</span>
+      </div>
+
+      <!-- Height (Imperial) -->
+      <div class="form-group height-imperial" style="display: none;">
+        <label for="heightFt">{t('bodyFrame:form.heightLabel', lang)}</label>
+        <div class="input-group">
+          <input
+            type="number"
+            id="heightFt"
+            name="heightFt"
+            min="4"
+            max="8"
+            placeholder="Feet"
+          />
+          <span class="unit">{t('units.ft', lang)}</span>
+          <input
+            type="number"
+            id="heightIn"
+            name="heightIn"
+            min="0"
+            max="11"
+            placeholder="Inches"
+          />
+          <span class="unit">{t('units.in', lang)}</span>
+        </div>
+      </div>
+
+      <!-- Measurement Method Selection -->
+      <div class="form-group">
+        <label>{t('bodyFrame:form.measurementMethod', lang)}</label>
+        <p class="help-text">{t('bodyFrame:form.methodHelp', lang)}</p>
+        <div class="method-toggle">
+          <label>
+            <input type="radio" name="method" value="wrist" checked />
+            {t('bodyFrame:form.wristMethod', lang)}
+          </label>
+          <label>
+            <input type="radio" name="method" value="elbow" />
+            {t('bodyFrame:form.elbowMethod', lang)}
+          </label>
+        </div>
+      </div>
+
+      <!-- Wrist Circumference -->
+      <div class="form-group wrist-group">
+        <label for="wristCircumference">{t('bodyFrame:form.wristLabel', lang)}</label>
+        <p class="help-text">{t('bodyFrame:form.wristHelp', lang)}</p>
+        <input
+          type="number"
+          id="wristCircumference"
+          name="wristCircumference"
+          min="10"
+          max="30"
+          step="0.1"
+          required
+          placeholder={t('bodyFrame:form.wristPlaceholder', lang)}
+        />
+        <span class="unit measurement-unit">{t('units.cm', lang)}</span>
+      </div>
+
+      <!-- Elbow Breadth -->
+      <div class="form-group elbow-group" style="display: none;">
+        <label for="elbowBreadth">{t('bodyFrame:form.elbowLabel', lang)}</label>
+        <p class="help-text">{t('bodyFrame:form.elbowHelp', lang)}</p>
+        <input
+          type="number"
+          id="elbowBreadth"
+          name="elbowBreadth"
+          min="4"
+          max="12"
+          step="0.1"
+          placeholder={t('bodyFrame:form.elbowPlaceholder', lang)}
+        />
+        <span class="unit measurement-unit">{t('units.cm', lang)}</span>
+      </div>
+
+      <!-- Buttons -->
+      <div class="form-actions">
+        <button type="submit" class="btn-primary">{t('common.calculate', lang)}</button>
+        <button type="reset" class="btn-secondary">{t('common.reset', lang)}</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="calculator-results" id="results" style="display: none;">
+    <h2>{t('bodyFrame:results.title', lang)}</h2>
+
+    <div class="result-card frame-value">
+      <h3>{t('bodyFrame:results.frameSize', lang)}</h3>
+      <p class="value" id="frame-size">-</p>
+      <p class="method-used" id="method-used">-</p>
+    </div>
+
+    <div class="result-grid">
+      <div class="result-item">
+        <strong>{t('bodyFrame:results.methodUsed', lang)}:</strong>
+        <span id="calculation-method">-</span>
+      </div>
+      <div class="result-item">
+        <strong>{t('bodyFrame:results.height', lang)}:</strong>
+        <span id="height-display">-</span>
+      </div>
+      <div class="result-item" id="r-value-item" style="display: none;">
+        <strong>{t('bodyFrame:results.rValue', lang)}:</strong>
+        <span id="r-value">-</span>
+      </div>
+      <div class="result-item" id="wrist-item" style="display: none;">
+        <strong>{t('bodyFrame:results.wristCircumference', lang)}:</strong>
+        <span id="wrist-display">-</span>
+      </div>
+      <div class="result-item" id="elbow-item" style="display: none;">
+        <strong>{t('bodyFrame:results.elbowBreadth', lang)}:</strong>
+        <span id="elbow-display">-</span>
+      </div>
+    </div>
+
+    <div class="result-interpretation">
+      <h3>{t('bodyFrame:results.interpretation', lang)}</h3>
+      <p id="interpretation-text">-</p>
+    </div>
+  </div>
+
+  <div class="calculator-info">
+    <h2>{t('bodyFrame:info.title', lang)}</h2>
+    <p>{t('bodyFrame:info.description', lang)}</p>
+
+    <h3>{t('bodyFrame:info.wristMethodTitle', lang)}</h3>
+    <p>{t('bodyFrame:info.wristMethodDescription', lang)}</p>
+
+    <h3>{t('bodyFrame:info.elbowMethodTitle', lang)}</h3>
+    <p>{t('bodyFrame:info.elbowMethodDescription', lang)}</p>
+
+    <p class="limitations">{t('bodyFrame:info.limitations', lang)}</p>
+  </div>
+</div>
+
+<style>
+  .bodyframe-calculator {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .calculator-form, .calculator-results, .calculator-info {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  h2 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  h3 {
+    color: #555;
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #555;
+  }
+
+  .form-group input[type="number"],
+  .form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+
+  .form-group input[type="number"]:focus,
+  .form-group select:focus {
+    outline: none;
+    border-color: #f59e0b;
+  }
+
+  .unit {
+    display: inline-block;
+    margin-left: 0.5rem;
+    color: #888;
+    font-size: 0.9rem;
+  }
+
+  .help-text {
+    font-size: 0.85rem;
+    color: #666;
+    margin: 0.25rem 0 0.5rem 0;
+    font-style: italic;
+  }
+
+  .unit-toggle, .method-toggle {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    background: #f5f5f5;
+    border-radius: 4px;
+  }
+
+  .unit-toggle label, .method-toggle label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    margin: 0;
+    font-weight: normal;
+  }
+
+  .input-group {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .input-group input {
+    flex: 1;
+  }
+
+  .form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .btn-primary, .btn-secondary {
+    flex: 1;
+    padding: 0.875rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-primary {
+    background: #f59e0b;
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: #d97706;
+  }
+
+  .btn-secondary {
+    background: #f5f5f5;
+    color: #333;
+  }
+
+  .btn-secondary:hover {
+    background: #e0e0e0;
+  }
+
+  .result-card {
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: white;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+
+  .result-card h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1.2rem;
+    color: white;
+  }
+
+  .result-card .value {
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 0;
+    text-transform: capitalize;
+  }
+
+  .result-card .method-used {
+    font-size: 1rem;
+    margin: 0.5rem 0 0 0;
+    opacity: 0.9;
+  }
+
+  .result-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .result-item {
+    padding: 1rem;
+    background: #f9f9f9;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .result-item strong {
+    color: #555;
+    font-size: 0.9rem;
+  }
+
+  .result-item span {
+    color: #333;
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+
+  .result-interpretation {
+    background: #fff7ed;
+    border-left: 4px solid #f59e0b;
+    padding: 1.5rem;
+    border-radius: 4px;
+  }
+
+  .result-interpretation h3 {
+    margin-top: 0;
+    color: #f59e0b;
+  }
+
+  .result-interpretation p {
+    margin: 0;
+    line-height: 1.6;
+    color: #555;
+  }
+
+  .calculator-info {
+    background: #f9f9f9;
+  }
+
+  .calculator-info p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: #555;
+  }
+
+  .limitations {
+    font-size: 0.9rem;
+    font-style: italic;
+    background: white;
+    padding: 1rem;
+    border-left: 4px solid #f59e0b;
+    margin: 1rem 0 0 0;
+  }
+
+  /* Frame size colors */
+  .frame-small {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  }
+
+  .frame-medium {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  }
+
+  .frame-large {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  }
+</style>
+
+<script>
+  // Import body frame calculation utilities
+  import type { BodyFrameInput, BodyFrameResult, UnitSystem, Gender } from '@/utils/calculators/bodyFrame';
+  import { calculateBodyFrame } from '@/utils/calculators/bodyFrame';
+
+  const form = document.getElementById('bodyframe-form') as HTMLFormElement;
+  const results = document.getElementById('results') as HTMLDivElement;
+  const unitSystemInputs = document.querySelectorAll('input[name="unitSystem"]');
+  const methodInputs = document.querySelectorAll('input[name="method"]');
+  const heightMetric = document.querySelector('.height-metric') as HTMLDivElement;
+  const heightImperial = document.querySelector('.height-imperial') as HTMLDivElement;
+  const wristGroup = document.querySelector('.wrist-group') as HTMLDivElement;
+  const elbowGroup = document.querySelector('.elbow-group') as HTMLDivElement;
+  const measurementUnits = document.querySelectorAll('.measurement-unit');
+
+  // Get current language for translations
+  const lang = document.documentElement.lang || 'es';
+
+  // Translation mappings
+  const frameSizeTranslations: Record<string, Record<string, string>> = {
+    es: {
+      small: 'Pequeña',
+      medium: 'Mediana',
+      large: 'Grande',
+    },
+    en: {
+      small: 'Small',
+      medium: 'Medium',
+      large: 'Large',
+    },
+    pt: {
+      small: 'Pequena',
+      medium: 'Média',
+      large: 'Grande',
+    },
+    fr: {
+      small: 'Petite',
+      medium: 'Moyenne',
+      large: 'Grande',
+    },
+    hi: {
+      small: 'छोटा',
+      medium: 'मध्यम',
+      large: 'बड़ा',
+    },
+    de: {
+      small: 'Klein',
+      medium: 'Mittel',
+      large: 'Groß',
+    },
+    it: {
+      small: 'Piccola',
+      medium: 'Media',
+      large: 'Grande',
+    },
+  };
+
+  const methodTranslations: Record<string, Record<string, string>> = {
+    es: {
+      wrist: 'Método de circunferencia de muñeca',
+      elbow: 'Método de anchura del codo',
+    },
+    en: {
+      wrist: 'Wrist circumference method',
+      elbow: 'Elbow breadth method',
+    },
+    pt: {
+      wrist: 'Método de circunferência do pulso',
+      elbow: 'Método de largura do cotovelo',
+    },
+    fr: {
+      wrist: 'Méthode de circonférence du poignet',
+      elbow: 'Méthode de largeur du coude',
+    },
+    hi: {
+      wrist: 'कलाई की परिधि विधि',
+      elbow: 'कोहनी की चौड़ाई विधि',
+    },
+    de: {
+      wrist: 'Handgelenkumfang-Methode',
+      elbow: 'Ellenbogenbreite-Methode',
+    },
+    it: {
+      wrist: 'Metodo della circonferenza del polso',
+      elbow: 'Metodo della larghezza del gomito',
+    },
+  };
+
+  // Handle unit system change
+  unitSystemInputs.forEach(input => {
+    input.addEventListener('change', (e) => {
+      const target = e.target as HTMLInputElement;
+      const isMetric = target.value === 'metric';
+
+      heightMetric.style.display = isMetric ? 'block' : 'none';
+      heightImperial.style.display = isMetric ? 'none' : 'block';
+
+      const heightInput = document.getElementById('height') as HTMLInputElement;
+      const heightFt = document.getElementById('heightFt') as HTMLInputElement;
+      const heightIn = document.getElementById('heightIn') as HTMLInputElement;
+
+      if (isMetric) {
+        heightInput.required = true;
+        heightFt.required = false;
+        heightIn.required = false;
+        measurementUnits.forEach(unit => {
+          unit.textContent = 'cm';
+        });
+      } else {
+        heightInput.required = false;
+        heightFt.required = true;
+        heightIn.required = true;
+        measurementUnits.forEach(unit => {
+          unit.textContent = 'in';
+        });
+      }
+    });
+  });
+
+  // Handle measurement method change
+  methodInputs.forEach(input => {
+    input.addEventListener('change', (e) => {
+      const target = e.target as HTMLInputElement;
+      const isWrist = target.value === 'wrist';
+
+      wristGroup.style.display = isWrist ? 'block' : 'none';
+      elbowGroup.style.display = isWrist ? 'none' : 'block';
+
+      const wristInput = document.getElementById('wristCircumference') as HTMLInputElement;
+      const elbowInput = document.getElementById('elbowBreadth') as HTMLInputElement;
+
+      if (isWrist) {
+        wristInput.required = true;
+        elbowInput.required = false;
+      } else {
+        wristInput.required = false;
+        elbowInput.required = true;
+      }
+    });
+  });
+
+  // Handle form submission
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const unitSystem = formData.get('unitSystem') as UnitSystem;
+    const gender = formData.get('gender') as Gender;
+    const method = formData.get('method') as string;
+
+    let height: number;
+
+    if (unitSystem === 'metric') {
+      height = parseFloat(formData.get('height') as string);
+    } else {
+      const feet = parseInt(formData.get('heightFt') as string) || 0;
+      const inches = parseInt(formData.get('heightIn') as string) || 0;
+      height = feet * 12 + inches; // Total inches
+    }
+
+    const wristCircumference = method === 'wrist'
+      ? parseFloat(formData.get('wristCircumference') as string)
+      : undefined;
+    const elbowBreadth = method === 'elbow'
+      ? parseFloat(formData.get('elbowBreadth') as string)
+      : undefined;
+
+    const input: BodyFrameInput = {
+      gender,
+      height,
+      wristCircumference,
+      elbowBreadth,
+      unitSystem,
+    };
+
+    try {
+      const result = calculateBodyFrame(input);
+      displayResults(result, unitSystem);
+    } catch (error) {
+      alert('Error calculating body frame size. Please check your inputs.');
+      console.error(error);
+    }
+  });
+
+  function displayResults(result: BodyFrameResult, unitSystem: UnitSystem) {
+    const frameSize = document.getElementById('frame-size') as HTMLParagraphElement;
+    const methodUsed = document.getElementById('method-used') as HTMLParagraphElement;
+    const calculationMethod = document.getElementById('calculation-method') as HTMLSpanElement;
+    const heightDisplay = document.getElementById('height-display') as HTMLSpanElement;
+    const rValueItem = document.getElementById('r-value-item') as HTMLDivElement;
+    const rValue = document.getElementById('r-value') as HTMLSpanElement;
+    const wristItem = document.getElementById('wrist-item') as HTMLDivElement;
+    const wristDisplay = document.getElementById('wrist-display') as HTMLSpanElement;
+    const elbowItem = document.getElementById('elbow-item') as HTMLDivElement;
+    const elbowDisplay = document.getElementById('elbow-display') as HTMLSpanElement;
+    const interpretationText = document.getElementById('interpretation-text') as HTMLParagraphElement;
+    const resultCard = document.querySelector('.result-card') as HTMLDivElement;
+
+    // Display frame size
+    frameSize.textContent = frameSizeTranslations[lang][result.frameSize];
+
+    // Display method used
+    const methodText = methodTranslations[lang][result.method];
+    methodUsed.textContent = methodText;
+    calculationMethod.textContent = methodText;
+
+    // Display height
+    if (unitSystem === 'metric') {
+      heightDisplay.textContent = `${result.heightCm.toFixed(1)} cm`;
+    } else {
+      const totalInches = result.heightCm / 2.54;
+      const feet = Math.floor(totalInches / 12);
+      const inches = Math.round(totalInches % 12);
+      heightDisplay.textContent = `${feet}' ${inches}"`;
+    }
+
+    // Display method-specific data
+    if (result.method === 'wrist' && result.wristCircumference) {
+      rValueItem.style.display = 'block';
+      wristItem.style.display = 'block';
+      elbowItem.style.display = 'none';
+
+      rValue.textContent = result.rValue?.toString() || '-';
+
+      if (unitSystem === 'metric') {
+        wristDisplay.textContent = `${result.wristCircumference.toFixed(1)} cm`;
+      } else {
+        wristDisplay.textContent = `${(result.wristCircumference / 2.54).toFixed(2)} in`;
+      }
+    } else if (result.method === 'elbow' && result.elbowBreadth) {
+      rValueItem.style.display = 'none';
+      wristItem.style.display = 'none';
+      elbowItem.style.display = 'block';
+
+      if (unitSystem === 'metric') {
+        elbowDisplay.textContent = `${result.elbowBreadth.toFixed(1)} cm`;
+      } else {
+        elbowDisplay.textContent = `${(result.elbowBreadth / 2.54).toFixed(2)} in`;
+      }
+    }
+
+    // Set interpretation text based on language and frame size
+    const interpretations: Record<string, Record<string, string>> = {
+      es: {
+        small: 'Tienes una estructura corporal pequeña. Esto significa que tus huesos son más delgados en proporción a tu altura. Las personas con estructura pequeña generalmente tienen un rango de peso saludable más bajo.',
+        medium: 'Tienes una estructura corporal mediana. Esta es la categoría más común y significa que tus proporciones corporales están dentro del rango promedio.',
+        large: 'Tienes una estructura corporal grande. Esto significa que tus huesos son más anchos en proporción a tu altura. Las personas con estructura grande generalmente tienen un rango de peso saludable más alto.',
+      },
+      en: {
+        small: 'You have a small body frame. This means your bones are thinner in proportion to your height. People with a small frame generally have a lower healthy weight range.',
+        medium: 'You have a medium body frame. This is the most common category and means your body proportions are within the average range.',
+        large: 'You have a large body frame. This means your bones are wider in proportion to your height. People with a large frame generally have a higher healthy weight range.',
+      },
+      pt: {
+        small: 'Você tem uma estrutura corporal pequena. Isso significa que seus ossos são mais finos em proporção à sua altura. Pessoas com estrutura pequena geralmente têm uma faixa de peso saudável mais baixa.',
+        medium: 'Você tem uma estrutura corporal média. Esta é a categoria mais comum e significa que suas proporções corporais estão dentro da faixa média.',
+        large: 'Você tem uma estrutura corporal grande. Isso significa que seus ossos são mais largos em proporção à sua altura. Pessoas com estrutura grande geralmente têm uma faixa de peso saudável mais alta.',
+      },
+      fr: {
+        small: 'Vous avez une petite structure corporelle. Cela signifie que vos os sont plus fins par rapport à votre taille. Les personnes avec une petite structure ont généralement une plage de poids santé plus basse.',
+        medium: 'Vous avez une structure corporelle moyenne. C\'est la catégorie la plus courante et signifie que vos proportions corporelles sont dans la plage moyenne.',
+        large: 'Vous avez une grande structure corporelle. Cela signifie que vos os sont plus larges par rapport à votre taille. Les personnes avec une grande structure ont généralement une plage de poids santé plus élevée.',
+      },
+      hi: {
+        small: 'आपके पास एक छोटा शरीर का ढांचा है। इसका मतलब है कि आपकी हड्डियां आपकी ऊंचाई के अनुपात में पतली हैं। छोटे ढांचे वाले लोगों का आमतौर पर स्वस्थ वजन रेंज कम होती है।',
+        medium: 'आपके पास एक मध्यम शरीर का ढांचा है। यह सबसे आम श्रेणी है और इसका मतलब है कि आपके शरीर के अनुपात औसत सीमा के भीतर हैं।',
+        large: 'आपके पास एक बड़ा शरीर का ढांचा है। इसका मतलब है कि आपकी हड्डियां आपकी ऊंचाई के अनुपात में चौड़ी हैं। बड़े ढांचे वाले लोगों का आमतौर पर स्वस्थ वजन रेंज अधिक होती है।',
+      },
+      de: {
+        small: 'Sie haben einen kleinen Körperbau. Das bedeutet, dass Ihre Knochen im Verhältnis zu Ihrer Größe dünner sind. Menschen mit einem kleinen Körperbau haben im Allgemeinen einen niedrigeren gesunden Gewichtsbereich.',
+        medium: 'Sie haben einen mittleren Körperbau. Dies ist die häufigste Kategorie und bedeutet, dass Ihre Körperproportionen im Durchschnittsbereich liegen.',
+        large: 'Sie haben einen großen Körperbau. Das bedeutet, dass Ihre Knochen im Verhältnis zu Ihrer Größe breiter sind. Menschen mit einem großen Körperbau haben im Allgemeinen einen höheren gesunden Gewichtsbereich.',
+      },
+      it: {
+        small: 'Hai una struttura corporea piccola. Questo significa che le tue ossa sono più sottili in proporzione alla tua altezza. Le persone con struttura piccola generalmente hanno un intervallo di peso sano più basso.',
+        medium: 'Hai una struttura corporea media. Questa è la categoria più comune e significa che le tue proporzioni corporee sono nella gamma media.',
+        large: 'Hai una struttura corporea grande. Questo significa che le tue ossa sono più larghe in proporzione alla tua altezza. Le persone con struttura grande generalmente hanno un intervallo di peso sano più alto.',
+      },
+    };
+
+    interpretationText.textContent = interpretations[lang][result.frameSize];
+
+    // Update result card color based on frame size
+    resultCard.className = `result-card frame-${result.frameSize}`;
+
+    // Show results
+    results.style.display = 'block';
+    results.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  // Handle form reset
+  form.addEventListener('reset', () => {
+    results.style.display = 'none';
+
+    // Reset to default displays
+    wristGroup.style.display = 'block';
+    elbowGroup.style.display = 'none';
+    heightMetric.style.display = 'block';
+    heightImperial.style.display = 'none';
+  });
+</script>

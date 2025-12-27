@@ -1,0 +1,454 @@
+---
+import { t, type Locale } from '@/utils/i18n';
+
+const { lang } = Astro.props as { lang: Locale };
+---
+
+<div class="bsa-calculator">
+  <div class="calculator-form">
+    <h2>{t('bsa.form.title', lang)}</h2>
+
+    <form id="bsa-form">
+      <!-- Unit System Toggle -->
+      <div class="form-group unit-toggle">
+        <label>
+          <input type="radio" name="unitSystem" value="metric" checked />
+          {t('units.metric', lang)}
+        </label>
+        <label>
+          <input type="radio" name="unitSystem" value="imperial" />
+          {t('units.imperial', lang)}
+        </label>
+      </div>
+
+      <!-- Height (Metric) -->
+      <div class="form-group height-metric">
+        <label for="height">{t('bsa.form.heightLabel', lang)}</label>
+        <input
+          type="number"
+          id="height"
+          name="height"
+          min="50"
+          max="250"
+          step="0.1"
+          required
+          placeholder={t('bsa.form.heightPlaceholder', lang)}
+        />
+        <span class="unit">{t('units.cm', lang)}</span>
+      </div>
+
+      <!-- Height (Imperial) -->
+      <div class="form-group height-imperial" style="display: none;">
+        <label for="heightFt">{t('bsa.form.heightLabel', lang)}</label>
+        <div class="input-group">
+          <input
+            type="number"
+            id="heightFt"
+            name="heightFt"
+            min="1"
+            max="8"
+            placeholder="Feet"
+          />
+          <span class="unit">{t('units.ft', lang)}</span>
+          <input
+            type="number"
+            id="heightIn"
+            name="heightIn"
+            min="0"
+            max="11"
+            placeholder="Inches"
+          />
+          <span class="unit">{t('units.in', lang)}</span>
+        </div>
+      </div>
+
+      <!-- Weight -->
+      <div class="form-group">
+        <label for="weight">{t('bsa.form.weightLabel', lang)}</label>
+        <input
+          type="number"
+          id="weight"
+          name="weight"
+          min="10"
+          max="500"
+          step="0.1"
+          required
+          placeholder={t('bsa.form.weightPlaceholder', lang)}
+        />
+        <span class="unit weight-unit">{t('units.kg', lang)}</span>
+      </div>
+
+      <!-- Buttons -->
+      <div class="form-actions">
+        <button type="submit" class="btn-primary">{t('common.calculate', lang)}</button>
+        <button type="reset" class="btn-secondary">{t('common.reset', lang)}</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="calculator-results" id="results" style="display: none;">
+    <h2>{t('bsa.results.title', lang)}</h2>
+
+    <div class="result-card bsa-value">
+      <h3>{t('bsa.results.averageBSA', lang)}</h3>
+      <p class="value" id="average-bsa">-</p>
+      <p class="subtitle">{t('bsa.results.averageSubtitle', lang)}</p>
+    </div>
+
+    <div class="result-grid">
+      <div class="result-item">
+        <strong>{t('bsa.results.dubois', lang)}:</strong>
+        <span id="dubois-value">-</span>
+        <span class="unit">m²</span>
+      </div>
+      <div class="result-item">
+        <strong>{t('bsa.results.mosteller', lang)}:</strong>
+        <span id="mosteller-value">-</span>
+        <span class="unit">m²</span>
+      </div>
+      <div class="result-item">
+        <strong>{t('bsa.results.haycock', lang)}:</strong>
+        <span id="haycock-value">-</span>
+        <span class="unit">m²</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="calculator-info">
+    <h2>{t('bsa.info.title', lang)}</h2>
+    <p>{t('bsa.info.description', lang)}</p>
+
+    <h3>{t('bsa.info.formulasTitle', lang)}</h3>
+
+    <div class="formula-section">
+      <h4>{t('bsa.info.duboisTitle', lang)}</h4>
+      <p class="formula">{t('bsa.info.duboisFormula', lang)}</p>
+      <p>{t('bsa.info.duboisDescription', lang)}</p>
+    </div>
+
+    <div class="formula-section">
+      <h4>{t('bsa.info.mostellerTitle', lang)}</h4>
+      <p class="formula">{t('bsa.info.mostellerFormula', lang)}</p>
+      <p>{t('bsa.info.mostellerDescription', lang)}</p>
+    </div>
+
+    <div class="formula-section">
+      <h4>{t('bsa.info.haycockTitle', lang)}</h4>
+      <p class="formula">{t('bsa.info.haycockFormula', lang)}</p>
+      <p>{t('bsa.info.haycockDescription', lang)}</p>
+    </div>
+
+    <p class="limitations">{t('bsa.info.usage', lang)}</p>
+  </div>
+</div>
+
+<style>
+  .bsa-calculator {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .calculator-form, .calculator-results, .calculator-info {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  h2 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  h3 {
+    color: #333;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  h4 {
+    color: #06b6d4;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #555;
+  }
+
+  .form-group input[type="number"],
+  .form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+
+  .form-group input[type="number"]:focus,
+  .form-group select:focus {
+    outline: none;
+    border-color: #06b6d4;
+  }
+
+  .unit {
+    display: inline-block;
+    margin-left: 0.5rem;
+    color: #888;
+    font-size: 0.9rem;
+  }
+
+  .unit-toggle {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    background: #f5f5f5;
+    border-radius: 4px;
+  }
+
+  .unit-toggle label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    margin: 0;
+  }
+
+  .input-group {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .input-group input {
+    flex: 1;
+  }
+
+  .form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .btn-primary, .btn-secondary {
+    flex: 1;
+    padding: 0.875rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-primary {
+    background: #06b6d4;
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: #0891b2;
+  }
+
+  .btn-secondary {
+    background: #f5f5f5;
+    color: #333;
+  }
+
+  .btn-secondary:hover {
+    background: #e0e0e0;
+  }
+
+  .result-card {
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+    color: white;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+
+  .result-card h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1.2rem;
+    color: white;
+  }
+
+  .result-card .value {
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  .result-card .subtitle {
+    font-size: 1rem;
+    margin: 0.5rem 0 0 0;
+    opacity: 0.9;
+  }
+
+  .result-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .result-item {
+    padding: 1rem;
+    background: #f9f9f9;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .result-item strong {
+    color: #555;
+    font-size: 0.9rem;
+  }
+
+  .result-item span {
+    color: #333;
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+
+  .calculator-info {
+    background: #f9f9f9;
+  }
+
+  .calculator-info p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: #555;
+  }
+
+  .formula-section {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 4px;
+  }
+
+  .formula {
+    font-family: monospace;
+    background: #f0f9ff;
+    padding: 1rem;
+    border-left: 4px solid #06b6d4;
+    margin: 1rem 0;
+    color: #333;
+  }
+
+  .limitations {
+    font-size: 0.9rem;
+    font-style: italic;
+    background: white;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-top: 1rem;
+  }
+</style>
+
+<script>
+  // Import BSA calculation utilities
+  import type { BSAInput, BSAResult, UnitSystem } from '@/utils/calculators/bsa';
+  import { calculateBSAMetrics } from '@/utils/calculators/bsa';
+
+  const form = document.getElementById('bsa-form') as HTMLFormElement;
+  const results = document.getElementById('results') as HTMLDivElement;
+  const unitSystemInputs = document.querySelectorAll('input[name="unitSystem"]');
+  const heightMetric = document.querySelector('.height-metric') as HTMLDivElement;
+  const heightImperial = document.querySelector('.height-imperial') as HTMLDivElement;
+  const weightUnit = document.querySelector('.weight-unit') as HTMLSpanElement;
+
+  // Handle unit system change
+  unitSystemInputs.forEach(input => {
+    input.addEventListener('change', (e) => {
+      const target = e.target as HTMLInputElement;
+      const isMetric = target.value === 'metric';
+
+      heightMetric.style.display = isMetric ? 'block' : 'none';
+      heightImperial.style.display = isMetric ? 'none' : 'block';
+
+      const heightInput = document.getElementById('height') as HTMLInputElement;
+      const heightFt = document.getElementById('heightFt') as HTMLInputElement;
+      const heightIn = document.getElementById('heightIn') as HTMLInputElement;
+
+      if (isMetric) {
+        heightInput.required = true;
+        heightFt.required = false;
+        heightIn.required = false;
+        weightUnit.textContent = document.documentElement.lang === 'es' ? 'kg' : 'kg';
+      } else {
+        heightInput.required = false;
+        heightFt.required = true;
+        heightIn.required = true;
+        weightUnit.textContent = 'lbs';
+      }
+    });
+  });
+
+  // Handle form submission
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const unitSystem = formData.get('unitSystem') as UnitSystem;
+    const weight = parseFloat(formData.get('weight') as string);
+
+    let height: number;
+
+    if (unitSystem === 'metric') {
+      height = parseFloat(formData.get('height') as string);
+    } else {
+      const feet = parseInt(formData.get('heightFt') as string) || 0;
+      const inches = parseInt(formData.get('heightIn') as string) || 0;
+      height = feet * 12 + inches; // Total inches
+    }
+
+    const input: BSAInput = {
+      height,
+      weight,
+      unitSystem,
+    };
+
+    try {
+      const result = calculateBSAMetrics(input);
+      displayResults(result);
+    } catch (error) {
+      alert('Error calculating BSA. Please check your inputs.');
+      console.error(error);
+    }
+  });
+
+  function displayResults(result: BSAResult) {
+    const averageBSA = document.getElementById('average-bsa') as HTMLParagraphElement;
+    const duboisValue = document.getElementById('dubois-value') as HTMLSpanElement;
+    const mostellerValue = document.getElementById('mosteller-value') as HTMLSpanElement;
+    const haycockValue = document.getElementById('haycock-value') as HTMLSpanElement;
+
+    averageBSA.textContent = `${result.averageBSA} m²`;
+    duboisValue.textContent = result.dubois.toString();
+    mostellerValue.textContent = result.mosteller.toString();
+    haycockValue.textContent = result.haycock.toString();
+
+    // Show results
+    results.style.display = 'block';
+    results.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  // Handle form reset
+  form.addEventListener('reset', () => {
+    results.style.display = 'none';
+  });
+</script>

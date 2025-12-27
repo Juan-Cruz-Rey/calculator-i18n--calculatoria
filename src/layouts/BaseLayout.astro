@@ -21,7 +21,8 @@ const hreflangURLs = Object.fromEntries(
 );
 
 // Get language-specific paths
-const homePath = languageConfig[lang as Locale].path || '/';
+const homePathBase = languageConfig[lang as Locale].path;
+const homePath = homePathBase ? `${homePathBase}/` : '/';
 const calculatorsPath = lang === 'es'
   ? '/calculadoras/'
   : `${languageConfig[lang as Locale].path}/calculators/`;
@@ -79,12 +80,12 @@ const navText = navTranslations[lang as Locale] || navTranslations.es;
   <body>
     <header>
       <nav class="container">
-        <a href={homePath || '/'} class="logo">
+        <a href={homePath} class="logo">
           <span class="logo-icon">🧮</span>
           <span class="logo-text">{navText.siteName}</span>
         </a>
         <div class="nav-links">
-          <a href={homePath || '/'}>
+          <a href={homePath}>
             {navText.home}
           </a>
           <a href={calculatorsPath}>

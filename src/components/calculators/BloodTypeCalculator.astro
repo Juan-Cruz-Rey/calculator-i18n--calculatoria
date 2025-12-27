@@ -1,0 +1,417 @@
+---
+import { t, type Locale } from '@/utils/i18n';
+
+const { lang } = Astro.props as { lang: Locale };
+---
+
+<div class="blood-type-calculator">
+  <div class="calculator-form">
+    <h2>{t('bloodType.form.title', lang)}</h2>
+
+    <form id="blood-type-form">
+      <!-- Mother's Blood Type -->
+      <div class="parent-section">
+        <h3>{t('bloodType.form.motherLabel', lang)}</h3>
+        <div class="blood-type-inputs">
+          <div class="form-group">
+            <label for="mother-blood-type">{t('bloodType.form.bloodTypeLabel', lang)}</label>
+            <select id="mother-blood-type" name="motherBloodType" required>
+              <option value="A">A</option>
+              <option value="B">B</option>
+              <option value="AB">AB</option>
+              <option value="O">O</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="mother-rh">{t('bloodType.form.rhFactorLabel', lang)}</label>
+            <select id="mother-rh" name="motherRh" required>
+              <option value="+">+ ({t('bloodType.form.rhPositive', lang)})</option>
+              <option value="-">- ({t('bloodType.form.rhNegative', lang)})</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Father's Blood Type -->
+      <div class="parent-section">
+        <h3>{t('bloodType.form.fatherLabel', lang)}</h3>
+        <div class="blood-type-inputs">
+          <div class="form-group">
+            <label for="father-blood-type">{t('bloodType.form.bloodTypeLabel', lang)}</label>
+            <select id="father-blood-type" name="fatherBloodType" required>
+              <option value="A">A</option>
+              <option value="B">B</option>
+              <option value="AB">AB</option>
+              <option value="O">O</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="father-rh">{t('bloodType.form.rhFactorLabel', lang)}</label>
+            <select id="father-rh" name="fatherRh" required>
+              <option value="+">+ ({t('bloodType.form.rhPositive', lang)})</option>
+              <option value="-">- ({t('bloodType.form.rhNegative', lang)})</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Buttons -->
+      <div class="form-actions">
+        <button type="submit" class="btn-primary">{t('common.calculate', lang)}</button>
+        <button type="reset" class="btn-secondary">{t('common.reset', lang)}</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="calculator-results" id="results" style="display: none;">
+    <h2>{t('bloodType.results.title', lang)}</h2>
+
+    <div class="result-card">
+      <h3>{t('bloodType.results.possibleBloodTypes', lang)}</h3>
+      <div id="blood-type-results"></div>
+    </div>
+
+    <div class="punnett-info">
+      <p class="info-text">{t('bloodType.results.explanation', lang)}</p>
+    </div>
+  </div>
+
+  <div class="calculator-info">
+    <h2>{t('bloodType.info.title', lang)}</h2>
+    <p>{t('bloodType.info.description', lang)}</p>
+
+    <h3>{t('bloodType.info.inheritanceTitle', lang)}</h3>
+    <p>{t('bloodType.info.inheritanceDescription', lang)}</p>
+
+    <h3>{t('bloodType.info.rhTitle', lang)}</h3>
+    <p>{t('bloodType.info.rhDescription', lang)}</p>
+
+    <p class="limitations">{t('bloodType.info.limitations', lang)}</p>
+  </div>
+</div>
+
+<style>
+  .blood-type-calculator {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .calculator-form, .calculator-results, .calculator-info {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  h2 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  h3 {
+    color: #555;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .parent-section {
+    background: #f9f9f9;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+  }
+
+  .parent-section h3 {
+    margin-top: 0;
+    color: #dc2626;
+  }
+
+  .blood-type-inputs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .form-group {
+    margin-bottom: 1rem;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #555;
+  }
+
+  .form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    background: white;
+  }
+
+  .form-group select:focus {
+    outline: none;
+    border-color: #dc2626;
+  }
+
+  .form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .btn-primary, .btn-secondary {
+    flex: 1;
+    padding: 0.875rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-primary {
+    background: #dc2626;
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: #b91c1c;
+  }
+
+  .btn-secondary {
+    background: #f5f5f5;
+    color: #333;
+  }
+
+  .btn-secondary:hover {
+    background: #e0e0e0;
+  }
+
+  .result-card {
+    background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+    color: white;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .result-card h3 {
+    margin: 0 0 1.5rem 0;
+    color: white;
+    font-size: 1.3rem;
+  }
+
+  #blood-type-results {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .blood-type-result-item {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 1.25rem;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .blood-type-result-item:hover {
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  .blood-type-display {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .blood-type-value {
+    font-size: 2rem;
+    font-weight: bold;
+    min-width: 80px;
+  }
+
+  .probability-bar-container {
+    flex: 1;
+    max-width: 300px;
+    margin: 0 1rem;
+  }
+
+  .probability-bar {
+    height: 30px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .probability-fill {
+    height: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    transition: width 0.5s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    color: #dc2626;
+    font-size: 0.9rem;
+  }
+
+  .probability-value {
+    font-size: 1.3rem;
+    font-weight: bold;
+    min-width: 70px;
+    text-align: right;
+  }
+
+  .punnett-info {
+    background: #fef2f2;
+    border-left: 4px solid #dc2626;
+    padding: 1.5rem;
+    border-radius: 4px;
+  }
+
+  .info-text {
+    margin: 0;
+    color: #555;
+    line-height: 1.6;
+  }
+
+  .calculator-info {
+    background: #f9f9f9;
+  }
+
+  .calculator-info p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: #555;
+  }
+
+  .limitations {
+    font-size: 0.9rem;
+    font-style: italic;
+    background: white;
+    padding: 1rem;
+    border-left: 4px solid #dc2626;
+    margin-top: 1.5rem;
+  }
+
+  @media (max-width: 640px) {
+    .blood-type-inputs {
+      grid-template-columns: 1fr;
+    }
+
+    .blood-type-result-item {
+      flex-direction: column;
+      gap: 1rem;
+      align-items: stretch;
+    }
+
+    .probability-bar-container {
+      max-width: 100%;
+      margin: 0;
+    }
+
+    .probability-value {
+      text-align: center;
+    }
+  }
+</style>
+
+<script>
+  import type { BloodTypeInput, BloodTypeResult, BloodType, RhFactor } from '@/utils/calculators/bloodType';
+  import { calculateBloodTypeProbabilities } from '@/utils/calculators/bloodType';
+
+  const form = document.getElementById('blood-type-form') as HTMLFormElement;
+  const results = document.getElementById('results') as HTMLDivElement;
+  const bloodTypeResults = document.getElementById('blood-type-results') as HTMLDivElement;
+
+  // Handle form submission
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const motherBloodType = formData.get('motherBloodType') as BloodType;
+    const motherRh = formData.get('motherRh') as RhFactor;
+    const fatherBloodType = formData.get('fatherBloodType') as BloodType;
+    const fatherRh = formData.get('fatherRh') as RhFactor;
+
+    const input: BloodTypeInput = {
+      motherBloodType,
+      motherRh,
+      fatherBloodType,
+      fatherRh,
+    };
+
+    try {
+      const result = calculateBloodTypeProbabilities(input);
+      displayResults(result);
+    } catch (error) {
+      alert('Error calculating blood type probabilities. Please check your inputs.');
+      console.error(error);
+    }
+  });
+
+  function displayResults(result: BloodTypeResult) {
+    bloodTypeResults.innerHTML = '';
+
+    result.possibleBloodTypes.forEach((item) => {
+      const resultItem = document.createElement('div');
+      resultItem.className = 'blood-type-result-item';
+
+      const bloodTypeDisplay = document.createElement('div');
+      bloodTypeDisplay.className = 'blood-type-display';
+
+      const bloodTypeValue = document.createElement('div');
+      bloodTypeValue.className = 'blood-type-value';
+      bloodTypeValue.textContent = `${item.bloodType}${item.rh}`;
+
+      bloodTypeDisplay.appendChild(bloodTypeValue);
+
+      const probabilityBarContainer = document.createElement('div');
+      probabilityBarContainer.className = 'probability-bar-container';
+
+      const probabilityBar = document.createElement('div');
+      probabilityBar.className = 'probability-bar';
+
+      const probabilityFill = document.createElement('div');
+      probabilityFill.className = 'probability-fill';
+      probabilityFill.style.width = `${item.probability}%`;
+      probabilityFill.textContent = item.probability >= 15 ? `${item.probability}%` : '';
+
+      probabilityBar.appendChild(probabilityFill);
+      probabilityBarContainer.appendChild(probabilityBar);
+
+      const probabilityValue = document.createElement('div');
+      probabilityValue.className = 'probability-value';
+      probabilityValue.textContent = `${item.probability}%`;
+
+      resultItem.appendChild(bloodTypeDisplay);
+      resultItem.appendChild(probabilityBarContainer);
+      resultItem.appendChild(probabilityValue);
+
+      bloodTypeResults.appendChild(resultItem);
+    });
+
+    // Show results
+    results.style.display = 'block';
+    results.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  // Handle form reset
+  form.addEventListener('reset', () => {
+    results.style.display = 'none';
+  });
+</script>

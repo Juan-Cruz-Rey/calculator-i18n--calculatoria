@@ -1,0 +1,39 @@
+{
+  "title": "Calcolatore di Frequenza Cardiaca",
+  "description": "Calcola la tua frequenza cardiaca massima e le zone di allenamento",
+  "metaDescription": "Calcolatore di frequenza cardiaca gratuito - Calcola la tua frequenza cardiaca massima e le zone di allenamento ottimali per diversi tipi di esercizio.",
+  "form": {
+    "title": "Inserisci le Tue Informazioni",
+    "ageLabel": "Età",
+    "agePlaceholder": "Inserisci la tua età",
+    "restingHRLabel": "Frequenza Cardiaca a Riposo",
+    "restingHRPlaceholder": "Inserisci la tua frequenza cardiaca a riposo",
+    "bpm": "bpm",
+    "restingHRInfo": "Per misurare la tua frequenza cardiaca a riposo, conta le tue pulsazioni per 60 secondi al risveglio al mattino prima di alzarti dal letto."
+  },
+  "results": {
+    "title": "I Tuoi Risultati",
+    "maxHR": "Frequenza Cardiaca Massima",
+    "restingHR": "FC a Riposo",
+    "hrReserve": "Riserva di FC",
+    "zonesTitle": "Zone di Allenamento"
+  },
+  "zones": {
+    "resting": "Riposo",
+    "warmup": "Riscaldamento",
+    "fatburn": "Brucia Grassi",
+    "cardio": "Cardio",
+    "peak": "Massimo"
+  },
+  "info": {
+    "title": "Sulla Frequenza Cardiaca",
+    "description": "La frequenza cardiaca massima è il numero massimo di volte che il tuo cuore può battere al minuto durante lo sforzo fisico massimo. È generalmente calcolata usando la formula 220 - età. Le zone di allenamento ti aiutano a ottimizzare i tuoi allenamenti in base ai tuoi obiettivi.",
+    "formula": "Formula: FC Max = 220 - età | FC Target = ((FC Max - FC Riposo) × % Intensità) + FC Riposo",
+    "zonesExplained": "Zone di Allenamento Spiegate",
+    "warmupDesc": "Ideale per il riscaldamento e il raffreddamento. Migliora la salute generale e aiuta nel recupero.",
+    "fatburnDesc": "Zona ottimale per bruciare grassi. A questa intensità, il tuo corpo usa i grassi come fonte principale di energia.",
+    "cardioDesc": "Migliora la capacità cardiovascolare e la resistenza. Ideale per migliorare le prestazioni aerobiche.",
+    "peakDesc": "Allenamento ad alta intensità. Sviluppa velocità e potenza. Solo per sessioni brevi.",
+    "limitations": "La formula 220 - età è una stima generale. La frequenza cardiaca massima effettiva può variare in base a fattori individuali come genetica, livello di forma fisica e farmaci. Consultare un professionista sanitario prima di iniziare un programma di esercizio intenso."
+  }
+}

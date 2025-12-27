@@ -1,0 +1,609 @@
+---
+import { t, type Locale } from '@/utils/i18n';
+
+const { lang } = Astro.props as { lang: Locale };
+---
+
+<div class="heart-rate-calculator">
+  <div class="calculator-form">
+    <h2>{t('heartRate.form.title', lang)}</h2>
+
+    <form id="heart-rate-form">
+      <!-- Age -->
+      <div class="form-group">
+        <label for="age">{t('heartRate.form.ageLabel', lang)}</label>
+        <input
+          type="number"
+          id="age"
+          name="age"
+          min="10"
+          max="120"
+          required
+          placeholder={t('heartRate.form.agePlaceholder', lang)}
+        />
+        <span class="unit">{t('common.years', lang)}</span>
+      </div>
+
+      <!-- Resting Heart Rate -->
+      <div class="form-group">
+        <label for="restingHR">{t('heartRate.form.restingHRLabel', lang)}</label>
+        <input
+          type="number"
+          id="restingHR"
+          name="restingHR"
+          min="30"
+          max="120"
+          required
+          placeholder={t('heartRate.form.restingHRPlaceholder', lang)}
+        />
+        <span class="unit">{t('heartRate.form.bpm', lang)}</span>
+      </div>
+
+      <div class="info-box">
+        <p>{t('heartRate.form.restingHRInfo', lang)}</p>
+      </div>
+
+      <!-- Buttons -->
+      <div class="form-actions">
+        <button type="submit" class="btn-primary">{t('common.calculate', lang)}</button>
+        <button type="reset" class="btn-secondary">{t('common.reset', lang)}</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="calculator-results" id="results" style="display: none;">
+    <h2>{t('heartRate.results.title', lang)}</h2>
+
+    <div class="result-card max-hr">
+      <h3>{t('heartRate.results.maxHR', lang)}</h3>
+      <p class="value" id="max-hr-value">-</p>
+      <p class="unit-label">{t('heartRate.form.bpm', lang)}</p>
+    </div>
+
+    <div class="result-grid">
+      <div class="result-item">
+        <strong>{t('heartRate.results.restingHR', lang)}:</strong>
+        <span id="resting-hr">-</span>
+      </div>
+      <div class="result-item">
+        <strong>{t('heartRate.results.hrReserve', lang)}:</strong>
+        <span id="hr-reserve">-</span>
+      </div>
+    </div>
+
+    <div class="zones-section">
+      <h3>{t('heartRate.results.zonesTitle', lang)}</h3>
+      <div id="zones-container"></div>
+    </div>
+  </div>
+
+  <div class="calculator-info">
+    <h2>{t('heartRate.info.title', lang)}</h2>
+    <p>{t('heartRate.info.description', lang)}</p>
+    <p class="formula">{t('heartRate.info.formula', lang)}</p>
+
+    <h3>{t('heartRate.info.zonesExplained', lang)}</h3>
+    <div class="zones-info">
+      <div class="zone-info">
+        <strong>{t('heartRate.zones.warmup', lang)} (50-60%):</strong>
+        <p>{t('heartRate.info.warmupDesc', lang)}</p>
+      </div>
+      <div class="zone-info">
+        <strong>{t('heartRate.zones.fatburn', lang)} (60-70%):</strong>
+        <p>{t('heartRate.info.fatburnDesc', lang)}</p>
+      </div>
+      <div class="zone-info">
+        <strong>{t('heartRate.zones.cardio', lang)} (70-85%):</strong>
+        <p>{t('heartRate.info.cardioDesc', lang)}</p>
+      </div>
+      <div class="zone-info">
+        <strong>{t('heartRate.zones.peak', lang)} (85-100%):</strong>
+        <p>{t('heartRate.info.peakDesc', lang)}</p>
+      </div>
+    </div>
+
+    <p class="limitations">{t('heartRate.info.limitations', lang)}</p>
+  </div>
+</div>
+
+<style>
+  .heart-rate-calculator {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .calculator-form, .calculator-results, .calculator-info {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  h2 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  h3 {
+    color: #333;
+    font-size: 1.2rem;
+    margin: 1.5rem 0 1rem 0;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #555;
+  }
+
+  .form-group input[type="number"] {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+
+  .form-group input[type="number"]:focus {
+    outline: none;
+    border-color: #f43f5e;
+  }
+
+  .unit {
+    display: inline-block;
+    margin-left: 0.5rem;
+    color: #888;
+    font-size: 0.9rem;
+  }
+
+  .info-box {
+    background: #fef2f2;
+    border-left: 4px solid #f43f5e;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: 4px;
+  }
+
+  .info-box p {
+    margin: 0;
+    color: #555;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .btn-primary, .btn-secondary {
+    flex: 1;
+    padding: 0.875rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-primary {
+    background: #f43f5e;
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: #e11d48;
+  }
+
+  .btn-secondary {
+    background: #f5f5f5;
+    color: #333;
+  }
+
+  .btn-secondary:hover {
+    background: #e0e0e0;
+  }
+
+  .result-card {
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%);
+    color: white;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+
+  .result-card h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1.2rem;
+    color: white;
+  }
+
+  .result-card .value {
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  .result-card .unit-label {
+    font-size: 1.1rem;
+    margin: 0.5rem 0 0 0;
+    opacity: 0.9;
+  }
+
+  .result-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .result-item {
+    padding: 1rem;
+    background: #f9f9f9;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .result-item strong {
+    color: #555;
+    font-size: 0.9rem;
+  }
+
+  .result-item span {
+    color: #333;
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+
+  .zones-section {
+    margin-top: 2rem;
+  }
+
+  .zones-section h3 {
+    color: #333;
+    margin-bottom: 1rem;
+  }
+
+  .zone-card {
+    background: white;
+    border: 2px solid #f43f5e;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .zone-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .zone-name {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #333;
+  }
+
+  .zone-percentage {
+    font-size: 0.9rem;
+    color: #888;
+  }
+
+  .zone-range {
+    font-size: 1.5rem;
+    color: #f43f5e;
+    font-weight: bold;
+    margin: 0.5rem 0;
+  }
+
+  .zone-benefits {
+    color: #666;
+    font-size: 0.9rem;
+  }
+
+  .calculator-info {
+    background: #f9f9f9;
+  }
+
+  .calculator-info p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: #555;
+  }
+
+  .formula {
+    font-family: monospace;
+    background: white;
+    padding: 1rem;
+    border-left: 4px solid #f43f5e;
+    margin: 1rem 0;
+  }
+
+  .zones-info {
+    display: grid;
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+
+  .zone-info {
+    background: white;
+    padding: 1rem;
+    border-radius: 4px;
+    border-left: 4px solid #f43f5e;
+  }
+
+  .zone-info strong {
+    color: #f43f5e;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .zone-info p {
+    margin: 0;
+    color: #666;
+  }
+
+  .limitations {
+    font-size: 0.9rem;
+    font-style: italic;
+    margin-top: 1.5rem;
+  }
+
+  /* Zone-specific colors */
+  .zone-card.zone-resting {
+    border-color: #3b82f6;
+  }
+
+  .zone-card.zone-resting .zone-range {
+    color: #3b82f6;
+  }
+
+  .zone-card.zone-warmup {
+    border-color: #10b981;
+  }
+
+  .zone-card.zone-warmup .zone-range {
+    color: #10b981;
+  }
+
+  .zone-card.zone-fatburn {
+    border-color: #f59e0b;
+  }
+
+  .zone-card.zone-fatburn .zone-range {
+    color: #f59e0b;
+  }
+
+  .zone-card.zone-cardio {
+    border-color: #f43f5e;
+  }
+
+  .zone-card.zone-cardio .zone-range {
+    color: #f43f5e;
+  }
+
+  .zone-card.zone-peak {
+    border-color: #dc2626;
+  }
+
+  .zone-card.zone-peak .zone-range {
+    color: #dc2626;
+  }
+</style>
+
+<script>
+  // Import heart rate calculation utilities
+  import type { HeartRateInput, HeartRateResult, HeartRateZoneData } from '@/utils/calculators/heartRate';
+  import { calculateHeartRateMetrics } from '@/utils/calculators/heartRate';
+
+  const form = document.getElementById('heart-rate-form') as HTMLFormElement;
+  const results = document.getElementById('results') as HTMLDivElement;
+
+  // Get language from document
+  const lang = document.documentElement.lang || 'es';
+
+  // Translation mappings
+  const translations = {
+    es: {
+      zones: {
+        resting: 'Reposo',
+        warmup: 'Calentamiento',
+        fatburn: 'Quema de grasa',
+        cardio: 'Cardio',
+        peak: 'Máximo',
+      },
+      benefits: {
+        recovery: 'Recuperación y estado de reposo',
+        light: 'Actividad ligera, calentamiento',
+        fatburn: 'Quema de grasa, resistencia',
+        cardio: 'Mejora cardiovascular',
+        peak: 'Rendimiento máximo, entrenamiento intenso',
+      },
+      bpm: 'lpm',
+    },
+    en: {
+      zones: {
+        resting: 'Resting',
+        warmup: 'Warm Up',
+        fatburn: 'Fat Burn',
+        cardio: 'Cardio',
+        peak: 'Peak',
+      },
+      benefits: {
+        recovery: 'Recovery and resting state',
+        light: 'Light activity, warm up',
+        fatburn: 'Fat burning, endurance',
+        cardio: 'Cardiovascular improvement',
+        peak: 'Maximum performance, intense training',
+      },
+      bpm: 'bpm',
+    },
+    pt: {
+      zones: {
+        resting: 'Repouso',
+        warmup: 'Aquecimento',
+        fatburn: 'Queima de gordura',
+        cardio: 'Cardio',
+        peak: 'Máximo',
+      },
+      benefits: {
+        recovery: 'Recuperação e estado de repouso',
+        light: 'Atividade leve, aquecimento',
+        fatburn: 'Queima de gordura, resistência',
+        cardio: 'Melhoria cardiovascular',
+        peak: 'Desempenho máximo, treinamento intenso',
+      },
+      bpm: 'bpm',
+    },
+    fr: {
+      zones: {
+        resting: 'Repos',
+        warmup: 'Échauffement',
+        fatburn: 'Brûle graisse',
+        cardio: 'Cardio',
+        peak: 'Maximum',
+      },
+      benefits: {
+        recovery: 'Récupération et état de repos',
+        light: 'Activité légère, échauffement',
+        fatburn: 'Brûlage des graisses, endurance',
+        cardio: 'Amélioration cardiovasculaire',
+        peak: 'Performance maximale, entraînement intense',
+      },
+      bpm: 'bpm',
+    },
+    hi: {
+      zones: {
+        resting: 'आराम',
+        warmup: 'वार्म अप',
+        fatburn: 'फैट बर्न',
+        cardio: 'कार्डियो',
+        peak: 'चरम',
+      },
+      benefits: {
+        recovery: 'रिकवरी और आराम की स्थिति',
+        light: 'हल्की गतिविधि, वार्म अप',
+        fatburn: 'फैट बर्निंग, सहनशक्ति',
+        cardio: 'हृदय संबंधी सुधार',
+        peak: 'अधिकतम प्रदर्शन, तीव्र प्रशिक्षण',
+      },
+      bpm: 'bpm',
+    },
+    de: {
+      zones: {
+        resting: 'Ruhe',
+        warmup: 'Aufwärmen',
+        fatburn: 'Fettverbrennung',
+        cardio: 'Kardio',
+        peak: 'Maximum',
+      },
+      benefits: {
+        recovery: 'Erholung und Ruhezustand',
+        light: 'Leichte Aktivität, Aufwärmen',
+        fatburn: 'Fettverbrennung, Ausdauer',
+        cardio: 'Kardiovaskuläre Verbesserung',
+        peak: 'Maximale Leistung, intensives Training',
+      },
+      bpm: 'bpm',
+    },
+    it: {
+      zones: {
+        resting: 'Riposo',
+        warmup: 'Riscaldamento',
+        fatburn: 'Brucia grassi',
+        cardio: 'Cardio',
+        peak: 'Massimo',
+      },
+      benefits: {
+        recovery: 'Recupero e stato di riposo',
+        light: 'Attività leggera, riscaldamento',
+        fatburn: 'Bruciare grassi, resistenza',
+        cardio: 'Miglioramento cardiovascolare',
+        peak: 'Prestazioni massime, allenamento intenso',
+      },
+      bpm: 'bpm',
+    },
+  };
+
+  const t = translations[lang as keyof typeof translations] || translations.es;
+
+  // Handle form submission
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const age = parseInt(formData.get('age') as string);
+    const restingHeartRate = parseInt(formData.get('restingHR') as string);
+
+    const input: HeartRateInput = {
+      age,
+      restingHeartRate,
+    };
+
+    try {
+      const result = calculateHeartRateMetrics(input);
+      displayResults(result);
+    } catch (error) {
+      alert('Error calculating heart rate. Please check your inputs.');
+      console.error(error);
+    }
+  });
+
+  function displayResults(result: HeartRateResult) {
+    const maxHRValue = document.getElementById('max-hr-value') as HTMLParagraphElement;
+    const restingHR = document.getElementById('resting-hr') as HTMLSpanElement;
+    const hrReserve = document.getElementById('hr-reserve') as HTMLSpanElement;
+    const zonesContainer = document.getElementById('zones-container') as HTMLDivElement;
+
+    maxHRValue.textContent = result.maxHeartRate.toString();
+    restingHR.textContent = `${result.restingHeartRate} ${t.bpm}`;
+    hrReserve.textContent = `${result.heartRateReserve} ${t.bpm}`;
+
+    // Clear previous zones
+    zonesContainer.innerHTML = '';
+
+    // Display zones
+    result.zones.forEach((zone: HeartRateZoneData) => {
+      const zoneCard = document.createElement('div');
+      zoneCard.className = `zone-card zone-${zone.name}`;
+
+      const zoneName = t.zones[zone.name as keyof typeof t.zones];
+      const zoneBenefits = t.benefits[zone.benefits as keyof typeof t.benefits];
+
+      zoneCard.innerHTML = `
+        <div class="zone-header">
+          <span class="zone-name">${zoneName}</span>
+          <span class="zone-percentage">${zone.percentage}</span>
+        </div>
+        <div class="zone-range">${zone.min} - ${zone.max} ${t.bpm}</div>
+        <div class="zone-benefits">${zoneBenefits}</div>
+      `;
+
+      zonesContainer.appendChild(zoneCard);
+    });
+
+    // Show results
+    results.style.display = 'block';
+    results.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  // Handle form reset
+  form.addEventListener('reset', () => {
+    results.style.display = 'none';
+  });
+</script>

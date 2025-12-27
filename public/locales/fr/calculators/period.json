@@ -1,0 +1,30 @@
+{
+  "title": "Calculateur de Règles",
+  "description": "Prédisez vos prochaines règles et dates d'ovulation",
+  "metaDescription": "Calculateur de règles gratuit - Prédisez vos prochaines règles, dates d'ovulation et fenêtre de fertilité. Suivez facilement votre cycle menstruel.",
+  "form": {
+    "title": "Entrez vos informations",
+    "lastPeriodLabel": "Premier jour des dernières règles",
+    "lastPeriodHelp": "Date à laquelle vos dernières menstruations ont commencé",
+    "cycleLengthLabel": "Durée du cycle",
+    "cycleLengthHelp": "Nombre moyen de jours entre les règles (généralement 28 jours)",
+    "periodLengthLabel": "Durée des règles",
+    "periodLengthHelp": "Nombre de jours que durent vos règles (généralement 5 jours)"
+  },
+  "results": {
+    "title": "Vos Résultats",
+    "nextPeriod": "Prochaines Règles",
+    "daysUntil": "Dans",
+    "cycleDay": "Jour du Cycle",
+    "currentPhase": "Phase Actuelle",
+    "ovulationDate": "Date d'Ovulation",
+    "fertilityWindow": "Fenêtre de Fertilité",
+    "upcomingPeriods": "Règles à Venir"
+  },
+  "info": {
+    "title": "À Propos du Calculateur de Règles",
+    "description": "Ce calculateur prédit vos prochaines règles et dates d'ovulation en fonction de vos dernières règles et de la durée moyenne de votre cycle. L'ovulation se produit généralement 14 jours avant les prochaines règles.",
+    "formula": "Formule: Prochaines règles = Dernières règles + Durée du cycle. Ovulation = Prochaines règles - 14 jours",
+    "limitations": "Note: Ce calculateur fournit des estimations basées sur des cycles réguliers. Les cycles menstruels peuvent varier naturellement. Pour des préoccupations médicales ou des irrégularités du cycle, veuillez consulter un professionnel de santé."
+  }
+}

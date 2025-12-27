@@ -1,0 +1,900 @@
+---
+import { t, type Locale } from '@/utils/i18n';
+
+const { lang } = Astro.props as { lang: Locale };
+---
+
+<div class="bodytype-calculator">
+  <div class="calculator-form">
+    <h2>{t('bodyType.form.title', lang)}</h2>
+
+    <form id="bodytype-form">
+      <!-- Unit System Toggle -->
+      <div class="form-group unit-toggle">
+        <label>
+          <input type="radio" name="unitSystem" value="metric" checked />
+          {t('units.metric', lang)}
+        </label>
+        <label>
+          <input type="radio" name="unitSystem" value="imperial" />
+          {t('units.imperial', lang)}
+        </label>
+      </div>
+
+      <!-- Gender -->
+      <div class="form-group">
+        <label for="gender">{t('bodyType.form.genderLabel', lang)}</label>
+        <select id="gender" name="gender" required>
+          <option value="male">{t('common.male', lang)}</option>
+          <option value="female">{t('common.female', lang)}</option>
+        </select>
+      </div>
+
+      <!-- Height (Metric) -->
+      <div class="form-group height-metric">
+        <label for="height">{t('bodyType.form.heightLabel', lang)}</label>
+        <input
+          type="number"
+          id="height"
+          name="height"
+          min="50"
+          max="250"
+          step="0.1"
+          required
+          placeholder={t('bodyType.form.heightPlaceholder', lang)}
+        />
+        <span class="unit">{t('units.cm', lang)}</span>
+      </div>
+
+      <!-- Height (Imperial) -->
+      <div class="form-group height-imperial" style="display: none;">
+        <label for="heightIn">{t('bodyType.form.heightLabel', lang)}</label>
+        <input
+          type="number"
+          id="heightIn"
+          name="heightIn"
+          min="20"
+          max="100"
+          step="0.1"
+          placeholder="Enter your height in inches"
+        />
+        <span class="unit">{t('units.in', lang)}</span>
+      </div>
+
+      <!-- Wrist Circumference -->
+      <div class="form-group">
+        <label for="wrist">{t('bodyType.form.wristLabel', lang)}</label>
+        <input
+          type="number"
+          id="wrist"
+          name="wrist"
+          min="10"
+          max="30"
+          step="0.1"
+          required
+          placeholder={t('bodyType.form.wristPlaceholder', lang)}
+        />
+        <span class="unit wrist-unit">{t('units.cm', lang)}</span>
+        <p class="hint">{t('bodyType.form.wristHint', lang)}</p>
+      </div>
+
+      <!-- Ankle Circumference -->
+      <div class="form-group">
+        <label for="ankle">{t('bodyType.form.ankleLabel', lang)}</label>
+        <input
+          type="number"
+          id="ankle"
+          name="ankle"
+          min="15"
+          max="40"
+          step="0.1"
+          required
+          placeholder={t('bodyType.form.anklePlaceholder', lang)}
+        />
+        <span class="unit ankle-unit">{t('units.cm', lang)}</span>
+        <p class="hint">{t('bodyType.form.ankleHint', lang)}</p>
+      </div>
+
+      <!-- Buttons -->
+      <div class="form-actions">
+        <button type="submit" class="btn-primary">{t('common.calculate', lang)}</button>
+        <button type="reset" class="btn-secondary">{t('common.reset', lang)}</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="calculator-results" id="results" style="display: none;">
+    <h2>{t('bodyType.results.title', lang)}</h2>
+
+    <div class="result-card bodytype-value">
+      <h3>{t('bodyType.results.bodyTypeLabel', lang)}</h3>
+      <p class="value" id="bodytype-value">-</p>
+      <p class="category" id="bodytype-description">-</p>
+    </div>
+
+    <div class="result-grid">
+      <div class="result-item">
+        <strong>{t('bodyType.results.frameSize', lang)}:</strong>
+        <span id="frame-size">-</span>
+      </div>
+      <div class="result-item">
+        <strong>{t('bodyType.results.wristRatio', lang)}:</strong>
+        <span id="wrist-ratio">-</span>
+      </div>
+      <div class="result-item">
+        <strong>{t('bodyType.results.ankleRatio', lang)}:</strong>
+        <span id="ankle-ratio">-</span>
+      </div>
+    </div>
+
+    <div class="body-type-info" id="body-type-info">
+      <h3 id="info-title">-</h3>
+      <p id="info-description">-</p>
+      <div class="characteristics">
+        <h4>{t('bodyType.results.characteristics', lang)}</h4>
+        <ul id="characteristics-list"></ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="calculator-info">
+    <h2>{t('bodyType.info.title', lang)}</h2>
+    <p>{t('bodyType.info.description', lang)}</p>
+
+    <div class="body-types-overview">
+      <div class="type-card">
+        <h3>{t('bodyType.info.types.ectomorph.name', lang)}</h3>
+        <p>{t('bodyType.info.types.ectomorph.description', lang)}</p>
+      </div>
+      <div class="type-card">
+        <h3>{t('bodyType.info.types.mesomorph.name', lang)}</h3>
+        <p>{t('bodyType.info.types.mesomorph.description', lang)}</p>
+      </div>
+      <div class="type-card">
+        <h3>{t('bodyType.info.types.endomorph.name', lang)}</h3>
+        <p>{t('bodyType.info.types.endomorph.description', lang)}</p>
+      </div>
+    </div>
+
+    <p class="limitations">{t('bodyType.info.limitations', lang)}</p>
+  </div>
+</div>
+
+<style>
+  .bodytype-calculator {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .calculator-form, .calculator-results, .calculator-info {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  h2 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #555;
+  }
+
+  .form-group input[type="number"],
+  .form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+
+  .form-group input[type="number"]:focus,
+  .form-group select:focus {
+    outline: none;
+    border-color: #6366f1;
+  }
+
+  .unit {
+    display: inline-block;
+    margin-left: 0.5rem;
+    color: #888;
+    font-size: 0.9rem;
+  }
+
+  .hint {
+    margin: 0.5rem 0 0 0;
+    font-size: 0.85rem;
+    color: #666;
+    font-style: italic;
+  }
+
+  .unit-toggle {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    background: #f5f5f5;
+    border-radius: 4px;
+  }
+
+  .unit-toggle label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    margin: 0;
+  }
+
+  .form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .btn-primary, .btn-secondary {
+    flex: 1;
+    padding: 0.875rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-primary {
+    background: #6366f1;
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: #4f46e5;
+  }
+
+  .btn-secondary {
+    background: #f5f5f5;
+    color: #333;
+  }
+
+  .btn-secondary:hover {
+    background: #e0e0e0;
+  }
+
+  .result-card {
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    color: white;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+
+  .result-card h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1.2rem;
+  }
+
+  .result-card .value {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 0;
+    text-transform: capitalize;
+  }
+
+  .result-card .category {
+    font-size: 1.1rem;
+    margin: 0.5rem 0 0 0;
+    opacity: 0.9;
+  }
+
+  .result-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .result-item {
+    padding: 1rem;
+    background: #f9f9f9;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .result-item strong {
+    color: #555;
+    font-size: 0.9rem;
+  }
+
+  .result-item span {
+    color: #333;
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+
+  .body-type-info {
+    background: #faf5ff;
+    border-left: 4px solid #6366f1;
+    padding: 1.5rem;
+    border-radius: 4px;
+  }
+
+  .body-type-info h3 {
+    margin-top: 0;
+    color: #6366f1;
+    font-size: 1.3rem;
+  }
+
+  .body-type-info p {
+    line-height: 1.6;
+    color: #555;
+  }
+
+  .characteristics {
+    margin-top: 1.5rem;
+  }
+
+  .characteristics h4 {
+    color: #333;
+    margin-bottom: 0.75rem;
+  }
+
+  .characteristics ul {
+    margin: 0;
+    padding-left: 1.5rem;
+  }
+
+  .characteristics li {
+    margin-bottom: 0.5rem;
+    color: #555;
+    line-height: 1.5;
+  }
+
+  .calculator-info {
+    background: #f9f9f9;
+  }
+
+  .calculator-info p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: #555;
+  }
+
+  .body-types-overview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+
+  .type-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+  }
+
+  .type-card h3 {
+    color: #6366f1;
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+  }
+
+  .type-card p {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .limitations {
+    font-size: 0.9rem;
+    font-style: italic;
+    margin-top: 2rem;
+  }
+
+  /* Body type specific colors */
+  .type-ectomorph {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  }
+
+  .type-mesomorph {
+    background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+  }
+
+  .type-endomorph {
+    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+  }
+</style>
+
+<script>
+  // Import body type calculation utilities
+  import type { BodyTypeInput, BodyTypeResult, UnitSystem, Gender } from '@/utils/calculators/bodyType';
+  import { calculateBodyTypeMetrics } from '@/utils/calculators/bodyType';
+
+  const form = document.getElementById('bodytype-form') as HTMLFormElement;
+  const results = document.getElementById('results') as HTMLDivElement;
+  const unitSystemInputs = document.querySelectorAll('input[name="unitSystem"]');
+  const heightMetric = document.querySelector('.height-metric') as HTMLDivElement;
+  const heightImperial = document.querySelector('.height-imperial') as HTMLDivElement;
+  const wristUnit = document.querySelector('.wrist-unit') as HTMLSpanElement;
+  const ankleUnit = document.querySelector('.ankle-unit') as HTMLSpanElement;
+
+  // Get current language
+  const currentLang = document.documentElement.lang || 'es';
+
+  // Translations for body types and frame sizes
+  const translations: Record<string, any> = {
+    es: {
+      bodyTypes: {
+        ectomorph: 'Ectomorfo',
+        mesomorph: 'Mesomorfo',
+        endomorph: 'Endomorfo'
+      },
+      frameSizes: {
+        small: 'Pequeña',
+        medium: 'Mediana',
+        large: 'Grande'
+      },
+      descriptions: {
+        ectomorph: 'Tipo de cuerpo delgado y alargado',
+        mesomorph: 'Tipo de cuerpo atlético y musculoso',
+        endomorph: 'Tipo de cuerpo robusto con tendencia a almacenar grasa'
+      },
+      infoTitles: {
+        ectomorph: 'Ectomorfo - Tipo de Cuerpo Delgado',
+        mesomorph: 'Mesomorfo - Tipo de Cuerpo Atlético',
+        endomorph: 'Endomorfo - Tipo de Cuerpo Robusto'
+      },
+      infoDescriptions: {
+        ectomorph: 'Los ectomorfos tienden a tener un metabolismo rápido, extremidades largas y delgadas, y dificultad para ganar peso o músculo.',
+        mesomorph: 'Los mesomorfos tienen una estructura corporal naturalmente atlética, ganan músculo fácilmente y tienen un metabolismo eficiente.',
+        endomorph: 'Los endomorfos tienen una estructura ósea más grande, tienden a almacenar grasa más fácilmente y pueden ganar peso con facilidad.'
+      },
+      characteristics: {
+        ectomorph: [
+          'Metabolismo rápido',
+          'Extremidades largas y delgadas',
+          'Dificultad para ganar peso',
+          'Poca grasa corporal',
+          'Músculos delgados'
+        ],
+        mesomorph: [
+          'Estructura atlética natural',
+          'Gana músculo fácilmente',
+          'Metabolismo eficiente',
+          'Hombros anchos',
+          'Cintura estrecha'
+        ],
+        endomorph: [
+          'Estructura ósea más grande',
+          'Gana peso fácilmente',
+          'Metabolismo más lento',
+          'Forma corporal redondeada',
+          'Mayor porcentaje de grasa corporal'
+        ]
+      }
+    },
+    en: {
+      bodyTypes: {
+        ectomorph: 'Ectomorph',
+        mesomorph: 'Mesomorph',
+        endomorph: 'Endomorph'
+      },
+      frameSizes: {
+        small: 'Small',
+        medium: 'Medium',
+        large: 'Large'
+      },
+      descriptions: {
+        ectomorph: 'Lean and long body type',
+        mesomorph: 'Athletic and muscular body type',
+        endomorph: 'Solid body type with tendency to store fat'
+      },
+      infoTitles: {
+        ectomorph: 'Ectomorph - Lean Body Type',
+        mesomorph: 'Mesomorph - Athletic Body Type',
+        endomorph: 'Endomorph - Solid Body Type'
+      },
+      infoDescriptions: {
+        ectomorph: 'Ectomorphs tend to have a fast metabolism, long and lean limbs, and difficulty gaining weight or muscle.',
+        mesomorph: 'Mesomorphs have a naturally athletic build, gain muscle easily, and have an efficient metabolism.',
+        endomorph: 'Endomorphs have a larger bone structure, tend to store fat more easily, and can gain weight readily.'
+      },
+      characteristics: {
+        ectomorph: [
+          'Fast metabolism',
+          'Long and lean limbs',
+          'Difficulty gaining weight',
+          'Low body fat',
+          'Lean muscles'
+        ],
+        mesomorph: [
+          'Natural athletic build',
+          'Gains muscle easily',
+          'Efficient metabolism',
+          'Broad shoulders',
+          'Narrow waist'
+        ],
+        endomorph: [
+          'Larger bone structure',
+          'Gains weight easily',
+          'Slower metabolism',
+          'Rounded body shape',
+          'Higher body fat percentage'
+        ]
+      }
+    },
+    pt: {
+      bodyTypes: {
+        ectomorph: 'Ectomorfo',
+        mesomorph: 'Mesomorfo',
+        endomorph: 'Endomorfo'
+      },
+      frameSizes: {
+        small: 'Pequeno',
+        medium: 'Médio',
+        large: 'Grande'
+      },
+      descriptions: {
+        ectomorph: 'Tipo de corpo magro e alongado',
+        mesomorph: 'Tipo de corpo atlético e musculoso',
+        endomorph: 'Tipo de corpo sólido com tendência a armazenar gordura'
+      },
+      infoTitles: {
+        ectomorph: 'Ectomorfo - Tipo de Corpo Magro',
+        mesomorph: 'Mesomorfo - Tipo de Corpo Atlético',
+        endomorph: 'Endomorfo - Tipo de Corpo Sólido'
+      },
+      infoDescriptions: {
+        ectomorph: 'Os ectomorfos tendem a ter metabolismo rápido, membros longos e magros, e dificuldade para ganhar peso ou músculo.',
+        mesomorph: 'Os mesomorfos têm uma estrutura naturalmente atlética, ganham músculo facilmente e têm metabolismo eficiente.',
+        endomorph: 'Os endomorfos têm estrutura óssea maior, tendem a armazenar gordura mais facilmente e podem ganhar peso rapidamente.'
+      },
+      characteristics: {
+        ectomorph: [
+          'Metabolismo rápido',
+          'Membros longos e magros',
+          'Dificuldade para ganhar peso',
+          'Baixa gordura corporal',
+          'Músculos magros'
+        ],
+        mesomorph: [
+          'Estrutura atlética natural',
+          'Ganha músculo facilmente',
+          'Metabolismo eficiente',
+          'Ombros largos',
+          'Cintura estreita'
+        ],
+        endomorph: [
+          'Estrutura óssea maior',
+          'Ganha peso facilmente',
+          'Metabolismo mais lento',
+          'Forma corporal arredondada',
+          'Maior percentual de gordura corporal'
+        ]
+      }
+    },
+    fr: {
+      bodyTypes: {
+        ectomorph: 'Ectomorphe',
+        mesomorph: 'Mésomorphe',
+        endomorph: 'Endomorphe'
+      },
+      frameSizes: {
+        small: 'Petite',
+        medium: 'Moyenne',
+        large: 'Grande'
+      },
+      descriptions: {
+        ectomorph: 'Type de corps mince et allongé',
+        mesomorph: 'Type de corps athlétique et musclé',
+        endomorph: 'Type de corps solide avec tendance à stocker les graisses'
+      },
+      infoTitles: {
+        ectomorph: 'Ectomorphe - Type de Corps Mince',
+        mesomorph: 'Mésomorphe - Type de Corps Athlétique',
+        endomorph: 'Endomorphe - Type de Corps Solide'
+      },
+      infoDescriptions: {
+        ectomorph: 'Les ectomorphes ont tendance à avoir un métabolisme rapide, des membres longs et minces, et des difficultés à prendre du poids ou du muscle.',
+        mesomorph: 'Les mésomorphes ont une constitution naturellement athlétique, prennent du muscle facilement et ont un métabolisme efficace.',
+        endomorph: 'Les endomorphes ont une structure osseuse plus grande, ont tendance à stocker les graisses plus facilement et peuvent prendre du poids rapidement.'
+      },
+      characteristics: {
+        ectomorph: [
+          'Métabolisme rapide',
+          'Membres longs et minces',
+          'Difficulté à prendre du poids',
+          'Faible masse grasse',
+          'Muscles minces'
+        ],
+        mesomorph: [
+          'Constitution athlétique naturelle',
+          'Prend du muscle facilement',
+          'Métabolisme efficace',
+          'Épaules larges',
+          'Taille étroite'
+        ],
+        endomorph: [
+          'Structure osseuse plus grande',
+          'Prend du poids facilement',
+          'Métabolisme plus lent',
+          'Forme corporelle arrondie',
+          'Pourcentage de graisse corporelle plus élevé'
+        ]
+      }
+    },
+    hi: {
+      bodyTypes: {
+        ectomorph: 'एक्टोमॉर्फ',
+        mesomorph: 'मेसोमॉर्फ',
+        endomorph: 'एंडोमॉर्फ'
+      },
+      frameSizes: {
+        small: 'छोटा',
+        medium: 'मध्यम',
+        large: 'बड़ा'
+      },
+      descriptions: {
+        ectomorph: 'पतला और लंबा शरीर प्रकार',
+        mesomorph: 'एथलेटिक और मांसपेशियों वाला शरीर प्रकार',
+        endomorph: 'मजबूत शरीर प्रकार जिसमें वसा जमा करने की प्रवृत्ति होती है'
+      },
+      infoTitles: {
+        ectomorph: 'एक्टोमॉर्फ - पतला शरीर प्रकार',
+        mesomorph: 'मेसोमॉर्फ - एथलेटिक शरीर प्रकार',
+        endomorph: 'एंडोमॉर्फ - मजबूत शरीर प्रकार'
+      },
+      infoDescriptions: {
+        ectomorph: 'एक्टोमॉर्फ में तेज चयापचय, लंबे और पतले अंग होते हैं, और वजन या मांसपेशियों को बढ़ाने में कठिनाई होती है।',
+        mesomorph: 'मेसोमॉर्फ में स्वाभाविक रूप से एथलेटिक निर्माण होता है, आसानी से मांसपेशियां बनती हैं, और कुशल चयापचय होता है।',
+        endomorph: 'एंडोमॉर्फ में बड़ी हड्डी की संरचना होती है, आसानी से वसा जमा होती है, और आसानी से वजन बढ़ सकता है।'
+      },
+      characteristics: {
+        ectomorph: [
+          'तेज चयापचय',
+          'लंबे और पतले अंग',
+          'वजन बढ़ाने में कठिनाई',
+          'कम शरीर वसा',
+          'पतली मांसपेशियां'
+        ],
+        mesomorph: [
+          'प्राकृतिक एथलेटिक निर्माण',
+          'आसानी से मांसपेशियां बनाता है',
+          'कुशल चयापचय',
+          'चौड़े कंधे',
+          'संकीर्ण कमर'
+        ],
+        endomorph: [
+          'बड़ी हड्डी की संरचना',
+          'आसानी से वजन बढ़ता है',
+          'धीमी चयापचय',
+          'गोल शरीर का आकार',
+          'अधिक शरीर वसा प्रतिशत'
+        ]
+      }
+    },
+    de: {
+      bodyTypes: {
+        ectomorph: 'Ektomorph',
+        mesomorph: 'Mesomorph',
+        endomorph: 'Endomorph'
+      },
+      frameSizes: {
+        small: 'Klein',
+        medium: 'Mittel',
+        large: 'Groß'
+      },
+      descriptions: {
+        ectomorph: 'Schlanker und langer Körpertyp',
+        mesomorph: 'Athletischer und muskulöser Körpertyp',
+        endomorph: 'Kräftiger Körpertyp mit Neigung zur Fettspeicherung'
+      },
+      infoTitles: {
+        ectomorph: 'Ektomorph - Schlanker Körpertyp',
+        mesomorph: 'Mesomorph - Athletischer Körpertyp',
+        endomorph: 'Endomorph - Kräftiger Körpertyp'
+      },
+      infoDescriptions: {
+        ectomorph: 'Ektomorphe haben tendenziell einen schnellen Stoffwechsel, lange und schlanke Gliedmaßen und Schwierigkeiten beim Zunehmen von Gewicht oder Muskeln.',
+        mesomorph: 'Mesomorphe haben einen natürlich athletischen Körperbau, bauen leicht Muskeln auf und haben einen effizienten Stoffwechsel.',
+        endomorph: 'Endomorphe haben eine größere Knochenstruktur, neigen dazu, leichter Fett zu speichern und können leicht an Gewicht zunehmen.'
+      },
+      characteristics: {
+        ectomorph: [
+          'Schneller Stoffwechsel',
+          'Lange und schlanke Gliedmaßen',
+          'Schwierigkeiten beim Zunehmen',
+          'Niedriger Körperfettanteil',
+          'Schlanke Muskeln'
+        ],
+        mesomorph: [
+          'Natürlicher athletischer Körperbau',
+          'Baut leicht Muskeln auf',
+          'Effizienter Stoffwechsel',
+          'Breite Schultern',
+          'Schmale Taille'
+        ],
+        endomorph: [
+          'Größere Knochenstruktur',
+          'Nimmt leicht zu',
+          'Langsamerer Stoffwechsel',
+          'Rundliche Körperform',
+          'Höherer Körperfettanteil'
+        ]
+      }
+    },
+    it: {
+      bodyTypes: {
+        ectomorph: 'Ectomorfo',
+        mesomorph: 'Mesomorfo',
+        endomorph: 'Endomorfo'
+      },
+      frameSizes: {
+        small: 'Piccola',
+        medium: 'Media',
+        large: 'Grande'
+      },
+      descriptions: {
+        ectomorph: 'Tipo di corpo magro e allungato',
+        mesomorph: 'Tipo di corpo atletico e muscoloso',
+        endomorph: 'Tipo di corpo robusto con tendenza ad accumulare grasso'
+      },
+      infoTitles: {
+        ectomorph: 'Ectomorfo - Tipo di Corpo Magro',
+        mesomorph: 'Mesomorfo - Tipo di Corpo Atletico',
+        endomorph: 'Endomorfo - Tipo di Corpo Robusto'
+      },
+      infoDescriptions: {
+        ectomorph: 'Gli ectomorfi tendono ad avere un metabolismo veloce, arti lunghi e magri, e difficoltà a guadagnare peso o muscoli.',
+        mesomorph: 'I mesomorfi hanno una costituzione naturalmente atletica, guadagnano muscoli facilmente e hanno un metabolismo efficiente.',
+        endomorph: 'Gli endomorfi hanno una struttura ossea più grande, tendono ad accumulare grasso più facilmente e possono aumentare di peso rapidamente.'
+      },
+      characteristics: {
+        ectomorph: [
+          'Metabolismo veloce',
+          'Arti lunghi e magri',
+          'Difficoltà a guadagnare peso',
+          'Basso grasso corporeo',
+          'Muscoli magri'
+        ],
+        mesomorph: [
+          'Costituzione atletica naturale',
+          'Guadagna muscoli facilmente',
+          'Metabolismo efficiente',
+          'Spalle larghe',
+          'Vita stretta'
+        ],
+        endomorph: [
+          'Struttura ossea più grande',
+          'Aumenta di peso facilmente',
+          'Metabolismo più lento',
+          'Forma corporea arrotondata',
+          'Percentuale di grasso corporeo più alta'
+        ]
+      }
+    }
+  };
+
+  // Get translations for current language
+  const t = translations[currentLang] || translations.es;
+
+  // Handle unit system change
+  unitSystemInputs.forEach(input => {
+    input.addEventListener('change', (e) => {
+      const target = e.target as HTMLInputElement;
+      const isMetric = target.value === 'metric';
+
+      heightMetric.style.display = isMetric ? 'block' : 'none';
+      heightImperial.style.display = isMetric ? 'none' : 'block';
+
+      const heightInput = document.getElementById('height') as HTMLInputElement;
+      const heightIn = document.getElementById('heightIn') as HTMLInputElement;
+
+      if (isMetric) {
+        heightInput.required = true;
+        heightIn.required = false;
+        wristUnit.textContent = 'cm';
+        ankleUnit.textContent = 'cm';
+      } else {
+        heightInput.required = false;
+        heightIn.required = true;
+        wristUnit.textContent = 'in';
+        ankleUnit.textContent = 'in';
+      }
+    });
+  });
+
+  // Handle form submission
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const unitSystem = formData.get('unitSystem') as UnitSystem;
+    const gender = formData.get('gender') as Gender;
+    const wrist = parseFloat(formData.get('wrist') as string);
+    const ankle = parseFloat(formData.get('ankle') as string);
+
+    let height: number;
+
+    if (unitSystem === 'metric') {
+      height = parseFloat(formData.get('height') as string);
+    } else {
+      height = parseFloat(formData.get('heightIn') as string);
+    }
+
+    const input: BodyTypeInput = {
+      gender,
+      height,
+      wristCircumference: wrist,
+      ankleCircumference: ankle,
+      unitSystem,
+    };
+
+    try {
+      const result = calculateBodyTypeMetrics(input);
+      displayResults(result, unitSystem);
+    } catch (error) {
+      alert('Error calculating body type. Please check your inputs.');
+      console.error(error);
+    }
+  });
+
+  function displayResults(result: BodyTypeResult, unitSystem: UnitSystem) {
+    const bodytypeValue = document.getElementById('bodytype-value') as HTMLParagraphElement;
+    const bodytypeDescription = document.getElementById('bodytype-description') as HTMLParagraphElement;
+    const frameSize = document.getElementById('frame-size') as HTMLSpanElement;
+    const wristRatio = document.getElementById('wrist-ratio') as HTMLSpanElement;
+    const ankleRatio = document.getElementById('ankle-ratio') as HTMLSpanElement;
+    const resultCard = document.querySelector('.result-card') as HTMLDivElement;
+    const infoTitle = document.getElementById('info-title') as HTMLHeadingElement;
+    const infoDescription = document.getElementById('info-description') as HTMLParagraphElement;
+    const characteristicsList = document.getElementById('characteristics-list') as HTMLUListElement;
+
+    // Display main results
+    bodytypeValue.textContent = t.bodyTypes[result.bodyType];
+    bodytypeDescription.textContent = t.descriptions[result.bodyType];
+    frameSize.textContent = t.frameSizes[result.frameSize];
+    wristRatio.textContent = result.wristToHeightRatio.toString();
+    ankleRatio.textContent = result.ankleToHeightRatio.toString();
+
+    // Update result card color based on body type
+    resultCard.className = `result-card type-${result.bodyType}`;
+
+    // Display body type information
+    infoTitle.textContent = t.infoTitles[result.bodyType];
+    infoDescription.textContent = t.infoDescriptions[result.bodyType];
+
+    // Display characteristics
+    characteristicsList.innerHTML = '';
+    t.characteristics[result.bodyType].forEach((characteristic: string) => {
+      const li = document.createElement('li');
+      li.textContent = characteristic;
+      characteristicsList.appendChild(li);
+    });
+
+    // Show results
+    results.style.display = 'block';
+    results.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  // Handle form reset
+  form.addEventListener('reset', () => {
+    results.style.display = 'none';
+  });
+</script>

@@ -1,0 +1,46 @@
+{
+  "title": "Calcolatore di Proteine",
+  "description": "Calcola il tuo apporto proteico giornaliero",
+  "metaDescription": "Calcolatore di proteine gratuito - Calcola il tuo apporto proteico giornaliero in base al tuo peso, livello di attività e obiettivi. Ottimizza la tua nutrizione.",
+  "form": {
+    "title": "Inserisci i tuoi dati",
+    "weightLabel": "Peso",
+    "weightPlaceholder": "Inserisci il tuo peso",
+    "activityLabel": "Livello di Attività",
+    "activityLevels": {
+      "sedentary": "Sedentario (poco o nessun esercizio)",
+      "light": "Leggero (esercizio 1-3 giorni/settimana)",
+      "moderate": "Moderato (esercizio 3-5 giorni/settimana)",
+      "active": "Attivo (esercizio 6-7 giorni/settimana)",
+      "veryActive": "Molto Attivo (esercizio intenso quotidiano o lavoro fisico)"
+    },
+    "goalLabel": "Obiettivo",
+    "goals": {
+      "maintain": "Mantenere il peso",
+      "lose": "Perdere peso",
+      "gain": "Aumentare la massa muscolare"
+    }
+  },
+  "results": {
+    "title": "I Tuoi Risultati",
+    "dailyProtein": "Proteine Giornaliere Raccomandate",
+    "gramsPerDay": "grammi al giorno",
+    "proteinPerKg": "Proteine per kg di peso",
+    "caloriesFromProtein": "Calorie dalle proteine",
+    "percentageOfDiet": "Percentuale della dieta (base 2000 kcal)"
+  },
+  "info": {
+    "title": "Informazioni sulle Proteine",
+    "description": "Le proteine sono macronutrienti essenziali che svolgono un ruolo cruciale nella costruzione e riparazione dei tessuti, nella produzione di enzimi e ormoni e nel mantenimento della massa muscolare. La quantità di proteine di cui hai bisogno dipende dal tuo peso corporeo, dal livello di attività fisica e dai tuoi obiettivi di salute.",
+    "recommendationsTitle": "Raccomandazioni Generali",
+    "recommendations": {
+      "sedentary": "Persone sedentarie",
+      "sedentaryValue": "0,8g per kg di peso corporeo",
+      "active": "Persone attive",
+      "activeValue": "1,2-1,5g per kg di peso corporeo",
+      "athlete": "Atleti e costruzione muscolare",
+      "athleteValue": "1,6-2,2g per kg di peso corporeo"
+    },
+    "note": "Nota: Questo calcolatore fornisce stime generali. Consultare un professionista della salute o un nutrizionista per raccomandazioni personalizzate, specialmente se si hanno condizioni mediche specifiche."
+  }
+}

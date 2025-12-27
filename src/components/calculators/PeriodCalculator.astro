@@ -1,0 +1,513 @@
+---
+import { t, type Locale } from '@/utils/i18n';
+
+const { lang } = Astro.props as { lang: Locale };
+---
+
+<div class="period-calculator">
+  <div class="calculator-form">
+    <h2>{t('period:form.title', lang)}</h2>
+
+    <form id="period-form">
+      <!-- Last Period Date -->
+      <div class="form-group">
+        <label for="last-period-date">{t('period:form.lastPeriodLabel', lang)}</label>
+        <input
+          type="date"
+          id="last-period-date"
+          name="lastPeriodDate"
+          required
+        />
+        <p class="help-text">{t('period:form.lastPeriodHelp', lang)}</p>
+      </div>
+
+      <!-- Cycle Length -->
+      <div class="form-group">
+        <label for="cycle-length">{t('period:form.cycleLengthLabel', lang)}</label>
+        <input
+          type="number"
+          id="cycle-length"
+          name="cycleLength"
+          min="21"
+          max="35"
+          value="28"
+          step="1"
+          required
+        />
+        <span class="unit">{t('common.days', lang)}</span>
+        <p class="help-text">{t('period:form.cycleLengthHelp', lang)}</p>
+      </div>
+
+      <!-- Period Length -->
+      <div class="form-group">
+        <label for="period-length">{t('period:form.periodLengthLabel', lang)}</label>
+        <input
+          type="number"
+          id="period-length"
+          name="periodLength"
+          min="2"
+          max="10"
+          value="5"
+          step="1"
+          required
+        />
+        <span class="unit">{t('common.days', lang)}</span>
+        <p class="help-text">{t('period:form.periodLengthHelp', lang)}</p>
+      </div>
+
+      <!-- Buttons -->
+      <div class="form-actions">
+        <button type="submit" class="btn-primary">{t('common.calculate', lang)}</button>
+        <button type="reset" class="btn-secondary">{t('common.reset', lang)}</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="calculator-results" id="results" style="display: none;">
+    <h2>{t('period:results.title', lang)}</h2>
+
+    <div class="result-card main-result">
+      <h3>{t('period:results.nextPeriod', lang)}</h3>
+      <p class="value" id="next-period-value">-</p>
+      <p class="subtitle">{t('period:results.daysUntil', lang)}: <span id="days-until">-</span></p>
+    </div>
+
+    <div class="result-grid">
+      <div class="result-item">
+        <strong>{t('period:results.cycleDay', lang)}:</strong>
+        <span id="cycle-day-value">-</span>
+      </div>
+      <div class="result-item">
+        <strong>{t('period:results.currentPhase', lang)}:</strong>
+        <span id="current-phase">-</span>
+      </div>
+      <div class="result-item">
+        <strong>{t('period:results.ovulationDate', lang)}:</strong>
+        <span id="ovulation-date">-</span>
+      </div>
+      <div class="result-item">
+        <strong>{t('period:results.fertilityWindow', lang)}:</strong>
+        <span id="fertility-window">-</span>
+      </div>
+    </div>
+
+    <div class="calendar-section">
+      <h3>{t('period:results.upcomingPeriods', lang)}</h3>
+      <div class="periods-timeline" id="periods-timeline">
+        <!-- Periods will be inserted here -->
+      </div>
+    </div>
+  </div>
+
+  <div class="calculator-info">
+    <h2>{t('period:info.title', lang)}</h2>
+    <p>{t('period:info.description', lang)}</p>
+    <p class="formula">{t('period:info.formula', lang)}</p>
+    <p class="limitations">{t('period:info.limitations', lang)}</p>
+  </div>
+</div>
+
+<style>
+  .period-calculator {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .calculator-form, .calculator-results, .calculator-info {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  h2 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  h3 {
+    color: #333;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #555;
+  }
+
+  .form-group input[type="number"],
+  .form-group input[type="date"] {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+
+  .form-group input[type="number"]:focus,
+  .form-group input[type="date"]:focus {
+    outline: none;
+    border-color: #d946ef;
+  }
+
+  .unit {
+    display: inline-block;
+    margin-left: 0.5rem;
+    color: #888;
+    font-size: 0.9rem;
+  }
+
+  .help-text {
+    font-size: 0.85rem;
+    color: #888;
+    margin-top: 0.25rem;
+    font-style: italic;
+  }
+
+  .form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .btn-primary, .btn-secondary {
+    flex: 1;
+    padding: 0.875rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, #d946ef 0%, #a21caf 100%);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #c026d3 0%, #86198f 100%);
+  }
+
+  .btn-secondary {
+    background: #f5f5f5;
+    color: #333;
+  }
+
+  .btn-secondary:hover {
+    background: #e0e0e0;
+  }
+
+  .result-card {
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, #d946ef 0%, #a21caf 100%);
+    color: white;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+
+  .result-card h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1.2rem;
+    color: white;
+  }
+
+  .result-card .value {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  .result-card .subtitle {
+    font-size: 1.1rem;
+    margin: 0.5rem 0 0 0;
+    opacity: 0.9;
+  }
+
+  .result-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .result-item {
+    padding: 1rem;
+    background: #faf5ff;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .result-item strong {
+    color: #a21caf;
+    font-size: 0.9rem;
+  }
+
+  .result-item span {
+    color: #333;
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+
+  .calendar-section {
+    margin-top: 2rem;
+  }
+
+  .periods-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .period-item {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    background: #faf5ff;
+    border-radius: 4px;
+    border-left: 4px solid #d946ef;
+  }
+
+  .period-item.current {
+    border-left-color: #a21caf;
+    background: #f3e8ff;
+  }
+
+  .period-number {
+    font-weight: bold;
+    color: #a21caf;
+    min-width: 80px;
+  }
+
+  .period-content {
+    flex: 1;
+  }
+
+  .period-dates {
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+    color: #333;
+  }
+
+  .period-ovulation {
+    font-size: 0.9rem;
+    color: #666;
+  }
+
+  .phase-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+
+  .phase-badge.menstrual {
+    background: #fee2e2;
+    color: #991b1b;
+  }
+
+  .phase-badge.follicular {
+    background: #dbeafe;
+    color: #1e40af;
+  }
+
+  .phase-badge.ovulation {
+    background: #fef3c7;
+    color: #92400e;
+  }
+
+  .phase-badge.luteal {
+    background: #f3e8ff;
+    color: #6b21a8;
+  }
+
+  .calculator-info {
+    background: #faf5ff;
+  }
+
+  .calculator-info p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: #555;
+  }
+
+  .formula {
+    font-family: monospace;
+    background: white;
+    padding: 1rem;
+    border-left: 4px solid #d946ef;
+    margin: 1rem 0;
+  }
+
+  .limitations {
+    font-size: 0.9rem;
+    font-style: italic;
+  }
+
+  @media (max-width: 768px) {
+    .result-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  import type { PeriodInput, PeriodResult } from '@/utils/calculators/period';
+  import { calculatePeriodMetrics, formatDate } from '@/utils/calculators/period';
+
+  const form = document.getElementById('period-form') as HTMLFormElement;
+  const results = document.getElementById('results') as HTMLDivElement;
+
+  // Get current language
+  const currentLang = document.documentElement.lang || 'es';
+
+  // Handle form submission
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const lastPeriodDateStr = formData.get('lastPeriodDate') as string;
+    const cycleLength = parseInt(formData.get('cycleLength') as string);
+    const periodLength = parseInt(formData.get('periodLength') as string);
+
+    const input: PeriodInput = {
+      lastPeriodDate: new Date(lastPeriodDateStr),
+      cycleLength,
+      periodLength,
+    };
+
+    try {
+      const result = calculatePeriodMetrics(input);
+      displayResults(result);
+    } catch (error) {
+      alert('Error calculating period. Please check your inputs.');
+      console.error(error);
+    }
+  });
+
+  function displayResults(result: PeriodResult) {
+    const nextPeriodValue = document.getElementById('next-period-value') as HTMLParagraphElement;
+    const daysUntil = document.getElementById('days-until') as HTMLSpanElement;
+    const cycleDayValue = document.getElementById('cycle-day-value') as HTMLSpanElement;
+    const currentPhase = document.getElementById('current-phase') as HTMLSpanElement;
+    const ovulationDate = document.getElementById('ovulation-date') as HTMLSpanElement;
+    const fertilityWindow = document.getElementById('fertility-window') as HTMLSpanElement;
+    const periodsTimeline = document.getElementById('periods-timeline') as HTMLDivElement;
+
+    // Get locale string for date formatting
+    const localeMap: Record<string, string> = {
+      es: 'es-ES',
+      en: 'en-US',
+      pt: 'pt-PT',
+      fr: 'fr-FR',
+      hi: 'hi-IN',
+      de: 'de-DE',
+      it: 'it-IT',
+    };
+    const locale = localeMap[currentLang] || 'es-ES';
+
+    // Display main results
+    nextPeriodValue.textContent = formatDate(result.nextPeriodDate, locale);
+    daysUntil.textContent = `${result.daysUntilNextPeriod} ${getDayText(result.daysUntilNextPeriod)}`;
+    cycleDayValue.textContent = `${result.cycleDay}`;
+    currentPhase.innerHTML = `<span class="phase-badge ${result.currentPhase}">${getPhaseText(result.currentPhase)}</span>`;
+    ovulationDate.textContent = formatDate(result.nextOvulationDate, locale);
+    fertilityWindow.textContent = `${formatDate(result.fertilityWindowStart, locale)} - ${formatDate(result.fertilityWindowEnd, locale)}`;
+
+    // Display upcoming periods
+    periodsTimeline.innerHTML = '';
+    result.upcomingPeriods.forEach((period, index) => {
+      const isCurrent = index === 0;
+
+      const periodEl = document.createElement('div');
+      periodEl.className = `period-item ${isCurrent ? 'current' : ''}`;
+
+      periodEl.innerHTML = `
+        <div class="period-number">${getPeriodNumberText(period.periodNumber)}</div>
+        <div class="period-content">
+          <div class="period-dates">${formatDate(period.startDate, locale)} - ${formatDate(period.endDate, locale)}</div>
+          <div class="period-ovulation">${getOvulationText()}: ${formatDate(period.ovulationDate, locale)}</div>
+        </div>
+      `;
+
+      periodsTimeline.appendChild(periodEl);
+    });
+
+    // Show results
+    results.style.display = 'block';
+    results.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function getDayText(day: number): string {
+    const texts: Record<string, Record<string, string>> = {
+      es: { singular: 'día', plural: 'días' },
+      en: { singular: 'day', plural: 'days' },
+      pt: { singular: 'dia', plural: 'dias' },
+      fr: { singular: 'jour', plural: 'jours' },
+      hi: { singular: 'दिन', plural: 'दिन' },
+      de: { singular: 'Tag', plural: 'Tage' },
+      it: { singular: 'giorno', plural: 'giorni' },
+    };
+    return day === 1 ? texts[currentLang]?.singular || 'day' : texts[currentLang]?.plural || 'days';
+  }
+
+  function getPhaseText(phase: string): string {
+    const texts: Record<string, Record<string, string>> = {
+      es: { menstrual: 'Menstrual', follicular: 'Folicular', ovulation: 'Ovulación', luteal: 'Lútea' },
+      en: { menstrual: 'Menstrual', follicular: 'Follicular', ovulation: 'Ovulation', luteal: 'Luteal' },
+      pt: { menstrual: 'Menstrual', follicular: 'Folicular', ovulation: 'Ovulação', luteal: 'Lútea' },
+      fr: { menstrual: 'Menstruel', follicular: 'Folliculaire', ovulation: 'Ovulation', luteal: 'Lutéale' },
+      hi: { menstrual: 'मासिक धर्म', follicular: 'फॉलिक्युलर', ovulation: 'ओव्यूलेशन', luteal: 'ल्यूटियल' },
+      de: { menstrual: 'Menstruation', follicular: 'Follikelphase', ovulation: 'Eisprung', luteal: 'Lutealphase' },
+      it: { menstrual: 'Mestruale', follicular: 'Follicolare', ovulation: 'Ovulazione', luteal: 'Luteale' },
+    };
+    return texts[currentLang]?.[phase] || texts.en[phase];
+  }
+
+  function getPeriodNumberText(num: number): string {
+    const texts: Record<string, string> = {
+      es: `Período ${num}`,
+      en: `Period ${num}`,
+      pt: `Período ${num}`,
+      fr: `Période ${num}`,
+      hi: `पीरियड ${num}`,
+      de: `Periode ${num}`,
+      it: `Periodo ${num}`,
+    };
+    return texts[currentLang] || texts.en;
+  }
+
+  function getOvulationText(): string {
+    const texts: Record<string, string> = {
+      es: 'Ovulación',
+      en: 'Ovulation',
+      pt: 'Ovulação',
+      fr: 'Ovulation',
+      hi: 'ओव्यूलेशन',
+      de: 'Eisprung',
+      it: 'Ovulazione',
+    };
+    return texts[currentLang] || texts.en;
+  }
+
+  // Handle form reset
+  form.addEventListener('reset', () => {
+    results.style.display = 'none';
+  });
+</script>

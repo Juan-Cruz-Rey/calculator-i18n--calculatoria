@@ -1,0 +1,46 @@
+{
+  "title": "Calculadora de Proteínas",
+  "description": "Calcula tu ingesta diaria de proteínas",
+  "metaDescription": "Calculadora de proteínas gratuita - Calcula tu ingesta diaria de proteínas basada en tu peso, nivel de actividad y objetivos. Optimiza tu nutrición.",
+  "form": {
+    "title": "Ingresa tus datos",
+    "weightLabel": "Peso",
+    "weightPlaceholder": "Ingresa tu peso",
+    "activityLabel": "Nivel de Actividad",
+    "activityLevels": {
+      "sedentary": "Sedentario (poco o ningún ejercicio)",
+      "light": "Ligero (ejercicio 1-3 días/semana)",
+      "moderate": "Moderado (ejercicio 3-5 días/semana)",
+      "active": "Activo (ejercicio 6-7 días/semana)",
+      "veryActive": "Muy Activo (ejercicio intenso diario o trabajo físico)"
+    },
+    "goalLabel": "Objetivo",
+    "goals": {
+      "maintain": "Mantener peso",
+      "lose": "Perder peso",
+      "gain": "Ganar masa muscular"
+    }
+  },
+  "results": {
+    "title": "Tus Resultados",
+    "dailyProtein": "Proteína Diaria Recomendada",
+    "gramsPerDay": "gramos por día",
+    "proteinPerKg": "Proteína por kg de peso",
+    "caloriesFromProtein": "Calorías de proteína",
+    "percentageOfDiet": "Porcentaje de la dieta (base 2000 kcal)"
+  },
+  "info": {
+    "title": "Sobre las Proteínas",
+    "description": "Las proteínas son macronutrientes esenciales que juegan un papel crucial en la construcción y reparación de tejidos, la producción de enzimas y hormonas, y el mantenimiento de la masa muscular. La cantidad de proteína que necesitas depende de tu peso corporal, nivel de actividad física y objetivos de salud.",
+    "recommendationsTitle": "Recomendaciones Generales",
+    "recommendations": {
+      "sedentary": "Personas sedentarias",
+      "sedentaryValue": "0.8g por kg de peso corporal",
+      "active": "Personas activas",
+      "activeValue": "1.2-1.5g por kg de peso corporal",
+      "athlete": "Atletas y construcción muscular",
+      "athleteValue": "1.6-2.2g por kg de peso corporal"
+    },
+    "note": "Nota: Esta calculadora proporciona estimaciones generales. Consulta a un profesional de la salud o nutricionista para recomendaciones personalizadas, especialmente si tienes condiciones médicas específicas."
+  }
+}

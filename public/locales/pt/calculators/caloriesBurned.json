@@ -1,0 +1,56 @@
+{
+  "title": "Calculadora de Calorias Queimadas",
+  "description": "Calcule as calorias queimadas durante diferentes atividades",
+  "metaDescription": "Calculadora gratuita de calorias queimadas - Descubra quantas calorias você queima durante exercícios e atividades diárias usando valores MET precisos.",
+  "form": {
+    "title": "Insira suas Informações",
+    "activityLabel": "Tipo de Atividade",
+    "durationLabel": "Duração",
+    "durationPlaceholder": "Insira a duração em minutos",
+    "weightLabel": "Peso",
+    "weightPlaceholder": "Insira seu peso"
+  },
+  "activities": {
+    "walking": "Caminhada",
+    "walking_slow": "Caminhada Lenta (< 3 km/h)",
+    "walking_moderate": "Caminhada Moderada (5 km/h)",
+    "walking_brisk": "Caminhada Rápida (5.5 km/h)",
+    "running": "Corrida",
+    "running_slow": "Corrida Leve (8 km/h)",
+    "running_moderate": "Corrida Moderada (11 km/h)",
+    "running_fast": "Corrida Rápida (13 km/h)",
+    "cycling": "Ciclismo",
+    "cycling_leisure": "Ciclismo Recreativo (< 16 km/h)",
+    "cycling_moderate": "Ciclismo Moderado (20-22 km/h)",
+    "cycling_vigorous": "Ciclismo Vigoroso (22-26 km/h)",
+    "swimming": "Natação",
+    "swimming_leisure": "Natação Recreativa",
+    "swimming_moderate": "Natação Moderada",
+    "swimming_vigorous": "Natação Vigorosa",
+    "other": "Outras Atividades",
+    "weightlifting": "Musculação",
+    "yoga": "Yoga",
+    "aerobics": "Aeróbica",
+    "dancing": "Dança",
+    "hiking": "Caminhada em Trilha",
+    "rowing": "Remo",
+    "basketball": "Basquete",
+    "soccer": "Futebol",
+    "tennis": "Tênis",
+    "golf": "Golfe"
+  },
+  "results": {
+    "title": "Seus Resultados",
+    "totalCalories": "Total de Calorias Queimadas",
+    "caloriesUnit": "calorias",
+    "metValue": "Valor MET",
+    "caloriesPerMinute": "Calorias por Minuto",
+    "caloriesPerHour": "Calorias por Hora"
+  },
+  "info": {
+    "title": "Sobre Calorias Queimadas",
+    "description": "Esta calculadora estima as calorias queimadas durante diferentes atividades físicas usando valores MET (Equivalente Metabólico de Tarefa). MET é uma unidade que estima a quantidade de energia que seu corpo usa durante a atividade física.",
+    "formula": "Fórmula: Calorias/minuto = (MET × peso em kg × 3.5) / 200",
+    "limitations": "Os resultados são estimativas baseadas em valores MET médios. O gasto calórico real pode variar com base na intensidade do exercício, composição corporal, idade, gênero e nível de condicionamento físico."
+  }
+}
