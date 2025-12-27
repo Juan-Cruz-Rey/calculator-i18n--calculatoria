@@ -1,0 +1,621 @@
+---
+import { t, type Locale } from '@/utils/i18n';
+
+const { lang } = Astro.props as { lang: Locale };
+---
+
+<div class="pregnancy-weight-gain-calculator">
+  <div class="calculator-form">
+    <h2>{t('pregnancyWeightGain:form.title', lang)}</h2>
+
+    <form id="pregnancy-form">
+      <!-- Unit System Toggle -->
+      <div class="form-group unit-toggle">
+        <label>
+          <input type="radio" name="unitSystem" value="metric" checked />
+          {t('units.metric', lang)}
+        </label>
+        <label>
+          <input type="radio" name="unitSystem" value="imperial" />
+          {t('units.imperial', lang)}
+        </label>
+      </div>
+
+      <!-- Current Pregnancy Week -->
+      <div class="form-group">
+        <label for="currentWeek">{t('pregnancyWeightGain:form.currentWeekLabel', lang)}</label>
+        <input
+          type="number"
+          id="currentWeek"
+          name="currentWeek"
+          min="1"
+          max="40"
+          required
+          placeholder={t('pregnancyWeightGain:form.currentWeekPlaceholder', lang)}
+        />
+        <span class="unit">{t('pregnancyWeightGain:form.weeksUnit', lang)}</span>
+      </div>
+
+      <!-- Twin Pregnancy -->
+      <div class="form-group checkbox-group">
+        <label>
+          <input type="checkbox" id="isTwins" name="isTwins" />
+          <span>{t('pregnancyWeightGain:form.isTwinsLabel', lang)}</span>
+        </label>
+      </div>
+
+      <!-- Height (Metric) -->
+      <div class="form-group height-metric">
+        <label for="height">{t('pregnancyWeightGain:form.heightLabel', lang)}</label>
+        <input
+          type="number"
+          id="height"
+          name="height"
+          min="50"
+          max="250"
+          step="0.1"
+          required
+          placeholder={t('pregnancyWeightGain:form.heightPlaceholder', lang)}
+        />
+        <span class="unit">{t('units.cm', lang)}</span>
+      </div>
+
+      <!-- Height (Imperial) -->
+      <div class="form-group height-imperial" style="display: none;">
+        <label for="heightFt">{t('pregnancyWeightGain:form.heightLabel', lang)}</label>
+        <div class="input-group">
+          <input
+            type="number"
+            id="heightFt"
+            name="heightFt"
+            min="1"
+            max="8"
+            placeholder="Feet"
+          />
+          <span class="unit">{t('units.ft', lang)}</span>
+          <input
+            type="number"
+            id="heightIn"
+            name="heightIn"
+            min="0"
+            max="11"
+            placeholder="Inches"
+          />
+          <span class="unit">{t('units.in', lang)}</span>
+        </div>
+      </div>
+
+      <!-- Pre-Pregnancy Weight -->
+      <div class="form-group">
+        <label for="prePregnancyWeight">{t('pregnancyWeightGain:form.prePregnancyWeightLabel', lang)}</label>
+        <input
+          type="number"
+          id="prePregnancyWeight"
+          name="prePregnancyWeight"
+          min="20"
+          max="300"
+          step="0.1"
+          required
+          placeholder={t('pregnancyWeightGain:form.prePregnancyWeightPlaceholder', lang)}
+        />
+        <span class="unit pre-weight-unit">{t('units.kg', lang)}</span>
+      </div>
+
+      <!-- Current Weight -->
+      <div class="form-group">
+        <label for="currentWeight">{t('pregnancyWeightGain:form.currentWeightLabel', lang)}</label>
+        <input
+          type="number"
+          id="currentWeight"
+          name="currentWeight"
+          min="20"
+          max="300"
+          step="0.1"
+          required
+          placeholder={t('pregnancyWeightGain:form.currentWeightPlaceholder', lang)}
+        />
+        <span class="unit current-weight-unit">{t('units.kg', lang)}</span>
+      </div>
+
+      <!-- Buttons -->
+      <div class="form-actions">
+        <button type="submit" class="btn-primary">{t('common.calculate', lang)}</button>
+        <button type="reset" class="btn-secondary">{t('common.reset', lang)}</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="calculator-results" id="results" style="display: none;">
+    <h2>{t('pregnancyWeightGain:results.title', lang)}</h2>
+
+    <div class="result-card weight-gain-value">
+      <h3>{t('pregnancyWeightGain:results.currentGainValue', lang)}</h3>
+      <p class="value" id="current-gain-value">-</p>
+      <p class="status" id="gain-status">-</p>
+    </div>
+
+    <div class="result-grid">
+      <div class="result-item">
+        <strong>{t('pregnancyWeightGain:results.prePregnancyBMI', lang)}:</strong>
+        <span id="pre-bmi">-</span>
+      </div>
+      <div class="result-item">
+        <strong>{t('pregnancyWeightGain:results.bmiCategory', lang)}:</strong>
+        <span id="bmi-category">-</span>
+      </div>
+      <div class="result-item">
+        <strong>{t('pregnancyWeightGain:results.trimester', lang)}:</strong>
+        <span id="trimester">-</span>
+      </div>
+      <div class="result-item">
+        <strong>{t('pregnancyWeightGain:results.recommendedTotalGain', lang)}:</strong>
+        <span id="recommended-total">-</span>
+      </div>
+      <div class="result-item">
+        <strong>{t('pregnancyWeightGain:results.recommendedAtWeek', lang)}:</strong>
+        <span id="recommended-current">-</span>
+      </div>
+      <div class="result-item">
+        <strong>{t('pregnancyWeightGain:results.weeklyGainTarget', lang)}:</strong>
+        <span id="weekly-gain">-</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="calculator-info">
+    <h2>{t('pregnancyWeightGain:info.title', lang)}</h2>
+    <p>{t('pregnancyWeightGain:info.description', lang)}</p>
+    <p class="guidelines">{t('pregnancyWeightGain:info.guidelines', lang)}</p>
+    <p class="limitations">{t('pregnancyWeightGain:info.limitations', lang)}</p>
+  </div>
+</div>
+
+<style>
+  .pregnancy-weight-gain-calculator {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .calculator-form, .calculator-results, .calculator-info {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  h2 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #555;
+  }
+
+  .form-group input[type="number"] {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+
+  .form-group input[type="number"]:focus {
+    outline: none;
+    border-color: #9b59b6;
+  }
+
+  .unit {
+    display: inline-block;
+    margin-left: 0.5rem;
+    color: #888;
+    font-size: 0.9rem;
+  }
+
+  .unit-toggle {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    background: #f5f5f5;
+    border-radius: 4px;
+  }
+
+  .unit-toggle label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    margin: 0;
+  }
+
+  .checkbox-group {
+    padding: 1rem;
+    background: #f9f9f9;
+    border-radius: 4px;
+  }
+
+  .checkbox-group label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    margin: 0;
+  }
+
+  .checkbox-group input[type="checkbox"] {
+    width: 1.25rem;
+    height: 1.25rem;
+    cursor: pointer;
+  }
+
+  .checkbox-group span {
+    font-weight: 500;
+    color: #555;
+  }
+
+  .input-group {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .input-group input {
+    flex: 1;
+  }
+
+  .form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .btn-primary, .btn-secondary {
+    flex: 1;
+    padding: 0.875rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #8e44ad 0%, #7d3c98 100%);
+  }
+
+  .btn-secondary {
+    background: #f5f5f5;
+    color: #333;
+  }
+
+  .btn-secondary:hover {
+    background: #e0e0e0;
+  }
+
+  .result-card {
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, #b19cd9 0%, #9b59b6 100%);
+    color: white;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+
+  .result-card h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1.2rem;
+  }
+
+  .result-card .value {
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  .result-card .status {
+    font-size: 1.2rem;
+    margin: 0.5rem 0 0 0;
+    opacity: 0.9;
+  }
+
+  .result-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .result-item {
+    padding: 1rem;
+    background: #f9f9f9;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .result-item strong {
+    color: #555;
+    font-size: 0.9rem;
+  }
+
+  .result-item span {
+    color: #333;
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+
+  .calculator-info {
+    background: #f9f9f9;
+  }
+
+  .calculator-info p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: #555;
+  }
+
+  .guidelines {
+    background: white;
+    padding: 1rem;
+    border-left: 4px solid #9b59b6;
+    margin: 1rem 0;
+  }
+
+  .limitations {
+    font-size: 0.9rem;
+    font-style: italic;
+  }
+
+  /* Status colors */
+  .status-on-track {
+    background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+  }
+
+  .status-below {
+    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+  }
+
+  .status-above {
+    background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+  }
+</style>
+
+<script>
+  import type { PregnancyWeightGainInput, PregnancyWeightGainResult, UnitSystem } from '@/utils/calculators/pregnancyWeightGain';
+  import { calculatePregnancyWeightGain } from '@/utils/calculators/pregnancyWeightGain';
+
+  const form = document.getElementById('pregnancy-form') as HTMLFormElement;
+  const results = document.getElementById('results') as HTMLDivElement;
+  const unitSystemInputs = document.querySelectorAll('input[name="unitSystem"]');
+  const heightMetric = document.querySelector('.height-metric') as HTMLDivElement;
+  const heightImperial = document.querySelector('.height-imperial') as HTMLDivElement;
+  const preWeightUnit = document.querySelector('.pre-weight-unit') as HTMLSpanElement;
+  const currentWeightUnit = document.querySelector('.current-weight-unit') as HTMLSpanElement;
+
+  // Get current language
+  const lang = document.documentElement.lang;
+
+  // Translations for categories
+  const categoryTranslations: Record<string, Record<string, string>> = {
+    es: {
+      underweight: 'Bajo peso',
+      normal: 'Normal',
+      overweight: 'Sobrepeso',
+      obese: 'Obesidad',
+      onTrack: 'En el objetivo',
+      below: 'Por debajo del objetivo',
+      above: 'Por encima del objetivo',
+      trimester1: 'Primer trimestre',
+      trimester2: 'Segundo trimestre',
+      trimester3: 'Tercer trimestre',
+    },
+    en: {
+      underweight: 'Underweight',
+      normal: 'Normal',
+      overweight: 'Overweight',
+      obese: 'Obese',
+      onTrack: 'On Track',
+      below: 'Below Target',
+      above: 'Above Target',
+      trimester1: 'First Trimester',
+      trimester2: 'Second Trimester',
+      trimester3: 'Third Trimester',
+    },
+    pt: {
+      underweight: 'Abaixo do peso',
+      normal: 'Normal',
+      overweight: 'Sobrepeso',
+      obese: 'Obesidade',
+      onTrack: 'No objetivo',
+      below: 'Abaixo do objetivo',
+      above: 'Acima do objetivo',
+      trimester1: 'Primeiro trimestre',
+      trimester2: 'Segundo trimestre',
+      trimester3: 'Terceiro trimestre',
+    },
+    fr: {
+      underweight: 'Insuffisance pondérale',
+      normal: 'Normal',
+      overweight: 'Surpoids',
+      obese: 'Obésité',
+      onTrack: 'Sur la bonne voie',
+      below: 'En dessous de l\'objectif',
+      above: 'Au-dessus de l\'objectif',
+      trimester1: 'Premier trimestre',
+      trimester2: 'Deuxième trimestre',
+      trimester3: 'Troisième trimestre',
+    },
+    hi: {
+      underweight: 'कम वजन',
+      normal: 'सामान्य',
+      overweight: 'अधिक वजन',
+      obese: 'मोटापा',
+      onTrack: 'लक्ष्य पर',
+      below: 'लक्ष्य से नीचे',
+      above: 'लक्ष्य से ऊपर',
+      trimester1: 'पहली तिमाही',
+      trimester2: 'दूसरी तिमाही',
+      trimester3: 'तीसरी तिमाही',
+    },
+    de: {
+      underweight: 'Untergewicht',
+      normal: 'Normal',
+      overweight: 'Übergewicht',
+      obese: 'Adipositas',
+      onTrack: 'Auf Kurs',
+      below: 'Unter dem Ziel',
+      above: 'Über dem Ziel',
+      trimester1: 'Erstes Trimester',
+      trimester2: 'Zweites Trimester',
+      trimester3: 'Drittes Trimester',
+    },
+    it: {
+      underweight: 'Sottopeso',
+      normal: 'Normale',
+      overweight: 'Sovrappeso',
+      obese: 'Obesità',
+      onTrack: 'Sulla buona strada',
+      below: 'Sotto l\'obiettivo',
+      above: 'Sopra l\'obiettivo',
+      trimester1: 'Primo trimestre',
+      trimester2: 'Secondo trimestre',
+      trimester3: 'Terzo trimestre',
+    },
+  };
+
+  const translations = categoryTranslations[lang] || categoryTranslations['en'];
+
+  // Handle unit system change
+  unitSystemInputs.forEach(input => {
+    input.addEventListener('change', (e) => {
+      const target = e.target as HTMLInputElement;
+      const isMetric = target.value === 'metric';
+
+      heightMetric.style.display = isMetric ? 'block' : 'none';
+      heightImperial.style.display = isMetric ? 'none' : 'block';
+
+      const heightInput = document.getElementById('height') as HTMLInputElement;
+      const heightFt = document.getElementById('heightFt') as HTMLInputElement;
+      const heightIn = document.getElementById('heightIn') as HTMLInputElement;
+
+      if (isMetric) {
+        heightInput.required = true;
+        heightFt.required = false;
+        heightIn.required = false;
+        preWeightUnit.textContent = 'kg';
+        currentWeightUnit.textContent = 'kg';
+      } else {
+        heightInput.required = false;
+        heightFt.required = true;
+        heightIn.required = true;
+        preWeightUnit.textContent = 'lbs';
+        currentWeightUnit.textContent = 'lbs';
+      }
+    });
+  });
+
+  // Handle form submission
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const unitSystem = formData.get('unitSystem') as UnitSystem;
+    const currentWeek = parseInt(formData.get('currentWeek') as string);
+    const isTwins = (formData.get('isTwins') as string) === 'on';
+    const prePregnancyWeight = parseFloat(formData.get('prePregnancyWeight') as string);
+    const currentWeight = parseFloat(formData.get('currentWeight') as string);
+
+    let height: number;
+
+    if (unitSystem === 'metric') {
+      height = parseFloat(formData.get('height') as string);
+    } else {
+      const feet = parseInt(formData.get('heightFt') as string) || 0;
+      const inches = parseInt(formData.get('heightIn') as string) || 0;
+      height = feet * 12 + inches; // Total inches
+    }
+
+    const input: PregnancyWeightGainInput = {
+      height,
+      prePregnancyWeight,
+      currentWeight,
+      currentWeek,
+      isTwins,
+      unitSystem,
+    };
+
+    try {
+      const result = calculatePregnancyWeightGain(input);
+      displayResults(result, unitSystem);
+    } catch (error) {
+      alert('Error calculating pregnancy weight gain. Please check your inputs.');
+      console.error(error);
+    }
+  });
+
+  function displayResults(result: PregnancyWeightGainResult, unitSystem: UnitSystem) {
+    const currentGainValue = document.getElementById('current-gain-value') as HTMLParagraphElement;
+    const gainStatus = document.getElementById('gain-status') as HTMLParagraphElement;
+    const preBMI = document.getElementById('pre-bmi') as HTMLSpanElement;
+    const bmiCategory = document.getElementById('bmi-category') as HTMLSpanElement;
+    const trimester = document.getElementById('trimester') as HTMLSpanElement;
+    const recommendedTotal = document.getElementById('recommended-total') as HTMLSpanElement;
+    const recommendedCurrent = document.getElementById('recommended-current') as HTMLSpanElement;
+    const weeklyGain = document.getElementById('weekly-gain') as HTMLSpanElement;
+    const resultCard = document.querySelector('.result-card') as HTMLDivElement;
+
+    const weightUnit = unitSystem === 'metric' ? 'kg' : 'lbs';
+
+    currentGainValue.textContent = `${result.currentWeightGain} ${weightUnit}`;
+
+    let statusText: string;
+    let statusClass: string;
+    if (result.isOnTrack) {
+      statusText = translations.onTrack;
+      statusClass = 'status-on-track';
+    } else if (result.currentWeightGain < result.recommendedCurrentGain.min) {
+      statusText = translations.below;
+      statusClass = 'status-below';
+    } else {
+      statusText = translations.above;
+      statusClass = 'status-above';
+    }
+
+    gainStatus.textContent = statusText;
+    preBMI.textContent = result.prePregnancyBMI.toString();
+    bmiCategory.textContent = translations[result.category];
+    trimester.textContent = translations[`trimester${result.trimester}`];
+    recommendedTotal.textContent = `${result.recommendedTotalGain.min} - ${result.recommendedTotalGain.max} ${weightUnit}`;
+    recommendedCurrent.textContent = `${result.recommendedCurrentGain.min} - ${result.recommendedCurrentGain.max} ${weightUnit}`;
+    weeklyGain.textContent = `${result.recommendedWeeklyGain.min} - ${result.recommendedWeeklyGain.max} ${weightUnit}/week`;
+
+    // Update result card color based on status
+    resultCard.className = `result-card ${statusClass}`;
+
+    // Show results
+    results.style.display = 'block';
+    results.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  // Handle form reset
+  form.addEventListener('reset', () => {
+    results.style.display = 'none';
+  });
+</script>

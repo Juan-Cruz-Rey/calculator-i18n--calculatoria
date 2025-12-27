@@ -1,0 +1,36 @@
+{
+  "title": "Calculateur de Grossesse",
+  "description": "Calculez votre date d'accouchement et suivi de grossesse",
+  "metaDescription": "Calculateur de grossesse gratuit - Calculez votre date d'accouchement, semaine actuelle et trimestre. Inclut les étapes importantes du développement fœtal.",
+  "form": {
+    "title": "Entrez vos informations",
+    "methodLabel": "Méthode de calcul",
+    "lmpMethod": "Dernières règles (DDR)",
+    "conceptionMethod": "Date de conception",
+    "dueDateMethod": "Date d'accouchement connue",
+    "lmpDateLabel": "Premier jour de vos dernières règles",
+    "lmpDateHelp": "Entrez le premier jour de vos dernières menstruations",
+    "conceptionDateLabel": "Date de conception",
+    "conceptionDateHelp": "Date estimée ou connue de conception",
+    "dueDateLabel": "Date d'accouchement prévue",
+    "dueDateHelp": "Si votre médecin vous a donné une date",
+    "cycleLengthLabel": "Durée du cycle menstruel",
+    "cycleLengthHelp": "Durée moyenne de votre cycle (généralement 28 jours)"
+  },
+  "results": {
+    "title": "Vos Résultats",
+    "dueDate": "Date d'Accouchement Prévue",
+    "currentWeek": "Semaine Actuelle",
+    "conceptionDate": "Date de Conception",
+    "trimester": "Trimestre",
+    "daysRemaining": "Jours Restants",
+    "percentComplete": "Progrès",
+    "milestones": "Jalons de la Grossesse"
+  },
+  "info": {
+    "title": "À propos du Calculateur de Grossesse",
+    "description": "Ce calculateur estime votre date d'accouchement et suit votre progression tout au long de la grossesse. La grossesse dure généralement 40 semaines (280 jours) depuis le premier jour de vos dernières règles, ou 38 semaines depuis la conception.",
+    "formula": "Formule: Règle de Naegele - Date d'accouchement = DDR + 280 jours (ajusté selon la durée du cycle)",
+    "limitations": "Remarque: Ce calculateur fournit des estimations. Seulement 4% des bébés naissent exactement à la date prévue. 60% naissent dans la semaine de la date estimée, et 90% dans les deux semaines. Consultez toujours votre médecin pour un suivi précis de la grossesse."
+  }
+}

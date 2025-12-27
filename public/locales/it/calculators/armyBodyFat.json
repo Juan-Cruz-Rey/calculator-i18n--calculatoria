@@ -1,0 +1,36 @@
+{
+  "title": "Calcolatore di Grasso Corporeo dell'Esercito",
+  "description": "Calcola la tua percentuale di grasso corporeo usando la formula dell'esercito americano",
+  "metaDescription": "Calcolatore di Grasso Corporeo dell'Esercito Gratuito - Calcola la tua percentuale di grasso corporeo usando la formula ufficiale dell'esercito americano. Verifica se soddisfi gli standard di composizione corporea dell'esercito.",
+  "form": {
+    "title": "Inserisci le tue misure",
+    "ageLabel": "Età",
+    "agePlaceholder": "Inserisci la tua età",
+    "genderLabel": "Genere",
+    "heightLabel": "Altezza",
+    "heightPlaceholder": "Inserisci la tua altezza",
+    "neckLabel": "Circonferenza del Collo",
+    "neckPlaceholder": "Misurare sotto la laringe",
+    "waistLabel": "Circonferenza della Vita",
+    "waistPlaceholder": "Misurare all'altezza dell'ombelico",
+    "hipLabel": "Circonferenza dei Fianchi (Solo Donne)",
+    "hipPlaceholder": "Misurare nel punto più largo"
+  },
+  "results": {
+    "title": "I Tuoi Risultati",
+    "bodyFatValue": "Percentuale di Grasso Corporeo",
+    "ageGroup": "Gruppo di Età",
+    "maxAllowed": "Massimo Consentito",
+    "status": "Standard dell'Esercito"
+  },
+  "info": {
+    "title": "Informazioni sul Calcolatore di Grasso Corporeo dell'Esercito",
+    "description": "Il Calcolatore di Grasso Corporeo dell'Esercito utilizza la formula ufficiale dell'esercito americano dal Regolamento dell'Esercito 600-9. Questo calcolatore determina se soddisfi gli standard di composizione corporea richiesti per il servizio militare. La formula utilizza misurazioni della circonferenza del collo, della vita e (per le donne) dei fianchi per stimare la percentuale di grasso corporeo.",
+    "standardsTitle": "Standard di Grasso Corporeo dell'Esercito Americano",
+    "ageRange": "Fascia di Età",
+    "maleMax": "Max. Uomo %",
+    "femaleMax": "Max. Donna %",
+    "formula": "Formula Uomini: % GC = 86.010 × log10(vita - collo) - 70.041 × log10(altezza) + 36.76 | Formula Donne: % GC = 163.205 × log10(vita + fianchi - collo) - 97.684 × log10(altezza) - 78.387",
+    "limitations": "Questo calcolatore utilizza il metodo ufficiale del test del nastro dell'esercito americano. Per la misurazione più accurata, prendi la media di almeno tre misurazioni arrotondate al 0,5 pollice o cm più vicino. I soldati che falliscono possono richiedere test supplementari utilizzando sistemi DXA, InBody 770 o Bod Pod."
+  }
+}

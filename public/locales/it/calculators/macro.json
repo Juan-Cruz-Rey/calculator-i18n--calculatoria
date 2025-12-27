@@ -1,0 +1,59 @@
+{
+  "title": "Calcolatore di Macro",
+  "description": "Calcola i tuoi macronutrienti giornalieri",
+  "metaDescription": "Calcolatore di macro gratuito - Calcola la tua distribuzione di proteine, carboidrati e grassi in base al tuo obiettivo. Ottieni il tuo piano nutrizionale personalizzato.",
+  "form": {
+    "title": "Inserisci i tuoi dati",
+    "ageLabel": "Età",
+    "agePlaceholder": "Inserisci la tua età",
+    "genderLabel": "Genere",
+    "heightLabel": "Altezza",
+    "heightPlaceholder": "Inserisci la tua altezza",
+    "weightLabel": "Peso",
+    "weightPlaceholder": "Inserisci il tuo peso",
+    "activityLabel": "Livello di attività",
+    "activityLevels": {
+      "sedentary": "Sedentario (poco o nessun esercizio)",
+      "light": "Leggero (esercizio 1-3 volte/settimana)",
+      "moderate": "Moderato (esercizio 4-5 volte/settimana)",
+      "active": "Attivo (esercizio giornaliero o intenso 3-4 volte/settimana)",
+      "veryActive": "Molto attivo (esercizio intenso 6-7 volte/settimana)",
+      "extraActive": "Extra attivo (esercizio molto intenso giornaliero o lavoro fisico)"
+    },
+    "goalLabel": "Obiettivo di peso",
+    "goals": {
+      "extremeLoss": "Perdita estrema (1 kg/settimana)",
+      "moderateLoss": "Perdita moderata (0.5 kg/settimana)",
+      "mildLoss": "Perdita lieve (0.25 kg/settimana)",
+      "maintain": "Mantenere il peso",
+      "mildGain": "Aumento lieve (0.25 kg/settimana)",
+      "moderateGain": "Aumento moderato (0.5 kg/settimana)",
+      "extremeGain": "Aumento estremo (1 kg/settimana)"
+    },
+    "dietTypeLabel": "Tipo di dieta",
+    "dietTypes": {
+      "balanced": "Equilibrata (30% proteine, 40% carboidrati, 30% grassi)",
+      "lowFat": "Bassa in grassi (30% proteine, 50% carboidrati, 20% grassi)",
+      "lowCarb": "Bassa in carboidrati (35% proteine, 20% carboidrati, 45% grassi)",
+      "highProtein": "Alta in proteine (40% proteine, 30% carboidrati, 30% grassi)"
+    }
+  },
+  "results": {
+    "title": "I Tuoi Risultati",
+    "dailyCalories": "Calorie Giornaliere",
+    "toReachGoal": "per raggiungere il tuo obiettivo",
+    "bmr": "Metabolismo Basale (BMR)",
+    "tdee": "Dispendio Energetico Totale Giornaliero (TDEE)",
+    "weeklyChange": "Variazione di Peso Settimanale",
+    "macrosBreakdown": "Ripartizione dei Macronutrienti",
+    "protein": "Proteine",
+    "carbs": "Carboidrati",
+    "fats": "Grassi"
+  },
+  "info": {
+    "title": "Informazioni sui Macronutrienti",
+    "description": "I macronutrienti (proteine, carboidrati e grassi) sono i nutrienti che forniscono energia al tuo corpo. Questo calcolatore determina il tuo dispendio energetico totale giornaliero e distribuisce le calorie in macronutrienti in base al tuo obiettivo e al tipo di dieta preferito.",
+    "formula": "Formula: BMR (Mifflin-St Jeor) × Moltiplicatore di Attività ± Aggiustamento Obiettivo",
+    "limitations": "Questo calcolatore fornisce stime basate su formule standard. I requisiti individuali possono variare. Consulta un professionista della salute o un nutrizionista per un piano personalizzato."
+  }
+}

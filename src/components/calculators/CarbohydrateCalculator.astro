@@ -1,0 +1,571 @@
+---
+import { t, type Locale } from '@/utils/i18n';
+
+const { lang } = Astro.props as { lang: Locale };
+---
+
+<div class="carbohydrate-calculator">
+  <div class="calculator-form">
+    <h2>{t('carbohydrate:form.title', lang)}</h2>
+
+    <form id="carbohydrate-form">
+      <!-- Unit System Toggle -->
+      <div class="form-group unit-toggle">
+        <label>
+          <input type="radio" name="unitSystem" value="metric" checked />
+          {t('units.metric', lang)}
+        </label>
+        <label>
+          <input type="radio" name="unitSystem" value="imperial" />
+          {t('units.imperial', lang)}
+        </label>
+      </div>
+
+      <!-- Age -->
+      <div class="form-group">
+        <label for="age">{t('carbohydrate:form.ageLabel', lang)}</label>
+        <input
+          type="number"
+          id="age"
+          name="age"
+          min="15"
+          max="80"
+          required
+          placeholder={t('carbohydrate:form.agePlaceholder', lang)}
+        />
+        <span class="unit">{t('common.years', lang)}</span>
+      </div>
+
+      <!-- Gender -->
+      <div class="form-group">
+        <label for="gender">{t('carbohydrate:form.genderLabel', lang)}</label>
+        <select id="gender" name="gender" required>
+          <option value="male">{t('common.male', lang)}</option>
+          <option value="female">{t('common.female', lang)}</option>
+        </select>
+      </div>
+
+      <!-- Height (Metric) -->
+      <div class="form-group height-metric">
+        <label for="height">{t('carbohydrate:form.heightLabel', lang)}</label>
+        <input
+          type="number"
+          id="height"
+          name="height"
+          min="120"
+          max="250"
+          step="0.1"
+          required
+          placeholder={t('carbohydrate:form.heightPlaceholder', lang)}
+        />
+        <span class="unit">{t('units.cm', lang)}</span>
+      </div>
+
+      <!-- Height (Imperial) -->
+      <div class="form-group height-imperial" style="display: none;">
+        <label for="heightFt">{t('carbohydrate:form.heightLabel', lang)}</label>
+        <div class="input-group">
+          <input
+            type="number"
+            id="heightFt"
+            name="heightFt"
+            min="4"
+            max="8"
+            placeholder="Feet"
+          />
+          <span class="unit">{t('units.ft', lang)}</span>
+          <input
+            type="number"
+            id="heightIn"
+            name="heightIn"
+            min="0"
+            max="11"
+            placeholder="Inches"
+          />
+          <span class="unit">{t('units.in', lang)}</span>
+        </div>
+      </div>
+
+      <!-- Weight -->
+      <div class="form-group">
+        <label for="weight">{t('carbohydrate:form.weightLabel', lang)}</label>
+        <input
+          type="number"
+          id="weight"
+          name="weight"
+          min="30"
+          max="300"
+          step="0.1"
+          required
+          placeholder={t('carbohydrate:form.weightPlaceholder', lang)}
+        />
+        <span class="unit weight-unit">{t('units.kg', lang)}</span>
+      </div>
+
+      <!-- Activity Level -->
+      <div class="form-group">
+        <label for="activityLevel">{t('carbohydrate:form.activityLevelLabel', lang)}</label>
+        <select id="activityLevel" name="activityLevel" required>
+          <option value="sedentary">{t('carbohydrate:form.activityLevels.sedentary', lang)}</option>
+          <option value="light">{t('carbohydrate:form.activityLevels.light', lang)}</option>
+          <option value="moderate" selected>{t('carbohydrate:form.activityLevels.moderate', lang)}</option>
+          <option value="active">{t('carbohydrate:form.activityLevels.active', lang)}</option>
+          <option value="extra">{t('carbohydrate:form.activityLevels.extra', lang)}</option>
+        </select>
+      </div>
+
+      <!-- Goal -->
+      <div class="form-group">
+        <label for="goal">{t('carbohydrate:form.goalLabel', lang)}</label>
+        <select id="goal" name="goal" required>
+          <option value="loss">{t('carbohydrate:form.goals.loss', lang)}</option>
+          <option value="maintain" selected>{t('carbohydrate:form.goals.maintain', lang)}</option>
+          <option value="gain">{t('carbohydrate:form.goals.gain', lang)}</option>
+        </select>
+      </div>
+
+      <!-- Buttons -->
+      <div class="form-actions">
+        <button type="submit" class="btn-primary">{t('common.calculate', lang)}</button>
+        <button type="reset" class="btn-secondary">{t('common.reset', lang)}</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="calculator-results" id="results" style="display: none;">
+    <h2>{t('carbohydrate:results.title', lang)}</h2>
+
+    <!-- Calorie Summary -->
+    <div class="calorie-summary">
+      <div class="summary-item">
+        <strong>{t('carbohydrate:results.bmr', lang)}:</strong>
+        <span id="bmr-value">-</span>
+      </div>
+      <div class="summary-item">
+        <strong>{t('carbohydrate:results.tdee', lang)}:</strong>
+        <span id="tdee-value">-</span>
+      </div>
+      <div class="summary-item">
+        <strong>{t('carbohydrate:results.targetCalories', lang)}:</strong>
+        <span id="target-calories">-</span>
+      </div>
+    </div>
+
+    <!-- Carbohydrate Recommendations -->
+    <h3>{t('carbohydrate:results.recommendationsTitle', lang)}</h3>
+
+    <div class="carb-cards">
+      <!-- Low Carb -->
+      <div class="carb-card low-carb">
+        <h4>{t('carbohydrate:results.levels.low', lang)}</h4>
+        <p class="percentage" id="low-percentage">-</p>
+        <p class="grams" id="low-grams">-</p>
+        <p class="calories" id="low-calories">-</p>
+        <p class="description">{t('carbohydrate:results.descriptions.low', lang)}</p>
+      </div>
+
+      <!-- Moderate Carb -->
+      <div class="carb-card moderate-carb">
+        <h4>{t('carbohydrate:results.levels.moderate', lang)}</h4>
+        <p class="percentage" id="moderate-percentage">-</p>
+        <p class="grams" id="moderate-grams">-</p>
+        <p class="calories" id="moderate-calories">-</p>
+        <p class="description">{t('carbohydrate:results.descriptions.moderate', lang)}</p>
+      </div>
+
+      <!-- High Carb -->
+      <div class="carb-card high-carb">
+        <h4>{t('carbohydrate:results.levels.high', lang)}</h4>
+        <p class="percentage" id="high-percentage">-</p>
+        <p class="grams" id="high-grams">-</p>
+        <p class="calories" id="high-calories">-</p>
+        <p class="description">{t('carbohydrate:results.descriptions.high', lang)}</p>
+      </div>
+    </div>
+
+    <div class="result-note">
+      <p>{t('carbohydrate:results.note', lang)}</p>
+    </div>
+  </div>
+
+  <div class="calculator-info">
+    <h2>{t('carbohydrate:info.title', lang)}</h2>
+    <p>{t('carbohydrate:info.description', lang)}</p>
+    <p class="formula">{t('carbohydrate:info.formula', lang)}</p>
+    <p class="recommendations">{t('carbohydrate:info.recommendations', lang)}</p>
+  </div>
+</div>
+
+<style>
+  .carbohydrate-calculator {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .calculator-form, .calculator-results, .calculator-info {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  h2 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  h3 {
+    color: #555;
+    font-size: 1.3rem;
+    margin: 1.5rem 0 1rem 0;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #555;
+  }
+
+  .form-group input[type="number"],
+  .form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+
+  .form-group input[type="number"]:focus,
+  .form-group select:focus {
+    outline: none;
+    border-color: #f59e0b;
+  }
+
+  .unit {
+    display: inline-block;
+    margin-left: 0.5rem;
+    color: #888;
+    font-size: 0.9rem;
+  }
+
+  .unit-toggle {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    background: #fef3c7;
+    border-radius: 4px;
+  }
+
+  .unit-toggle label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    margin: 0;
+  }
+
+  .input-group {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .input-group input {
+    flex: 1;
+  }
+
+  .form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .btn-primary, .btn-secondary {
+    flex: 1;
+    padding: 0.875rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+  }
+
+  .btn-secondary {
+    background: #f5f5f5;
+    color: #333;
+  }
+
+  .btn-secondary:hover {
+    background: #e0e0e0;
+  }
+
+  .calorie-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .summary-item {
+    padding: 1.5rem;
+    background: #fef3c7;
+    border-radius: 8px;
+    text-align: center;
+  }
+
+  .summary-item strong {
+    display: block;
+    color: #78350f;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .summary-item span {
+    display: block;
+    color: #92400e;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .carb-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .carb-card {
+    padding: 2rem;
+    border-radius: 8px;
+    color: white;
+    text-align: center;
+  }
+
+  .carb-card h4 {
+    margin: 0 0 1rem 0;
+    font-size: 1.3rem;
+  }
+
+  .carb-card .percentage {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0.5rem 0;
+  }
+
+  .carb-card .grams {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0.5rem 0;
+  }
+
+  .carb-card .calories {
+    font-size: 1.1rem;
+    margin: 0.5rem 0;
+    opacity: 0.9;
+  }
+
+  .carb-card .description {
+    font-size: 0.9rem;
+    margin: 1rem 0 0 0;
+    opacity: 0.95;
+    line-height: 1.4;
+  }
+
+  .low-carb {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  }
+
+  .moderate-carb {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  }
+
+  .high-carb {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  }
+
+  .result-note {
+    padding: 1rem;
+    background: #fef3c7;
+    border-left: 4px solid #f59e0b;
+    border-radius: 4px;
+  }
+
+  .result-note p {
+    margin: 0;
+    color: #78350f;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .calculator-info {
+    background: #fffbeb;
+  }
+
+  .calculator-info p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: #555;
+  }
+
+  .formula {
+    font-family: monospace;
+    background: white;
+    padding: 1rem;
+    border-left: 4px solid #f59e0b;
+    margin: 1rem 0;
+    color: #333;
+  }
+
+  .recommendations {
+    font-size: 0.95rem;
+    background: white;
+    padding: 1rem;
+    border-radius: 4px;
+  }
+</style>
+
+<script>
+  import type { CarbohydrateInput, CarbohydrateResult, UnitSystem, Gender, ActivityLevel, Goal } from '@/utils/calculators/carbohydrate';
+  import { calculateCarbohydrateNeeds } from '@/utils/calculators/carbohydrate';
+
+  const form = document.getElementById('carbohydrate-form') as HTMLFormElement;
+  const results = document.getElementById('results') as HTMLDivElement;
+  const unitSystemInputs = document.querySelectorAll('input[name="unitSystem"]');
+  const heightMetric = document.querySelector('.height-metric') as HTMLDivElement;
+  const heightImperial = document.querySelector('.height-imperial') as HTMLDivElement;
+  const weightUnit = document.querySelector('.weight-unit') as HTMLSpanElement;
+
+  // Handle unit system change
+  unitSystemInputs.forEach(input => {
+    input.addEventListener('change', (e) => {
+      const target = e.target as HTMLInputElement;
+      const isMetric = target.value === 'metric';
+
+      heightMetric.style.display = isMetric ? 'block' : 'none';
+      heightImperial.style.display = isMetric ? 'none' : 'block';
+
+      const heightInput = document.getElementById('height') as HTMLInputElement;
+      const heightFt = document.getElementById('heightFt') as HTMLInputElement;
+      const heightIn = document.getElementById('heightIn') as HTMLInputElement;
+
+      if (isMetric) {
+        heightInput.required = true;
+        heightFt.required = false;
+        heightIn.required = false;
+        weightUnit.textContent = document.documentElement.lang === 'es' ? 'kg' : 'kg';
+      } else {
+        heightInput.required = false;
+        heightFt.required = true;
+        heightIn.required = true;
+        weightUnit.textContent = 'lbs';
+      }
+    });
+  });
+
+  // Handle form submission
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const unitSystem = formData.get('unitSystem') as UnitSystem;
+    const age = parseInt(formData.get('age') as string);
+    const gender = formData.get('gender') as Gender;
+    const weight = parseFloat(formData.get('weight') as string);
+    const activityLevel = formData.get('activityLevel') as ActivityLevel;
+    const goal = formData.get('goal') as Goal;
+
+    let height: number;
+
+    if (unitSystem === 'metric') {
+      height = parseFloat(formData.get('height') as string);
+    } else {
+      const feet = parseInt(formData.get('heightFt') as string) || 0;
+      const inches = parseInt(formData.get('heightIn') as string) || 0;
+      height = feet * 12 + inches; // Total inches
+    }
+
+    const input: CarbohydrateInput = {
+      age,
+      gender,
+      height,
+      weight,
+      activityLevel,
+      goal,
+      unitSystem,
+    };
+
+    try {
+      const result = calculateCarbohydrateNeeds(input);
+      displayResults(result);
+    } catch (error) {
+      alert('Error calculating carbohydrate needs. Please check your inputs.');
+      console.error(error);
+    }
+  });
+
+  function displayResults(result: CarbohydrateResult) {
+    // Display calorie summary
+    const bmrValue = document.getElementById('bmr-value') as HTMLSpanElement;
+    const tdeeValue = document.getElementById('tdee-value') as HTMLSpanElement;
+    const targetCalories = document.getElementById('target-calories') as HTMLSpanElement;
+
+    bmrValue.textContent = `${result.bmr} cal/day`;
+    tdeeValue.textContent = `${result.tdee} cal/day`;
+    targetCalories.textContent = `${result.adjustedCalories} cal/day`;
+
+    // Display low carb recommendation
+    const lowPercentage = document.getElementById('low-percentage') as HTMLParagraphElement;
+    const lowGrams = document.getElementById('low-grams') as HTMLParagraphElement;
+    const lowCalories = document.getElementById('low-calories') as HTMLParagraphElement;
+
+    lowPercentage.textContent = `${result.recommendations.low.percentage}%`;
+    lowGrams.textContent = `${result.recommendations.low.gramsPerDay}g/day`;
+    lowCalories.textContent = `${result.recommendations.low.caloriesFromCarbs} calories`;
+
+    // Display moderate carb recommendation
+    const moderatePercentage = document.getElementById('moderate-percentage') as HTMLParagraphElement;
+    const moderateGrams = document.getElementById('moderate-grams') as HTMLParagraphElement;
+    const moderateCalories = document.getElementById('moderate-calories') as HTMLParagraphElement;
+
+    moderatePercentage.textContent = `${result.recommendations.moderate.percentage}%`;
+    moderateGrams.textContent = `${result.recommendations.moderate.gramsPerDay}g/day`;
+    moderateCalories.textContent = `${result.recommendations.moderate.caloriesFromCarbs} calories`;
+
+    // Display high carb recommendation
+    const highPercentage = document.getElementById('high-percentage') as HTMLParagraphElement;
+    const highGrams = document.getElementById('high-grams') as HTMLParagraphElement;
+    const highCalories = document.getElementById('high-calories') as HTMLParagraphElement;
+
+    highPercentage.textContent = `${result.recommendations.high.percentage}%`;
+    highGrams.textContent = `${result.recommendations.high.gramsPerDay}g/day`;
+    highCalories.textContent = `${result.recommendations.high.caloriesFromCarbs} calories`;
+
+    // Show results
+    results.style.display = 'block';
+    results.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  // Handle form reset
+  form.addEventListener('reset', () => {
+    results.style.display = 'none';
+  });
+</script>

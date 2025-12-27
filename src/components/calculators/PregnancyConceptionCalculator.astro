@@ -1,0 +1,416 @@
+---
+import { t, type Locale } from '@/utils/i18n';
+
+const { lang } = Astro.props as { lang: Locale };
+---
+
+<div class="pregnancy-conception-calculator">
+  <div class="calculator-form">
+    <h2>{t('pregnancyConception:form.title', lang)}</h2>
+
+    <form id="pregnancy-conception-form">
+      <!-- Calculation Mode Toggle -->
+      <div class="form-group mode-toggle">
+        <label>
+          <input type="radio" name="calculationMode" value="lmp" checked />
+          {t('pregnancyConception:form.modeLMP', lang)}
+        </label>
+        <label>
+          <input type="radio" name="calculationMode" value="dueDate" />
+          {t('pregnancyConception:form.modeDueDate', lang)}
+        </label>
+      </div>
+
+      <!-- LMP Date Input -->
+      <div class="form-group lmp-input">
+        <label for="lmpDate">{t('pregnancyConception:form.lmpDateLabel', lang)}</label>
+        <input
+          type="date"
+          id="lmpDate"
+          name="lmpDate"
+          required
+        />
+        <p class="input-help">{t('pregnancyConception:form.lmpDateHelp', lang)}</p>
+      </div>
+
+      <!-- Due Date Input -->
+      <div class="form-group due-date-input" style="display: none;">
+        <label for="dueDate">{t('pregnancyConception:form.dueDateLabel', lang)}</label>
+        <input
+          type="date"
+          id="dueDate"
+          name="dueDate"
+        />
+        <p class="input-help">{t('pregnancyConception:form.dueDateHelp', lang)}</p>
+      </div>
+
+      <!-- Cycle Length -->
+      <div class="form-group">
+        <label for="cycleLength">{t('pregnancyConception:form.cycleLengthLabel', lang)}</label>
+        <select id="cycleLength" name="cycleLength">
+          <option value="22">22 {t('common.days', lang)}</option>
+          <option value="23">23 {t('common.days', lang)}</option>
+          <option value="24">24 {t('common.days', lang)}</option>
+          <option value="25">25 {t('common.days', lang)}</option>
+          <option value="26">26 {t('common.days', lang)}</option>
+          <option value="27">27 {t('common.days', lang)}</option>
+          <option value="28" selected>28 {t('common.days', lang)}</option>
+          <option value="29">29 {t('common.days', lang)}</option>
+          <option value="30">30 {t('common.days', lang)}</option>
+          <option value="31">31 {t('common.days', lang)}</option>
+          <option value="32">32 {t('common.days', lang)}</option>
+          <option value="33">33 {t('common.days', lang)}</option>
+          <option value="34">34 {t('common.days', lang)}</option>
+          <option value="35">35 {t('common.days', lang)}</option>
+          <option value="36">36 {t('common.days', lang)}</option>
+          <option value="38">38 {t('common.days', lang)}</option>
+          <option value="40">40 {t('common.days', lang)}</option>
+          <option value="42">42 {t('common.days', lang)}</option>
+          <option value="44">44 {t('common.days', lang)}</option>
+        </select>
+        <p class="input-help">{t('pregnancyConception:form.cycleLengthHelp', lang)}</p>
+      </div>
+
+      <!-- Buttons -->
+      <div class="form-actions">
+        <button type="submit" class="btn-primary">{t('common.calculate', lang)}</button>
+        <button type="reset" class="btn-secondary">{t('common.reset', lang)}</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="calculator-results" id="results" style="display: none;">
+    <h2>{t('pregnancyConception:results.title', lang)}</h2>
+
+    <div class="result-card conception-date">
+      <h3>{t('pregnancyConception:results.estimatedConception', lang)}</h3>
+      <p class="value" id="conception-date">-</p>
+    </div>
+
+    <div class="result-grid">
+      <div class="result-item">
+        <strong>{t('pregnancyConception:results.conceptionRange', lang)}:</strong>
+        <span id="conception-range">-</span>
+      </div>
+      <div class="result-item">
+        <strong>{t('pregnancyConception:results.fertilityWindow', lang)}:</strong>
+        <span id="fertility-window">-</span>
+      </div>
+      <div class="result-item">
+        <strong>{t('pregnancyConception:results.dueDate', lang)}:</strong>
+        <span id="due-date">-</span>
+      </div>
+      <div class="result-item">
+        <strong>{t('pregnancyConception:results.currentWeek', lang)}:</strong>
+        <span id="current-week">-</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="calculator-info">
+    <h2>{t('pregnancyConception:info.title', lang)}</h2>
+    <p>{t('pregnancyConception:info.description', lang)}</p>
+    <h3>{t('pregnancyConception:info.howItWorksTitle', lang)}</h3>
+    <p>{t('pregnancyConception:info.howItWorks', lang)}</p>
+    <h3>{t('pregnancyConception:info.accuracyTitle', lang)}</h3>
+    <p>{t('pregnancyConception:info.accuracy', lang)}</p>
+    <p class="disclaimer">{t('pregnancyConception:info.disclaimer', lang)}</p>
+  </div>
+</div>
+
+<style>
+  .pregnancy-conception-calculator {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .calculator-form, .calculator-results, .calculator-info {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  h2 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  h3 {
+    color: #555;
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #555;
+  }
+
+  .form-group input[type="date"],
+  .form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+
+  .form-group input[type="date"]:focus,
+  .form-group select:focus {
+    outline: none;
+    border-color: #6BA4E7;
+  }
+
+  .input-help {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    color: #888;
+    font-style: italic;
+  }
+
+  .mode-toggle {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    background: #f5f5f5;
+    border-radius: 4px;
+  }
+
+  .mode-toggle label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    margin: 0;
+  }
+
+  .form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .btn-primary, .btn-secondary {
+    flex: 1;
+    padding: 0.875rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, #6BA4E7 0%, #4A90E2 100%);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #5A94D7 0%, #3980D2 100%);
+  }
+
+  .btn-secondary {
+    background: #f5f5f5;
+    color: #333;
+  }
+
+  .btn-secondary:hover {
+    background: #e0e0e0;
+  }
+
+  .result-card {
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, #6BA4E7 0%, #4A90E2 100%);
+    color: white;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+
+  .result-card h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1.2rem;
+    color: white;
+  }
+
+  .result-card .value {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  .result-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .result-item {
+    padding: 1rem;
+    background: #f9f9f9;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .result-item strong {
+    color: #555;
+    font-size: 0.9rem;
+  }
+
+  .result-item span {
+    color: #333;
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+
+  .calculator-info {
+    background: #f9f9f9;
+  }
+
+  .calculator-info p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: #555;
+  }
+
+  .disclaimer {
+    font-size: 0.9rem;
+    font-style: italic;
+    background: #fff3cd;
+    padding: 1rem;
+    border-left: 4px solid #ffc107;
+    margin-top: 1.5rem;
+  }
+</style>
+
+<script>
+  // Import pregnancy conception calculation utilities
+  import type { PregnancyConceptionInput, PregnancyConceptionResult, CalculationMode } from '@/utils/calculators/pregnancyConception';
+  import { calculatePregnancyConception } from '@/utils/calculators/pregnancyConception';
+
+  const form = document.getElementById('pregnancy-conception-form') as HTMLFormElement;
+  const results = document.getElementById('results') as HTMLDivElement;
+  const modeInputs = document.querySelectorAll('input[name="calculationMode"]');
+  const lmpInput = document.querySelector('.lmp-input') as HTMLDivElement;
+  const dueDateInput = document.querySelector('.due-date-input') as HTMLDivElement;
+  const lmpDateField = document.getElementById('lmpDate') as HTMLInputElement;
+  const dueDateField = document.getElementById('dueDate') as HTMLInputElement;
+
+  // Get current language
+  const lang = document.documentElement.lang || 'es';
+
+  // Date formatting function
+  function formatDate(date: Date): string {
+    const options: Intl.DateTimeFormatOptions = {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    };
+    return date.toLocaleDateString(lang, options);
+  }
+
+  // Handle mode change
+  modeInputs.forEach(input => {
+    input.addEventListener('change', (e) => {
+      const target = e.target as HTMLInputElement;
+      const isLMP = target.value === 'lmp';
+
+      lmpInput.style.display = isLMP ? 'block' : 'none';
+      dueDateInput.style.display = isLMP ? 'none' : 'block';
+
+      if (isLMP) {
+        lmpDateField.required = true;
+        dueDateField.required = false;
+      } else {
+        lmpDateField.required = false;
+        dueDateField.required = true;
+      }
+    });
+  });
+
+  // Handle form submission
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const mode = formData.get('calculationMode') as CalculationMode;
+    const cycleLength = parseInt(formData.get('cycleLength') as string) || 28;
+
+    let date: Date;
+
+    if (mode === 'lmp') {
+      const lmpDateStr = formData.get('lmpDate') as string;
+      if (!lmpDateStr) {
+        alert(lang === 'es' ? 'Por favor ingresa la fecha de tu último período menstrual' : 'Please enter your last menstrual period date');
+        return;
+      }
+      date = new Date(lmpDateStr);
+    } else {
+      const dueDateStr = formData.get('dueDate') as string;
+      if (!dueDateStr) {
+        alert(lang === 'es' ? 'Por favor ingresa tu fecha probable de parto' : 'Please enter your due date');
+        return;
+      }
+      date = new Date(dueDateStr);
+    }
+
+    const input: PregnancyConceptionInput = {
+      mode,
+      date,
+      cycleLength,
+    };
+
+    try {
+      const result = calculatePregnancyConception(input);
+      displayResults(result);
+    } catch (error) {
+      alert(lang === 'es' ? 'Error al calcular. Por favor verifica tus datos.' : 'Error calculating. Please check your inputs.');
+      console.error(error);
+    }
+  });
+
+  function displayResults(result: PregnancyConceptionResult) {
+    const conceptionDate = document.getElementById('conception-date') as HTMLParagraphElement;
+    const conceptionRange = document.getElementById('conception-range') as HTMLSpanElement;
+    const fertilityWindow = document.getElementById('fertility-window') as HTMLSpanElement;
+    const dueDate = document.getElementById('due-date') as HTMLSpanElement;
+    const currentWeek = document.getElementById('current-week') as HTMLSpanElement;
+
+    conceptionDate.textContent = formatDate(result.conceptionDate);
+    conceptionRange.textContent = `${formatDate(result.conceptionRangeStart)} - ${formatDate(result.conceptionRangeEnd)}`;
+    fertilityWindow.textContent = `${formatDate(result.fertilityWindowStart)} - ${formatDate(result.fertilityWindowEnd)}`;
+    dueDate.textContent = formatDate(result.dueDate);
+
+    if (result.currentWeek !== undefined && result.currentDay !== undefined) {
+      const weekText = lang === 'es' ? 'semanas' : 'weeks';
+      const dayText = lang === 'es' ? 'días' : 'days';
+      currentWeek.textContent = `${result.currentWeek} ${weekText}, ${result.currentDay} ${dayText}`;
+    } else {
+      currentWeek.textContent = '-';
+    }
+
+    // Show results
+    results.style.display = 'block';
+    results.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  // Handle form reset
+  form.addEventListener('reset', () => {
+    results.style.display = 'none';
+  });
+</script>

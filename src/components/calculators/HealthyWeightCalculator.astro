@@ -1,0 +1,664 @@
+---
+import { t, type Locale } from '@/utils/i18n';
+
+const { lang } = Astro.props as { lang: Locale };
+---
+
+<div class="healthy-weight-calculator">
+  <div class="calculator-form">
+    <h2>{t('healthyWeight.form.title', lang)}</h2>
+
+    <form id="healthy-weight-form">
+      <!-- Unit System Toggle -->
+      <div class="form-group unit-toggle">
+        <label>
+          <input type="radio" name="unitSystem" value="metric" checked />
+          {t('units.metric', lang)}
+        </label>
+        <label>
+          <input type="radio" name="unitSystem" value="imperial" />
+          {t('units.imperial', lang)}
+        </label>
+      </div>
+
+      <!-- Age -->
+      <div class="form-group">
+        <label for="age">{t('healthyWeight.form.ageLabel', lang)}</label>
+        <input
+          type="number"
+          id="age"
+          name="age"
+          min="18"
+          max="120"
+          required
+          placeholder={t('healthyWeight.form.agePlaceholder', lang)}
+        />
+        <span class="unit">{t('common.years', lang)}</span>
+      </div>
+
+      <!-- Gender -->
+      <div class="form-group">
+        <label for="gender">{t('healthyWeight.form.genderLabel', lang)}</label>
+        <select id="gender" name="gender" required>
+          <option value="male">{t('common.male', lang)}</option>
+          <option value="female">{t('common.female', lang)}</option>
+        </select>
+      </div>
+
+      <!-- Height (Metric) -->
+      <div class="form-group height-metric">
+        <label for="height">{t('healthyWeight.form.heightLabel', lang)}</label>
+        <input
+          type="number"
+          id="height"
+          name="height"
+          min="50"
+          max="250"
+          step="0.1"
+          required
+          placeholder={t('healthyWeight.form.heightPlaceholder', lang)}
+        />
+        <span class="unit">{t('units.cm', lang)}</span>
+      </div>
+
+      <!-- Height (Imperial) -->
+      <div class="form-group height-imperial" style="display: none;">
+        <label for="heightFt">{t('healthyWeight.form.heightLabel', lang)}</label>
+        <div class="input-group">
+          <input
+            type="number"
+            id="heightFt"
+            name="heightFt"
+            min="1"
+            max="8"
+            placeholder="Feet"
+          />
+          <span class="unit">{t('units.ft', lang)}</span>
+          <input
+            type="number"
+            id="heightIn"
+            name="heightIn"
+            min="0"
+            max="11"
+            placeholder="Inches"
+          />
+          <span class="unit">{t('units.in', lang)}</span>
+        </div>
+      </div>
+
+      <!-- Current Weight (Optional) -->
+      <div class="form-group">
+        <label for="currentWeight">{t('healthyWeight.form.currentWeightLabel', lang)}</label>
+        <input
+          type="number"
+          id="currentWeight"
+          name="currentWeight"
+          min="10"
+          max="500"
+          step="0.1"
+          placeholder={t('healthyWeight.form.currentWeightPlaceholder', lang)}
+        />
+        <span class="unit weight-unit">{t('units.kg', lang)}</span>
+        <small class="help-text">{t('healthyWeight.form.currentWeightHelp', lang)}</small>
+      </div>
+
+      <!-- Buttons -->
+      <div class="form-actions">
+        <button type="submit" class="btn-primary">{t('common.calculate', lang)}</button>
+        <button type="reset" class="btn-secondary">{t('common.reset', lang)}</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="calculator-results" id="results" style="display: none;">
+    <h2>{t('healthyWeight.results.title', lang)}</h2>
+
+    <!-- Current Status (if weight provided) -->
+    <div class="result-card current-status" id="current-status" style="display: none;">
+      <h3>{t('healthyWeight.results.currentStatus', lang)}</h3>
+      <p class="value" id="current-bmi">-</p>
+      <p class="category" id="current-category">-</p>
+    </div>
+
+    <!-- Healthy Weight Range -->
+    <div class="result-section">
+      <h3>{t('healthyWeight.results.healthyRangeTitle', lang)}</h3>
+      <div class="result-grid">
+        <div class="result-item">
+          <strong>{t('healthyWeight.results.bmiRange', lang)}:</strong>
+          <span id="bmi-range">-</span>
+        </div>
+        <div class="result-item">
+          <strong>{t('healthyWeight.results.weightRange', lang)}:</strong>
+          <span id="weight-range">-</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Weight Goal (if current weight provided) -->
+    <div class="result-section" id="weight-goal" style="display: none;">
+      <h3>{t('healthyWeight.results.weightGoalTitle', lang)}</h3>
+      <div class="goal-card" id="goal-card">
+        <p id="goal-message">-</p>
+      </div>
+    </div>
+
+    <!-- Ideal Weight Formulas -->
+    <div class="result-section">
+      <h3>{t('healthyWeight.results.idealWeightsTitle', lang)}</h3>
+      <div class="formulas-grid">
+        <div class="formula-item">
+          <strong>{t('healthyWeight.results.robinsonFormula', lang)}</strong>
+          <span id="robinson-weight">-</span>
+          <small>(1983)</small>
+        </div>
+        <div class="formula-item">
+          <strong>{t('healthyWeight.results.millerFormula', lang)}</strong>
+          <span id="miller-weight">-</span>
+          <small>(1983)</small>
+        </div>
+        <div class="formula-item">
+          <strong>{t('healthyWeight.results.devineFormula', lang)}</strong>
+          <span id="devine-weight">-</span>
+          <small>(1974)</small>
+        </div>
+        <div class="formula-item">
+          <strong>{t('healthyWeight.results.hamwiFormula', lang)}</strong>
+          <span id="hamwi-weight">-</span>
+          <small>(1964)</small>
+        </div>
+        <div class="formula-item">
+          <strong>{t('healthyWeight.results.hamwiSmallFrame', lang)}</strong>
+          <span id="hamwi-small-weight">-</span>
+        </div>
+        <div class="formula-item">
+          <strong>{t('healthyWeight.results.hamwiLargeFrame', lang)}</strong>
+          <span id="hamwi-large-weight">-</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="calculator-info">
+    <h2>{t('healthyWeight.info.title', lang)}</h2>
+    <p>{t('healthyWeight.info.description', lang)}</p>
+    <p class="formula">{t('healthyWeight.info.bmiFormula', lang)}</p>
+    <h3>{t('healthyWeight.info.formulasTitle', lang)}</h3>
+    <p>{t('healthyWeight.info.formulasDescription', lang)}</p>
+    <p class="limitations">{t('healthyWeight.info.limitations', lang)}</p>
+  </div>
+</div>
+
+<style>
+  .healthy-weight-calculator {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .calculator-form, .calculator-results, .calculator-info {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  h2 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  h3 {
+    color: #444;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #555;
+  }
+
+  .form-group input[type="number"],
+  .form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+
+  .form-group input[type="number"]:focus,
+  .form-group select:focus {
+    outline: none;
+    border-color: #27ae60;
+  }
+
+  .unit {
+    display: inline-block;
+    margin-left: 0.5rem;
+    color: #888;
+    font-size: 0.9rem;
+  }
+
+  .help-text {
+    display: block;
+    margin-top: 0.5rem;
+    color: #888;
+    font-size: 0.85rem;
+    font-style: italic;
+  }
+
+  .unit-toggle {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    background: #f5f5f5;
+    border-radius: 4px;
+  }
+
+  .unit-toggle label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    margin: 0;
+  }
+
+  .input-group {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .input-group input {
+    flex: 1;
+  }
+
+  .form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .btn-primary, .btn-secondary {
+    flex: 1;
+    padding: 0.875rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #229954 0%, #27ae60 100%);
+  }
+
+  .btn-secondary {
+    background: #f5f5f5;
+    color: #333;
+  }
+
+  .btn-secondary:hover {
+    background: #e0e0e0;
+  }
+
+  .result-card {
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+    color: white;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+
+  .result-card h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1.2rem;
+    color: white;
+  }
+
+  .result-card .value {
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  .result-card .category {
+    font-size: 1.2rem;
+    margin: 0.5rem 0 0 0;
+    opacity: 0.9;
+  }
+
+  .result-section {
+    margin-bottom: 2rem;
+  }
+
+  .result-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .result-item {
+    padding: 1rem;
+    background: #f9f9f9;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .result-item strong {
+    color: #555;
+    font-size: 0.9rem;
+  }
+
+  .result-item span {
+    color: #333;
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+
+  .goal-card {
+    padding: 1.5rem;
+    background: #e8f5e9;
+    border-left: 4px solid #27ae60;
+    border-radius: 4px;
+  }
+
+  .goal-card p {
+    margin: 0;
+    color: #2c3e50;
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+
+  .goal-card.warning {
+    background: #fff3cd;
+    border-left-color: #f39c12;
+  }
+
+  .goal-card.danger {
+    background: #f8d7da;
+    border-left-color: #e74c3c;
+  }
+
+  .formulas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .formula-item {
+    padding: 1rem;
+    background: linear-gradient(135deg, #f0f9f4 0%, #e8f5e9 100%);
+    border-radius: 4px;
+    border: 1px solid #d4edda;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .formula-item strong {
+    color: #27ae60;
+    font-size: 0.9rem;
+  }
+
+  .formula-item span {
+    color: #333;
+    font-size: 1.3rem;
+    font-weight: 600;
+  }
+
+  .formula-item small {
+    color: #888;
+    font-size: 0.8rem;
+  }
+
+  .calculator-info {
+    background: #f9f9f9;
+  }
+
+  .calculator-info p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: #555;
+  }
+
+  .formula {
+    font-family: monospace;
+    background: white;
+    padding: 1rem;
+    border-left: 4px solid #27ae60;
+    margin: 1rem 0;
+  }
+
+  .limitations {
+    font-size: 0.9rem;
+    font-style: italic;
+  }
+
+  /* Category colors for current status */
+  .category-underweight {
+    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+  }
+
+  .category-normal {
+    background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+  }
+
+  .category-overweight {
+    background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+  }
+
+  .category-obese {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+  }
+</style>
+
+<script>
+  // Import calculation utilities
+  import type { HealthyWeightInput, HealthyWeightResult, UnitSystem, Gender } from '@/utils/calculators/healthyWeight';
+  import { calculateHealthyWeight } from '@/utils/calculators/healthyWeight';
+
+  const form = document.getElementById('healthy-weight-form') as HTMLFormElement;
+  const results = document.getElementById('results') as HTMLDivElement;
+  const currentStatusCard = document.getElementById('current-status') as HTMLDivElement;
+  const weightGoalSection = document.getElementById('weight-goal') as HTMLDivElement;
+  const unitSystemInputs = document.querySelectorAll('input[name="unitSystem"]');
+  const heightMetric = document.querySelector('.height-metric') as HTMLDivElement;
+  const heightImperial = document.querySelector('.height-imperial') as HTMLDivElement;
+  const weightUnit = document.querySelector('.weight-unit') as HTMLSpanElement;
+
+  // Get translations from document language
+  const lang = document.documentElement.lang || 'es';
+  const categoryTranslations = {
+    underweight: lang === 'es' ? 'Bajo peso' :
+                 lang === 'pt' ? 'Abaixo do peso' :
+                 lang === 'fr' ? 'Insuffisance pondérale' :
+                 lang === 'hi' ? 'कम वजन' :
+                 lang === 'de' ? 'Untergewicht' :
+                 lang === 'it' ? 'Sottopeso' : 'Underweight',
+    normal: lang === 'es' ? 'Normal' :
+            lang === 'pt' ? 'Normal' :
+            lang === 'fr' ? 'Normal' :
+            lang === 'hi' ? 'सामान्य' :
+            lang === 'de' ? 'Normal' :
+            lang === 'it' ? 'Normale' : 'Normal',
+    overweight: lang === 'es' ? 'Sobrepeso' :
+                lang === 'pt' ? 'Sobrepeso' :
+                lang === 'fr' ? 'Surpoids' :
+                lang === 'hi' ? 'अधिक वजन' :
+                lang === 'de' ? 'Übergewicht' :
+                lang === 'it' ? 'Sovrappeso' : 'Overweight',
+    obese: lang === 'es' ? 'Obesidad' :
+           lang === 'pt' ? 'Obesidade' :
+           lang === 'fr' ? 'Obésité' :
+           lang === 'hi' ? 'मोटापा' :
+           lang === 'de' ? 'Fettleibigkeit' :
+           lang === 'it' ? 'Obesità' : 'Obese',
+  };
+
+  // Handle unit system change
+  unitSystemInputs.forEach(input => {
+    input.addEventListener('change', (e) => {
+      const target = e.target as HTMLInputElement;
+      const isMetric = target.value === 'metric';
+
+      heightMetric.style.display = isMetric ? 'block' : 'none';
+      heightImperial.style.display = isMetric ? 'none' : 'block';
+
+      const heightInput = document.getElementById('height') as HTMLInputElement;
+      const heightFt = document.getElementById('heightFt') as HTMLInputElement;
+      const heightIn = document.getElementById('heightIn') as HTMLInputElement;
+
+      if (isMetric) {
+        heightInput.required = true;
+        heightFt.required = false;
+        heightIn.required = false;
+        weightUnit.textContent = 'kg';
+      } else {
+        heightInput.required = false;
+        heightFt.required = true;
+        heightIn.required = true;
+        weightUnit.textContent = 'lbs';
+      }
+    });
+  });
+
+  // Handle form submission
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const unitSystem = formData.get('unitSystem') as UnitSystem;
+    const age = parseInt(formData.get('age') as string);
+    const gender = formData.get('gender') as Gender;
+    const currentWeightStr = formData.get('currentWeight') as string;
+    const currentWeight = currentWeightStr ? parseFloat(currentWeightStr) : undefined;
+
+    let height: number;
+
+    if (unitSystem === 'metric') {
+      height = parseFloat(formData.get('height') as string);
+    } else {
+      const feet = parseInt(formData.get('heightFt') as string) || 0;
+      const inches = parseInt(formData.get('heightIn') as string) || 0;
+      height = feet * 12 + inches; // Total inches
+    }
+
+    const input: HealthyWeightInput = {
+      age,
+      gender,
+      height,
+      currentWeight,
+      unitSystem,
+    };
+
+    try {
+      const result = calculateHealthyWeight(input);
+      displayResults(result, unitSystem);
+    } catch (error) {
+      alert('Error calculating healthy weight. Please check your inputs.');
+      console.error(error);
+    }
+  });
+
+  function displayResults(result: HealthyWeightResult, unitSystem: UnitSystem) {
+    const weightUnitText = unitSystem === 'metric' ? 'kg' : 'lbs';
+
+    // BMI Range
+    const bmiRange = document.getElementById('bmi-range') as HTMLSpanElement;
+    bmiRange.textContent = `${result.healthyBMIRange.min} - ${result.healthyBMIRange.max}`;
+
+    // Weight Range
+    const weightRange = document.getElementById('weight-range') as HTMLSpanElement;
+    weightRange.textContent = `${result.healthyWeightRange.min} - ${result.healthyWeightRange.max} ${weightUnitText}`;
+
+    // Current Status (if weight provided)
+    if (result.currentBMI !== undefined && result.currentCategory !== undefined) {
+      const currentBmi = document.getElementById('current-bmi') as HTMLParagraphElement;
+      const currentCategory = document.getElementById('current-category') as HTMLParagraphElement;
+      const statusCard = document.querySelector('.current-status') as HTMLDivElement;
+
+      currentBmi.textContent = `BMI: ${result.currentBMI}`;
+      currentCategory.textContent = categoryTranslations[result.currentCategory];
+      statusCard.className = `result-card current-status category-${result.currentCategory}`;
+      currentStatusCard.style.display = 'block';
+
+      // Weight Goal
+      const goalCard = document.getElementById('goal-card') as HTMLDivElement;
+      const goalMessage = document.getElementById('goal-message') as HTMLParagraphElement;
+
+      if (result.isHealthy) {
+        goalMessage.textContent = lang === 'es' ? '¡Estás en un rango de peso saludable!' :
+                                  lang === 'pt' ? 'Você está em uma faixa de peso saudável!' :
+                                  lang === 'fr' ? 'Vous êtes dans une fourchette de poids santé !' :
+                                  lang === 'hi' ? 'आप स्वस्थ वजन सीमा में हैं!' :
+                                  lang === 'de' ? 'Sie befinden sich in einem gesunden Gewichtsbereich!' :
+                                  lang === 'it' ? 'Sei in un range di peso sano!' :
+                                  'You are in a healthy weight range!';
+        goalCard.className = 'goal-card';
+      } else if (result.weightToLose !== undefined) {
+        const loseText = lang === 'es' ? `Necesitas perder ${result.weightToLose} ${weightUnitText} para alcanzar el rango saludable` :
+                        lang === 'pt' ? `Você precisa perder ${result.weightToLose} ${weightUnitText} para atingir a faixa saudável` :
+                        lang === 'fr' ? `Vous devez perdre ${result.weightToLose} ${weightUnitText} pour atteindre la fourchette santé` :
+                        lang === 'hi' ? `स्वस्थ सीमा तक पहुंचने के लिए आपको ${result.weightToLose} ${weightUnitText} कम करने की आवश्यकता है` :
+                        lang === 'de' ? `Sie müssen ${result.weightToLose} ${weightUnitText} verlieren, um den gesunden Bereich zu erreichen` :
+                        lang === 'it' ? `Devi perdere ${result.weightToLose} ${weightUnitText} per raggiungere il range sano` :
+                        `You need to lose ${result.weightToLose} ${weightUnitText} to reach healthy range`;
+        goalMessage.textContent = loseText;
+        goalCard.className = result.currentCategory === 'obese' ? 'goal-card danger' : 'goal-card warning';
+      } else if (result.weightToGain !== undefined) {
+        const gainText = lang === 'es' ? `Necesitas ganar ${result.weightToGain} ${weightUnitText} para alcanzar el rango saludable` :
+                        lang === 'pt' ? `Você precisa ganhar ${result.weightToGain} ${weightUnitText} para atingir a faixa saudável` :
+                        lang === 'fr' ? `Vous devez prendre ${result.weightToGain} ${weightUnitText} pour atteindre la fourchette santé` :
+                        lang === 'hi' ? `स्वस्थ सीमा तक पहुंचने के लिए आपको ${result.weightToGain} ${weightUnitText} बढ़ाने की आवश्यकता है` :
+                        lang === 'de' ? `Sie müssen ${result.weightToGain} ${weightUnitText} zunehmen, um den gesunden Bereich zu erreichen` :
+                        lang === 'it' ? `Devi guadagnare ${result.weightToGain} ${weightUnitText} per raggiungere il range sano` :
+                        `You need to gain ${result.weightToGain} ${weightUnitText} to reach healthy range`;
+        goalMessage.textContent = gainText;
+        goalCard.className = 'goal-card warning';
+      }
+
+      weightGoalSection.style.display = 'block';
+    } else {
+      currentStatusCard.style.display = 'none';
+      weightGoalSection.style.display = 'none';
+    }
+
+    // Ideal Weights
+    document.getElementById('robinson-weight')!.textContent = `${result.idealWeights.robinson} ${weightUnitText}`;
+    document.getElementById('miller-weight')!.textContent = `${result.idealWeights.miller} ${weightUnitText}`;
+    document.getElementById('devine-weight')!.textContent = `${result.idealWeights.devine} ${weightUnitText}`;
+    document.getElementById('hamwi-weight')!.textContent = `${result.idealWeights.hamwi} ${weightUnitText}`;
+    document.getElementById('hamwi-small-weight')!.textContent = `${result.idealWeights.hamwiSmallFrame} ${weightUnitText}`;
+    document.getElementById('hamwi-large-weight')!.textContent = `${result.idealWeights.hamwiLargeFrame} ${weightUnitText}`;
+
+    // Show results
+    results.style.display = 'block';
+    results.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  // Handle form reset
+  form.addEventListener('reset', () => {
+    results.style.display = 'none';
+  });
+</script>

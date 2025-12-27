@@ -1,0 +1,53 @@
+{
+  "title": "Calculateur de Glucides",
+  "description": "Calculez votre apport quotidien recommandé en glucides",
+  "metaDescription": "Calculateur de glucides gratuit - Calculez votre apport quotidien recommandé en glucides en fonction de votre TDEE, niveau d'activité et objectifs. Recommandations personnalisées pour les régimes pauvres, modérés et riches en glucides.",
+  "form": {
+    "title": "Entrez vos informations",
+    "ageLabel": "Âge",
+    "agePlaceholder": "Entrez votre âge",
+    "genderLabel": "Sexe",
+    "heightLabel": "Taille",
+    "heightPlaceholder": "Entrez votre taille",
+    "weightLabel": "Poids",
+    "weightPlaceholder": "Entrez votre poids",
+    "activityLevelLabel": "Niveau d'Activité",
+    "activityLevels": {
+      "sedentary": "Sédentaire - Peu ou pas d'exercice",
+      "light": "Léger - Exercice léger 1-3 jours/semaine",
+      "moderate": "Modéré - Exercice modéré 3-5 jours/semaine",
+      "active": "Actif - Exercice intense 6-7 jours/semaine",
+      "extra": "Très Actif - Exercice très intense, travail physique"
+    },
+    "goalLabel": "Objectif",
+    "goals": {
+      "loss": "Perte de poids",
+      "maintain": "Maintenir le poids",
+      "gain": "Gain musculaire"
+    }
+  },
+  "results": {
+    "title": "Vos Résultats",
+    "bmr": "MB (Métabolisme de Base)",
+    "tdee": "TDEE (Dépense Énergétique Quotidienne Totale)",
+    "targetCalories": "Calories Cibles",
+    "recommendationsTitle": "Recommandations en Glucides",
+    "levels": {
+      "low": "Faible en Glucides",
+      "moderate": "Modéré en Glucides",
+      "high": "Riche en Glucides"
+    },
+    "descriptions": {
+      "low": "Idéal pour une perte de poids rapide et le contrôle de la glycémie. Peut être difficile à maintenir à long terme.",
+      "moderate": "Approche équilibrée pour la plupart des gens. Bon pour le maintien et la perte de poids progressive.",
+      "high": "Optimal pour les athlètes et les personnes très actives. Fournit de l'énergie pour les entraînements intenses."
+    },
+    "note": "Note : L'apport minimal recommandé en glucides est de 130g par jour pour les adultes. Consultez un professionnel de la santé avant d'apporter des modifications importantes à votre alimentation."
+  },
+  "info": {
+    "title": "À Propos des Glucides",
+    "description": "Les glucides sont l'un des trois principaux macronutriments (avec les protéines et les lipides) et la principale source d'énergie du corps. La quantité optimale de glucides varie en fonction de votre niveau d'activité, de vos objectifs et de vos préférences personnelles.",
+    "formula": "Formule : Grammes de glucides = (Calories cibles × % de glucides) ÷ 4 calories/g",
+    "recommendations": "Les recommandations en glucides sont basées sur des pourcentages de votre apport calorique total : Faible (10-30%), Modéré (30-50%), Élevé (50-70%). Le choix dépend de vos objectifs, de votre niveau d'activité et de votre réponse métabolique individuelle."
+  }
+}

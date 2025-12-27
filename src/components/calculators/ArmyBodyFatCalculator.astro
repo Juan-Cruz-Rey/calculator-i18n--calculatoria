@@ -1,0 +1,677 @@
+---
+import { t, type Locale } from '@/utils/i18n';
+
+const { lang } = Astro.props as { lang: Locale };
+---
+
+<div class="army-body-fat-calculator">
+  <div class="calculator-form">
+    <h2>{t('armyBodyFat:form.title', lang)}</h2>
+
+    <form id="army-body-fat-form">
+      <!-- Unit System Toggle -->
+      <div class="form-group unit-toggle">
+        <label>
+          <input type="radio" name="unitSystem" value="metric" checked />
+          {t('units.metric', lang)}
+        </label>
+        <label>
+          <input type="radio" name="unitSystem" value="imperial" />
+          {t('units.imperial', lang)}
+        </label>
+      </div>
+
+      <!-- Age -->
+      <div class="form-group">
+        <label for="age">{t('armyBodyFat:form.ageLabel', lang)}</label>
+        <input
+          type="number"
+          id="age"
+          name="age"
+          min="17"
+          max="100"
+          required
+          placeholder={t('armyBodyFat:form.agePlaceholder', lang)}
+        />
+        <span class="unit">{t('common.years', lang)}</span>
+      </div>
+
+      <!-- Gender -->
+      <div class="form-group">
+        <label for="gender">{t('armyBodyFat:form.genderLabel', lang)}</label>
+        <select id="gender" name="gender" required>
+          <option value="male">{t('common.male', lang)}</option>
+          <option value="female">{t('common.female', lang)}</option>
+        </select>
+      </div>
+
+      <!-- Height (Metric) -->
+      <div class="form-group height-metric">
+        <label for="height">{t('armyBodyFat:form.heightLabel', lang)}</label>
+        <input
+          type="number"
+          id="height"
+          name="height"
+          min="100"
+          max="250"
+          step="0.1"
+          required
+          placeholder={t('armyBodyFat:form.heightPlaceholder', lang)}
+        />
+        <span class="unit">{t('units.cm', lang)}</span>
+      </div>
+
+      <!-- Height (Imperial) -->
+      <div class="form-group height-imperial" style="display: none;">
+        <label for="heightFt">{t('armyBodyFat:form.heightLabel', lang)}</label>
+        <div class="input-group">
+          <input
+            type="number"
+            id="heightFt"
+            name="heightFt"
+            min="3"
+            max="8"
+            placeholder="Feet"
+          />
+          <span class="unit">{t('units.ft', lang)}</span>
+          <input
+            type="number"
+            id="heightIn"
+            name="heightIn"
+            min="0"
+            max="11"
+            placeholder="Inches"
+          />
+          <span class="unit">{t('units.in', lang)}</span>
+        </div>
+      </div>
+
+      <!-- Neck (Metric) -->
+      <div class="form-group neck-metric">
+        <label for="neck">{t('armyBodyFat:form.neckLabel', lang)}</label>
+        <input
+          type="number"
+          id="neck"
+          name="neck"
+          min="20"
+          max="60"
+          step="0.1"
+          required
+          placeholder={t('armyBodyFat:form.neckPlaceholder', lang)}
+        />
+        <span class="unit">{t('units.cm', lang)}</span>
+      </div>
+
+      <!-- Neck (Imperial) -->
+      <div class="form-group neck-imperial" style="display: none;">
+        <label for="neckIn">{t('armyBodyFat:form.neckLabel', lang)}</label>
+        <input
+          type="number"
+          id="neckIn"
+          name="neckIn"
+          min="8"
+          max="24"
+          step="0.1"
+          placeholder={t('armyBodyFat:form.neckPlaceholder', lang)}
+        />
+        <span class="unit">{t('units.in', lang)}</span>
+      </div>
+
+      <!-- Waist (Metric) -->
+      <div class="form-group waist-metric">
+        <label for="waist">{t('armyBodyFat:form.waistLabel', lang)}</label>
+        <input
+          type="number"
+          id="waist"
+          name="waist"
+          min="40"
+          max="200"
+          step="0.1"
+          required
+          placeholder={t('armyBodyFat:form.waistPlaceholder', lang)}
+        />
+        <span class="unit">{t('units.cm', lang)}</span>
+      </div>
+
+      <!-- Waist (Imperial) -->
+      <div class="form-group waist-imperial" style="display: none;">
+        <label for="waistIn">{t('armyBodyFat:form.waistLabel', lang)}</label>
+        <input
+          type="number"
+          id="waistIn"
+          name="waistIn"
+          min="16"
+          max="80"
+          step="0.1"
+          placeholder={t('armyBodyFat:form.waistPlaceholder', lang)}
+        />
+        <span class="unit">{t('units.in', lang)}</span>
+      </div>
+
+      <!-- Hip (Metric - Females only) -->
+      <div class="form-group hip-metric" style="display: none;">
+        <label for="hip">{t('armyBodyFat:form.hipLabel', lang)}</label>
+        <input
+          type="number"
+          id="hip"
+          name="hip"
+          min="50"
+          max="200"
+          step="0.1"
+          placeholder={t('armyBodyFat:form.hipPlaceholder', lang)}
+        />
+        <span class="unit">{t('units.cm', lang)}</span>
+      </div>
+
+      <!-- Hip (Imperial - Females only) -->
+      <div class="form-group hip-imperial" style="display: none;">
+        <label for="hipIn">{t('armyBodyFat:form.hipLabel', lang)}</label>
+        <input
+          type="number"
+          id="hipIn"
+          name="hipIn"
+          min="20"
+          max="80"
+          step="0.1"
+          placeholder={t('armyBodyFat:form.hipPlaceholder', lang)}
+        />
+        <span class="unit">{t('units.in', lang)}</span>
+      </div>
+
+      <!-- Buttons -->
+      <div class="form-actions">
+        <button type="submit" class="btn-primary">{t('common.calculate', lang)}</button>
+        <button type="reset" class="btn-secondary">{t('common.reset', lang)}</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="calculator-results" id="results" style="display: none;">
+    <h2>{t('armyBodyFat:results.title', lang)}</h2>
+
+    <div class="result-card body-fat-value">
+      <h3>{t('armyBodyFat:results.bodyFatValue', lang)}</h3>
+      <p class="value" id="body-fat-value">-</p>
+      <p class="standard" id="body-fat-standard">-</p>
+    </div>
+
+    <div class="result-grid">
+      <div class="result-item">
+        <strong>{t('armyBodyFat:results.ageGroup', lang)}:</strong>
+        <span id="age-group">-</span>
+      </div>
+      <div class="result-item">
+        <strong>{t('armyBodyFat:results.maxAllowed', lang)}:</strong>
+        <span id="max-allowed">-</span>
+      </div>
+      <div class="result-item">
+        <strong>{t('armyBodyFat:results.status', lang)}:</strong>
+        <span id="status">-</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="calculator-info">
+    <h2>{t('armyBodyFat:info.title', lang)}</h2>
+    <p>{t('armyBodyFat:info.description', lang)}</p>
+
+    <h3>{t('armyBodyFat:info.standardsTitle', lang)}</h3>
+    <div class="standards-table">
+      <table>
+        <thead>
+          <tr>
+            <th>{t('armyBodyFat:info.ageRange', lang)}</th>
+            <th>{t('armyBodyFat:info.maleMax', lang)}</th>
+            <th>{t('armyBodyFat:info.femaleMax', lang)}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>17-20</td>
+            <td>20%</td>
+            <td>30%</td>
+          </tr>
+          <tr>
+            <td>21-27</td>
+            <td>22%</td>
+            <td>32%</td>
+          </tr>
+          <tr>
+            <td>28-39</td>
+            <td>24%</td>
+            <td>34%</td>
+          </tr>
+          <tr>
+            <td>40+</td>
+            <td>26%</td>
+            <td>36%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="formula">{t('armyBodyFat:info.formula', lang)}</p>
+    <p class="limitations">{t('armyBodyFat:info.limitations', lang)}</p>
+  </div>
+</div>
+
+<style>
+  .army-body-fat-calculator {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .calculator-form, .calculator-results, .calculator-info {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  h2 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  h3 {
+    color: #333;
+    font-size: 1.2rem;
+    margin: 1.5rem 0 1rem 0;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #555;
+  }
+
+  .form-group input[type="number"],
+  .form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+
+  .form-group input[type="number"]:focus,
+  .form-group select:focus {
+    outline: none;
+    border-color: #556B2F;
+  }
+
+  .unit {
+    display: inline-block;
+    margin-left: 0.5rem;
+    color: #888;
+    font-size: 0.9rem;
+  }
+
+  .unit-toggle {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    background: #f5f5f5;
+    border-radius: 4px;
+  }
+
+  .unit-toggle label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    margin: 0;
+  }
+
+  .input-group {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .input-group input {
+    flex: 1;
+  }
+
+  .form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .btn-primary, .btn-secondary {
+    flex: 1;
+    padding: 0.875rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, #556B2F 0%, #6B8E23 100%);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #4a5f29 0%, #5d7a1f 100%);
+  }
+
+  .btn-secondary {
+    background: #f5f5f5;
+    color: #333;
+  }
+
+  .btn-secondary:hover {
+    background: #e0e0e0;
+  }
+
+  .result-card {
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, #556B2F 0%, #6B8E23 100%);
+    color: white;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+
+  .result-card h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1.2rem;
+    color: white;
+  }
+
+  .result-card .value {
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  .result-card .standard {
+    font-size: 1.2rem;
+    margin: 0.5rem 0 0 0;
+    opacity: 0.9;
+  }
+
+  .result-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .result-item {
+    padding: 1rem;
+    background: #f9f9f9;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .result-item strong {
+    color: #555;
+    font-size: 0.9rem;
+  }
+
+  .result-item span {
+    color: #333;
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+
+  .calculator-info {
+    background: #f9f9f9;
+  }
+
+  .calculator-info p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: #555;
+  }
+
+  .standards-table {
+    overflow-x: auto;
+    margin: 1rem 0;
+  }
+
+  .standards-table table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 4px;
+  }
+
+  .standards-table th,
+  .standards-table td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .standards-table th {
+    background: #556B2F;
+    color: white;
+    font-weight: 500;
+  }
+
+  .standards-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .formula {
+    font-family: monospace;
+    background: white;
+    padding: 1rem;
+    border-left: 4px solid #556B2F;
+    margin: 1rem 0;
+  }
+
+  .limitations {
+    font-size: 0.9rem;
+    font-style: italic;
+  }
+
+  /* Standard colors */
+  .standard-pass {
+    background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+  }
+
+  .standard-fail {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+  }
+</style>
+
+<script>
+  // Import Army Body Fat calculation utilities
+  import type { ArmyBodyFatInput, ArmyBodyFatResult, UnitSystem, Gender } from '@/utils/calculators/armyBodyFat';
+  import { calculateArmyBodyFatMetrics } from '@/utils/calculators/armyBodyFat';
+
+  const form = document.getElementById('army-body-fat-form') as HTMLFormElement;
+  const results = document.getElementById('results') as HTMLDivElement;
+  const unitSystemInputs = document.querySelectorAll('input[name="unitSystem"]');
+  const genderSelect = document.getElementById('gender') as HTMLSelectElement;
+
+  // Metric elements
+  const heightMetric = document.querySelector('.height-metric') as HTMLDivElement;
+  const neckMetric = document.querySelector('.neck-metric') as HTMLDivElement;
+  const waistMetric = document.querySelector('.waist-metric') as HTMLDivElement;
+  const hipMetric = document.querySelector('.hip-metric') as HTMLDivElement;
+
+  // Imperial elements
+  const heightImperial = document.querySelector('.height-imperial') as HTMLDivElement;
+  const neckImperial = document.querySelector('.neck-imperial') as HTMLDivElement;
+  const waistImperial = document.querySelector('.waist-imperial') as HTMLDivElement;
+  const hipImperial = document.querySelector('.hip-imperial') as HTMLDivElement;
+
+  // Get language for translations
+  const lang = document.documentElement.lang || 'es';
+
+  const standardTranslations: Record<string, Record<string, string>> = {
+    es: { pass: 'APROBADO', fail: 'NO APROBADO' },
+    en: { pass: 'PASS', fail: 'FAIL' },
+    pt: { pass: 'APROVADO', fail: 'REPROVADO' },
+    fr: { pass: 'RÉUSSI', fail: 'ÉCHOUÉ' },
+    hi: { pass: 'उत्तीर्ण', fail: 'अनुत्तीर्ण' },
+    de: { pass: 'BESTANDEN', fail: 'NICHT BESTANDEN' },
+    it: { pass: 'SUPERATO', fail: 'FALLITO' },
+  };
+
+  // Handle gender change to show/hide hip field
+  function updateHipFieldVisibility() {
+    const isFemale = genderSelect.value === 'female';
+    const unitSystem = (document.querySelector('input[name="unitSystem"]:checked') as HTMLInputElement).value;
+
+    if (isFemale) {
+      if (unitSystem === 'metric') {
+        hipMetric.style.display = 'block';
+        (document.getElementById('hip') as HTMLInputElement).required = true;
+      } else {
+        hipImperial.style.display = 'block';
+        (document.getElementById('hipIn') as HTMLInputElement).required = true;
+      }
+    } else {
+      hipMetric.style.display = 'none';
+      hipImperial.style.display = 'none';
+      (document.getElementById('hip') as HTMLInputElement).required = false;
+      (document.getElementById('hipIn') as HTMLInputElement).required = false;
+    }
+  }
+
+  genderSelect.addEventListener('change', updateHipFieldVisibility);
+
+  // Handle unit system change
+  unitSystemInputs.forEach(input => {
+    input.addEventListener('change', (e) => {
+      const target = e.target as HTMLInputElement;
+      const isMetric = target.value === 'metric';
+
+      // Toggle height fields
+      heightMetric.style.display = isMetric ? 'block' : 'none';
+      heightImperial.style.display = isMetric ? 'none' : 'block';
+
+      // Toggle neck fields
+      neckMetric.style.display = isMetric ? 'block' : 'none';
+      neckImperial.style.display = isMetric ? 'none' : 'block';
+
+      // Toggle waist fields
+      waistMetric.style.display = isMetric ? 'block' : 'none';
+      waistImperial.style.display = isMetric ? 'none' : 'block';
+
+      const heightInput = document.getElementById('height') as HTMLInputElement;
+      const heightFt = document.getElementById('heightFt') as HTMLInputElement;
+      const heightIn = document.getElementById('heightIn') as HTMLInputElement;
+      const neckInput = document.getElementById('neck') as HTMLInputElement;
+      const neckInInput = document.getElementById('neckIn') as HTMLInputElement;
+      const waistInput = document.getElementById('waist') as HTMLInputElement;
+      const waistInInput = document.getElementById('waistIn') as HTMLInputElement;
+
+      if (isMetric) {
+        heightInput.required = true;
+        heightFt.required = false;
+        heightIn.required = false;
+        neckInput.required = true;
+        neckInInput.required = false;
+        waistInput.required = true;
+        waistInInput.required = false;
+      } else {
+        heightInput.required = false;
+        heightFt.required = true;
+        heightIn.required = true;
+        neckInput.required = false;
+        neckInInput.required = true;
+        waistInput.required = false;
+        waistInInput.required = true;
+      }
+
+      // Update hip field visibility
+      updateHipFieldVisibility();
+    });
+  });
+
+  // Handle form submission
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const unitSystem = formData.get('unitSystem') as UnitSystem;
+    const age = parseInt(formData.get('age') as string);
+    const gender = formData.get('gender') as Gender;
+
+    let height: number;
+    let neck: number;
+    let waist: number;
+    let hip: number | undefined;
+
+    if (unitSystem === 'metric') {
+      height = parseFloat(formData.get('height') as string);
+      neck = parseFloat(formData.get('neck') as string);
+      waist = parseFloat(formData.get('waist') as string);
+      const hipValue = formData.get('hip') as string;
+      hip = hipValue ? parseFloat(hipValue) : undefined;
+    } else {
+      const feet = parseInt(formData.get('heightFt') as string) || 0;
+      const inches = parseInt(formData.get('heightIn') as string) || 0;
+      height = feet * 12 + inches; // Total inches
+      neck = parseFloat(formData.get('neckIn') as string);
+      waist = parseFloat(formData.get('waistIn') as string);
+      const hipValue = formData.get('hipIn') as string;
+      hip = hipValue ? parseFloat(hipValue) : undefined;
+    }
+
+    const input: ArmyBodyFatInput = {
+      age,
+      gender,
+      height,
+      neck,
+      waist,
+      hip,
+      unitSystem,
+    };
+
+    try {
+      const result = calculateArmyBodyFatMetrics(input);
+      displayResults(result);
+    } catch (error) {
+      alert('Error calculating body fat. Please check your inputs.');
+      console.error(error);
+    }
+  });
+
+  function displayResults(result: ArmyBodyFatResult) {
+    const bodyFatValue = document.getElementById('body-fat-value') as HTMLParagraphElement;
+    const bodyFatStandard = document.getElementById('body-fat-standard') as HTMLParagraphElement;
+    const ageGroup = document.getElementById('age-group') as HTMLSpanElement;
+    const maxAllowed = document.getElementById('max-allowed') as HTMLSpanElement;
+    const status = document.getElementById('status') as HTMLSpanElement;
+    const resultCard = document.querySelector('.result-card') as HTMLDivElement;
+
+    bodyFatValue.textContent = result.bodyFatPercentage + '%';
+    bodyFatStandard.textContent = standardTranslations[lang][result.standard] || result.standard.toUpperCase();
+    ageGroup.textContent = result.ageGroup;
+    maxAllowed.textContent = result.maxAllowedPercentage + '%';
+    status.textContent = standardTranslations[lang][result.standard] || result.standard.toUpperCase();
+
+    // Update result card color based on standard
+    resultCard.className = `result-card standard-${result.standard}`;
+
+    // Show results
+    results.style.display = 'block';
+    results.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  // Handle form reset
+  form.addEventListener('reset', () => {
+    results.style.display = 'none';
+  });
+</script>

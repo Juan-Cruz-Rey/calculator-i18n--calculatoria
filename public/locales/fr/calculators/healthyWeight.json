@@ -1,0 +1,39 @@
+{
+  "title": "Calculateur de Poids Santé",
+  "description": "Calculez votre fourchette de poids santé idéale",
+  "metaDescription": "Calculateur de poids santé gratuit - Découvrez votre fourchette de poids idéale en utilisant plusieurs formules scientifiques. Inclut les formules de Robinson, Miller, Devine et Hamwi.",
+  "form": {
+    "title": "Entrez vos informations",
+    "ageLabel": "Âge",
+    "agePlaceholder": "Entrez votre âge",
+    "genderLabel": "Genre",
+    "heightLabel": "Taille",
+    "heightPlaceholder": "Entrez votre taille",
+    "currentWeightLabel": "Poids Actuel (Optionnel)",
+    "currentWeightPlaceholder": "Entrez votre poids actuel",
+    "currentWeightHelp": "Optionnel : entrez votre poids actuel pour voir des recommandations personnalisées"
+  },
+  "results": {
+    "title": "Vos Résultats",
+    "currentStatus": "Votre Statut Actuel",
+    "healthyRangeTitle": "Fourchette de Poids Santé",
+    "bmiRange": "Fourchette d'IMC Santé",
+    "weightRange": "Fourchette de Poids Santé",
+    "weightGoalTitle": "Votre Objectif de Poids",
+    "idealWeightsTitle": "Poids Idéaux selon les Formules Scientifiques",
+    "robinsonFormula": "Robinson",
+    "millerFormula": "Miller",
+    "devineFormula": "Devine",
+    "hamwiFormula": "Hamwi",
+    "hamwiSmallFrame": "Hamwi (Petite Ossature)",
+    "hamwiLargeFrame": "Hamwi (Grande Ossature)"
+  },
+  "info": {
+    "title": "À Propos du Poids Santé",
+    "description": "Le poids santé est basé sur la fourchette d'IMC recommandée par l'OMS (18.5-25). Ce calculateur utilise votre taille pour déterminer votre fourchette de poids santé et compare plusieurs formules scientifiques pour calculer votre poids idéal.",
+    "bmiFormula": "Fourchette d'IMC Santé : 18.5 - 25.0 kg/m²",
+    "formulasTitle": "Formules de Poids Idéal",
+    "formulasDescription": "Quatre formules scientifiques reconnues sont incluses (Robinson 1983, Miller 1983, Devine 1974, Hamwi 1964). La formule de Hamwi est également ajustée pour une petite ossature (-10%) et une grande ossature (+10%).",
+    "limitations": "Ces formules sont des estimations générales pour les adultes âgés de 18 ans ou plus. Elles ne tiennent pas compte de la composition corporelle individuelle, de la masse musculaire ou des conditions de santé spécifiques. Consultez un professionnel de la santé pour des conseils personnalisés."
+  }
+}

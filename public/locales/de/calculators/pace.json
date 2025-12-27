@@ -1,0 +1,34 @@
+{
+  "title": "Lauftempo-Rechner",
+  "description": "Berechnen Sie Ihr Lauftempo, Zeit oder Distanz",
+  "metaDescription": "Kostenloser Lauftempo-Rechner - Berechnen Sie Ihr Tempo pro Kilometer oder Meile, geschätzte Laufzeit oder Distanz. Enthält Zeiten für 5K, 10K, Halbmarathon und Marathon.",
+  "form": {
+    "title": "Geben Sie Ihre Daten ein",
+    "modeLabel": "Was möchten Sie berechnen?",
+    "calculatePace": "Tempo berechnen",
+    "calculateTime": "Zeit berechnen",
+    "calculateDistance": "Distanz berechnen",
+    "distanceLabel": "Distanz",
+    "distancePlaceholder": "Distanz eingeben",
+    "timeLabel": "Zeit",
+    "timeHint": "Format: Stunden:Minuten:Sekunden",
+    "paceLabel": "Tempo",
+    "paceHint": "Format: Minuten:Sekunden pro km/Meile",
+    "halfMarathon": "Halbmarathon",
+    "marathon": "Marathon"
+  },
+  "results": {
+    "title": "Ihre Ergebnisse",
+    "yourPace": "Ihr Tempo",
+    "yourTime": "Ihre Zeit",
+    "yourDistance": "Ihre Distanz",
+    "commonRaces": "Übliche Rennzeiten",
+    "splits": "Zwischenzeiten"
+  },
+  "info": {
+    "title": "Über das Lauftempo",
+    "description": "Das Lauftempo ist die Zeit, die Sie benötigen, um eine bestimmte Distanzeinheit (Kilometer oder Meile) zurückzulegen. Es ist eine wesentliche Metrik für Läufer, die Trainingssitzungen planen und Rennziele setzen möchten.",
+    "formula": "Formel: Tempo = Gesamtzeit / Distanz",
+    "tip": "Tipp: Ein gleichmäßiges Tempo ist der Schlüssel zum Erfolg bei Langstreckenläufen. Verwenden Sie diesen Rechner, um Ihre Rennstrategie zu planen und ein nachhaltiges Tempo zu halten."
+  }
+}

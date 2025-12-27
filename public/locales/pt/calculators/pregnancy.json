@@ -1,0 +1,36 @@
+{
+  "title": "Calculadora de Gravidez",
+  "description": "Calcule sua data prevista do parto e acompanhamento da gravidez",
+  "metaDescription": "Calculadora de gravidez gratuita - Calcule sua data prevista do parto, semana atual e trimestre. Inclui marcos importantes do desenvolvimento fetal.",
+  "form": {
+    "title": "Insira suas informações",
+    "methodLabel": "Método de cálculo",
+    "lmpMethod": "Último período menstrual (DUM)",
+    "conceptionMethod": "Data de concepção",
+    "dueDateMethod": "Data prevista conhecida",
+    "lmpDateLabel": "Primeiro dia do seu último período",
+    "lmpDateHelp": "Insira o primeiro dia da sua última menstruação",
+    "conceptionDateLabel": "Data de concepção",
+    "conceptionDateHelp": "Data estimada ou conhecida de concepção",
+    "dueDateLabel": "Data prevista do parto",
+    "dueDateHelp": "Se o seu médico lhe deu uma data prevista",
+    "cycleLengthLabel": "Duração do ciclo menstrual",
+    "cycleLengthHelp": "Duração média do seu ciclo (normalmente 28 dias)"
+  },
+  "results": {
+    "title": "Seus Resultados",
+    "dueDate": "Data Prevista do Parto",
+    "currentWeek": "Semana Atual",
+    "conceptionDate": "Data de Concepção",
+    "trimester": "Trimestre",
+    "daysRemaining": "Dias Restantes",
+    "percentComplete": "Progresso",
+    "milestones": "Marcos da Gravidez"
+  },
+  "info": {
+    "title": "Sobre a Calculadora de Gravidez",
+    "description": "Esta calculadora estima a data prevista do parto e acompanha o progresso durante a gravidez. A gravidez geralmente dura 40 semanas (280 dias) desde o primeiro dia do último período menstrual, ou 38 semanas desde a concepção.",
+    "formula": "Fórmula: Regra de Naegele - Data prevista = DUM + 280 dias (ajustado pela duração do ciclo)",
+    "limitations": "Nota: Esta calculadora fornece estimativas. Apenas 4% dos bebês nascem exatamente na data prevista. 60% nascem dentro de uma semana da data estimada, e 90% dentro de duas semanas. Sempre consulte seu médico para um acompanhamento preciso da gravidez."
+  }
+}

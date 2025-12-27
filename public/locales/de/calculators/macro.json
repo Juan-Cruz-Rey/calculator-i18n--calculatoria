@@ -1,0 +1,59 @@
+{
+  "title": "Makro-Rechner",
+  "description": "Berechnen Sie Ihre täglichen Makronährstoffe",
+  "metaDescription": "Kostenloser Makro-Rechner - Berechnen Sie Ihre Protein-, Kohlenhydrat- und Fettverteilung basierend auf Ihrem Ziel. Erhalten Sie Ihren personalisierten Ernährungsplan.",
+  "form": {
+    "title": "Geben Sie Ihre Daten ein",
+    "ageLabel": "Alter",
+    "agePlaceholder": "Geben Sie Ihr Alter ein",
+    "genderLabel": "Geschlecht",
+    "heightLabel": "Größe",
+    "heightPlaceholder": "Geben Sie Ihre Größe ein",
+    "weightLabel": "Gewicht",
+    "weightPlaceholder": "Geben Sie Ihr Gewicht ein",
+    "activityLabel": "Aktivitätslevel",
+    "activityLevels": {
+      "sedentary": "Sitzend (wenig oder keine Bewegung)",
+      "light": "Leicht (1-3 mal/Woche Training)",
+      "moderate": "Mäßig (4-5 mal/Woche Training)",
+      "active": "Aktiv (tägliches Training oder intensiv 3-4 mal/Woche)",
+      "veryActive": "Sehr aktiv (intensives Training 6-7 mal/Woche)",
+      "extraActive": "Extra aktiv (sehr intensives tägliches Training oder körperliche Arbeit)"
+    },
+    "goalLabel": "Gewichtsziel",
+    "goals": {
+      "extremeLoss": "Extremer Verlust (1 kg/Woche)",
+      "moderateLoss": "Mäßiger Verlust (0.5 kg/Woche)",
+      "mildLoss": "Leichter Verlust (0.25 kg/Woche)",
+      "maintain": "Gewicht halten",
+      "mildGain": "Leichte Zunahme (0.25 kg/Woche)",
+      "moderateGain": "Mäßige Zunahme (0.5 kg/Woche)",
+      "extremeGain": "Extreme Zunahme (1 kg/Woche)"
+    },
+    "dietTypeLabel": "Diättyp",
+    "dietTypes": {
+      "balanced": "Ausgewogen (30% Protein, 40% Kohlenhydrate, 30% Fette)",
+      "lowFat": "Fettarm (30% Protein, 50% Kohlenhydrate, 20% Fette)",
+      "lowCarb": "Kohlenhydratarm (35% Protein, 20% Kohlenhydrate, 45% Fette)",
+      "highProtein": "Proteinreich (40% Protein, 30% Kohlenhydrate, 30% Fette)"
+    }
+  },
+  "results": {
+    "title": "Ihre Ergebnisse",
+    "dailyCalories": "Tägliche Kalorien",
+    "toReachGoal": "um Ihr Ziel zu erreichen",
+    "bmr": "Grundumsatz (BMR)",
+    "tdee": "Gesamtumsatz (TDEE)",
+    "weeklyChange": "Wöchentliche Gewichtsänderung",
+    "macrosBreakdown": "Makronährstoff-Verteilung",
+    "protein": "Protein",
+    "carbs": "Kohlenhydrate",
+    "fats": "Fette"
+  },
+  "info": {
+    "title": "Über Makronährstoffe",
+    "description": "Makronährstoffe (Protein, Kohlenhydrate und Fette) sind die Nährstoffe, die Ihrem Körper Energie liefern. Dieser Rechner bestimmt Ihren gesamten täglichen Energieverbrauch und verteilt Kalorien auf Makronährstoffe basierend auf Ihrem Ziel und bevorzugten Diättyp.",
+    "formula": "Formel: BMR (Mifflin-St Jeor) × Aktivitätsmultiplikator ± Zielanpassung",
+    "limitations": "Dieser Rechner liefert Schätzungen basierend auf Standardformeln. Individuelle Anforderungen können variieren. Konsultieren Sie einen Gesundheitsexperten oder Ernährungsberater für einen personalisierten Plan."
+  }
+}

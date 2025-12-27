@@ -1,0 +1,34 @@
+{
+  "title": "Schwangerschaftsgewichtszunahme-Rechner",
+  "description": "Berechnen Sie die empfohlene Gewichtszunahme während der Schwangerschaft",
+  "metaDescription": "Kostenloser Schwangerschaftsgewichtszunahme-Rechner - Erhalten Sie personalisierte Empfehlungen basierend auf IOM-Richtlinien entsprechend Ihrem BMI vor der Schwangerschaft.",
+  "form": {
+    "title": "Geben Sie Ihre Daten ein",
+    "currentWeekLabel": "Aktuelle Schwangerschaftswoche",
+    "currentWeekPlaceholder": "1-40",
+    "weeksUnit": "Wochen",
+    "isTwinsLabel": "Zwillingsschwangerschaft",
+    "heightLabel": "Größe",
+    "heightPlaceholder": "Geben Sie Ihre Größe ein",
+    "prePregnancyWeightLabel": "Gewicht vor der Schwangerschaft",
+    "prePregnancyWeightPlaceholder": "Geben Sie Ihr Gewicht vor der Schwangerschaft ein",
+    "currentWeightLabel": "Aktuelles Gewicht",
+    "currentWeightPlaceholder": "Geben Sie Ihr aktuelles Gewicht ein"
+  },
+  "results": {
+    "title": "Ihre Ergebnisse",
+    "currentGainValue": "Aktuelle Gewichtszunahme",
+    "prePregnancyBMI": "BMI vor der Schwangerschaft",
+    "bmiCategory": "BMI-Kategorie",
+    "trimester": "Trimester",
+    "recommendedTotalGain": "Empfohlene Gesamtzunahme",
+    "recommendedAtWeek": "Empfohlen in dieser Woche",
+    "weeklyGainTarget": "Wöchentliches Ziel (2./3. Trimester)"
+  },
+  "info": {
+    "title": "Über die Gewichtszunahme in der Schwangerschaft",
+    "description": "Die Gewichtszunahme während der Schwangerschaft ist für die Gesundheit von Mutter und Baby unerlässlich. Die Empfehlungen des Institute of Medicine (IOM) variieren je nach BMI vor der Schwangerschaft und ob es sich um eine Zwillingsschwangerschaft handelt.",
+    "guidelines": "Allgemeine Richtlinien: Während des ersten Trimesters ist die Gewichtszunahme minimal (0,5-1,8 kg). Im zweiten und dritten Trimester ist die Gewichtszunahme stetig und progressiv basierend auf der BMI-Kategorie.",
+    "limitations": "Dieser Rechner liefert allgemeine Schätzungen basierend auf IOM-Richtlinien. Konsultieren Sie immer Ihren Arzt oder Gesundheitsdienstleister für personalisierte Empfehlungen entsprechend Ihrer individuellen Situation."
+  }
+}

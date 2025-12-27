@@ -1,0 +1,53 @@
+{
+  "title": "Kohlenhydrat-Rechner",
+  "description": "Berechnen Sie Ihre empfohlene tägliche Kohlenhydratzufuhr",
+  "metaDescription": "Kostenloser Kohlenhydrat-Rechner - Berechnen Sie Ihre empfohlene tägliche Kohlenhydratzufuhr basierend auf Ihrem TDEE, Aktivitätslevel und Zielen. Personalisierte Empfehlungen für Low-Carb-, Moderate-Carb- und High-Carb-Diäten.",
+  "form": {
+    "title": "Geben Sie Ihre Informationen ein",
+    "ageLabel": "Alter",
+    "agePlaceholder": "Geben Sie Ihr Alter ein",
+    "genderLabel": "Geschlecht",
+    "heightLabel": "Größe",
+    "heightPlaceholder": "Geben Sie Ihre Größe ein",
+    "weightLabel": "Gewicht",
+    "weightPlaceholder": "Geben Sie Ihr Gewicht ein",
+    "activityLevelLabel": "Aktivitätslevel",
+    "activityLevels": {
+      "sedentary": "Sitzend - Wenig oder keine Bewegung",
+      "light": "Leicht - Leichte Bewegung 1-3 Tage/Woche",
+      "moderate": "Moderat - Mäßige Bewegung 3-5 Tage/Woche",
+      "active": "Aktiv - Intensive Bewegung 6-7 Tage/Woche",
+      "extra": "Sehr Aktiv - Sehr intensive Bewegung, körperliche Arbeit"
+    },
+    "goalLabel": "Ziel",
+    "goals": {
+      "loss": "Gewichtsverlust",
+      "maintain": "Gewicht halten",
+      "gain": "Muskelaufbau"
+    }
+  },
+  "results": {
+    "title": "Ihre Ergebnisse",
+    "bmr": "BMR (Grundumsatz)",
+    "tdee": "TDEE (Gesamtumsatz)",
+    "targetCalories": "Zielkalorien",
+    "recommendationsTitle": "Kohlenhydrat-Empfehlungen",
+    "levels": {
+      "low": "Niedrige Kohlenhydrate",
+      "moderate": "Moderate Kohlenhydrate",
+      "high": "Hohe Kohlenhydrate"
+    },
+    "descriptions": {
+      "low": "Ideal für schnellen Gewichtsverlust und Blutzuckerkontrolle. Kann langfristig schwer aufrechtzuerhalten sein.",
+      "moderate": "Ausgewogener Ansatz für die meisten Menschen. Gut für Erhaltung und allmählichen Gewichtsverlust.",
+      "high": "Optimal für Athleten und sehr aktive Personen. Liefert Energie für intensive Workouts."
+    },
+    "note": "Hinweis: Die empfohlene Mindestzufuhr von Kohlenhydraten beträgt 130g pro Tag für Erwachsene. Konsultieren Sie einen Gesundheitsexperten, bevor Sie bedeutende Ernährungsänderungen vornehmen."
+  },
+  "info": {
+    "title": "Über Kohlenhydrate",
+    "description": "Kohlenhydrate sind einer der drei Hauptmakronährstoffe (neben Proteinen und Fetten) und die primäre Energiequelle des Körpers. Die optimale Menge an Kohlenhydraten variiert je nach Aktivitätslevel, Zielen und persönlichen Präferenzen.",
+    "formula": "Formel: Kohlenhydrat-Gramm = (Zielkalorien × % Kohlenhydrate) ÷ 4 Kalorien/g",
+    "recommendations": "Kohlenhydrat-Empfehlungen basieren auf Prozentsätzen Ihrer gesamten Kalorienaufnahme: Niedrig (10-30%), Moderat (30-50%), Hoch (50-70%). Die Wahl hängt von Ihren Zielen, Ihrem Aktivitätslevel und Ihrer individuellen Stoffwechselreaktion ab."
+  }
+}

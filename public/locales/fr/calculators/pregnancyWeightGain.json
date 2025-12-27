@@ -1,0 +1,34 @@
+{
+  "title": "Calculateur de Prise de Poids Pendant la Grossesse",
+  "description": "Calculez la prise de poids recommandée pendant la grossesse",
+  "metaDescription": "Calculateur gratuit de prise de poids pendant la grossesse - Obtenez des recommandations personnalisées basées sur les directives de l'IOM selon votre IMC pré-grossesse.",
+  "form": {
+    "title": "Entrez vos informations",
+    "currentWeekLabel": "Semaine actuelle de grossesse",
+    "currentWeekPlaceholder": "1-40",
+    "weeksUnit": "semaines",
+    "isTwinsLabel": "Grossesse gémellaire",
+    "heightLabel": "Taille",
+    "heightPlaceholder": "Entrez votre taille",
+    "prePregnancyWeightLabel": "Poids avant la grossesse",
+    "prePregnancyWeightPlaceholder": "Entrez votre poids pré-grossesse",
+    "currentWeightLabel": "Poids actuel",
+    "currentWeightPlaceholder": "Entrez votre poids actuel"
+  },
+  "results": {
+    "title": "Vos Résultats",
+    "currentGainValue": "Prise de Poids Actuelle",
+    "prePregnancyBMI": "IMC Pré-Grossesse",
+    "bmiCategory": "Catégorie d'IMC",
+    "trimester": "Trimestre",
+    "recommendedTotalGain": "Prise Totale Recommandée",
+    "recommendedAtWeek": "Recommandé à cette semaine",
+    "weeklyGainTarget": "Objectif hebdomadaire (2e/3e trimestre)"
+  },
+  "info": {
+    "title": "À Propos de la Prise de Poids Pendant la Grossesse",
+    "description": "La prise de poids pendant la grossesse est essentielle pour la santé de la mère et du bébé. Les recommandations de l'Institute of Medicine (IOM) varient en fonction de l'IMC pré-grossesse et s'il s'agit d'une grossesse gémellaire.",
+    "guidelines": "Directives générales : Pendant le premier trimestre, la prise de poids est minime (0,5-1,8 kg). Au cours des deuxième et troisième trimestres, la prise de poids est régulière et progressive selon la catégorie d'IMC.",
+    "limitations": "Ce calculateur fournit des estimations générales basées sur les directives de l'IOM. Consultez toujours votre médecin ou professionnel de santé pour des recommandations personnalisées selon votre situation individuelle."
+  }
+}

@@ -1,0 +1,880 @@
+---
+import { t, type Locale } from '@/utils/i18n';
+
+const { lang } = Astro.props as { lang: Locale };
+---
+
+<div class="pregnancy-calculator">
+  <div class="calculator-form">
+    <h2>{t('pregnancy:form.title', lang)}</h2>
+
+    <form id="pregnancy-form">
+      <!-- Calculation Method -->
+      <div class="form-group method-toggle">
+        <label>{t('pregnancy:form.methodLabel', lang)}</label>
+        <div class="method-options">
+          <label>
+            <input type="radio" name="method" value="lmp" checked />
+            {t('pregnancy:form.lmpMethod', lang)}
+          </label>
+          <label>
+            <input type="radio" name="method" value="conception" />
+            {t('pregnancy:form.conceptionMethod', lang)}
+          </label>
+          <label>
+            <input type="radio" name="method" value="dueDate" />
+            {t('pregnancy:form.dueDateMethod', lang)}
+          </label>
+        </div>
+      </div>
+
+      <!-- LMP Date Input -->
+      <div class="form-group date-input lmp-input">
+        <label for="lmp-date">{t('pregnancy:form.lmpDateLabel', lang)}</label>
+        <input
+          type="date"
+          id="lmp-date"
+          name="lmpDate"
+          required
+        />
+        <p class="help-text">{t('pregnancy:form.lmpDateHelp', lang)}</p>
+      </div>
+
+      <!-- Conception Date Input -->
+      <div class="form-group date-input conception-input" style="display: none;">
+        <label for="conception-date">{t('pregnancy:form.conceptionDateLabel', lang)}</label>
+        <input
+          type="date"
+          id="conception-date"
+          name="conceptionDate"
+        />
+        <p class="help-text">{t('pregnancy:form.conceptionDateHelp', lang)}</p>
+      </div>
+
+      <!-- Due Date Input -->
+      <div class="form-group date-input due-date-input" style="display: none;">
+        <label for="due-date">{t('pregnancy:form.dueDateLabel', lang)}</label>
+        <input
+          type="date"
+          id="due-date"
+          name="dueDate"
+        />
+        <p class="help-text">{t('pregnancy:form.dueDateHelp', lang)}</p>
+      </div>
+
+      <!-- Cycle Length (for LMP method) -->
+      <div class="form-group cycle-length-input">
+        <label for="cycle-length">{t('pregnancy:form.cycleLengthLabel', lang)}</label>
+        <input
+          type="number"
+          id="cycle-length"
+          name="cycleLength"
+          min="22"
+          max="44"
+          value="28"
+          step="1"
+        />
+        <span class="unit">{t('common.days', lang)}</span>
+        <p class="help-text">{t('pregnancy:form.cycleLengthHelp', lang)}</p>
+      </div>
+
+      <!-- Buttons -->
+      <div class="form-actions">
+        <button type="submit" class="btn-primary">{t('common.calculate', lang)}</button>
+        <button type="reset" class="btn-secondary">{t('common.reset', lang)}</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="calculator-results" id="results" style="display: none;">
+    <h2>{t('pregnancy:results.title', lang)}</h2>
+
+    <div class="result-card main-result">
+      <h3>{t('pregnancy:results.dueDate', lang)}</h3>
+      <p class="value" id="due-date-value">-</p>
+      <p class="subtitle">{t('pregnancy:results.currentWeek', lang)}: <span id="current-week">-</span></p>
+    </div>
+
+    <div class="result-grid">
+      <div class="result-item">
+        <strong>{t('pregnancy:results.conceptionDate', lang)}:</strong>
+        <span id="conception-date-value">-</span>
+      </div>
+      <div class="result-item">
+        <strong>{t('pregnancy:results.trimester', lang)}:</strong>
+        <span id="trimester-value">-</span>
+      </div>
+      <div class="result-item">
+        <strong>{t('pregnancy:results.daysRemaining', lang)}:</strong>
+        <span id="days-remaining">-</span>
+      </div>
+      <div class="result-item">
+        <strong>{t('pregnancy:results.percentComplete', lang)}:</strong>
+        <span id="percent-complete">-</span>
+      </div>
+    </div>
+
+    <div class="progress-bar">
+      <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+    </div>
+
+    <div class="milestones-section">
+      <h3>{t('pregnancy:results.milestones', lang)}</h3>
+      <div class="milestones-timeline" id="milestones-timeline">
+        <!-- Milestones will be inserted here -->
+      </div>
+    </div>
+  </div>
+
+  <div class="calculator-info">
+    <h2>{t('pregnancy:info.title', lang)}</h2>
+    <p>{t('pregnancy:info.description', lang)}</p>
+    <p class="formula">{t('pregnancy:info.formula', lang)}</p>
+    <p class="limitations">{t('pregnancy:info.limitations', lang)}</p>
+  </div>
+</div>
+
+<style>
+  .pregnancy-calculator {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .calculator-form, .calculator-results, .calculator-info {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  h2 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  h3 {
+    color: #333;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #555;
+  }
+
+  .form-group input[type="number"],
+  .form-group input[type="date"] {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+
+  .form-group input[type="number"]:focus,
+  .form-group input[type="date"]:focus {
+    outline: none;
+    border-color: #ec4899;
+  }
+
+  .unit {
+    display: inline-block;
+    margin-left: 0.5rem;
+    color: #888;
+    font-size: 0.9rem;
+  }
+
+  .help-text {
+    font-size: 0.85rem;
+    color: #888;
+    margin-top: 0.25rem;
+    font-style: italic;
+  }
+
+  .method-toggle {
+    padding: 1rem;
+    background: #fef2f2;
+    border-radius: 4px;
+  }
+
+  .method-toggle label:first-child {
+    margin-bottom: 0.75rem;
+  }
+
+  .method-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .method-options label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    margin: 0;
+    font-weight: normal;
+  }
+
+  .form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .btn-primary, .btn-secondary {
+    flex: 1;
+    padding: 0.875rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, #ec4899 0%, #be185d 100%);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #db2777 0%, #9f1239 100%);
+  }
+
+  .btn-secondary {
+    background: #f5f5f5;
+    color: #333;
+  }
+
+  .btn-secondary:hover {
+    background: #e0e0e0;
+  }
+
+  .result-card {
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, #ec4899 0%, #be185d 100%);
+    color: white;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+
+  .result-card h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1.2rem;
+    color: white;
+  }
+
+  .result-card .value {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  .result-card .subtitle {
+    font-size: 1.1rem;
+    margin: 0.5rem 0 0 0;
+    opacity: 0.9;
+  }
+
+  .result-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .result-item {
+    padding: 1rem;
+    background: #fef2f2;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .result-item strong {
+    color: #be185d;
+    font-size: 0.9rem;
+  }
+
+  .result-item span {
+    color: #333;
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+
+  .progress-bar {
+    width: 100%;
+    height: 30px;
+    background: #f3f4f6;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #ec4899 0%, #be185d 100%);
+    transition: width 0.5s ease;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 0.5rem;
+    color: white;
+    font-weight: 500;
+    font-size: 0.85rem;
+  }
+
+  .milestones-section {
+    margin-top: 2rem;
+  }
+
+  .milestones-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .milestone-item {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    background: #fef2f2;
+    border-radius: 4px;
+    border-left: 4px solid #ec4899;
+  }
+
+  .milestone-item.past {
+    opacity: 0.6;
+    border-left-color: #9ca3af;
+  }
+
+  .milestone-item.current {
+    border-left-color: #be185d;
+    background: #fce7f3;
+  }
+
+  .milestone-week {
+    font-weight: bold;
+    color: #be185d;
+    min-width: 80px;
+  }
+
+  .milestone-content {
+    flex: 1;
+  }
+
+  .milestone-title {
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+    color: #333;
+  }
+
+  .milestone-description {
+    font-size: 0.9rem;
+    color: #666;
+  }
+
+  .milestone-date {
+    font-size: 0.85rem;
+    color: #888;
+    margin-top: 0.25rem;
+  }
+
+  .milestone-badge {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin-left: 0.5rem;
+  }
+
+  .milestone-badge.development {
+    background: #dbeafe;
+    color: #1e40af;
+  }
+
+  .milestone-badge.test {
+    background: #fef3c7;
+    color: #92400e;
+  }
+
+  .milestone-badge.milestone {
+    background: #fce7f3;
+    color: #9f1239;
+  }
+
+  .calculator-info {
+    background: #fef2f2;
+  }
+
+  .calculator-info p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: #555;
+  }
+
+  .formula {
+    font-family: monospace;
+    background: white;
+    padding: 1rem;
+    border-left: 4px solid #ec4899;
+    margin: 1rem 0;
+  }
+
+  .limitations {
+    font-size: 0.9rem;
+    font-style: italic;
+  }
+
+  @media (max-width: 768px) {
+    .method-options {
+      flex-direction: column;
+    }
+  }
+</style>
+
+<script>
+  import type { PregnancyInput, PregnancyResult, CalculationMethod } from '@/utils/calculators/pregnancy';
+  import { calculatePregnancyMetrics, formatDate } from '@/utils/calculators/pregnancy';
+
+  const form = document.getElementById('pregnancy-form') as HTMLFormElement;
+  const results = document.getElementById('results') as HTMLDivElement;
+  const methodInputs = document.querySelectorAll('input[name="method"]');
+  const lmpInput = document.querySelector('.lmp-input') as HTMLDivElement;
+  const conceptionInput = document.querySelector('.conception-input') as HTMLDivElement;
+  const dueDateInput = document.querySelector('.due-date-input') as HTMLDivElement;
+  const cycleLengthInput = document.querySelector('.cycle-length-input') as HTMLDivElement;
+
+  const lmpDateField = document.getElementById('lmp-date') as HTMLInputElement;
+  const conceptionDateField = document.getElementById('conception-date') as HTMLInputElement;
+  const dueDateField = document.getElementById('due-date') as HTMLInputElement;
+
+  // Get current language
+  const currentLang = document.documentElement.lang || 'es';
+
+  // Handle method change
+  methodInputs.forEach(input => {
+    input.addEventListener('change', (e) => {
+      const target = e.target as HTMLInputElement;
+      const method = target.value as CalculationMethod;
+
+      // Hide all inputs
+      lmpInput.style.display = 'none';
+      conceptionInput.style.display = 'none';
+      dueDateInput.style.display = 'none';
+      cycleLengthInput.style.display = 'none';
+
+      // Reset required attributes
+      lmpDateField.required = false;
+      conceptionDateField.required = false;
+      dueDateField.required = false;
+
+      // Show relevant input
+      if (method === 'lmp') {
+        lmpInput.style.display = 'block';
+        cycleLengthInput.style.display = 'block';
+        lmpDateField.required = true;
+      } else if (method === 'conception') {
+        conceptionInput.style.display = 'block';
+        conceptionDateField.required = true;
+      } else if (method === 'dueDate') {
+        dueDateInput.style.display = 'block';
+        dueDateField.required = true;
+      }
+    });
+  });
+
+  // Handle form submission
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const method = formData.get('method') as CalculationMethod;
+    const cycleLength = parseInt(formData.get('cycleLength') as string) || 28;
+
+    let date: Date;
+
+    if (method === 'lmp') {
+      const lmpDate = formData.get('lmpDate') as string;
+      date = new Date(lmpDate);
+    } else if (method === 'conception') {
+      const conceptionDate = formData.get('conceptionDate') as string;
+      date = new Date(conceptionDate);
+    } else {
+      const dueDate = formData.get('dueDate') as string;
+      date = new Date(dueDate);
+    }
+
+    const input: PregnancyInput = {
+      method,
+      date,
+      cycleLength,
+    };
+
+    try {
+      const result = calculatePregnancyMetrics(input);
+      displayResults(result);
+    } catch (error) {
+      alert('Error calculating pregnancy. Please check your inputs.');
+      console.error(error);
+    }
+  });
+
+  function displayResults(result: PregnancyResult) {
+    const dueDateValue = document.getElementById('due-date-value') as HTMLParagraphElement;
+    const currentWeek = document.getElementById('current-week') as HTMLSpanElement;
+    const conceptionDateValue = document.getElementById('conception-date-value') as HTMLSpanElement;
+    const trimesterValue = document.getElementById('trimester-value') as HTMLSpanElement;
+    const daysRemaining = document.getElementById('days-remaining') as HTMLSpanElement;
+    const percentComplete = document.getElementById('percent-complete') as HTMLSpanElement;
+    const progressFill = document.getElementById('progress-fill') as HTMLDivElement;
+    const milestonesTimeline = document.getElementById('milestones-timeline') as HTMLDivElement;
+
+    // Get locale string for date formatting
+    const localeMap: Record<string, string> = {
+      es: 'es-ES',
+      en: 'en-US',
+      pt: 'pt-PT',
+      fr: 'fr-FR',
+      hi: 'hi-IN',
+      de: 'de-DE',
+      it: 'it-IT',
+    };
+    const locale = localeMap[currentLang] || 'es-ES';
+
+    // Display main results
+    dueDateValue.textContent = formatDate(result.dueDate, locale);
+    currentWeek.textContent = `${result.currentWeek} ${getWeekText(result.currentWeek)}, ${result.currentDay} ${getDayText(result.currentDay)}`;
+    conceptionDateValue.textContent = formatDate(result.conceptionDate, locale);
+    trimesterValue.textContent = getTrimesterText(result.trimester);
+    daysRemaining.textContent = `${result.daysRemaining} ${getDayText(result.daysRemaining)}`;
+    percentComplete.textContent = `${result.percentComplete}%`;
+
+    // Update progress bar
+    progressFill.style.width = `${result.percentComplete}%`;
+
+    // Display milestones
+    milestonesTimeline.innerHTML = '';
+    result.milestones.forEach(milestone => {
+      const isPast = milestone.week < result.currentWeek;
+      const isCurrent = milestone.week === result.currentWeek;
+
+      const milestoneEl = document.createElement('div');
+      milestoneEl.className = `milestone-item ${isPast ? 'past' : ''} ${isCurrent ? 'current' : ''}`;
+
+      const weekText = getWeekText(milestone.week);
+      const badgeType = milestone.type;
+      const badgeText = getBadgeText(badgeType);
+
+      milestoneEl.innerHTML = `
+        <div class="milestone-week">${weekText} ${milestone.week}</div>
+        <div class="milestone-content">
+          <div class="milestone-title">
+            ${getMilestoneTitle(milestone.title)}
+            <span class="milestone-badge ${badgeType}">${badgeText}</span>
+          </div>
+          <div class="milestone-description">${getMilestoneDescription(milestone.description)}</div>
+          <div class="milestone-date">${formatDate(milestone.date, locale)}</div>
+        </div>
+      `;
+
+      milestonesTimeline.appendChild(milestoneEl);
+    });
+
+    // Show results
+    results.style.display = 'block';
+    results.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function getWeekText(week: number): string {
+    const texts: Record<string, Record<string, string>> = {
+      es: { singular: 'semana', plural: 'semanas' },
+      en: { singular: 'week', plural: 'weeks' },
+      pt: { singular: 'semana', plural: 'semanas' },
+      fr: { singular: 'semaine', plural: 'semaines' },
+      hi: { singular: 'सप्ताह', plural: 'सप्ताह' },
+      de: { singular: 'Woche', plural: 'Wochen' },
+      it: { singular: 'settimana', plural: 'settimane' },
+    };
+    return week === 1 ? texts[currentLang]?.singular || 'week' : texts[currentLang]?.plural || 'weeks';
+  }
+
+  function getDayText(day: number): string {
+    const texts: Record<string, Record<string, string>> = {
+      es: { singular: 'día', plural: 'días' },
+      en: { singular: 'day', plural: 'days' },
+      pt: { singular: 'dia', plural: 'dias' },
+      fr: { singular: 'jour', plural: 'jours' },
+      hi: { singular: 'दिन', plural: 'दिन' },
+      de: { singular: 'Tag', plural: 'Tage' },
+      it: { singular: 'giorno', plural: 'giorni' },
+    };
+    return day === 1 ? texts[currentLang]?.singular || 'day' : texts[currentLang]?.plural || 'days';
+  }
+
+  function getTrimesterText(trimester: number): string {
+    const texts: Record<string, string[]> = {
+      es: ['Primer trimestre', 'Segundo trimestre', 'Tercer trimestre'],
+      en: ['First trimester', 'Second trimester', 'Third trimester'],
+      pt: ['Primeiro trimestre', 'Segundo trimestre', 'Terceiro trimestre'],
+      fr: ['Premier trimestre', 'Deuxième trimestre', 'Troisième trimestre'],
+      hi: ['पहली तिमाही', 'दूसरी तिमाही', 'तीसरी तिमाही'],
+      de: ['Erstes Trimester', 'Zweites Trimester', 'Drittes Trimester'],
+      it: ['Primo trimestre', 'Secondo trimestre', 'Terzo trimestre'],
+    };
+    return texts[currentLang]?.[trimester - 1] || texts.en[trimester - 1];
+  }
+
+  function getBadgeText(type: string): string {
+    const texts: Record<string, Record<string, string>> = {
+      es: { development: 'Desarrollo', test: 'Prueba', milestone: 'Hito' },
+      en: { development: 'Development', test: 'Test', milestone: 'Milestone' },
+      pt: { development: 'Desenvolvimento', test: 'Teste', milestone: 'Marco' },
+      fr: { development: 'Développement', test: 'Test', milestone: 'Jalon' },
+      hi: { development: 'विकास', test: 'परीक्षण', milestone: 'मील का पत्थर' },
+      de: { development: 'Entwicklung', test: 'Test', milestone: 'Meilenstein' },
+      it: { development: 'Sviluppo', test: 'Test', milestone: 'Tappa' },
+    };
+    return texts[currentLang]?.[type] || texts.en[type];
+  }
+
+  function getMilestoneTitle(key: string): string {
+    // These would normally come from translations, but for simplicity we'll use a mapping
+    const titles: Record<string, Record<string, string>> = {
+      'milestone.week4': {
+        es: 'Implantación completada',
+        en: 'Implantation completed',
+        pt: 'Implantação concluída',
+        fr: 'Implantation terminée',
+        hi: 'प्रत्यारोपण पूर्ण',
+        de: 'Einnistung abgeschlossen',
+        it: 'Impianto completato',
+      },
+      'milestone.week8': {
+        es: 'Primera visita prenatal',
+        en: 'First prenatal visit',
+        pt: 'Primeira consulta pré-natal',
+        fr: 'Première visite prénatale',
+        hi: 'पहली प्रसव पूर्व यात्रा',
+        de: 'Erster pränataler Besuch',
+        it: 'Prima visita prenatale',
+      },
+      'milestone.week12': {
+        es: 'Ecografía del primer trimestre',
+        en: 'First trimester ultrasound',
+        pt: 'Ultrassom do primeiro trimestre',
+        fr: 'Échographie du premier trimestre',
+        hi: 'पहली तिमाही अल्ट्रासाउंड',
+        de: 'Erstes Trimester-Ultraschall',
+        it: 'Ecografia del primo trimestre',
+      },
+      'milestone.week13': {
+        es: 'Fin del primer trimestre',
+        en: 'End of first trimester',
+        pt: 'Fim do primeiro trimestre',
+        fr: 'Fin du premier trimestre',
+        hi: 'पहली तिमाही का अंत',
+        de: 'Ende des ersten Trimesters',
+        it: 'Fine del primo trimestre',
+      },
+      'milestone.week16': {
+        es: 'Posibles primeros movimientos',
+        en: 'Possible first movements',
+        pt: 'Possíveis primeiros movimentos',
+        fr: 'Premiers mouvements possibles',
+        hi: 'संभावित पहली हलचल',
+        de: 'Mögliche erste Bewegungen',
+        it: 'Possibili primi movimenti',
+      },
+      'milestone.week20': {
+        es: 'Ecografía de anatomía',
+        en: 'Anatomy ultrasound',
+        pt: 'Ultrassom de anatomia',
+        fr: 'Échographie d\'anatomie',
+        hi: 'शारीरिक अल्ट्रासाउंड',
+        de: 'Anatomie-Ultraschall',
+        it: 'Ecografia anatomica',
+      },
+      'milestone.week24': {
+        es: 'Viabilidad fetal',
+        en: 'Fetal viability',
+        pt: 'Viabilidade fetal',
+        fr: 'Viabilité fœtale',
+        hi: 'भ्रूण व्यवहार्यता',
+        de: 'Fetale Lebensfähigkeit',
+        it: 'Vitalità fetale',
+      },
+      'milestone.week28': {
+        es: 'Inicio del tercer trimestre',
+        en: 'Start of third trimester',
+        pt: 'Início do terceiro trimestre',
+        fr: 'Début du troisième trimestre',
+        hi: 'तीसरी तिमाही की शुरुआत',
+        de: 'Beginn des dritten Trimesters',
+        it: 'Inizio del terzo trimestre',
+      },
+      'milestone.week32': {
+        es: 'Desarrollo pulmonar completo',
+        en: 'Lung development complete',
+        pt: 'Desenvolvimento pulmonar completo',
+        fr: 'Développement pulmonaire complet',
+        hi: 'फेफड़े का विकास पूर्ण',
+        de: 'Lungenentwicklung abgeschlossen',
+        it: 'Sviluppo polmonare completo',
+      },
+      'milestone.week36': {
+        es: 'Bebé a término temprano',
+        en: 'Early term baby',
+        pt: 'Bebê a termo precoce',
+        fr: 'Bébé à terme précoce',
+        hi: 'प्रारंभिक अवधि बच्चा',
+        de: 'Frühgeburt',
+        it: 'Bambino a termine precoce',
+      },
+      'milestone.week40': {
+        es: 'Fecha prevista de parto',
+        en: 'Due date',
+        pt: 'Data prevista do parto',
+        fr: 'Date prévue d\'accouchement',
+        hi: 'नियत तारीख',
+        de: 'Fälligkeitsdatum',
+        it: 'Data prevista del parto',
+      },
+    };
+    return titles[key]?.[currentLang] || titles[key]?.en || key;
+  }
+
+  function getMilestoneDescription(key: string): string {
+    const descriptions: Record<string, Record<string, string>> = {
+      'milestone.week4Desc': {
+        es: 'El embrión se ha implantado en el útero',
+        en: 'The embryo has implanted in the uterus',
+        pt: 'O embrião foi implantado no útero',
+        fr: 'L\'embryon s\'est implanté dans l\'utérus',
+        hi: 'भ्रूण गर्भाशय में प्रत्यारोपित हो गया है',
+        de: 'Der Embryo hat sich in der Gebärmutter eingenistet',
+        it: 'L\'embrione si è impiantato nell\'utero',
+      },
+      'milestone.week8Desc': {
+        es: 'Tiempo para la primera consulta y exámenes',
+        en: 'Time for first checkup and tests',
+        pt: 'Hora da primeira consulta e exames',
+        fr: 'Temps pour le premier examen et tests',
+        hi: 'पहली जांच और परीक्षण का समय',
+        de: 'Zeit für die erste Untersuchung und Tests',
+        it: 'Tempo per il primo controllo e test',
+      },
+      'milestone.week12Desc': {
+        es: 'Ecografía para verificar el desarrollo',
+        en: 'Ultrasound to check development',
+        pt: 'Ultrassom para verificar o desenvolvimento',
+        fr: 'Échographie pour vérifier le développement',
+        hi: 'विकास की जांच के लिए अल्ट्रासाउंड',
+        de: 'Ultraschall zur Überprüfung der Entwicklung',
+        it: 'Ecografia per verificare lo sviluppo',
+      },
+      'milestone.week13Desc': {
+        es: 'Mayor estabilidad del embarazo',
+        en: 'Greater pregnancy stability',
+        pt: 'Maior estabilidade da gravidez',
+        fr: 'Plus grande stabilité de grossesse',
+        hi: 'गर्भावस्था की अधिक स्थिरता',
+        de: 'Größere Schwangerschaftsstabilität',
+        it: 'Maggiore stabilità della gravidanza',
+      },
+      'milestone.week16Desc': {
+        es: 'Puedes comenzar a sentir al bebé moverse',
+        en: 'You may start to feel baby move',
+        pt: 'Você pode começar a sentir o bebê se mover',
+        fr: 'Vous pourriez commencer à sentir le bébé bouger',
+        hi: 'आप बच्चे को चलते हुए महसूस कर सकती हैं',
+        de: 'Sie können beginnen, das Baby zu spüren',
+        it: 'Potresti iniziare a sentire il bambino muoversi',
+      },
+      'milestone.week20Desc': {
+        es: 'Ecografía detallada de anatomía fetal',
+        en: 'Detailed fetal anatomy ultrasound',
+        pt: 'Ultrassom detalhado da anatomia fetal',
+        fr: 'Échographie détaillée de l\'anatomie fœtale',
+        hi: 'विस्तृत भ्रूण शरीर रचना अल्ट्रासाउंड',
+        de: 'Detaillierter fetaler Anatomie-Ultraschall',
+        it: 'Ecografia dettagliata dell\'anatomia fetale',
+      },
+      'milestone.week24Desc': {
+        es: 'El bebé podría sobrevivir con cuidados especiales',
+        en: 'Baby could survive with special care',
+        pt: 'O bebê pode sobreviver com cuidados especiais',
+        fr: 'Le bébé pourrait survivre avec des soins spéciaux',
+        hi: 'बच्चा विशेष देखभाल से जीवित रह सकता है',
+        de: 'Baby könnte mit spezieller Pflege überleben',
+        it: 'Il bambino potrebbe sopravvivere con cure speciali',
+      },
+      'milestone.week28Desc': {
+        es: 'Comienzo de la recta final',
+        en: 'Beginning of the home stretch',
+        pt: 'Início da reta final',
+        fr: 'Début de la dernière ligne droite',
+        hi: 'अंतिम चरण की शुरुआत',
+        de: 'Beginn der Zielgeraden',
+        it: 'Inizio del tratto finale',
+      },
+      'milestone.week32Desc': {
+        es: 'Los pulmones están maduros',
+        en: 'Lungs are mature',
+        pt: 'Os pulmões estão maduros',
+        fr: 'Les poumons sont matures',
+        hi: 'फेफड़े परिपक्व हैं',
+        de: 'Die Lungen sind ausgereift',
+        it: 'I polmoni sono maturi',
+      },
+      'milestone.week36Desc': {
+        es: 'El bebé está listo para nacer',
+        en: 'Baby is ready to be born',
+        pt: 'O bebê está pronto para nascer',
+        fr: 'Le bébé est prêt à naître',
+        hi: 'बच्चा जन्म के लिए तैयार है',
+        de: 'Das Baby ist bereit, geboren zu werden',
+        it: 'Il bambino è pronto per nascere',
+      },
+      'milestone.week40Desc': {
+        es: 'Fecha estimada de nacimiento',
+        en: 'Estimated birth date',
+        pt: 'Data estimada de nascimento',
+        fr: 'Date de naissance estimée',
+        hi: 'अनुमानित जन्म तिथि',
+        de: 'Geschätztes Geburtsdatum',
+        it: 'Data di nascita stimata',
+      },
+    };
+    return descriptions[key]?.[currentLang] || descriptions[key]?.en || key;
+  }
+
+  // Handle form reset
+  form.addEventListener('reset', () => {
+    results.style.display = 'none';
+    // Reset to LMP method
+    lmpInput.style.display = 'block';
+    cycleLengthInput.style.display = 'block';
+    conceptionInput.style.display = 'none';
+    dueDateInput.style.display = 'none';
+    lmpDateField.required = true;
+    conceptionDateField.required = false;
+    dueDateField.required = false;
+  });
+</script>

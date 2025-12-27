@@ -1,0 +1,64 @@
+{
+  "title": "Calculadora de Data de Parto",
+  "description": "Calcule sua data provável de parto",
+  "metaDescription": "Calculadora de Data de Parto Gratuita - Calcule sua data provável de parto usando DUM, data de concepção, ultrassom ou transferência de FIV. Acompanhe os marcos da sua gravidez.",
+  "form": {
+    "title": "Calcule Sua Data de Parto",
+    "methodLabel": "Método de Cálculo",
+    "methods": {
+      "lmp": "DUM",
+      "conception": "Concepção",
+      "ultrasound": "Ultrassom",
+      "ivf": "FIV"
+    },
+    "lmpDateLabel": "Primeiro Dia da Última Menstruação",
+    "lmpHelper": "O primeiro dia do seu último período",
+    "cycleLengthLabel": "Duração Média do Ciclo",
+    "cycleLengthHelper": "Duração média do seu ciclo menstrual (22-44 dias)",
+    "conceptionDateLabel": "Data de Concepção",
+    "conceptionHelper": "A data em que a concepção ocorreu",
+    "ultrasoundDateLabel": "Data do Ultrassom",
+    "ultrasoundWeeksLabel": "Idade Gestacional no Ultrassom",
+    "ultrasoundHelper": "Duração da gravidez mostrada no ultrassom",
+    "weeks": "semanas",
+    "days": "dias",
+    "ivfTransferDateLabel": "Data de Transferência FIV",
+    "embryoAgeLabel": "Idade do Embrião na Transferência",
+    "embryoAge": {
+      "day3": "Embrião Dia 3",
+      "day5": "Blastocisto Dia 5",
+      "day6": "Blastocisto Dia 6"
+    },
+    "ivfHelper": "A idade do embrião quando foi transferido"
+  },
+  "results": {
+    "title": "Sua Linha do Tempo da Gravidez",
+    "dueDate": "Data Provável de Parto",
+    "conceptionDate": "Data Estimada de Concepção",
+    "currentWeek": "Semana Atual",
+    "daysRemaining": "Dias Até a Data de Parto",
+    "trimester": "Trimestre Atual",
+    "milestones": "Marcos Importantes",
+    "firstTrimesterEnd": "Fim do Primeiro Trimestre (13 semanas)",
+    "secondTrimesterEnd": "Fim do Segundo Trimestre (27 semanas)",
+    "fullTerm": "A Termo (39 semanas)",
+    "disclaimer": "Apenas cerca de 4% dos bebês nascem na data estimada de parto. A maioria dos bebês nasce entre 37-42 semanas de gravidez. Esta calculadora fornece uma estimativa e não deve substituir o aconselhamento médico profissional."
+  },
+  "info": {
+    "title": "Sobre o Cálculo da Data de Parto",
+    "description": "Uma calculadora de data de parto ajuda a estimar quando seu bebê nascerá. A calculadora usa diferentes métodos para fornecer uma estimativa precisa da sua data de parto.",
+    "methods": {
+      "title": "Métodos de Cálculo",
+      "lmp": "Última Menstruação (DUM):",
+      "lmpDesc": "O método mais comum, usando a regra de Naegele (DUM + 280 dias). Isso pressupõe um ciclo de 28 dias com ovulação no dia 14.",
+      "conception": "Data de Concepção:",
+      "conceptionDesc": "Adiciona 266 dias (38 semanas) à data de concepção conhecida ou estimada.",
+      "ultrasound": "Ultrassom:",
+      "ultrasoundDesc": "Usa medidas de idade gestacional do ultrassom, que é mais preciso no primeiro trimestre.",
+      "ivf": "Transferência FIV:",
+      "ivfDesc": "O método mais preciso, pois a data de transferência do embrião é conhecida exatamente. Leva em conta a idade do embrião na transferência."
+    },
+    "formula": "Fórmula Padrão: Data de Parto = DUM + 280 dias (40 semanas)",
+    "limitations": "Lembre-se de que a data de parto é apenas uma estimativa. Apenas cerca de 4% dos bebês nascem na data exata de parto. A maioria nasce dentro de 2 semanas antes ou depois. Fatores como duração do ciclo, momento da concepção e variações individuais podem afetar a data real de parto. Sempre consulte seu profissional de saúde para aconselhamento médico personalizado."
+  }
+}

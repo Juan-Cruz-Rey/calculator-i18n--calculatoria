@@ -1,0 +1,39 @@
+{
+  "title": "Gesundes Gewicht Rechner",
+  "description": "Berechnen Sie Ihren idealen gesunden Gewichtsbereich",
+  "metaDescription": "Kostenloser gesunder Gewichtsrechner - Entdecken Sie Ihren idealen Gewichtsbereich mithilfe mehrerer wissenschaftlicher Formeln. Enthält Robinson-, Miller-, Devine- und Hamwi-Formeln.",
+  "form": {
+    "title": "Geben Sie Ihre Informationen ein",
+    "ageLabel": "Alter",
+    "agePlaceholder": "Geben Sie Ihr Alter ein",
+    "genderLabel": "Geschlecht",
+    "heightLabel": "Größe",
+    "heightPlaceholder": "Geben Sie Ihre Größe ein",
+    "currentWeightLabel": "Aktuelles Gewicht (Optional)",
+    "currentWeightPlaceholder": "Geben Sie Ihr aktuelles Gewicht ein",
+    "currentWeightHelp": "Optional: Geben Sie Ihr aktuelles Gewicht ein, um personalisierte Empfehlungen zu sehen"
+  },
+  "results": {
+    "title": "Ihre Ergebnisse",
+    "currentStatus": "Ihr Aktueller Status",
+    "healthyRangeTitle": "Gesunder Gewichtsbereich",
+    "bmiRange": "Gesunder BMI-Bereich",
+    "weightRange": "Gesunder Gewichtsbereich",
+    "weightGoalTitle": "Ihr Gewichtsziel",
+    "idealWeightsTitle": "Idealgewichte nach wissenschaftlichen Formeln",
+    "robinsonFormula": "Robinson",
+    "millerFormula": "Miller",
+    "devineFormula": "Devine",
+    "hamwiFormula": "Hamwi",
+    "hamwiSmallFrame": "Hamwi (Kleiner Rahmen)",
+    "hamwiLargeFrame": "Hamwi (Großer Rahmen)"
+  },
+  "info": {
+    "title": "Über Gesundes Gewicht",
+    "description": "Das gesunde Gewicht basiert auf dem von der WHO empfohlenen BMI-Bereich (18.5-25). Dieser Rechner verwendet Ihre Größe, um Ihren gesunden Gewichtsbereich zu bestimmen und vergleicht mehrere wissenschaftliche Formeln, um Ihr Idealgewicht zu berechnen.",
+    "bmiFormula": "Gesunder BMI-Bereich: 18.5 - 25.0 kg/m²",
+    "formulasTitle": "Idealgewicht-Formeln",
+    "formulasDescription": "Vier anerkannte wissenschaftliche Formeln sind enthalten (Robinson 1983, Miller 1983, Devine 1974, Hamwi 1964). Die Hamwi-Formel wird auch für kleine Körperstruktur (-10%) und große Körperstruktur (+10%) angepasst.",
+    "limitations": "Diese Formeln sind allgemeine Schätzungen für Erwachsene ab 18 Jahren. Sie berücksichtigen nicht die individuelle Körperzusammensetzung, Muskelmasse oder spezifische Gesundheitszustände. Konsultieren Sie einen Gesundheitsfachmann für persönliche Beratung."
+  }
+}

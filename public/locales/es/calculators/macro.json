@@ -1,0 +1,59 @@
+{
+  "title": "Calculadora de Macros",
+  "description": "Calcula tus macronutrientes diarios",
+  "metaDescription": "Calculadora de macros gratuita - Calcula tu distribución de proteínas, carbohidratos y grasas según tu objetivo. Obtén tu plan nutricional personalizado.",
+  "form": {
+    "title": "Ingresa tus datos",
+    "ageLabel": "Edad",
+    "agePlaceholder": "Ingresa tu edad",
+    "genderLabel": "Género",
+    "heightLabel": "Altura",
+    "heightPlaceholder": "Ingresa tu altura",
+    "weightLabel": "Peso",
+    "weightPlaceholder": "Ingresa tu peso",
+    "activityLabel": "Nivel de actividad",
+    "activityLevels": {
+      "sedentary": "Sedentario (poco o ningún ejercicio)",
+      "light": "Ligero (ejercicio 1-3 veces/semana)",
+      "moderate": "Moderado (ejercicio 4-5 veces/semana)",
+      "active": "Activo (ejercicio diario o intenso 3-4 veces/semana)",
+      "veryActive": "Muy activo (ejercicio intenso 6-7 veces/semana)",
+      "extraActive": "Extra activo (ejercicio muy intenso diario o trabajo físico)"
+    },
+    "goalLabel": "Objetivo de peso",
+    "goals": {
+      "extremeLoss": "Pérdida extrema (1 kg/semana)",
+      "moderateLoss": "Pérdida moderada (0.5 kg/semana)",
+      "mildLoss": "Pérdida leve (0.25 kg/semana)",
+      "maintain": "Mantener peso",
+      "mildGain": "Ganancia leve (0.25 kg/semana)",
+      "moderateGain": "Ganancia moderada (0.5 kg/semana)",
+      "extremeGain": "Ganancia extrema (1 kg/semana)"
+    },
+    "dietTypeLabel": "Tipo de dieta",
+    "dietTypes": {
+      "balanced": "Equilibrada (30% proteína, 40% carbohidratos, 30% grasas)",
+      "lowFat": "Baja en grasas (30% proteína, 50% carbohidratos, 20% grasas)",
+      "lowCarb": "Baja en carbohidratos (35% proteína, 20% carbohidratos, 45% grasas)",
+      "highProtein": "Alta en proteína (40% proteína, 30% carbohidratos, 30% grasas)"
+    }
+  },
+  "results": {
+    "title": "Tus Resultados",
+    "dailyCalories": "Calorías Diarias",
+    "toReachGoal": "para alcanzar tu objetivo",
+    "bmr": "Metabolismo Basal (TMB)",
+    "tdee": "Gasto Energético Total (GECT)",
+    "weeklyChange": "Cambio Semanal de Peso",
+    "macrosBreakdown": "Distribución de Macronutrientes",
+    "protein": "Proteínas",
+    "carbs": "Carbohidratos",
+    "fats": "Grasas"
+  },
+  "info": {
+    "title": "Sobre los Macronutrientes",
+    "description": "Los macronutrientes (proteínas, carbohidratos y grasas) son los nutrientes que proporcionan energía a tu cuerpo. Esta calculadora determina tu gasto energético total y distribuye las calorías en macronutrientes según tu objetivo y tipo de dieta preferido.",
+    "formula": "Fórmula: TMB (Mifflin-St Jeor) × Multiplicador de Actividad ± Ajuste de Objetivo",
+    "limitations": "Esta calculadora proporciona estimaciones basadas en fórmulas estándar. Los requerimientos individuales pueden variar. Consulta con un profesional de la salud o nutricionista para un plan personalizado."
+  }
+}

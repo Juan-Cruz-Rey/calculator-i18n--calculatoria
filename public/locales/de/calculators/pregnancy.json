@@ -1,0 +1,36 @@
+{
+  "title": "Schwangerschaftsrechner",
+  "description": "Berechnen Sie Ihren Geburtstermin und Schwangerschaftsverfolgung",
+  "metaDescription": "Kostenloser Schwangerschaftsrechner - Berechnen Sie Ihren Geburtstermin, aktuelle Woche und Trimester. Enthält wichtige Meilensteine der fetalen Entwicklung.",
+  "form": {
+    "title": "Geben Sie Ihre Informationen ein",
+    "methodLabel": "Berechnungsmethode",
+    "lmpMethod": "Letzte Regelblutung (LMP)",
+    "conceptionMethod": "Empfängnisdatum",
+    "dueDateMethod": "Bekannter Geburtstermin",
+    "lmpDateLabel": "Erster Tag Ihrer letzten Periode",
+    "lmpDateHelp": "Geben Sie den ersten Tag Ihrer letzten Menstruation ein",
+    "conceptionDateLabel": "Empfängnisdatum",
+    "conceptionDateHelp": "Geschätztes oder bekanntes Empfängnisdatum",
+    "dueDateLabel": "Voraussichtlicher Geburtstermin",
+    "dueDateHelp": "Wenn Ihr Arzt Ihnen einen Geburtstermin gegeben hat",
+    "cycleLengthLabel": "Länge des Menstruationszyklus",
+    "cycleLengthHelp": "Durchschnittliche Länge Ihres Zyklus (normalerweise 28 Tage)"
+  },
+  "results": {
+    "title": "Ihre Ergebnisse",
+    "dueDate": "Voraussichtlicher Geburtstermin",
+    "currentWeek": "Aktuelle Woche",
+    "conceptionDate": "Empfängnisdatum",
+    "trimester": "Trimester",
+    "daysRemaining": "Verbleibende Tage",
+    "percentComplete": "Fortschritt",
+    "milestones": "Schwangerschaftsmeilensteine"
+  },
+  "info": {
+    "title": "Über den Schwangerschaftsrechner",
+    "description": "Dieser Rechner schätzt Ihren Geburtstermin und verfolgt Ihren Fortschritt während der Schwangerschaft. Die Schwangerschaft dauert normalerweise 40 Wochen (280 Tage) ab dem ersten Tag Ihrer letzten Regelblutung oder 38 Wochen ab der Empfängnis.",
+    "formula": "Formel: Naegele-Regel - Geburtstermin = LMP + 280 Tage (angepasst an die Zykluslänge)",
+    "limitations": "Hinweis: Dieser Rechner liefert Schätzungen. Nur 4% der Babys werden genau am errechneten Termin geboren. 60% werden innerhalb einer Woche des geschätzten Termins geboren und 90% innerhalb von zwei Wochen. Konsultieren Sie immer Ihren Arzt für eine genaue Schwangerschaftsverfolgung."
+  }
+}

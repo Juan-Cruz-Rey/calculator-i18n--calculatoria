@@ -1,0 +1,34 @@
+{
+  "title": "Calculateur d'Allure de Course",
+  "description": "Calculez votre allure, temps ou distance de course",
+  "metaDescription": "Calculateur d'allure de course gratuit - Calculez votre allure par kilomètre ou mile, temps de course estimé ou distance. Inclut les temps pour 5K, 10K, semi-marathon et marathon.",
+  "form": {
+    "title": "Entrez Vos Données",
+    "modeLabel": "Que voulez-vous calculer?",
+    "calculatePace": "Calculer l'Allure",
+    "calculateTime": "Calculer le Temps",
+    "calculateDistance": "Calculer la Distance",
+    "distanceLabel": "Distance",
+    "distancePlaceholder": "Entrez la distance",
+    "timeLabel": "Temps",
+    "timeHint": "Format: heures:minutes:secondes",
+    "paceLabel": "Allure",
+    "paceHint": "Format: minutes:secondes par km/mile",
+    "halfMarathon": "Semi-Marathon",
+    "marathon": "Marathon"
+  },
+  "results": {
+    "title": "Vos Résultats",
+    "yourPace": "Votre Allure",
+    "yourTime": "Votre Temps",
+    "yourDistance": "Votre Distance",
+    "commonRaces": "Temps de Courses Courantes",
+    "splits": "Temps Intermédiaires"
+  },
+  "info": {
+    "title": "À Propos de l'Allure de Course",
+    "description": "L'allure de course est le temps qu'il vous faut pour parcourir une unité de distance spécifique (kilomètre ou mile). C'est une métrique essentielle pour les coureurs qui souhaitent planifier leurs entraînements et fixer des objectifs de course.",
+    "formula": "Formule: Allure = Temps Total / Distance",
+    "tip": "Conseil: Une allure constante est la clé du succès dans les courses de longue distance. Utilisez ce calculateur pour planifier votre stratégie de course et maintenir une allure durable."
+  }
+}

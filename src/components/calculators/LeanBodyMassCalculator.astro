@@ -1,0 +1,540 @@
+---
+import { t, type Locale } from '@/utils/i18n';
+
+const { lang } = Astro.props as { lang: Locale };
+---
+
+<div class="lbm-calculator">
+  <div class="calculator-form">
+    <h2>{t('leanBodyMass:form.title', lang)}</h2>
+
+    <form id="lbm-form">
+      <!-- Unit System Toggle -->
+      <div class="form-group unit-toggle">
+        <label>
+          <input type="radio" name="unitSystem" value="metric" checked />
+          {t('units.metric', lang)}
+        </label>
+        <label>
+          <input type="radio" name="unitSystem" value="imperial" />
+          {t('units.imperial', lang)}
+        </label>
+      </div>
+
+      <!-- Age -->
+      <div class="form-group">
+        <label for="age">{t('leanBodyMass:form.ageLabel', lang)}</label>
+        <input
+          type="number"
+          id="age"
+          name="age"
+          min="2"
+          max="120"
+          required
+          placeholder={t('leanBodyMass:form.agePlaceholder', lang)}
+        />
+        <span class="unit">{t('common.years', lang)}</span>
+      </div>
+
+      <!-- Gender -->
+      <div class="form-group">
+        <label for="gender">{t('leanBodyMass:form.genderLabel', lang)}</label>
+        <select id="gender" name="gender" required>
+          <option value="male">{t('common.male', lang)}</option>
+          <option value="female">{t('common.female', lang)}</option>
+        </select>
+      </div>
+
+      <!-- Height (Metric) -->
+      <div class="form-group height-metric">
+        <label for="height">{t('leanBodyMass:form.heightLabel', lang)}</label>
+        <input
+          type="number"
+          id="height"
+          name="height"
+          min="50"
+          max="250"
+          step="0.1"
+          required
+          placeholder={t('leanBodyMass:form.heightPlaceholder', lang)}
+        />
+        <span class="unit">{t('units.cm', lang)}</span>
+      </div>
+
+      <!-- Height (Imperial) -->
+      <div class="form-group height-imperial" style="display: none;">
+        <label for="heightFt">{t('leanBodyMass:form.heightLabel', lang)}</label>
+        <div class="input-group">
+          <input
+            type="number"
+            id="heightFt"
+            name="heightFt"
+            min="1"
+            max="8"
+            placeholder="Feet"
+          />
+          <span class="unit">{t('units.ft', lang)}</span>
+          <input
+            type="number"
+            id="heightIn"
+            name="heightIn"
+            min="0"
+            max="11"
+            placeholder="Inches"
+          />
+          <span class="unit">{t('units.in', lang)}</span>
+        </div>
+      </div>
+
+      <!-- Weight -->
+      <div class="form-group">
+        <label for="weight">{t('leanBodyMass:form.weightLabel', lang)}</label>
+        <input
+          type="number"
+          id="weight"
+          name="weight"
+          min="10"
+          max="500"
+          step="0.1"
+          required
+          placeholder={t('leanBodyMass:form.weightPlaceholder', lang)}
+        />
+        <span class="unit weight-unit">{t('units.kg', lang)}</span>
+      </div>
+
+      <!-- Buttons -->
+      <div class="form-actions">
+        <button type="submit" class="btn-primary">{t('common.calculate', lang)}</button>
+        <button type="reset" class="btn-secondary">{t('common.reset', lang)}</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="calculator-results" id="results" style="display: none;">
+    <h2>{t('leanBodyMass:results.title', lang)}</h2>
+
+    <div class="result-card average-value">
+      <h3>{t('leanBodyMass:results.averageLBM', lang)}</h3>
+      <p class="value" id="average-lbm">-</p>
+      <p class="subtitle">{t('leanBodyMass:results.bodyFat', lang)}: <span id="average-bf">-</span></p>
+    </div>
+
+    <div class="formulas-table">
+      <h3>{t('leanBodyMass:results.comparisonTitle', lang)}</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>{t('leanBodyMass:results.formula', lang)}</th>
+            <th>{t('leanBodyMass:results.leanMass', lang)}</th>
+            <th>{t('leanBodyMass:results.fatMass', lang)}</th>
+            <th>{t('leanBodyMass:results.bodyFatPercent', lang)}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Boer</strong></td>
+            <td id="boer-lbm">-</td>
+            <td id="boer-fm">-</td>
+            <td id="boer-bf">-</td>
+          </tr>
+          <tr>
+            <td><strong>James</strong></td>
+            <td id="james-lbm">-</td>
+            <td id="james-fm">-</td>
+            <td id="james-bf">-</td>
+          </tr>
+          <tr>
+            <td><strong>Hume</strong></td>
+            <td id="hume-lbm">-</td>
+            <td id="hume-fm">-</td>
+            <td id="hume-bf">-</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="calculator-info">
+    <h2>{t('leanBodyMass:info.title', lang)}</h2>
+    <p>{t('leanBodyMass:info.description', lang)}</p>
+
+    <h3>{t('leanBodyMass:info.formulasTitle', lang)}</h3>
+    <div class="formulas-list">
+      <div class="formula-item">
+        <h4>Boer</h4>
+        <p class="formula">{t('leanBodyMass:info.boerFormula', lang)}</p>
+      </div>
+      <div class="formula-item">
+        <h4>James</h4>
+        <p class="formula">{t('leanBodyMass:info.jamesFormula', lang)}</p>
+      </div>
+      <div class="formula-item">
+        <h4>Hume</h4>
+        <p class="formula">{t('leanBodyMass:info.humeFormula', lang)}</p>
+      </div>
+    </div>
+
+    <p class="limitations">{t('leanBodyMass:info.limitations', lang)}</p>
+  </div>
+</div>
+
+<style>
+  .lbm-calculator {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .calculator-form, .calculator-results, .calculator-info {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  h2 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  h3 {
+    color: #333;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  h4 {
+    color: #1565C0;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #555;
+  }
+
+  .form-group input[type="number"],
+  .form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+
+  .form-group input[type="number"]:focus,
+  .form-group select:focus {
+    outline: none;
+    border-color: #1565C0;
+  }
+
+  .unit {
+    display: inline-block;
+    margin-left: 0.5rem;
+    color: #888;
+    font-size: 0.9rem;
+  }
+
+  .unit-toggle {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    background: #f5f5f5;
+    border-radius: 4px;
+  }
+
+  .unit-toggle label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    margin: 0;
+  }
+
+  .input-group {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .input-group input {
+    flex: 1;
+  }
+
+  .form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .btn-primary, .btn-secondary {
+    flex: 1;
+    padding: 0.875rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, #1565C0 0%, #0D47A1 100%);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #0D47A1 0%, #0A3682 100%);
+  }
+
+  .btn-secondary {
+    background: #f5f5f5;
+    color: #333;
+  }
+
+  .btn-secondary:hover {
+    background: #e0e0e0;
+  }
+
+  .result-card {
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, #1565C0 0%, #0D47A1 100%);
+    color: white;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+
+  .result-card h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1.2rem;
+    color: white;
+  }
+
+  .result-card .value {
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  .result-card .subtitle {
+    font-size: 1.1rem;
+    margin: 0.5rem 0 0 0;
+    opacity: 0.9;
+  }
+
+  .formulas-table {
+    margin: 2rem 0;
+    overflow-x: auto;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+  }
+
+  thead {
+    background: linear-gradient(135deg, #1976D2 0%, #1565C0 100%);
+    color: white;
+  }
+
+  th, td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  th {
+    font-weight: 600;
+  }
+
+  tbody tr:hover {
+    background: #f5f5f5;
+  }
+
+  tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  .calculator-info {
+    background: #f9f9f9;
+  }
+
+  .calculator-info p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: #555;
+  }
+
+  .formulas-list {
+    margin: 1.5rem 0;
+    display: grid;
+    gap: 1rem;
+  }
+
+  .formula-item {
+    padding: 1rem;
+    background: white;
+    border-radius: 4px;
+    border-left: 4px solid #1565C0;
+  }
+
+  .formula {
+    font-family: 'Courier New', monospace;
+    background: white;
+    padding: 0.75rem;
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+    color: #333;
+  }
+
+  .limitations {
+    font-size: 0.9rem;
+    font-style: italic;
+    background: #fff3cd;
+    padding: 1rem;
+    border-left: 4px solid #ffc107;
+    border-radius: 4px;
+  }
+
+  @media (max-width: 768px) {
+    .lbm-calculator {
+      padding: 1rem;
+    }
+
+    table {
+      font-size: 0.9rem;
+    }
+
+    th, td {
+      padding: 0.75rem 0.5rem;
+    }
+
+    .result-card .value {
+      font-size: 2.5rem;
+    }
+  }
+</style>
+
+<script>
+  import type { LBMInput, LBMResult, UnitSystem, Gender } from '@/utils/calculators/leanBodyMass';
+  import { calculateLBMMetrics, convertResultsToImperial } from '@/utils/calculators/leanBodyMass';
+
+  const form = document.getElementById('lbm-form') as HTMLFormElement;
+  const results = document.getElementById('results') as HTMLDivElement;
+  const unitSystemInputs = document.querySelectorAll('input[name="unitSystem"]');
+  const heightMetric = document.querySelector('.height-metric') as HTMLDivElement;
+  const heightImperial = document.querySelector('.height-imperial') as HTMLDivElement;
+  const weightUnit = document.querySelector('.weight-unit') as HTMLSpanElement;
+
+  // Handle unit system change
+  unitSystemInputs.forEach(input => {
+    input.addEventListener('change', (e) => {
+      const target = e.target as HTMLInputElement;
+      const isMetric = target.value === 'metric';
+
+      heightMetric.style.display = isMetric ? 'block' : 'none';
+      heightImperial.style.display = isMetric ? 'none' : 'block';
+
+      const heightInput = document.getElementById('height') as HTMLInputElement;
+      const heightFt = document.getElementById('heightFt') as HTMLInputElement;
+      const heightIn = document.getElementById('heightIn') as HTMLInputElement;
+
+      if (isMetric) {
+        heightInput.required = true;
+        heightFt.required = false;
+        heightIn.required = false;
+        weightUnit.textContent = document.documentElement.lang === 'es' ? 'kg' : 'kg';
+      } else {
+        heightInput.required = false;
+        heightFt.required = true;
+        heightIn.required = true;
+        weightUnit.textContent = 'lbs';
+      }
+    });
+  });
+
+  // Handle form submission
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const unitSystem = formData.get('unitSystem') as UnitSystem;
+    const age = parseInt(formData.get('age') as string);
+    const gender = formData.get('gender') as Gender;
+    const weight = parseFloat(formData.get('weight') as string);
+
+    let height: number;
+
+    if (unitSystem === 'metric') {
+      height = parseFloat(formData.get('height') as string);
+    } else {
+      const feet = parseInt(formData.get('heightFt') as string) || 0;
+      const inches = parseInt(formData.get('heightIn') as string) || 0;
+      height = feet * 12 + inches; // Total inches
+    }
+
+    const input: LBMInput = {
+      age,
+      gender,
+      height,
+      weight,
+      unitSystem,
+    };
+
+    try {
+      let result = calculateLBMMetrics(input);
+
+      // Convert to imperial if needed for display
+      const displayResult = unitSystem === 'imperial' ? convertResultsToImperial(result) : result;
+
+      displayResults(displayResult, unitSystem);
+    } catch (error) {
+      alert('Error calculating Lean Body Mass. Please check your inputs.');
+      console.error(error);
+    }
+  });
+
+  function displayResults(result: LBMResult, unitSystem: UnitSystem) {
+    const massUnit = unitSystem === 'metric' ? 'kg' : 'lbs';
+
+    // Average results
+    document.getElementById('average-lbm')!.textContent = `${result.average.leanBodyMass} ${massUnit}`;
+    document.getElementById('average-bf')!.textContent = `${result.average.bodyFatPercentage}%`;
+
+    // Boer results
+    document.getElementById('boer-lbm')!.textContent = `${result.boer.leanBodyMass} ${massUnit}`;
+    document.getElementById('boer-fm')!.textContent = `${result.boer.fatMass} ${massUnit}`;
+    document.getElementById('boer-bf')!.textContent = `${result.boer.bodyFatPercentage}%`;
+
+    // James results
+    document.getElementById('james-lbm')!.textContent = `${result.james.leanBodyMass} ${massUnit}`;
+    document.getElementById('james-fm')!.textContent = `${result.james.fatMass} ${massUnit}`;
+    document.getElementById('james-bf')!.textContent = `${result.james.bodyFatPercentage}%`;
+
+    // Hume results
+    document.getElementById('hume-lbm')!.textContent = `${result.hume.leanBodyMass} ${massUnit}`;
+    document.getElementById('hume-fm')!.textContent = `${result.hume.fatMass} ${massUnit}`;
+    document.getElementById('hume-bf')!.textContent = `${result.hume.bodyFatPercentage}%`;
+
+    // Show results
+    results.style.display = 'block';
+    results.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  // Handle form reset
+  form.addEventListener('reset', () => {
+    results.style.display = 'none';
+  });
+</script>

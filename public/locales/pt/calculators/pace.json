@@ -1,0 +1,34 @@
+{
+  "title": "Calculadora de Ritmo de Corrida",
+  "description": "Calcule seu ritmo, tempo ou distância de corrida",
+  "metaDescription": "Calculadora de ritmo de corrida gratuita - Calcule seu ritmo por quilômetro ou milha, tempo estimado de corrida ou distância. Inclui tempos para 5K, 10K, meia maratona e maratona.",
+  "form": {
+    "title": "Insira Seus Dados",
+    "modeLabel": "O que você deseja calcular?",
+    "calculatePace": "Calcular Ritmo",
+    "calculateTime": "Calcular Tempo",
+    "calculateDistance": "Calcular Distância",
+    "distanceLabel": "Distância",
+    "distancePlaceholder": "Insira a distância",
+    "timeLabel": "Tempo",
+    "timeHint": "Formato: horas:minutos:segundos",
+    "paceLabel": "Ritmo",
+    "paceHint": "Formato: minutos:segundos por km/milha",
+    "halfMarathon": "Meia Maratona",
+    "marathon": "Maratona"
+  },
+  "results": {
+    "title": "Seus Resultados",
+    "yourPace": "Seu Ritmo",
+    "yourTime": "Seu Tempo",
+    "yourDistance": "Sua Distância",
+    "commonRaces": "Tempos de Corridas Comuns",
+    "splits": "Tempos Parciais"
+  },
+  "info": {
+    "title": "Sobre o Ritmo de Corrida",
+    "description": "O ritmo de corrida é o tempo que você leva para percorrer uma unidade específica de distância (quilômetro ou milha). É uma métrica essencial para corredores que desejam planejar treinos e estabelecer metas de corrida.",
+    "formula": "Fórmula: Ritmo = Tempo Total / Distância",
+    "tip": "Dica: Um ritmo consistente é essencial para o sucesso em corridas de longa distância. Use esta calculadora para planejar sua estratégia de corrida e manter um ritmo sustentável."
+  }
+}

@@ -1,0 +1,668 @@
+---
+import { t, type Locale } from '@/utils/i18n';
+
+const { lang } = Astro.props as { lang: Locale };
+---
+
+<div class="macro-calculator">
+  <div class="calculator-form">
+    <h2>{t('macro.form.title', lang)}</h2>
+
+    <form id="macro-form">
+      <!-- Unit System Toggle -->
+      <div class="form-group unit-toggle">
+        <label>
+          <input type="radio" name="unitSystem" value="metric" checked />
+          {t('units.metric', lang)}
+        </label>
+        <label>
+          <input type="radio" name="unitSystem" value="imperial" />
+          {t('units.imperial', lang)}
+        </label>
+      </div>
+
+      <!-- Age -->
+      <div class="form-group">
+        <label for="age">{t('macro.form.ageLabel', lang)}</label>
+        <input
+          type="number"
+          id="age"
+          name="age"
+          min="18"
+          max="80"
+          required
+          placeholder={t('macro.form.agePlaceholder', lang)}
+        />
+        <span class="unit">{t('common.years', lang)}</span>
+      </div>
+
+      <!-- Gender -->
+      <div class="form-group">
+        <label for="gender">{t('macro.form.genderLabel', lang)}</label>
+        <select id="gender" name="gender" required>
+          <option value="male">{t('common.male', lang)}</option>
+          <option value="female">{t('common.female', lang)}</option>
+        </select>
+      </div>
+
+      <!-- Height (Metric) -->
+      <div class="form-group height-metric">
+        <label for="height">{t('macro.form.heightLabel', lang)}</label>
+        <input
+          type="number"
+          id="height"
+          name="height"
+          min="130"
+          max="250"
+          step="0.1"
+          required
+          placeholder={t('macro.form.heightPlaceholder', lang)}
+        />
+        <span class="unit">{t('units.cm', lang)}</span>
+      </div>
+
+      <!-- Height (Imperial) -->
+      <div class="form-group height-imperial" style="display: none;">
+        <label for="heightFt">{t('macro.form.heightLabel', lang)}</label>
+        <div class="input-group">
+          <input
+            type="number"
+            id="heightFt"
+            name="heightFt"
+            min="4"
+            max="8"
+            placeholder="Feet"
+          />
+          <span class="unit">{t('units.ft', lang)}</span>
+          <input
+            type="number"
+            id="heightIn"
+            name="heightIn"
+            min="0"
+            max="11"
+            placeholder="Inches"
+          />
+          <span class="unit">{t('units.in', lang)}</span>
+        </div>
+      </div>
+
+      <!-- Weight -->
+      <div class="form-group">
+        <label for="weight">{t('macro.form.weightLabel', lang)}</label>
+        <input
+          type="number"
+          id="weight"
+          name="weight"
+          min="40"
+          max="300"
+          step="0.1"
+          required
+          placeholder={t('macro.form.weightPlaceholder', lang)}
+        />
+        <span class="unit weight-unit">{t('units.kg', lang)}</span>
+      </div>
+
+      <!-- Activity Level -->
+      <div class="form-group">
+        <label for="activityLevel">{t('macro.form.activityLabel', lang)}</label>
+        <select id="activityLevel" name="activityLevel" required>
+          <option value="sedentary">{t('macro.form.activityLevels.sedentary', lang)}</option>
+          <option value="light">{t('macro.form.activityLevels.light', lang)}</option>
+          <option value="moderate" selected>{t('macro.form.activityLevels.moderate', lang)}</option>
+          <option value="active">{t('macro.form.activityLevels.active', lang)}</option>
+          <option value="veryActive">{t('macro.form.activityLevels.veryActive', lang)}</option>
+          <option value="extraActive">{t('macro.form.activityLevels.extraActive', lang)}</option>
+        </select>
+      </div>
+
+      <!-- Goal -->
+      <div class="form-group">
+        <label for="goal">{t('macro.form.goalLabel', lang)}</label>
+        <select id="goal" name="goal" required>
+          <option value="extremeLoss">{t('macro.form.goals.extremeLoss', lang)}</option>
+          <option value="moderateLoss">{t('macro.form.goals.moderateLoss', lang)}</option>
+          <option value="mildLoss">{t('macro.form.goals.mildLoss', lang)}</option>
+          <option value="maintain" selected>{t('macro.form.goals.maintain', lang)}</option>
+          <option value="mildGain">{t('macro.form.goals.mildGain', lang)}</option>
+          <option value="moderateGain">{t('macro.form.goals.moderateGain', lang)}</option>
+          <option value="extremeGain">{t('macro.form.goals.extremeGain', lang)}</option>
+        </select>
+      </div>
+
+      <!-- Diet Type -->
+      <div class="form-group">
+        <label for="dietType">{t('macro.form.dietTypeLabel', lang)}</label>
+        <select id="dietType" name="dietType" required>
+          <option value="balanced" selected>{t('macro.form.dietTypes.balanced', lang)}</option>
+          <option value="lowFat">{t('macro.form.dietTypes.lowFat', lang)}</option>
+          <option value="lowCarb">{t('macro.form.dietTypes.lowCarb', lang)}</option>
+          <option value="highProtein">{t('macro.form.dietTypes.highProtein', lang)}</option>
+        </select>
+      </div>
+
+      <!-- Buttons -->
+      <div class="form-actions">
+        <button type="submit" class="btn-primary">{t('common.calculate', lang)}</button>
+        <button type="reset" class="btn-secondary">{t('common.reset', lang)}</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="calculator-results" id="results" style="display: none;">
+    <h2>{t('macro.results.title', lang)}</h2>
+
+    <div class="result-card calories-card">
+      <h3>{t('macro.results.dailyCalories', lang)}</h3>
+      <p class="value" id="goal-calories">-</p>
+      <p class="subtitle">{t('macro.results.toReachGoal', lang)}</p>
+    </div>
+
+    <div class="metrics-grid">
+      <div class="metric-item">
+        <strong>{t('macro.results.bmr', lang)}:</strong>
+        <span id="bmr-value">-</span>
+      </div>
+      <div class="metric-item">
+        <strong>{t('macro.results.tdee', lang)}:</strong>
+        <span id="tdee-value">-</span>
+      </div>
+      <div class="metric-item">
+        <strong>{t('macro.results.weeklyChange', lang)}:</strong>
+        <span id="weekly-change">-</span>
+      </div>
+    </div>
+
+    <h3 class="macros-title">{t('macro.results.macrosBreakdown', lang)}</h3>
+
+    <div class="macros-grid">
+      <div class="macro-card protein-card">
+        <div class="macro-icon">🥩</div>
+        <h4>{t('macro.results.protein', lang)}</h4>
+        <p class="macro-value" id="protein-grams">- g</p>
+        <p class="macro-calories" id="protein-calories">- {t('common.calories', lang)}</p>
+        <div class="macro-bar">
+          <div class="macro-fill protein-fill" id="protein-bar"></div>
+        </div>
+        <p class="macro-percentage" id="protein-percentage">-%</p>
+      </div>
+
+      <div class="macro-card carbs-card">
+        <div class="macro-icon">🍞</div>
+        <h4>{t('macro.results.carbs', lang)}</h4>
+        <p class="macro-value" id="carbs-grams">- g</p>
+        <p class="macro-calories" id="carbs-calories">- {t('common.calories', lang)}</p>
+        <div class="macro-bar">
+          <div class="macro-fill carbs-fill" id="carbs-bar"></div>
+        </div>
+        <p class="macro-percentage" id="carbs-percentage">-%</p>
+      </div>
+
+      <div class="macro-card fats-card">
+        <div class="macro-icon">🥑</div>
+        <h4>{t('macro.results.fats', lang)}</h4>
+        <p class="macro-value" id="fats-grams">- g</p>
+        <p class="macro-calories" id="fats-calories">- {t('common.calories', lang)}</p>
+        <div class="macro-bar">
+          <div class="macro-fill fats-fill" id="fats-bar"></div>
+        </div>
+        <p class="macro-percentage" id="fats-percentage">-%</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="calculator-info">
+    <h2>{t('macro.info.title', lang)}</h2>
+    <p>{t('macro.info.description', lang)}</p>
+    <p class="formula">{t('macro.info.formula', lang)}</p>
+    <p class="limitations">{t('macro.info.limitations', lang)}</p>
+  </div>
+</div>
+
+<style>
+  .macro-calculator {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .calculator-form, .calculator-results, .calculator-info {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  h2 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #555;
+  }
+
+  .form-group input[type="number"],
+  .form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+
+  .form-group input[type="number"]:focus,
+  .form-group select:focus {
+    outline: none;
+    border-color: #14b8a6;
+  }
+
+  .unit {
+    display: inline-block;
+    margin-left: 0.5rem;
+    color: #888;
+    font-size: 0.9rem;
+  }
+
+  .unit-toggle {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    background: #f5f5f5;
+    border-radius: 4px;
+  }
+
+  .unit-toggle label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    margin: 0;
+  }
+
+  .input-group {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .input-group input {
+    flex: 1;
+  }
+
+  .form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .btn-primary, .btn-secondary {
+    flex: 1;
+    padding: 0.875rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, #14b8a6 0%, #0891b2 100%);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #0d9488 0%, #0e7490 100%);
+  }
+
+  .btn-secondary {
+    background: #f5f5f5;
+    color: #333;
+  }
+
+  .btn-secondary:hover {
+    background: #e0e0e0;
+  }
+
+  .result-card {
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, #14b8a6 0%, #0891b2 100%);
+    color: white;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+
+  .result-card h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1.2rem;
+  }
+
+  .result-card .value {
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  .result-card .subtitle {
+    font-size: 1rem;
+    margin: 0.5rem 0 0 0;
+    opacity: 0.9;
+  }
+
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .metric-item {
+    padding: 1rem;
+    background: #f9f9f9;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .metric-item strong {
+    color: #555;
+    font-size: 0.9rem;
+  }
+
+  .metric-item span {
+    color: #333;
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+
+  .macros-title {
+    margin: 2rem 0 1.5rem 0;
+    color: #333;
+    font-size: 1.3rem;
+  }
+
+  .macros-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .macro-card {
+    background: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .macro-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+
+  .protein-card:hover {
+    border-color: #ef4444;
+  }
+
+  .carbs-card:hover {
+    border-color: #f59e0b;
+  }
+
+  .fats-card:hover {
+    border-color: #8b5cf6;
+  }
+
+  .macro-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .macro-card h4 {
+    margin: 0 0 1rem 0;
+    color: #333;
+    font-size: 1.1rem;
+  }
+
+  .macro-value {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0 0 0.5rem 0;
+    color: #333;
+  }
+
+  .macro-calories {
+    font-size: 0.95rem;
+    color: #666;
+    margin: 0 0 1rem 0;
+  }
+
+  .macro-bar {
+    width: 100%;
+    height: 8px;
+    background: #e0e0e0;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+  }
+
+  .macro-fill {
+    height: 100%;
+    transition: width 0.5s ease;
+  }
+
+  .protein-fill {
+    background: #ef4444;
+  }
+
+  .carbs-fill {
+    background: #f59e0b;
+  }
+
+  .fats-fill {
+    background: #8b5cf6;
+  }
+
+  .macro-percentage {
+    font-size: 0.9rem;
+    color: #888;
+    margin: 0;
+  }
+
+  .calculator-info {
+    background: #f9f9f9;
+  }
+
+  .calculator-info p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: #555;
+  }
+
+  .formula {
+    font-family: monospace;
+    background: white;
+    padding: 1rem;
+    border-left: 4px solid #14b8a6;
+    margin: 1rem 0;
+  }
+
+  .limitations {
+    font-size: 0.9rem;
+    font-style: italic;
+  }
+
+  @media (max-width: 768px) {
+    .macros-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  import type { MacroInput, MacroResult, UnitSystem, Gender, ActivityLevel, Goal, DietType } from '@/utils/calculators/macro';
+  import { calculateMacroMetrics } from '@/utils/calculators/macro';
+
+  const form = document.getElementById('macro-form') as HTMLFormElement;
+  const results = document.getElementById('results') as HTMLDivElement;
+  const unitSystemInputs = document.querySelectorAll('input[name="unitSystem"]');
+  const heightMetric = document.querySelector('.height-metric') as HTMLDivElement;
+  const heightImperial = document.querySelector('.height-imperial') as HTMLDivElement;
+  const weightUnit = document.querySelector('.weight-unit') as HTMLSpanElement;
+
+  // Handle unit system change
+  unitSystemInputs.forEach(input => {
+    input.addEventListener('change', (e) => {
+      const target = e.target as HTMLInputElement;
+      const isMetric = target.value === 'metric';
+
+      heightMetric.style.display = isMetric ? 'block' : 'none';
+      heightImperial.style.display = isMetric ? 'none' : 'block';
+
+      const heightInput = document.getElementById('height') as HTMLInputElement;
+      const heightFt = document.getElementById('heightFt') as HTMLInputElement;
+      const heightIn = document.getElementById('heightIn') as HTMLInputElement;
+
+      if (isMetric) {
+        heightInput.required = true;
+        heightFt.required = false;
+        heightIn.required = false;
+        weightUnit.textContent = document.documentElement.lang.startsWith('en') ? 'kg' : 'kg';
+      } else {
+        heightInput.required = false;
+        heightFt.required = true;
+        heightIn.required = true;
+        weightUnit.textContent = 'lbs';
+      }
+    });
+  });
+
+  // Handle form submission
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const unitSystem = formData.get('unitSystem') as UnitSystem;
+    const age = parseInt(formData.get('age') as string);
+    const gender = formData.get('gender') as Gender;
+    const weight = parseFloat(formData.get('weight') as string);
+    const activityLevel = formData.get('activityLevel') as ActivityLevel;
+    const goal = formData.get('goal') as Goal;
+    const dietType = formData.get('dietType') as DietType;
+
+    let height: number;
+
+    if (unitSystem === 'metric') {
+      height = parseFloat(formData.get('height') as string);
+    } else {
+      const feet = parseInt(formData.get('heightFt') as string) || 0;
+      const inches = parseInt(formData.get('heightIn') as string) || 0;
+      height = feet * 12 + inches; // Total inches
+    }
+
+    const input: MacroInput = {
+      age,
+      gender,
+      height,
+      weight,
+      activityLevel,
+      goal,
+      dietType,
+      unitSystem,
+    };
+
+    try {
+      const result = calculateMacroMetrics(input);
+      displayResults(result, unitSystem);
+    } catch (error) {
+      alert('Error calculating macros. Please check your inputs.');
+      console.error(error);
+    }
+  });
+
+  function displayResults(result: MacroResult, unitSystem: UnitSystem) {
+    const goalCalories = document.getElementById('goal-calories') as HTMLParagraphElement;
+    const bmrValue = document.getElementById('bmr-value') as HTMLSpanElement;
+    const tdeeValue = document.getElementById('tdee-value') as HTMLSpanElement;
+    const weeklyChange = document.getElementById('weekly-change') as HTMLSpanElement;
+
+    const proteinGrams = document.getElementById('protein-grams') as HTMLParagraphElement;
+    const proteinCalories = document.getElementById('protein-calories') as HTMLParagraphElement;
+    const proteinPercentage = document.getElementById('protein-percentage') as HTMLParagraphElement;
+    const proteinBar = document.getElementById('protein-bar') as HTMLDivElement;
+
+    const carbsGrams = document.getElementById('carbs-grams') as HTMLParagraphElement;
+    const carbsCalories = document.getElementById('carbs-calories') as HTMLParagraphElement;
+    const carbsPercentage = document.getElementById('carbs-percentage') as HTMLParagraphElement;
+    const carbsBar = document.getElementById('carbs-bar') as HTMLDivElement;
+
+    const fatsGrams = document.getElementById('fats-grams') as HTMLParagraphElement;
+    const fatsCalories = document.getElementById('fats-calories') as HTMLParagraphElement;
+    const fatsPercentage = document.getElementById('fats-percentage') as HTMLParagraphElement;
+    const fatsBar = document.getElementById('fats-bar') as HTMLDivElement;
+
+    // Get translations for calories
+    const caloriesText = document.documentElement.lang.startsWith('es') ? 'calorías' :
+                        document.documentElement.lang.startsWith('pt') ? 'calorias' :
+                        document.documentElement.lang.startsWith('fr') ? 'calories' :
+                        document.documentElement.lang.startsWith('hi') ? 'कैलोरी' :
+                        document.documentElement.lang.startsWith('de') ? 'Kalorien' :
+                        document.documentElement.lang.startsWith('it') ? 'calorie' :
+                        'calories';
+
+    goalCalories.textContent = `${result.goalCalories} ${caloriesText}`;
+    bmrValue.textContent = `${result.bmr} ${caloriesText}`;
+    tdeeValue.textContent = `${result.tdee} ${caloriesText}`;
+
+    const weightUnit = unitSystem === 'metric' ? 'kg' : 'lbs';
+    const weeklyText = document.documentElement.lang.startsWith('es') ? 'semana' :
+                      document.documentElement.lang.startsWith('pt') ? 'semana' :
+                      document.documentElement.lang.startsWith('fr') ? 'semaine' :
+                      document.documentElement.lang.startsWith('hi') ? 'सप्ताह' :
+                      document.documentElement.lang.startsWith('de') ? 'Woche' :
+                      document.documentElement.lang.startsWith('it') ? 'settimana' :
+                      'week';
+
+    const changeSign = result.weeklyWeightChange >= 0 ? '+' : '';
+    weeklyChange.textContent = `${changeSign}${result.weeklyWeightChange} ${weightUnit}/${weeklyText}`;
+
+    // Protein
+    proteinGrams.textContent = `${result.protein.grams} g`;
+    proteinCalories.textContent = `${result.protein.calories} ${caloriesText}`;
+    proteinPercentage.textContent = `${result.protein.percentage}%`;
+    proteinBar.style.width = `${result.protein.percentage}%`;
+
+    // Carbs
+    carbsGrams.textContent = `${result.carbs.grams} g`;
+    carbsCalories.textContent = `${result.carbs.calories} ${caloriesText}`;
+    carbsPercentage.textContent = `${result.carbs.percentage}%`;
+    carbsBar.style.width = `${result.carbs.percentage}%`;
+
+    // Fats
+    fatsGrams.textContent = `${result.fats.grams} g`;
+    fatsCalories.textContent = `${result.fats.calories} ${caloriesText}`;
+    fatsPercentage.textContent = `${result.fats.percentage}%`;
+    fatsBar.style.width = `${result.fats.percentage}%`;
+
+    // Show results
+    results.style.display = 'block';
+    results.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  // Handle form reset
+  form.addEventListener('reset', () => {
+    results.style.display = 'none';
+  });
+</script>

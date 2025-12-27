@@ -1,0 +1,34 @@
+{
+  "title": "Calcolatore di Ritmo di Corsa",
+  "description": "Calcola il tuo ritmo, tempo o distanza di corsa",
+  "metaDescription": "Calcolatore di ritmo di corsa gratuito - Calcola il tuo ritmo per chilometro o miglio, tempo stimato di gara o distanza. Include i tempi per 5K, 10K, mezza maratona e maratona.",
+  "form": {
+    "title": "Inserisci i Tuoi Dati",
+    "modeLabel": "Cosa vuoi calcolare?",
+    "calculatePace": "Calcola Ritmo",
+    "calculateTime": "Calcola Tempo",
+    "calculateDistance": "Calcola Distanza",
+    "distanceLabel": "Distanza",
+    "distancePlaceholder": "Inserisci la distanza",
+    "timeLabel": "Tempo",
+    "timeHint": "Formato: ore:minuti:secondi",
+    "paceLabel": "Ritmo",
+    "paceHint": "Formato: minuti:secondi per km/miglio",
+    "halfMarathon": "Mezza Maratona",
+    "marathon": "Maratona"
+  },
+  "results": {
+    "title": "I Tuoi Risultati",
+    "yourPace": "Il Tuo Ritmo",
+    "yourTime": "Il Tuo Tempo",
+    "yourDistance": "La Tua Distanza",
+    "commonRaces": "Tempi di Gare Comuni",
+    "splits": "Tempi Parziali"
+  },
+  "info": {
+    "title": "Sul Ritmo di Corsa",
+    "description": "Il ritmo di corsa è il tempo necessario per coprire un'unità specifica di distanza (chilometro o miglio). È una metrica essenziale per i corridori che desiderano pianificare le sessioni di allenamento e stabilire obiettivi di gara.",
+    "formula": "Formula: Ritmo = Tempo Totale / Distanza",
+    "tip": "Suggerimento: Un ritmo costante è la chiave del successo nelle gare di lunga distanza. Usa questo calcolatore per pianificare la tua strategia di gara e mantenere un ritmo sostenibile."
+  }
+}

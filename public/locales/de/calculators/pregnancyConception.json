@@ -1,0 +1,33 @@
+{
+  "title": "Schwangerschafts-Empfängnisrechner",
+  "description": "Berechnen Sie Ihr geschätztes Empfängnisdatum",
+  "metaDescription": "Kostenloser Schwangerschafts-Empfängnisrechner - Schätzen Sie Ihr Empfängnisdatum, Fruchtbarkeitsfenster und Geburtstermin basierend auf Ihrer letzten Menstruation oder Ihrem Geburtstermin.",
+  "form": {
+    "title": "Geben Sie Ihre Informationen ein",
+    "modeLMP": "Datum der letzten Periode",
+    "modeDueDate": "Geburtstermin",
+    "lmpDateLabel": "Datum der Letzten Menstruation (LMP)",
+    "lmpDateHelp": "Geben Sie den ersten Tag Ihrer letzten Menstruation ein",
+    "dueDateLabel": "Geburtstermin",
+    "dueDateHelp": "Geben Sie Ihren geschätzten Geburtstermin ein",
+    "cycleLengthLabel": "Menstruationszykluslänge",
+    "cycleLengthHelp": "Die durchschnittliche Länge Ihres Menstruationszyklus (Standard: 28 Tage)"
+  },
+  "results": {
+    "title": "Ihre Ergebnisse",
+    "estimatedConception": "Geschätztes Empfängnisdatum",
+    "conceptionRange": "Empfängnisdatumsbereich",
+    "fertilityWindow": "Fruchtbarkeitsfenster",
+    "dueDate": "Geburtstermin",
+    "currentWeek": "Aktuelle Schwangerschaftswoche"
+  },
+  "info": {
+    "title": "Über die Schwangerschaftsempfängnis",
+    "description": "Der Schwangerschafts-Empfängnisrechner hilft Ihnen abzuschätzen, wann die Empfängnis wahrscheinlich stattgefunden hat, basierend auf Ihrer letzten Menstruation oder Ihrem Geburtstermin. Diese Information kann hilfreich sein, um die Vaterschaft zu bestimmen oder einfach Ihre Schwangerschaft besser zu verstehen.",
+    "howItWorksTitle": "Wie es funktioniert",
+    "howItWorks": "Die Empfängnis erfolgt in der Regel um den Eisprung herum, der normalerweise 14 Tage vor Beginn Ihrer nächsten Periode stattfindet. Bei einem 28-Tage-Zyklus bedeutet dies, dass der Eisprung um Tag 14 herum erfolgt. Spermien können bis zu 5 Tage im Körper überleben, daher umfasst das Fruchtbarkeitsfenster die 5 Tage vor dem Eisprung plus den Tag des Eisprungs. Die Schwangerschaft dauert ungefähr 280 Tage (40 Wochen) ab dem ersten Tag Ihrer letzten Menstruation.",
+    "accuracyTitle": "Genauigkeit",
+    "accuracy": "Dieser Rechner liefert Schätzungen basierend auf durchschnittlichen Menstruationszyklen. Der tatsächliche Eisprung und die Empfängnis können von Person zu Person variieren. Faktoren, die die Genauigkeit beeinflussen können, sind unregelmäßige Menstruationszyklen, später oder früher Eisprung und individuelle Unterschiede. Für genauere Informationen über Ihre Schwangerschaft konsultieren Sie Ihren Gesundheitsdienstleister.",
+    "disclaimer": "Hinweis: Dieser Rechner dient nur zu Informationszwecken und sollte nicht als medizinischer Rat verwendet werden. Konsultieren Sie immer einen medizinischen Fachmann für genaue medizinische Informationen über Ihre Schwangerschaft."
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "title": "Calculadora de Carboidratos",
+  "description": "Calcule sua ingestão diária recomendada de carboidratos",
+  "metaDescription": "Calculadora de carboidratos gratuita - Calcule sua ingestão diária recomendada de carboidratos com base no seu TDEE, nível de atividade e objetivos. Recomendações personalizadas para dietas baixas, moderadas e altas em carboidratos.",
+  "form": {
+    "title": "Insira suas informações",
+    "ageLabel": "Idade",
+    "agePlaceholder": "Insira sua idade",
+    "genderLabel": "Gênero",
+    "heightLabel": "Altura",
+    "heightPlaceholder": "Insira sua altura",
+    "weightLabel": "Peso",
+    "weightPlaceholder": "Insira seu peso",
+    "activityLevelLabel": "Nível de Atividade",
+    "activityLevels": {
+      "sedentary": "Sedentário - Pouco ou nenhum exercício",
+      "light": "Leve - Exercício leve 1-3 dias/semana",
+      "moderate": "Moderado - Exercício moderado 3-5 dias/semana",
+      "active": "Ativo - Exercício intenso 6-7 dias/semana",
+      "extra": "Muito Ativo - Exercício muito intenso, trabalho físico"
+    },
+    "goalLabel": "Objetivo",
+    "goals": {
+      "loss": "Perda de peso",
+      "maintain": "Manter peso",
+      "gain": "Ganho muscular"
+    }
+  },
+  "results": {
+    "title": "Seus Resultados",
+    "bmr": "TMB (Taxa Metabólica Basal)",
+    "tdee": "TDEE (Gasto Energético Diário Total)",
+    "targetCalories": "Calorias Alvo",
+    "recommendationsTitle": "Recomendações de Carboidratos",
+    "levels": {
+      "low": "Baixo em Carboidratos",
+      "moderate": "Moderado em Carboidratos",
+      "high": "Alto em Carboidratos"
+    },
+    "descriptions": {
+      "low": "Ideal para perda de peso rápida e controle de açúcar no sangue. Pode ser difícil de manter a longo prazo.",
+      "moderate": "Abordagem equilibrada para a maioria das pessoas. Bom para manutenção e perda de peso gradual.",
+      "high": "Ótimo para atletas e indivíduos muito ativos. Fornece energia para treinos intensos."
+    },
+    "note": "Nota: A ingestão mínima recomendada de carboidratos é de 130g por dia para adultos. Consulte um profissional de saúde antes de fazer mudanças significativas na dieta."
+  },
+  "info": {
+    "title": "Sobre Carboidratos",
+    "description": "Os carboidratos são um dos três macronutrientes principais (junto com proteínas e gorduras) e a principal fonte de energia do corpo. A quantidade ideal de carboidratos varia de acordo com seu nível de atividade, objetivos e preferências pessoais.",
+    "formula": "Fórmula: Gramas de carboidratos = (Calorias alvo × % de carboidratos) ÷ 4 calorias/g",
+    "recommendations": "As recomendações de carboidratos são baseadas em porcentagens da sua ingestão calórica total: Baixo (10-30%), Moderado (30-50%), Alto (50-70%). A escolha depende dos seus objetivos, nível de atividade e resposta metabólica individual."
+  }
+}

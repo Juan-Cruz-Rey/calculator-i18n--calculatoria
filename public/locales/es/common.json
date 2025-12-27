@@ -25,9 +25,14 @@
     "imperial": "Imperial",
     "cm": "cm",
     "m": "m",
+    "km": "km",
+    "mi": "millas",
+    "yd": "yardas",
     "kg": "kg",
     "ft": "pies",
     "in": "pulgadas",
-    "lbs": "libras"
+    "lbs": "libras",
+    "minPerKm": "min/km",
+    "minPerMi": "min/milla"
   }
 }

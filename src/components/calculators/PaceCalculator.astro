@@ -1,0 +1,642 @@
+---
+import { t, type Locale } from '@/utils/i18n';
+
+const { lang } = Astro.props as { lang: Locale };
+---
+
+<div class="pace-calculator">
+  <div class="calculator-form">
+    <h2>{t('pace.form.title', lang)}</h2>
+
+    <form id="pace-form">
+      <!-- Calculation Mode -->
+      <div class="form-group mode-select">
+        <label>{t('pace.form.modeLabel', lang)}</label>
+        <div class="mode-buttons">
+          <label class="mode-button active">
+            <input type="radio" name="mode" value="pace" checked />
+            {t('pace.form.calculatePace', lang)}
+          </label>
+          <label class="mode-button">
+            <input type="radio" name="mode" value="time" />
+            {t('pace.form.calculateTime', lang)}
+          </label>
+          <label class="mode-button">
+            <input type="radio" name="mode" value="distance" />
+            {t('pace.form.calculateDistance', lang)}
+          </label>
+        </div>
+      </div>
+
+      <!-- Distance Input -->
+      <div class="form-group distance-group">
+        <label for="distance">{t('pace.form.distanceLabel', lang)}</label>
+        <div class="input-with-select">
+          <input
+            type="number"
+            id="distance"
+            name="distance"
+            min="0"
+            step="0.01"
+            required
+            placeholder={t('pace.form.distancePlaceholder', lang)}
+          />
+          <select id="distanceUnit" name="distanceUnit">
+            <option value="km">{t('units.km', lang)}</option>
+            <option value="mi">{t('units.mi', lang)}</option>
+            <option value="m">{t('units.m', lang)}</option>
+            <option value="yd">{t('units.yd', lang)}</option>
+          </select>
+        </div>
+        <div class="preset-distances">
+          <button type="button" class="preset-btn" data-distance="5" data-unit="km">5K</button>
+          <button type="button" class="preset-btn" data-distance="10" data-unit="km">10K</button>
+          <button type="button" class="preset-btn" data-distance="21.0975" data-unit="km">{t('pace.form.halfMarathon', lang)}</button>
+          <button type="button" class="preset-btn" data-distance="42.195" data-unit="km">{t('pace.form.marathon', lang)}</button>
+        </div>
+      </div>
+
+      <!-- Time Input -->
+      <div class="form-group time-group">
+        <label for="time">{t('pace.form.timeLabel', lang)}</label>
+        <div class="time-inputs">
+          <input
+            type="number"
+            id="hours"
+            name="hours"
+            min="0"
+            max="23"
+            placeholder="00"
+          />
+          <span class="separator">:</span>
+          <input
+            type="number"
+            id="minutes"
+            name="minutes"
+            min="0"
+            max="59"
+            placeholder="00"
+          />
+          <span class="separator">:</span>
+          <input
+            type="number"
+            id="seconds"
+            name="seconds"
+            min="0"
+            max="59"
+            placeholder="00"
+          />
+        </div>
+        <small class="hint">{t('pace.form.timeHint', lang)}</small>
+      </div>
+
+      <!-- Pace Input -->
+      <div class="form-group pace-group" style="display: none;">
+        <label for="pace">{t('pace.form.paceLabel', lang)}</label>
+        <div class="pace-inputs">
+          <div class="input-with-select">
+            <div class="time-inputs inline">
+              <input
+                type="number"
+                id="paceMinutes"
+                name="paceMinutes"
+                min="0"
+                placeholder="00"
+              />
+              <span class="separator">:</span>
+              <input
+                type="number"
+                id="paceSeconds"
+                name="paceSeconds"
+                min="0"
+                max="59"
+                placeholder="00"
+              />
+            </div>
+            <select id="paceUnit" name="paceUnit">
+              <option value="min/km">{t('units.minPerKm', lang)}</option>
+              <option value="min/mi">{t('units.minPerMi', lang)}</option>
+            </select>
+          </div>
+        </div>
+        <small class="hint">{t('pace.form.paceHint', lang)}</small>
+      </div>
+
+      <!-- Buttons -->
+      <div class="form-actions">
+        <button type="submit" class="btn-primary">{t('common.calculate', lang)}</button>
+        <button type="reset" class="btn-secondary">{t('common.reset', lang)}</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="calculator-results" id="results" style="display: none;">
+    <h2>{t('pace.results.title', lang)}</h2>
+
+    <div class="result-card main-result">
+      <h3 id="result-title">{t('pace.results.yourPace', lang)}</h3>
+      <p class="value" id="main-value">-</p>
+    </div>
+
+    <div class="splits-section">
+      <h3>{t('pace.results.commonRaces', lang)}</h3>
+      <div class="result-grid" id="common-races"></div>
+    </div>
+
+    <div class="splits-section">
+      <h3>{t('pace.results.splits', lang)}</h3>
+      <div class="result-grid" id="splits"></div>
+    </div>
+  </div>
+
+  <div class="calculator-info">
+    <h2>{t('pace.info.title', lang)}</h2>
+    <p>{t('pace.info.description', lang)}</p>
+    <p class="formula">{t('pace.info.formula', lang)}</p>
+    <p class="tip">{t('pace.info.tip', lang)}</p>
+  </div>
+</div>
+
+<style>
+  .pace-calculator {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .calculator-form, .calculator-results, .calculator-info {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  h2 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #555;
+  }
+
+  .mode-select label {
+    margin-bottom: 1rem;
+  }
+
+  .mode-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .mode-button {
+    padding: 0.75rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s;
+    background: white;
+    margin: 0;
+  }
+
+  .mode-button:hover {
+    border-color: #FF7043;
+  }
+
+  .mode-button.active {
+    border-color: #FF7043;
+    background: linear-gradient(135deg, #FF7043 0%, #FF5722 100%);
+    color: white;
+  }
+
+  .mode-button input {
+    display: none;
+  }
+
+  .input-with-select {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .input-with-select input,
+  .input-with-select select {
+    flex: 1;
+  }
+
+  .form-group input[type="number"],
+  .form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+
+  .form-group input[type="number"]:focus,
+  .form-group select:focus {
+    outline: none;
+    border-color: #FF7043;
+  }
+
+  .time-inputs {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .time-inputs.inline {
+    display: inline-flex;
+    flex: 1;
+  }
+
+  .time-inputs input {
+    width: 4rem;
+    text-align: center;
+  }
+
+  .separator {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #666;
+  }
+
+  .preset-distances {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .preset-btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid #FF7043;
+    background: white;
+    color: #FF7043;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: all 0.2s;
+  }
+
+  .preset-btn:hover {
+    background: #FF7043;
+    color: white;
+  }
+
+  .hint {
+    display: block;
+    margin-top: 0.5rem;
+    color: #888;
+    font-size: 0.875rem;
+  }
+
+  .form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .btn-primary, .btn-secondary {
+    flex: 1;
+    padding: 0.875rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, #FF7043 0%, #FF5722 100%);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #FF5722 0%, #E64A19 100%);
+  }
+
+  .btn-secondary {
+    background: #f5f5f5;
+    color: #333;
+  }
+
+  .btn-secondary:hover {
+    background: #e0e0e0;
+  }
+
+  .result-card {
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, #FF7043 0%, #FF5722 100%);
+    color: white;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+
+  .result-card h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1.2rem;
+  }
+
+  .result-card .value {
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  .splits-section {
+    margin-bottom: 2rem;
+  }
+
+  .splits-section h3 {
+    margin-bottom: 1rem;
+    color: #333;
+    font-size: 1.2rem;
+  }
+
+  .result-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .result-item {
+    padding: 1rem;
+    background: #f9f9f9;
+    border-radius: 4px;
+    border-left: 4px solid #FF7043;
+  }
+
+  .result-item strong {
+    display: block;
+    color: #555;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .result-item .value {
+    color: #333;
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+
+  .result-item .detail {
+    color: #666;
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
+  }
+
+  .calculator-info {
+    background: #f9f9f9;
+  }
+
+  .calculator-info p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: #555;
+  }
+
+  .formula {
+    font-family: monospace;
+    background: white;
+    padding: 1rem;
+    border-left: 4px solid #FF7043;
+    margin: 1rem 0;
+  }
+
+  .tip {
+    font-size: 0.9rem;
+    font-style: italic;
+  }
+
+  @media (max-width: 768px) {
+    .mode-buttons {
+      grid-template-columns: 1fr;
+    }
+
+    .result-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  import type { PaceInput, PaceResult } from '@/utils/calculators/pace';
+  import { calculatePaceMetrics, secondsToTimeString } from '@/utils/calculators/pace';
+
+  const form = document.getElementById('pace-form') as HTMLFormElement;
+  const results = document.getElementById('results') as HTMLDivElement;
+  const modeButtons = document.querySelectorAll('.mode-button');
+  const distanceGroup = document.querySelector('.distance-group') as HTMLDivElement;
+  const timeGroup = document.querySelector('.time-group') as HTMLDivElement;
+  const paceGroup = document.querySelector('.pace-group') as HTMLDivElement;
+  const presetButtons = document.querySelectorAll('.preset-btn');
+
+  // Get language from document
+  const lang = document.documentElement.lang || 'es';
+
+  // Translation helpers
+  const translations: Record<string, Record<string, string>> = {
+    es: {
+      yourPace: 'Tu Ritmo',
+      yourTime: 'Tu Tiempo',
+      yourDistance: 'Tu Distancia',
+    },
+    en: {
+      yourPace: 'Your Pace',
+      yourTime: 'Your Time',
+      yourDistance: 'Your Distance',
+    },
+  };
+
+  const t = (key: string) => {
+    const langTranslations = translations[lang] || translations['es'];
+    return langTranslations[key] || key;
+  };
+
+  // Handle mode changes
+  modeButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      modeButtons.forEach(b => b.classList.remove('active'));
+      button.classList.add('active');
+
+      const input = button.querySelector('input') as HTMLInputElement;
+      const mode = input.value;
+
+      // Show/hide appropriate fields
+      const distanceInput = document.getElementById('distance') as HTMLInputElement;
+      const hoursInput = document.getElementById('hours') as HTMLInputElement;
+      const minutesInput = document.getElementById('minutes') as HTMLInputElement;
+      const secondsInput = document.getElementById('seconds') as HTMLInputElement;
+      const paceMinutesInput = document.getElementById('paceMinutes') as HTMLInputElement;
+      const paceSecondsInput = document.getElementById('paceSeconds') as HTMLInputElement;
+
+      switch (mode) {
+        case 'pace':
+          distanceGroup.style.display = 'block';
+          timeGroup.style.display = 'block';
+          paceGroup.style.display = 'none';
+          distanceInput.required = true;
+          hoursInput.required = false;
+          minutesInput.required = false;
+          secondsInput.required = false;
+          paceMinutesInput.required = false;
+          paceSecondsInput.required = false;
+          break;
+        case 'time':
+          distanceGroup.style.display = 'block';
+          timeGroup.style.display = 'none';
+          paceGroup.style.display = 'block';
+          distanceInput.required = true;
+          hoursInput.required = false;
+          minutesInput.required = false;
+          secondsInput.required = false;
+          paceMinutesInput.required = false;
+          paceSecondsInput.required = false;
+          break;
+        case 'distance':
+          distanceGroup.style.display = 'none';
+          timeGroup.style.display = 'block';
+          paceGroup.style.display = 'block';
+          distanceInput.required = false;
+          hoursInput.required = false;
+          minutesInput.required = false;
+          secondsInput.required = false;
+          paceMinutesInput.required = false;
+          paceSecondsInput.required = false;
+          break;
+      }
+    });
+  });
+
+  // Handle preset distance buttons
+  presetButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const distance = button.getAttribute('data-distance');
+      const unit = button.getAttribute('data-unit');
+      const distanceInput = document.getElementById('distance') as HTMLInputElement;
+      const unitSelect = document.getElementById('distanceUnit') as HTMLSelectElement;
+
+      if (distance) distanceInput.value = distance;
+      if (unit) unitSelect.value = unit;
+    });
+  });
+
+  // Handle form submission
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const mode = formData.get('mode') as 'pace' | 'time' | 'distance';
+    const distanceUnit = formData.get('distanceUnit') as 'km' | 'mi' | 'm' | 'yd';
+    const paceUnit = formData.get('paceUnit') as 'min/km' | 'min/mi';
+
+    const distance = formData.get('distance') ? parseFloat(formData.get('distance') as string) : undefined;
+    const hours = parseInt(formData.get('hours') as string) || 0;
+    const minutes = parseInt(formData.get('minutes') as string) || 0;
+    const seconds = parseInt(formData.get('seconds') as string) || 0;
+    const time = hours * 3600 + minutes * 60 + seconds;
+
+    const paceMinutes = parseInt(formData.get('paceMinutes') as string) || 0;
+    const paceSeconds = parseInt(formData.get('paceSeconds') as string) || 0;
+    const pace = paceMinutes * 60 + paceSeconds;
+
+    const input: PaceInput = {
+      mode,
+      distance,
+      distanceUnit,
+      time: time > 0 ? time : undefined,
+      pace: pace > 0 ? pace : undefined,
+      paceUnit,
+    };
+
+    try {
+      const result = calculatePaceMetrics(input);
+      displayResults(result, mode, paceUnit);
+    } catch (error) {
+      alert((error as Error).message);
+      console.error(error);
+    }
+  });
+
+  function displayResults(result: PaceResult, mode: string, paceUnit: string) {
+    const resultTitle = document.getElementById('result-title') as HTMLHeadingElement;
+    const mainValue = document.getElementById('main-value') as HTMLParagraphElement;
+    const commonRacesDiv = document.getElementById('common-races') as HTMLDivElement;
+    const splitsDiv = document.getElementById('splits') as HTMLDivElement;
+
+    // Set main result
+    switch (mode) {
+      case 'pace':
+        resultTitle.textContent = t('yourPace');
+        mainValue.textContent = result.paceFormatted || '-';
+        break;
+      case 'time':
+        resultTitle.textContent = t('yourTime');
+        mainValue.textContent = result.timeFormatted || '-';
+        break;
+      case 'distance':
+        resultTitle.textContent = t('yourDistance');
+        mainValue.textContent = result.distanceFormatted || '-';
+        break;
+    }
+
+    // Display common races
+    commonRacesDiv.innerHTML = '';
+    result.commonRaces.forEach(race => {
+      const item = document.createElement('div');
+      item.className = 'result-item';
+      item.innerHTML = `
+        <strong>${race.name}</strong>
+        <div class="value">${race.timeFormatted}</div>
+        <div class="detail">${race.paceFormatted} ${paceUnit}</div>
+      `;
+      commonRacesDiv.appendChild(item);
+    });
+
+    // Display splits
+    splitsDiv.innerHTML = '';
+    result.splits.forEach(split => {
+      const item = document.createElement('div');
+      item.className = 'result-item';
+      item.innerHTML = `
+        <strong>${split.distance} ${split.distanceUnit}</strong>
+        <div class="value">${split.timeFormatted}</div>
+      `;
+      splitsDiv.appendChild(item);
+    });
+
+    // Show results
+    results.style.display = 'block';
+    results.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  // Handle form reset
+  form.addEventListener('reset', () => {
+    results.style.display = 'none';
+    // Reset to pace mode
+    modeButtons.forEach((b, i) => {
+      if (i === 0) {
+        b.classList.add('active');
+      } else {
+        b.classList.remove('active');
+      }
+    });
+    distanceGroup.style.display = 'block';
+    timeGroup.style.display = 'block';
+    paceGroup.style.display = 'none';
+  });
+</script>

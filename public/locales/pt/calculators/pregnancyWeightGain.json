@@ -1,0 +1,34 @@
+{
+  "title": "Calculadora de Ganho de Peso na Gravidez",
+  "description": "Calcule o ganho de peso recomendado durante a gravidez",
+  "metaDescription": "Calculadora gratuita de ganho de peso na gravidez - Obtenha recomendações personalizadas baseadas nas diretrizes do IOM de acordo com seu IMC pré-gestacional.",
+  "form": {
+    "title": "Insira suas informações",
+    "currentWeekLabel": "Semana atual da gravidez",
+    "currentWeekPlaceholder": "1-40",
+    "weeksUnit": "semanas",
+    "isTwinsLabel": "Gravidez gemelar",
+    "heightLabel": "Altura",
+    "heightPlaceholder": "Insira sua altura",
+    "prePregnancyWeightLabel": "Peso pré-gestacional",
+    "prePregnancyWeightPlaceholder": "Insira seu peso antes da gravidez",
+    "currentWeightLabel": "Peso atual",
+    "currentWeightPlaceholder": "Insira seu peso atual"
+  },
+  "results": {
+    "title": "Seus Resultados",
+    "currentGainValue": "Ganho de Peso Atual",
+    "prePregnancyBMI": "IMC Pré-Gestacional",
+    "bmiCategory": "Categoria de IMC",
+    "trimester": "Trimestre",
+    "recommendedTotalGain": "Ganho Total Recomendado",
+    "recommendedAtWeek": "Recomendado nesta semana",
+    "weeklyGainTarget": "Meta semanal (2º/3º trimestre)"
+  },
+  "info": {
+    "title": "Sobre o Ganho de Peso na Gravidez",
+    "description": "O ganho de peso durante a gravidez é essencial para a saúde da mãe e do bebê. As recomendações do Instituto de Medicina (IOM) variam de acordo com o IMC pré-gestacional e se é uma gravidez gemelar.",
+    "guidelines": "Diretrizes gerais: Durante o primeiro trimestre, o ganho é mínimo (0,5-1,8 kg). No segundo e terceiro trimestres, o ganho é constante e progressivo baseado na categoria de IMC.",
+    "limitations": "Esta calculadora fornece estimativas gerais baseadas nas diretrizes do IOM. Sempre consulte seu médico ou profissional de saúde para recomendações personalizadas de acordo com sua situação individual."
+  }
+}

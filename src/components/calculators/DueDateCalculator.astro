@@ -1,0 +1,650 @@
+---
+import { t, type Locale } from '@/utils/i18n';
+
+const { lang } = Astro.props as { lang: Locale };
+---
+
+<div class="duedate-calculator">
+  <div class="calculator-form">
+    <h2>{t('dueDate:form.title', lang)}</h2>
+
+    <form id="duedate-form">
+      <!-- Calculation Method Selector -->
+      <div class="form-group method-selector">
+        <label>{t('dueDate:form.methodLabel', lang)}</label>
+        <div class="method-tabs">
+          <button type="button" class="method-tab active" data-method="lmp">
+            {t('dueDate:form.methods.lmp', lang)}
+          </button>
+          <button type="button" class="method-tab" data-method="conception">
+            {t('dueDate:form.methods.conception', lang)}
+          </button>
+          <button type="button" class="method-tab" data-method="ultrasound">
+            {t('dueDate:form.methods.ultrasound', lang)}
+          </button>
+          <button type="button" class="method-tab" data-method="ivf">
+            {t('dueDate:form.methods.ivf', lang)}
+          </button>
+        </div>
+      </div>
+
+      <input type="hidden" id="calculation-method" name="method" value="lmp" />
+
+      <!-- LMP Method Fields -->
+      <div class="method-fields" id="lmp-fields">
+        <div class="form-group">
+          <label for="lmp-date">{t('dueDate:form.lmpDateLabel', lang)}</label>
+          <input
+            type="date"
+            id="lmp-date"
+            name="lmpDate"
+            required
+            max={new Date().toISOString().split('T')[0]}
+          />
+          <span class="helper-text">{t('dueDate:form.lmpHelper', lang)}</span>
+        </div>
+
+        <div class="form-group">
+          <label for="cycle-length">{t('dueDate:form.cycleLengthLabel', lang)}</label>
+          <input
+            type="number"
+            id="cycle-length"
+            name="cycleLength"
+            min="22"
+            max="44"
+            value="28"
+          />
+          <span class="unit">{t('common.days', lang)}</span>
+          <span class="helper-text">{t('dueDate:form.cycleLengthHelper', lang)}</span>
+        </div>
+      </div>
+
+      <!-- Conception Method Fields -->
+      <div class="method-fields" id="conception-fields" style="display: none;">
+        <div class="form-group">
+          <label for="conception-date">{t('dueDate:form.conceptionDateLabel', lang)}</label>
+          <input
+            type="date"
+            id="conception-date"
+            name="conceptionDate"
+            max={new Date().toISOString().split('T')[0]}
+          />
+          <span class="helper-text">{t('dueDate:form.conceptionHelper', lang)}</span>
+        </div>
+      </div>
+
+      <!-- Ultrasound Method Fields -->
+      <div class="method-fields" id="ultrasound-fields" style="display: none;">
+        <div class="form-group">
+          <label for="ultrasound-date">{t('dueDate:form.ultrasoundDateLabel', lang)}</label>
+          <input
+            type="date"
+            id="ultrasound-date"
+            name="ultrasoundDate"
+            max={new Date().toISOString().split('T')[0]}
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="ultrasound-weeks">{t('dueDate:form.ultrasoundWeeksLabel', lang)}</label>
+          <div class="input-group">
+            <input
+              type="number"
+              id="ultrasound-weeks"
+              name="ultrasoundWeeks"
+              min="0"
+              max="42"
+              placeholder="0"
+            />
+            <span class="unit">{t('dueDate:form.weeks', lang)}</span>
+            <input
+              type="number"
+              id="ultrasound-days"
+              name="ultrasoundDays"
+              min="0"
+              max="6"
+              placeholder="0"
+            />
+            <span class="unit">{t('dueDate:form.days', lang)}</span>
+          </div>
+          <span class="helper-text">{t('dueDate:form.ultrasoundHelper', lang)}</span>
+        </div>
+      </div>
+
+      <!-- IVF Method Fields -->
+      <div class="method-fields" id="ivf-fields" style="display: none;">
+        <div class="form-group">
+          <label for="ivf-transfer-date">{t('dueDate:form.ivfTransferDateLabel', lang)}</label>
+          <input
+            type="date"
+            id="ivf-transfer-date"
+            name="ivfTransferDate"
+            max={new Date().toISOString().split('T')[0]}
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="embryo-age">{t('dueDate:form.embryoAgeLabel', lang)}</label>
+          <select id="embryo-age" name="embryoAge">
+            <option value="3">{t('dueDate:form.embryoAge.day3', lang)}</option>
+            <option value="5">{t('dueDate:form.embryoAge.day5', lang)}</option>
+            <option value="6">{t('dueDate:form.embryoAge.day6', lang)}</option>
+          </select>
+          <span class="helper-text">{t('dueDate:form.ivfHelper', lang)}</span>
+        </div>
+      </div>
+
+      <!-- Buttons -->
+      <div class="form-actions">
+        <button type="submit" class="btn-primary">{t('common.calculate', lang)}</button>
+        <button type="reset" class="btn-secondary">{t('common.reset', lang)}</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="calculator-results" id="results" style="display: none;">
+    <h2>{t('dueDate:results.title', lang)}</h2>
+
+    <div class="result-card due-date-card">
+      <h3>{t('dueDate:results.dueDate', lang)}</h3>
+      <p class="value" id="due-date-value">-</p>
+      <p class="gestational-age" id="gestational-age">-</p>
+    </div>
+
+    <div class="result-grid">
+      <div class="result-item">
+        <strong>{t('dueDate:results.conceptionDate', lang)}:</strong>
+        <span id="conception-date-value">-</span>
+      </div>
+      <div class="result-item">
+        <strong>{t('dueDate:results.currentWeek', lang)}:</strong>
+        <span id="current-week">-</span>
+      </div>
+      <div class="result-item">
+        <strong>{t('dueDate:results.daysRemaining', lang)}:</strong>
+        <span id="days-remaining">-</span>
+      </div>
+      <div class="result-item">
+        <strong>{t('dueDate:results.trimester', lang)}:</strong>
+        <span id="trimester">-</span>
+      </div>
+    </div>
+
+    <div class="milestones">
+      <h3>{t('dueDate:results.milestones', lang)}</h3>
+      <div class="milestone-grid">
+        <div class="milestone-item">
+          <strong>{t('dueDate:results.firstTrimesterEnd', lang)}</strong>
+          <span id="first-trimester-end">-</span>
+        </div>
+        <div class="milestone-item">
+          <strong>{t('dueDate:results.secondTrimesterEnd', lang)}</strong>
+          <span id="second-trimester-end">-</span>
+        </div>
+        <div class="milestone-item">
+          <strong>{t('dueDate:results.fullTerm', lang)}</strong>
+          <span id="full-term-start">-</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <p>{t('dueDate:results.disclaimer', lang)}</p>
+    </div>
+  </div>
+
+  <div class="calculator-info">
+    <h2>{t('dueDate:info.title', lang)}</h2>
+    <p>{t('dueDate:info.description', lang)}</p>
+
+    <h3>{t('dueDate:info.methods.title', lang)}</h3>
+    <ul>
+      <li><strong>{t('dueDate:info.methods.lmp', lang)}</strong> {t('dueDate:info.methods.lmpDesc', lang)}</li>
+      <li><strong>{t('dueDate:info.methods.conception', lang)}</strong> {t('dueDate:info.methods.conceptionDesc', lang)}</li>
+      <li><strong>{t('dueDate:info.methods.ultrasound', lang)}</strong> {t('dueDate:info.methods.ultrasoundDesc', lang)}</li>
+      <li><strong>{t('dueDate:info.methods.ivf', lang)}</strong> {t('dueDate:info.methods.ivfDesc', lang)}</li>
+    </ul>
+
+    <p class="formula">{t('dueDate:info.formula', lang)}</p>
+    <p class="limitations">{t('dueDate:info.limitations', lang)}</p>
+  </div>
+</div>
+
+<style>
+  .duedate-calculator {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .calculator-form, .calculator-results, .calculator-info {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  h2 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  h3 {
+    color: #444;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #555;
+  }
+
+  .form-group input[type="date"],
+  .form-group input[type="number"],
+  .form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+
+  .form-group input[type="date"]:focus,
+  .form-group input[type="number"]:focus,
+  .form-group select:focus {
+    outline: none;
+    border-color: #FF6B6B;
+  }
+
+  .unit {
+    display: inline-block;
+    margin-left: 0.5rem;
+    color: #888;
+    font-size: 0.9rem;
+  }
+
+  .helper-text {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: 0.85rem;
+    color: #888;
+    font-style: italic;
+  }
+
+  .method-selector {
+    margin-bottom: 2rem;
+  }
+
+  .method-tabs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .method-tab {
+    padding: 0.75rem;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    background: white;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s;
+  }
+
+  .method-tab:hover {
+    border-color: #FF6B6B;
+  }
+
+  .method-tab.active {
+    background: linear-gradient(135deg, #FF6B6B 0%, #FF8E8E 100%);
+    color: white;
+    border-color: #FF6B6B;
+  }
+
+  .input-group {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .input-group input {
+    flex: 1;
+  }
+
+  .form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .btn-primary, .btn-secondary {
+    flex: 1;
+    padding: 0.875rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, #FF6B6B 0%, #FF8E8E 100%);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #FF5252 0%, #FF7575 100%);
+  }
+
+  .btn-secondary {
+    background: #f5f5f5;
+    color: #333;
+  }
+
+  .btn-secondary:hover {
+    background: #e0e0e0;
+  }
+
+  .result-card {
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, #FF6B6B 0%, #FFA07A 100%);
+    color: white;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+
+  .result-card h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1.2rem;
+    color: white;
+  }
+
+  .result-card .value {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  .result-card .gestational-age {
+    font-size: 1.2rem;
+    margin: 0.5rem 0 0 0;
+    opacity: 0.95;
+  }
+
+  .result-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .result-item {
+    padding: 1rem;
+    background: #f9f9f9;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .result-item strong {
+    color: #555;
+    font-size: 0.9rem;
+  }
+
+  .result-item span {
+    color: #333;
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+
+  .milestones {
+    background: #fff5f5;
+    padding: 1.5rem;
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+  }
+
+  .milestone-grid {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .milestone-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    background: white;
+    border-left: 4px solid #FF6B6B;
+    border-radius: 4px;
+  }
+
+  .milestone-item strong {
+    color: #555;
+  }
+
+  .milestone-item span {
+    color: #FF6B6B;
+    font-weight: 600;
+  }
+
+  .info-box {
+    background: #fffacd;
+    padding: 1rem;
+    border-left: 4px solid #FFD700;
+    border-radius: 4px;
+  }
+
+  .info-box p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #666;
+  }
+
+  .calculator-info {
+    background: #f9f9f9;
+  }
+
+  .calculator-info p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: #555;
+  }
+
+  .calculator-info ul {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+  }
+
+  .calculator-info li {
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+    color: #555;
+  }
+
+  .formula {
+    font-family: monospace;
+    background: white;
+    padding: 1rem;
+    border-left: 4px solid #FF6B6B;
+    margin: 1rem 0;
+  }
+
+  .limitations {
+    font-size: 0.9rem;
+    font-style: italic;
+  }
+
+  @media (max-width: 768px) {
+    .method-tabs {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .result-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  import type { DueDateInput, DueDateResult, CalculationMethod } from '@/utils/calculators/dueDate';
+  import { calculateDueDate, formatDate } from '@/utils/calculators/dueDate';
+
+  const form = document.getElementById('duedate-form') as HTMLFormElement;
+  const results = document.getElementById('results') as HTMLDivElement;
+  const methodTabs = document.querySelectorAll('.method-tab');
+  const methodInput = document.getElementById('calculation-method') as HTMLInputElement;
+
+  // Get current language
+  const lang = document.documentElement.lang || 'en';
+  const locale = lang === 'es' ? 'es-ES' :
+                lang === 'pt' ? 'pt-PT' :
+                lang === 'fr' ? 'fr-FR' :
+                lang === 'hi' ? 'hi-IN' :
+                lang === 'de' ? 'de-DE' :
+                lang === 'it' ? 'it-IT' : 'en-US';
+
+  // Handle method tab switching
+  methodTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      // Remove active class from all tabs
+      methodTabs.forEach(t => t.classList.remove('active'));
+
+      // Add active class to clicked tab
+      tab.classList.add('active');
+
+      // Get selected method
+      const method = tab.getAttribute('data-method') as CalculationMethod;
+      methodInput.value = method;
+
+      // Hide all method fields
+      document.querySelectorAll('.method-fields').forEach(field => {
+        (field as HTMLElement).style.display = 'none';
+      });
+
+      // Show selected method fields
+      const selectedFields = document.getElementById(`${method}-fields`);
+      if (selectedFields) {
+        selectedFields.style.display = 'block';
+      }
+    });
+  });
+
+  // Handle form submission
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const method = methodInput.value as CalculationMethod;
+
+    try {
+      let input: DueDateInput;
+
+      switch (method) {
+        case 'lmp': {
+          const lmpDate = new Date(formData.get('lmpDate') as string);
+          const cycleLength = parseInt(formData.get('cycleLength') as string) || 28;
+          input = { method: 'lmp', date: lmpDate, cycleLength };
+          break;
+        }
+        case 'conception': {
+          const conceptionDate = new Date(formData.get('conceptionDate') as string);
+          input = { method: 'conception', date: conceptionDate };
+          break;
+        }
+        case 'ultrasound': {
+          const ultrasoundDate = new Date(formData.get('ultrasoundDate') as string);
+          const ultrasoundWeeks = parseInt(formData.get('ultrasoundWeeks') as string) || 0;
+          const ultrasoundDays = parseInt(formData.get('ultrasoundDays') as string) || 0;
+          input = { method: 'ultrasound', date: ultrasoundDate, ultrasoundWeeks, ultrasoundDays };
+          break;
+        }
+        case 'ivf': {
+          const ivfTransferDate = new Date(formData.get('ivfTransferDate') as string);
+          const embryoAge = parseInt(formData.get('embryoAge') as string) as 3 | 5 | 6;
+          input = { method: 'ivf', date: ivfTransferDate, embryoAge };
+          break;
+        }
+        default:
+          throw new Error('Invalid method');
+      }
+
+      const result = calculateDueDate(input);
+      displayResults(result);
+    } catch (error) {
+      alert('Error calculating due date. Please check your inputs.');
+      console.error(error);
+    }
+  });
+
+  function displayResults(result: DueDateResult) {
+    const dueDateValue = document.getElementById('due-date-value') as HTMLParagraphElement;
+    const gestationalAge = document.getElementById('gestational-age') as HTMLParagraphElement;
+    const conceptionDateValue = document.getElementById('conception-date-value') as HTMLSpanElement;
+    const currentWeek = document.getElementById('current-week') as HTMLSpanElement;
+    const daysRemaining = document.getElementById('days-remaining') as HTMLSpanElement;
+    const trimester = document.getElementById('trimester') as HTMLSpanElement;
+    const firstTrimesterEnd = document.getElementById('first-trimester-end') as HTMLSpanElement;
+    const secondTrimesterEnd = document.getElementById('second-trimester-end') as HTMLSpanElement;
+    const fullTermStart = document.getElementById('full-term-start') as HTMLSpanElement;
+
+    // Trimester labels
+    const trimesterLabels: Record<string, Record<number, string>> = {
+      'es': { 1: 'Primer trimestre', 2: 'Segundo trimestre', 3: 'Tercer trimestre' },
+      'en': { 1: 'First trimester', 2: 'Second trimester', 3: 'Third trimester' },
+      'pt': { 1: 'Primeiro trimestre', 2: 'Segundo trimestre', 3: 'Terceiro trimestre' },
+      'fr': { 1: 'Premier trimestre', 2: 'Deuxième trimestre', 3: 'Troisième trimestre' },
+      'hi': { 1: 'पहली तिमाही', 2: 'दूसरी तिमाही', 3: 'तीसरी तिमाही' },
+      'de': { 1: 'Erstes Trimester', 2: 'Zweites Trimester', 3: 'Drittes Trimester' },
+      'it': { 1: 'Primo trimestre', 2: 'Secondo trimestre', 3: 'Terzo trimestre' }
+    };
+
+    const weeksLabel = lang === 'es' ? 'semanas' :
+                      lang === 'pt' ? 'semanas' :
+                      lang === 'fr' ? 'semaines' :
+                      lang === 'hi' ? 'सप्ताह' :
+                      lang === 'de' ? 'Wochen' :
+                      lang === 'it' ? 'settimane' : 'weeks';
+
+    const daysLabel = lang === 'es' ? 'días' :
+                     lang === 'pt' ? 'dias' :
+                     lang === 'fr' ? 'jours' :
+                     lang === 'hi' ? 'दिन' :
+                     lang === 'de' ? 'Tage' :
+                     lang === 'it' ? 'giorni' : 'days';
+
+    dueDateValue.textContent = formatDate(result.dueDate, locale);
+    gestationalAge.textContent = `${result.currentWeek} ${weeksLabel} ${result.currentDay} ${daysLabel}`;
+    conceptionDateValue.textContent = formatDate(result.conceptionDate, locale);
+    currentWeek.textContent = `${result.currentWeek} ${weeksLabel} ${result.currentDay} ${daysLabel}`;
+    daysRemaining.textContent = `${result.daysRemaining} ${daysLabel}`;
+    trimester.textContent = trimesterLabels[lang]?.[result.trimester] || `Trimester ${result.trimester}`;
+    firstTrimesterEnd.textContent = formatDate(result.firstTrimesterEnd, locale);
+    secondTrimesterEnd.textContent = formatDate(result.secondTrimesterEnd, locale);
+    fullTermStart.textContent = formatDate(result.fullTermStart, locale);
+
+    // Show results
+    results.style.display = 'block';
+    results.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  // Handle form reset
+  form.addEventListener('reset', () => {
+    results.style.display = 'none';
+  });
+</script>

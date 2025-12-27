@@ -1,0 +1,39 @@
+{
+  "title": "Calculadora de Peso Saludable",
+  "description": "Calcula tu rango de peso saludable ideal",
+  "metaDescription": "Calculadora de peso saludable gratuita - Descubre tu rango de peso ideal usando múltiples fórmulas científicas. Incluye fórmulas de Robinson, Miller, Devine y Hamwi.",
+  "form": {
+    "title": "Ingresa tus datos",
+    "ageLabel": "Edad",
+    "agePlaceholder": "Ingresa tu edad",
+    "genderLabel": "Género",
+    "heightLabel": "Altura",
+    "heightPlaceholder": "Ingresa tu altura",
+    "currentWeightLabel": "Peso Actual (Opcional)",
+    "currentWeightPlaceholder": "Ingresa tu peso actual",
+    "currentWeightHelp": "Opcional: ingresa tu peso actual para ver recomendaciones personalizadas"
+  },
+  "results": {
+    "title": "Tus Resultados",
+    "currentStatus": "Tu Estado Actual",
+    "healthyRangeTitle": "Rango de Peso Saludable",
+    "bmiRange": "Rango de IMC Saludable",
+    "weightRange": "Rango de Peso Saludable",
+    "weightGoalTitle": "Tu Objetivo de Peso",
+    "idealWeightsTitle": "Pesos Ideales según Fórmulas Científicas",
+    "robinsonFormula": "Robinson",
+    "millerFormula": "Miller",
+    "devineFormula": "Devine",
+    "hamwiFormula": "Hamwi",
+    "hamwiSmallFrame": "Hamwi (Estructura Pequeña)",
+    "hamwiLargeFrame": "Hamwi (Estructura Grande)"
+  },
+  "info": {
+    "title": "Sobre el Peso Saludable",
+    "description": "El peso saludable se basa en el rango de IMC recomendado por la OMS (18.5-25). Esta calculadora utiliza tu altura para determinar tu rango de peso saludable y compara múltiples fórmulas científicas para calcular tu peso ideal.",
+    "bmiFormula": "Rango de IMC Saludable: 18.5 - 25.0 kg/m²",
+    "formulasTitle": "Fórmulas de Peso Ideal",
+    "formulasDescription": "Se incluyen cuatro fórmulas científicas reconocidas (Robinson 1983, Miller 1983, Devine 1974, Hamwi 1964). La fórmula de Hamwi también se ajusta para estructura corporal pequeña (-10%) y grande (+10%).",
+    "limitations": "Estas fórmulas son estimaciones generales para adultos de 18 años o más. No tienen en cuenta la composición corporal individual, la masa muscular o las condiciones de salud específicas. Consulta a un profesional de la salud para orientación personalizada."
+  }
+}

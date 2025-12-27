@@ -3,13 +3,22 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import { t } from '@/utils/i18n';
 
 const calculators = [
-  {
-    title: t('bmi.title', 'de'),
-    description: t('bmi.description', 'de'),
-    url: '/de/calculators/bmi/',
-    category: t('categories.health', 'de'),
-    icon: '⚕️',
-  },
+  { title: t('bmi.title', 'de'), description: t('bmi.description', 'de'), url: '/de/calculators/bmi/', category: t('categories.health', 'de'), icon: '⚕️' },
+  { title: t('calorie.title', 'de'), description: t('calorie.description', 'de'), url: '/de/calculators/calorie/', category: t('categories.health', 'de'), icon: '🔥' },
+  { title: t('idealWeight.title', 'de'), description: t('idealWeight.description', 'de'), url: '/de/calculators/ideal-weight/', category: t('categories.health', 'de'), icon: '🎯' },
+  { title: t('bodyFat.title', 'de'), description: t('bodyFat.description', 'de'), url: '/de/calculators/body-fat/', category: t('categories.health', 'de'), icon: '📊' },
+  { title: t('bmr.title', 'de'), description: t('bmr.description', 'de'), url: '/de/calculators/bmr/', category: t('categories.health', 'de'), icon: '⚡' },
+  { title: t('tdee.title', 'de'), description: t('tdee.description', 'de'), url: '/de/calculators/tdee/', category: t('categories.health', 'de'), icon: '💪' },
+  { title: t('macro.title', 'de'), description: t('macro.description', 'de'), url: '/de/calculators/macro/', category: t('categories.health', 'de'), icon: '🍽️' },
+  { title: t('pregnancy.title', 'de'), description: t('pregnancy.description', 'de'), url: '/de/calculators/pregnancy/', category: t('categories.health', 'de'), icon: '🤰' },
+  { title: t('pregnancyWeightGain.title', 'de'), description: t('pregnancyWeightGain.description', 'de'), url: '/de/calculators/pregnancy-weight-gain/', category: t('categories.health', 'de'), icon: '⚖️' },
+  { title: t('pregnancyConception.title', 'de'), description: t('pregnancyConception.description', 'de'), url: '/de/calculators/pregnancy-conception/', category: t('categories.health', 'de'), icon: '👶' },
+  { title: t('dueDate.title', 'de'), description: t('dueDate.description', 'de'), url: '/de/calculators/due-date/', category: t('categories.health', 'de'), icon: '📅' },
+  { title: t('pace.title', 'de'), description: t('pace.description', 'de'), url: '/de/calculators/pace/', category: t('categories.health', 'de'), icon: '🏃' },
+  { title: t('armyBodyFat.title', 'de'), description: t('armyBodyFat.description', 'de'), url: '/de/calculators/army-body-fat/', category: t('categories.health', 'de'), icon: '🎖️' },
+  { title: t('carbohydrate.title', 'de'), description: t('carbohydrate.description', 'de'), url: '/de/calculators/carbohydrate/', category: t('categories.health', 'de'), icon: '🍞' },
+  { title: t('leanBodyMass.title', 'de'), description: t('leanBodyMass.description', 'de'), url: '/de/calculators/lean-body-mass/', category: t('categories.health', 'de'), icon: '💪' },
+  { title: t('healthyWeight.title', 'de'), description: t('healthyWeight.description', 'de'), url: '/de/calculators/healthy-weight/', category: t('categories.health', 'de'), icon: '✅' },
 ];
 ---
 

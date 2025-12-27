@@ -1,0 +1,33 @@
+{
+  "title": "Calcolatore di Concepimento della Gravidanza",
+  "description": "Calcola la tua data stimata di concepimento",
+  "metaDescription": "Calcolatore gratuito di concepimento della gravidanza - Stima la tua data di concepimento, finestra di fertilità e data prevista del parto in base all'ultimo ciclo mestruale o alla data prevista del parto.",
+  "form": {
+    "title": "Inserisci le tue informazioni",
+    "modeLMP": "Data dell'ultimo ciclo",
+    "modeDueDate": "Data prevista del parto",
+    "lmpDateLabel": "Data dell'Ultimo Ciclo Mestruale (LMP)",
+    "lmpDateHelp": "Inserisci il primo giorno del tuo ultimo ciclo mestruale",
+    "dueDateLabel": "Data Prevista del Parto",
+    "dueDateHelp": "Inserisci la tua data prevista del parto",
+    "cycleLengthLabel": "Durata del Ciclo Mestruale",
+    "cycleLengthHelp": "La durata media del tuo ciclo mestruale (predefinito: 28 giorni)"
+  },
+  "results": {
+    "title": "I Tuoi Risultati",
+    "estimatedConception": "Data Stimata di Concepimento",
+    "conceptionRange": "Intervallo di Date di Concepimento",
+    "fertilityWindow": "Finestra di Fertilità",
+    "dueDate": "Data Prevista del Parto",
+    "currentWeek": "Settimana Corrente di Gravidanza"
+  },
+  "info": {
+    "title": "Informazioni sul Concepimento della Gravidanza",
+    "description": "Il calcolatore di concepimento della gravidanza ti aiuta a stimare quando è probabilmente avvenuto il concepimento in base al tuo ultimo ciclo mestruale o alla tua data prevista del parto. Queste informazioni possono essere utili per determinare la paternità o semplicemente per comprendere meglio la tua gravidanza.",
+    "howItWorksTitle": "Come Funziona",
+    "howItWorks": "Il concepimento avviene tipicamente intorno all'ovulazione, che di solito è 14 giorni prima dell'inizio del ciclo successivo. Per un ciclo di 28 giorni, ciò significa che l'ovulazione avviene intorno al giorno 14. Gli spermatozoi possono sopravvivere fino a 5 giorni nel corpo, quindi la finestra di fertilità include i 5 giorni prima dell'ovulazione più il giorno dell'ovulazione. La gravidanza dura circa 280 giorni (40 settimane) dal primo giorno dell'ultimo ciclo mestruale.",
+    "accuracyTitle": "Precisione",
+    "accuracy": "Questo calcolatore fornisce stime basate su cicli mestruali medi. L'ovulazione effettiva e il concepimento possono variare da persona a persona. I fattori che possono influenzare la precisione includono cicli mestruali irregolari, ovulazione tardiva o precoce e variazioni individuali. Per informazioni più precise sulla tua gravidanza, consulta il tuo medico.",
+    "disclaimer": "Nota: Questo calcolatore è solo a scopo informativo e non deve essere utilizzato come consiglio medico. Consulta sempre un professionista sanitario per informazioni mediche accurate sulla tua gravidanza."
+  }
+}

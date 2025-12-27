@@ -1,0 +1,34 @@
+{
+  "title": "Magere Körpermasse Rechner",
+  "description": "Berechnen Sie Ihre magere Körpermasse mit mehreren Formeln",
+  "metaDescription": "Kostenloser Magere Körpermasse Rechner - Berechnen Sie Ihre LBM mit den Formeln von Boer, James und Hume. Finden Sie Ihre magere Masse und Ihren Körperfettanteil.",
+  "form": {
+    "title": "Geben Sie Ihre Daten ein",
+    "ageLabel": "Alter",
+    "agePlaceholder": "Geben Sie Ihr Alter ein",
+    "genderLabel": "Geschlecht",
+    "heightLabel": "Größe",
+    "heightPlaceholder": "Geben Sie Ihre Größe ein",
+    "weightLabel": "Gewicht",
+    "weightPlaceholder": "Geben Sie Ihr Gewicht ein"
+  },
+  "results": {
+    "title": "Ihre Ergebnisse",
+    "averageLBM": "Durchschnittliche Magere Körpermasse",
+    "bodyFat": "Körperfett",
+    "comparisonTitle": "Formelvergleich",
+    "formula": "Formel",
+    "leanMass": "Magere Masse",
+    "fatMass": "Fettmasse",
+    "bodyFatPercent": "Körperfett %"
+  },
+  "info": {
+    "title": "Über die Magere Körpermasse",
+    "description": "Die Magere Körpermasse (LBM) ist das Gesamtgewicht Ihres Körpers abzüglich des Gewichts Ihres Körperfetts. Sie umfasst das Gewicht aller Organe, Haut, Knochen, Körperwasser und Muskeln. LBM ist nützlich zur Bestimmung von Medikamentendosierungen, zur Beurteilung des Stoffwechselzustands und zur Planung von Ernährungs- und Trainingsprogrammen.",
+    "formulasTitle": "Verwendete Formeln",
+    "boerFormula": "Männer: LBM = 0.407 × Gewicht + 0.267 × Größe - 19.2 | Frauen: LBM = 0.252 × Gewicht + 0.473 × Größe - 48.3",
+    "jamesFormula": "Männer: LBM = 1.1 × Gewicht - 128 × (Gewicht/Größe)² | Frauen: LBM = 1.07 × Gewicht - 148 × (Gewicht/Größe)²",
+    "humeFormula": "Männer: LBM = 0.32810 × Gewicht + 0.33929 × Größe - 29.5336 | Frauen: LBM = 0.29569 × Gewicht + 0.41813 × Größe - 43.2933",
+    "limitations": "Hinweis: Diese Formeln liefern Schätzungen und die Ergebnisse können zwischen verschiedenen Methoden variieren. Magere Körpermasse und fettfreie Masse werden oft synonym verwendet, unterscheiden sich jedoch aufgrund von Unterschieden in der essentiellen Fettzusammensetzung um etwa 2-3% bei Männern und 5-12% bei Frauen. Für genaue Messungen sollten Sie Methoden wie DEXA, hydrostatisches Wiegen oder bioelektrische Impedanzanalyse in Betracht ziehen."
+  }
+}

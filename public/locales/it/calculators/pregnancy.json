@@ -1,0 +1,36 @@
+{
+  "title": "Calcolatore di Gravidanza",
+  "description": "Calcola la tua data presunta del parto e monitoraggio della gravidanza",
+  "metaDescription": "Calcolatore di gravidanza gratuito - Calcola la tua data presunta del parto, settimana corrente e trimestre. Include tappe importanti dello sviluppo fetale.",
+  "form": {
+    "title": "Inserisci le tue informazioni",
+    "methodLabel": "Metodo di calcolo",
+    "lmpMethod": "Ultima mestruazione (LMP)",
+    "conceptionMethod": "Data di concepimento",
+    "dueDateMethod": "Data prevista nota",
+    "lmpDateLabel": "Primo giorno della tua ultima mestruazione",
+    "lmpDateHelp": "Inserisci il primo giorno della tua ultima mestruazione",
+    "conceptionDateLabel": "Data di concepimento",
+    "conceptionDateHelp": "Data stimata o nota del concepimento",
+    "dueDateLabel": "Data presunta del parto",
+    "dueDateHelp": "Se il tuo medico ti ha dato una data prevista",
+    "cycleLengthLabel": "Durata del ciclo mestruale",
+    "cycleLengthHelp": "Durata media del tuo ciclo (tipicamente 28 giorni)"
+  },
+  "results": {
+    "title": "I Tuoi Risultati",
+    "dueDate": "Data Presunta del Parto",
+    "currentWeek": "Settimana Corrente",
+    "conceptionDate": "Data di Concepimento",
+    "trimester": "Trimestre",
+    "daysRemaining": "Giorni Rimanenti",
+    "percentComplete": "Progresso",
+    "milestones": "Tappe della Gravidanza"
+  },
+  "info": {
+    "title": "Sul Calcolatore di Gravidanza",
+    "description": "Questo calcolatore stima la data presunta del parto e monitora i tuoi progressi durante la gravidanza. La gravidanza dura tipicamente 40 settimane (280 giorni) dal primo giorno dell'ultima mestruazione, o 38 settimane dal concepimento.",
+    "formula": "Formula: Regola di Naegele - Data presunta = LMP + 280 giorni (aggiustata per la durata del ciclo)",
+    "limitations": "Nota: Questo calcolatore fornisce stime. Solo il 4% dei bambini nasce esattamente alla data prevista. Il 60% nasce entro una settimana dalla data stimata, e il 90% entro due settimane. Consulta sempre il tuo medico per un monitoraggio accurato della gravidanza."
+  }
+}

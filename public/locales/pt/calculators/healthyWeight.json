@@ -1,0 +1,39 @@
+{
+  "title": "Calculadora de Peso Saudável",
+  "description": "Calcule sua faixa de peso saudável ideal",
+  "metaDescription": "Calculadora de peso saudável gratuita - Descubra sua faixa de peso ideal usando múltiplas fórmulas científicas. Inclui fórmulas de Robinson, Miller, Devine e Hamwi.",
+  "form": {
+    "title": "Digite suas informações",
+    "ageLabel": "Idade",
+    "agePlaceholder": "Digite sua idade",
+    "genderLabel": "Gênero",
+    "heightLabel": "Altura",
+    "heightPlaceholder": "Digite sua altura",
+    "currentWeightLabel": "Peso Atual (Opcional)",
+    "currentWeightPlaceholder": "Digite seu peso atual",
+    "currentWeightHelp": "Opcional: digite seu peso atual para ver recomendações personalizadas"
+  },
+  "results": {
+    "title": "Seus Resultados",
+    "currentStatus": "Seu Status Atual",
+    "healthyRangeTitle": "Faixa de Peso Saudável",
+    "bmiRange": "Faixa de IMC Saudável",
+    "weightRange": "Faixa de Peso Saudável",
+    "weightGoalTitle": "Sua Meta de Peso",
+    "idealWeightsTitle": "Pesos Ideais por Fórmulas Científicas",
+    "robinsonFormula": "Robinson",
+    "millerFormula": "Miller",
+    "devineFormula": "Devine",
+    "hamwiFormula": "Hamwi",
+    "hamwiSmallFrame": "Hamwi (Estrutura Pequena)",
+    "hamwiLargeFrame": "Hamwi (Estrutura Grande)"
+  },
+  "info": {
+    "title": "Sobre o Peso Saudável",
+    "description": "O peso saudável é baseado na faixa de IMC recomendada pela OMS (18.5-25). Esta calculadora usa sua altura para determinar sua faixa de peso saudável e compara múltiplas fórmulas científicas para calcular seu peso ideal.",
+    "bmiFormula": "Faixa de IMC Saudável: 18.5 - 25.0 kg/m²",
+    "formulasTitle": "Fórmulas de Peso Ideal",
+    "formulasDescription": "Quatro fórmulas científicas reconhecidas estão incluídas (Robinson 1983, Miller 1983, Devine 1974, Hamwi 1964). A fórmula de Hamwi também é ajustada para estrutura corporal pequena (-10%) e estrutura corporal grande (+10%).",
+    "limitations": "Essas fórmulas são estimativas gerais para adultos com 18 anos ou mais. Elas não levam em conta a composição corporal individual, massa muscular ou condições de saúde específicas. Consulte um profissional de saúde para orientação personalizada."
+  }
+}

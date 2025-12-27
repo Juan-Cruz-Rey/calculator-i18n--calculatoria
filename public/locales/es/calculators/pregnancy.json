@@ -1,0 +1,36 @@
+{
+  "title": "Calculadora de Embarazo",
+  "description": "Calcula tu fecha de parto y seguimiento del embarazo",
+  "metaDescription": "Calculadora de embarazo gratuita - Calcula tu fecha de parto, semana actual y trimestre. Incluye hitos importantes del desarrollo fetal.",
+  "form": {
+    "title": "Ingresa tus datos",
+    "methodLabel": "Método de cálculo",
+    "lmpMethod": "Último período menstrual (FUM)",
+    "conceptionMethod": "Fecha de concepción",
+    "dueDateMethod": "Fecha de parto conocida",
+    "lmpDateLabel": "Primer día de tu último período",
+    "lmpDateHelp": "Ingresa el primer día de tu última menstruación",
+    "conceptionDateLabel": "Fecha de concepción",
+    "conceptionDateHelp": "Fecha estimada o conocida de concepción",
+    "dueDateLabel": "Fecha prevista de parto",
+    "dueDateHelp": "Si tu médico te dio una fecha de parto",
+    "cycleLengthLabel": "Duración del ciclo menstrual",
+    "cycleLengthHelp": "Duración promedio de tu ciclo (normalmente 28 días)"
+  },
+  "results": {
+    "title": "Tus Resultados",
+    "dueDate": "Fecha Prevista de Parto",
+    "currentWeek": "Semana Actual",
+    "conceptionDate": "Fecha de Concepción",
+    "trimester": "Trimestre",
+    "daysRemaining": "Días Restantes",
+    "percentComplete": "Progreso",
+    "milestones": "Hitos del Embarazo"
+  },
+  "info": {
+    "title": "Sobre la Calculadora de Embarazo",
+    "description": "Esta calculadora estima tu fecha de parto y rastrea tu progreso durante el embarazo. El embarazo normalmente dura 40 semanas (280 días) desde el primer día del último período menstrual, o 38 semanas desde la concepción.",
+    "formula": "Fórmula: Regla de Naegele - Fecha de parto = FUM + 280 días (ajustado por duración del ciclo)",
+    "limitations": "Nota: Esta calculadora proporciona estimaciones. Solo el 4% de los bebés nacen exactamente en la fecha prevista. El 60% nace dentro de la semana de la fecha estimada, y el 90% dentro de las dos semanas. Consulta siempre con tu médico para un seguimiento preciso del embarazo."
+  }
+}

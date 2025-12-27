@@ -1,0 +1,53 @@
+{
+  "title": "Calcolatore di Carboidrati",
+  "description": "Calcola il tuo apporto giornaliero raccomandato di carboidrati",
+  "metaDescription": "Calcolatore di carboidrati gratuito - Calcola il tuo apporto giornaliero raccomandato di carboidrati in base al tuo TDEE, livello di attività e obiettivi. Raccomandazioni personalizzate per diete a basso, moderato e alto contenuto di carboidrati.",
+  "form": {
+    "title": "Inserisci le tue informazioni",
+    "ageLabel": "Età",
+    "agePlaceholder": "Inserisci la tua età",
+    "genderLabel": "Sesso",
+    "heightLabel": "Altezza",
+    "heightPlaceholder": "Inserisci la tua altezza",
+    "weightLabel": "Peso",
+    "weightPlaceholder": "Inserisci il tuo peso",
+    "activityLevelLabel": "Livello di Attività",
+    "activityLevels": {
+      "sedentary": "Sedentario - Poco o nessun esercizio",
+      "light": "Leggero - Esercizio leggero 1-3 giorni/settimana",
+      "moderate": "Moderato - Esercizio moderato 3-5 giorni/settimana",
+      "active": "Attivo - Esercizio intenso 6-7 giorni/settimana",
+      "extra": "Molto Attivo - Esercizio molto intenso, lavoro fisico"
+    },
+    "goalLabel": "Obiettivo",
+    "goals": {
+      "loss": "Perdita di peso",
+      "maintain": "Mantenere il peso",
+      "gain": "Aumento muscolare"
+    }
+  },
+  "results": {
+    "title": "I Tuoi Risultati",
+    "bmr": "BMR (Metabolismo Basale)",
+    "tdee": "TDEE (Dispendio Energetico Totale Giornaliero)",
+    "targetCalories": "Calorie Target",
+    "recommendationsTitle": "Raccomandazioni sui Carboidrati",
+    "levels": {
+      "low": "Basso Contenuto di Carboidrati",
+      "moderate": "Moderato Contenuto di Carboidrati",
+      "high": "Alto Contenuto di Carboidrati"
+    },
+    "descriptions": {
+      "low": "Ideale per la rapida perdita di peso e il controllo della glicemia. Può essere difficile da mantenere a lungo termine.",
+      "moderate": "Approccio equilibrato per la maggior parte delle persone. Buono per il mantenimento e la perdita di peso graduale.",
+      "high": "Ottimale per atleti e persone molto attive. Fornisce energia per allenamenti intensi."
+    },
+    "note": "Nota: L'apporto minimo raccomandato di carboidrati è di 130g al giorno per gli adulti. Consultare un professionista sanitario prima di apportare modifiche significative alla dieta."
+  },
+  "info": {
+    "title": "Sui Carboidrati",
+    "description": "I carboidrati sono uno dei tre macronutrienti principali (insieme a proteine e grassi) e la principale fonte di energia del corpo. La quantità ottimale di carboidrati varia in base al livello di attività, agli obiettivi e alle preferenze personali.",
+    "formula": "Formula: Grammi di carboidrati = (Calorie target × % carboidrati) ÷ 4 calorie/g",
+    "recommendations": "Le raccomandazioni sui carboidrati si basano su percentuali del tuo apporto calorico totale: Basso (10-30%), Moderato (30-50%), Alto (50-70%). La scelta dipende dai tuoi obiettivi, dal livello di attività e dalla risposta metabolica individuale."
+  }
+}

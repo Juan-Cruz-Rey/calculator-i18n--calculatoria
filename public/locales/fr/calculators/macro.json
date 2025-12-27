@@ -1,0 +1,59 @@
+{
+  "title": "Calculatrice de Macros",
+  "description": "Calculez vos macronutriments quotidiens",
+  "metaDescription": "Calculatrice de macros gratuite - Calculez votre répartition de protéines, glucides et lipides selon votre objectif. Obtenez votre plan nutritionnel personnalisé.",
+  "form": {
+    "title": "Entrez vos données",
+    "ageLabel": "Âge",
+    "agePlaceholder": "Entrez votre âge",
+    "genderLabel": "Sexe",
+    "heightLabel": "Taille",
+    "heightPlaceholder": "Entrez votre taille",
+    "weightLabel": "Poids",
+    "weightPlaceholder": "Entrez votre poids",
+    "activityLabel": "Niveau d'activité",
+    "activityLevels": {
+      "sedentary": "Sédentaire (peu ou pas d'exercice)",
+      "light": "Léger (exercice 1-3 fois/semaine)",
+      "moderate": "Modéré (exercice 4-5 fois/semaine)",
+      "active": "Actif (exercice quotidien ou intensif 3-4 fois/semaine)",
+      "veryActive": "Très actif (exercice intensif 6-7 fois/semaine)",
+      "extraActive": "Extra actif (exercice très intensif quotidien ou travail physique)"
+    },
+    "goalLabel": "Objectif de poids",
+    "goals": {
+      "extremeLoss": "Perte extrême (1 kg/semaine)",
+      "moderateLoss": "Perte modérée (0.5 kg/semaine)",
+      "mildLoss": "Perte légère (0.25 kg/semaine)",
+      "maintain": "Maintenir le poids",
+      "mildGain": "Gain léger (0.25 kg/semaine)",
+      "moderateGain": "Gain modéré (0.5 kg/semaine)",
+      "extremeGain": "Gain extrême (1 kg/semaine)"
+    },
+    "dietTypeLabel": "Type de régime",
+    "dietTypes": {
+      "balanced": "Équilibré (30% protéines, 40% glucides, 30% lipides)",
+      "lowFat": "Faible en lipides (30% protéines, 50% glucides, 20% lipides)",
+      "lowCarb": "Faible en glucides (35% protéines, 20% glucides, 45% lipides)",
+      "highProtein": "Riche en protéines (40% protéines, 30% glucides, 30% lipides)"
+    }
+  },
+  "results": {
+    "title": "Vos Résultats",
+    "dailyCalories": "Calories Quotidiennes",
+    "toReachGoal": "pour atteindre votre objectif",
+    "bmr": "Métabolisme de Base (MB)",
+    "tdee": "Dépense Énergétique Totale Quotidienne (DETQ)",
+    "weeklyChange": "Changement de Poids Hebdomadaire",
+    "macrosBreakdown": "Répartition des Macronutriments",
+    "protein": "Protéines",
+    "carbs": "Glucides",
+    "fats": "Lipides"
+  },
+  "info": {
+    "title": "À Propos des Macronutriments",
+    "description": "Les macronutriments (protéines, glucides et lipides) sont les nutriments qui fournissent de l'énergie à votre corps. Cette calculatrice détermine votre dépense énergétique totale quotidienne et répartit les calories en macronutriments selon votre objectif et votre type de régime préféré.",
+    "formula": "Formule: MB (Mifflin-St Jeor) × Multiplicateur d'Activité ± Ajustement d'Objectif",
+    "limitations": "Cette calculatrice fournit des estimations basées sur des formules standard. Les besoins individuels peuvent varier. Consultez un professionnel de la santé ou un nutritionniste pour un plan personnalisé."
+  }
+}

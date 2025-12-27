@@ -1,0 +1,39 @@
+{
+  "title": "Healthy Weight Calculator",
+  "description": "Calculate your ideal healthy weight range",
+  "metaDescription": "Free healthy weight calculator - Discover your ideal weight range using multiple scientific formulas. Includes Robinson, Miller, Devine, and Hamwi formulas.",
+  "form": {
+    "title": "Enter your information",
+    "ageLabel": "Age",
+    "agePlaceholder": "Enter your age",
+    "genderLabel": "Gender",
+    "heightLabel": "Height",
+    "heightPlaceholder": "Enter your height",
+    "currentWeightLabel": "Current Weight (Optional)",
+    "currentWeightPlaceholder": "Enter your current weight",
+    "currentWeightHelp": "Optional: enter your current weight to see personalized recommendations"
+  },
+  "results": {
+    "title": "Your Results",
+    "currentStatus": "Your Current Status",
+    "healthyRangeTitle": "Healthy Weight Range",
+    "bmiRange": "Healthy BMI Range",
+    "weightRange": "Healthy Weight Range",
+    "weightGoalTitle": "Your Weight Goal",
+    "idealWeightsTitle": "Ideal Weights by Scientific Formulas",
+    "robinsonFormula": "Robinson",
+    "millerFormula": "Miller",
+    "devineFormula": "Devine",
+    "hamwiFormula": "Hamwi",
+    "hamwiSmallFrame": "Hamwi (Small Frame)",
+    "hamwiLargeFrame": "Hamwi (Large Frame)"
+  },
+  "info": {
+    "title": "About Healthy Weight",
+    "description": "Healthy weight is based on the WHO recommended BMI range (18.5-25). This calculator uses your height to determine your healthy weight range and compares multiple scientific formulas to calculate your ideal weight.",
+    "bmiFormula": "Healthy BMI Range: 18.5 - 25.0 kg/m²",
+    "formulasTitle": "Ideal Weight Formulas",
+    "formulasDescription": "Four recognized scientific formulas are included (Robinson 1983, Miller 1983, Devine 1974, Hamwi 1964). The Hamwi formula is also adjusted for small body frame (-10%) and large body frame (+10%).",
+    "limitations": "These formulas are general estimates for adults aged 18 or older. They do not account for individual body composition, muscle mass, or specific health conditions. Consult a healthcare professional for personalized guidance."
+  }
+}

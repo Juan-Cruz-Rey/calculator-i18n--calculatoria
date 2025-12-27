@@ -1,0 +1,53 @@
+{
+  "title": "Calculadora de Carbohidratos",
+  "description": "Calcula tu ingesta diaria recomendada de carbohidratos",
+  "metaDescription": "Calculadora de carbohidratos gratuita - Calcula tu ingesta diaria recomendada de carbohidratos basada en tu TDEE, nivel de actividad y objetivos. Recomendaciones personalizadas para dietas bajas, moderadas y altas en carbohidratos.",
+  "form": {
+    "title": "Ingresa tus datos",
+    "ageLabel": "Edad",
+    "agePlaceholder": "Ingresa tu edad",
+    "genderLabel": "Género",
+    "heightLabel": "Altura",
+    "heightPlaceholder": "Ingresa tu altura",
+    "weightLabel": "Peso",
+    "weightPlaceholder": "Ingresa tu peso",
+    "activityLevelLabel": "Nivel de Actividad",
+    "activityLevels": {
+      "sedentary": "Sedentario - Poco o ningún ejercicio",
+      "light": "Ligero - Ejercicio ligero 1-3 días/semana",
+      "moderate": "Moderado - Ejercicio moderado 3-5 días/semana",
+      "active": "Activo - Ejercicio intenso 6-7 días/semana",
+      "extra": "Muy Activo - Ejercicio muy intenso, trabajo físico"
+    },
+    "goalLabel": "Objetivo",
+    "goals": {
+      "loss": "Pérdida de peso",
+      "maintain": "Mantener peso",
+      "gain": "Ganancia muscular"
+    }
+  },
+  "results": {
+    "title": "Tus Resultados",
+    "bmr": "TMB (Tasa Metabólica Basal)",
+    "tdee": "TDEE (Gasto Energético Diario Total)",
+    "targetCalories": "Calorías Objetivo",
+    "recommendationsTitle": "Recomendaciones de Carbohidratos",
+    "levels": {
+      "low": "Bajo en Carbohidratos",
+      "moderate": "Moderado en Carbohidratos",
+      "high": "Alto en Carbohidratos"
+    },
+    "descriptions": {
+      "low": "Ideal para pérdida de peso rápida y control de azúcar en sangre. Puede ser difícil de mantener a largo plazo.",
+      "moderate": "Balance equilibrado para la mayoría de las personas. Bueno para mantenimiento y pérdida de peso gradual.",
+      "high": "Óptimo para atletas y personas muy activas. Proporciona energía para entrenamientos intensos."
+    },
+    "note": "Nota: La ingesta mínima recomendada de carbohidratos es de 130g por día para adultos. Consulta con un profesional de la salud antes de hacer cambios significativos en tu dieta."
+  },
+  "info": {
+    "title": "Sobre los Carbohidratos",
+    "description": "Los carbohidratos son uno de los tres macronutrientes principales (junto con proteínas y grasas) y la principal fuente de energía del cuerpo. La cantidad óptima de carbohidratos varía según tu nivel de actividad, objetivos y preferencias personales.",
+    "formula": "Fórmula: Gramos de carbohidratos = (Calorías objetivo × % de carbohidratos) ÷ 4 calorías/g",
+    "recommendations": "Las recomendaciones de carbohidratos se basan en porcentajes de tu ingesta calórica total: Bajo (10-30%), Moderado (30-50%), Alto (50-70%). La elección depende de tus objetivos, nivel de actividad y respuesta metabólica individual."
+  }
+}

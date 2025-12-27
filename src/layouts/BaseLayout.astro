@@ -1,4 +1,6 @@
 ---
+import { getAlternatePath, languageConfig, type Locale } from '@/utils/i18n';
+
 interface Props {
   title: string;
   description: string;
@@ -9,25 +11,32 @@ interface Props {
 const { title, description, lang = 'es', calculator } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-// Generate hreflang URLs
-const pathname = Astro.url.pathname;
-let esURL, enURL;
+// Generate hreflang URLs for all languages
+const locales: Locale[] = ['es', 'en', 'pt', 'fr', 'hi', 'de', 'it'];
+const hreflangURLs = Object.fromEntries(
+  locales.map(locale => [
+    locale,
+    new URL(getAlternatePath(Astro.url.pathname, locale, calculator), Astro.site)
+  ])
+);
 
-if (lang === 'es') {
-  esURL = new URL(pathname, Astro.site);
-  // Convert Spanish path to English
-  const enPath = pathname.replace('/calculadoras/imc', '/en/calculators/bmi')
-                         .replace('/calculadoras', '/en/calculators')
-                         .replace(/^\/$/, '/en');
-  enURL = new URL(enPath, Astro.site);
-} else {
-  enURL = new URL(pathname, Astro.site);
-  // Convert English path to Spanish
-  const esPath = pathname.replace('/en/calculators/bmi', '/calculadoras/imc')
-                         .replace('/en/calculators', '/calculadoras')
-                         .replace(/^\/en\/?$/, '/');
-  esURL = new URL(esPath, Astro.site);
-}
+// Get language-specific paths
+const homePath = languageConfig[lang as Locale].path || '/';
+const calculatorsPath = lang === 'es'
+  ? '/calculadoras/'
+  : `${languageConfig[lang as Locale].path}/calculators/`;
+
+// Translations for nav
+const navTranslations = {
+  es: { home: 'Inicio', calculators: 'Calculadoras', siteName: 'Calculadoras' },
+  en: { home: 'Home', calculators: 'Calculators', siteName: 'Calculators' },
+  pt: { home: 'Início', calculators: 'Calculadoras', siteName: 'Calculadoras' },
+  fr: { home: 'Accueil', calculators: 'Calculatrices', siteName: 'Calculatrices' },
+  hi: { home: 'होम', calculators: 'कैलकुलेटर', siteName: 'कैलकुलेटर' },
+  de: { home: 'Startseite', calculators: 'Rechner', siteName: 'Rechner' },
+  it: { home: 'Home', calculators: 'Calcolatrici', siteName: 'Calcolatrici' },
+};
+const navText = navTranslations[lang as Locale] || navTranslations.es;
 ---
 
 <!DOCTYPE html>
@@ -42,10 +51,15 @@ if (lang === 'es') {
     <title>{title}</title>
     <link rel="canonical" href={canonicalURL} />
 
-    <!-- Hreflang tags -->
-    <link rel="alternate" hreflang="es" href={esURL} />
-    <link rel="alternate" hreflang="en" href={enURL} />
-    <link rel="alternate" hreflang="x-default" href={esURL} />
+    <!-- Hreflang tags for all supported languages -->
+    <link rel="alternate" hreflang="es" href={hreflangURLs.es} />
+    <link rel="alternate" hreflang="en" href={hreflangURLs.en} />
+    <link rel="alternate" hreflang="pt" href={hreflangURLs.pt} />
+    <link rel="alternate" hreflang="fr" href={hreflangURLs.fr} />
+    <link rel="alternate" hreflang="hi" href={hreflangURLs.hi} />
+    <link rel="alternate" hreflang="de" href={hreflangURLs.de} />
+    <link rel="alternate" hreflang="it" href={hreflangURLs.it} />
+    <link rel="alternate" hreflang="x-default" href={hreflangURLs.es} />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -65,21 +79,29 @@ if (lang === 'es') {
   <body>
     <header>
       <nav class="container">
-        <a href={lang === 'es' ? '/' : '/en/'} class="logo">
+        <a href={homePath || '/'} class="logo">
           <span class="logo-icon">🧮</span>
-          <span class="logo-text">{lang === 'es' ? 'Calculadoras' : 'Calculators'}</span>
+          <span class="logo-text">{navText.siteName}</span>
         </a>
         <div class="nav-links">
-          <a href={lang === 'es' ? '/' : '/en/'}>
-            {lang === 'es' ? 'Inicio' : 'Home'}
+          <a href={homePath || '/'}>
+            {navText.home}
           </a>
-          <a href={lang === 'es' ? '/calculadoras/' : '/en/calculators/'}>
-            {lang === 'es' ? 'Calculadoras' : 'Calculators'}
+          <a href={calculatorsPath}>
+            {navText.calculators}
           </a>
           <div class="lang-switch">
-            <a href="/" class={lang === 'es' ? 'active' : ''}>ES</a>
-            <span>|</span>
-            <a href="/en/" class={lang === 'en' ? 'active' : ''}>EN</a>
+            {locales.map((locale, index) => (
+              <>
+                <a
+                  href={getAlternatePath(Astro.url.pathname, locale, calculator)}
+                  class={lang === locale ? 'active' : ''}
+                >
+                  {locale.toUpperCase()}
+                </a>
+                {index < locales.length - 1 && <span>|</span>}
+              </>
+            ))}
           </div>
         </div>
       </nav>
@@ -91,7 +113,7 @@ if (lang === 'es') {
 
     <footer>
       <div class="container">
-        <p>&copy; {new Date().getFullYear()} {lang === 'es' ? 'Calculadoras Online' : 'Online Calculators'}</p>
+        <p>&copy; {new Date().getFullYear()} {navText.siteName} Online</p>
       </div>
     </footer>
 

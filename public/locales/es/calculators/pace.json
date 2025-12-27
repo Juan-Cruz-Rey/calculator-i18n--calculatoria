@@ -1,0 +1,34 @@
+{
+  "title": "Calculadora de Ritmo de Carrera",
+  "description": "Calcula tu ritmo, tiempo o distancia de carrera",
+  "metaDescription": "Calculadora de ritmo de carrera gratuita - Calcula tu ritmo por kilómetro o milla, tiempo estimado de carrera, o distancia. Incluye tiempos para 5K, 10K, media maratón y maratón.",
+  "form": {
+    "title": "Ingresa tus datos",
+    "modeLabel": "¿Qué deseas calcular?",
+    "calculatePace": "Calcular Ritmo",
+    "calculateTime": "Calcular Tiempo",
+    "calculateDistance": "Calcular Distancia",
+    "distanceLabel": "Distancia",
+    "distancePlaceholder": "Ingresa la distancia",
+    "timeLabel": "Tiempo",
+    "timeHint": "Formato: horas:minutos:segundos",
+    "paceLabel": "Ritmo",
+    "paceHint": "Formato: minutos:segundos por km/milla",
+    "halfMarathon": "Media Maratón",
+    "marathon": "Maratón"
+  },
+  "results": {
+    "title": "Tus Resultados",
+    "yourPace": "Tu Ritmo",
+    "yourTime": "Tu Tiempo",
+    "yourDistance": "Tu Distancia",
+    "commonRaces": "Tiempos de Carreras Comunes",
+    "splits": "Tiempos Parciales"
+  },
+  "info": {
+    "title": "Sobre el Ritmo de Carrera",
+    "description": "El ritmo de carrera es el tiempo que tardas en recorrer una unidad de distancia específica (kilómetro o milla). Es una métrica esencial para corredores que desean planificar entrenamientos y establecer objetivos de carrera.",
+    "formula": "Fórmula: Ritmo = Tiempo Total / Distancia",
+    "tip": "Consejo: Un ritmo constante es clave para el éxito en carreras de larga distancia. Usa esta calculadora para planificar tu estrategia de carrera y mantener un ritmo sostenible."
+  }
+}
