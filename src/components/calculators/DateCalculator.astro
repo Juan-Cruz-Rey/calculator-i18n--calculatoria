@@ -1,0 +1,643 @@
+---
+import { t, type Locale } from '@/utils/i18n';
+
+const { lang } = Astro.props as { lang: Locale };
+---
+
+<div class="date-calculator">
+  <div class="calculator-tabs">
+    <button class="tab-button active" data-tab="add-subtract">{t('date.tabs.addSubtract', lang)}</button>
+    <button class="tab-button" data-tab="difference">{t('date.tabs.difference', lang)}</button>
+  </div>
+
+  <!-- Add/Subtract Tab -->
+  <div class="tab-content active" id="add-subtract-tab">
+    <div class="calculator-form">
+      <h2>{t('date.addSubtract.title', lang)}</h2>
+
+      <form id="add-subtract-form">
+        <!-- Start Date -->
+        <div class="form-group">
+          <label for="start-date">{t('date.addSubtract.startDate', lang)}</label>
+          <input
+            type="date"
+            id="start-date"
+            name="startDate"
+            required
+          />
+        </div>
+
+        <!-- Mode (Add/Subtract) -->
+        <div class="form-group mode-toggle">
+          <label>
+            <input type="radio" name="mode" value="add" checked />
+            {t('date.addSubtract.add', lang)}
+          </label>
+          <label>
+            <input type="radio" name="mode" value="subtract" />
+            {t('date.addSubtract.subtract', lang)}
+          </label>
+        </div>
+
+        <!-- Time Units -->
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="years">{t('date.units.years', lang)}</label>
+            <input
+              type="number"
+              id="years"
+              name="years"
+              min="0"
+              max="1000"
+              value="0"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="months">{t('date.units.months', lang)}</label>
+            <input
+              type="number"
+              id="months"
+              name="months"
+              min="0"
+              max="12"
+              value="0"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="weeks">{t('date.units.weeks', lang)}</label>
+            <input
+              type="number"
+              id="weeks"
+              name="weeks"
+              min="0"
+              max="52"
+              value="0"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="days">{t('date.units.days', lang)}</label>
+            <input
+              type="number"
+              id="days"
+              name="days"
+              min="0"
+              max="365"
+              value="0"
+            />
+          </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="form-actions">
+          <button type="submit" class="btn-primary">{t('common.calculate', lang)}</button>
+          <button type="reset" class="btn-secondary">{t('common.reset', lang)}</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Add/Subtract Results -->
+    <div class="calculator-results" id="add-subtract-results" style="display: none;">
+      <h2>{t('date.results.title', lang)}</h2>
+
+      <div class="result-card">
+        <h3>{t('date.results.resultDate', lang)}</h3>
+        <p class="value" id="result-date">-</p>
+        <p class="detail" id="result-day-of-week">-</p>
+      </div>
+
+      <div class="result-grid">
+        <div class="result-item">
+          <strong>{t('date.results.dayOfYear', lang)}:</strong>
+          <span id="day-of-year">-</span>
+        </div>
+        <div class="result-item">
+          <strong>{t('date.results.weekOfYear', lang)}:</strong>
+          <span id="week-of-year">-</span>
+        </div>
+        <div class="result-item">
+          <strong>{t('date.results.leapYear', lang)}:</strong>
+          <span id="is-leap-year">-</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Difference Tab -->
+  <div class="tab-content" id="difference-tab" style="display: none;">
+    <div class="calculator-form">
+      <h2>{t('date.difference.title', lang)}</h2>
+
+      <form id="difference-form">
+        <!-- Start Date -->
+        <div class="form-group">
+          <label for="diff-start-date">{t('date.difference.startDate', lang)}</label>
+          <input
+            type="date"
+            id="diff-start-date"
+            name="startDate"
+            required
+          />
+        </div>
+
+        <!-- End Date -->
+        <div class="form-group">
+          <label for="diff-end-date">{t('date.difference.endDate', lang)}</label>
+          <input
+            type="date"
+            id="diff-end-date"
+            name="endDate"
+            required
+          />
+        </div>
+
+        <!-- Include End Date -->
+        <div class="form-group checkbox-group">
+          <label>
+            <input type="checkbox" name="includeEndDate" id="include-end-date" />
+            {t('date.difference.includeEndDate', lang)}
+          </label>
+        </div>
+
+        <!-- Buttons -->
+        <div class="form-actions">
+          <button type="submit" class="btn-primary">{t('common.calculate', lang)}</button>
+          <button type="reset" class="btn-secondary">{t('common.reset', lang)}</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Difference Results -->
+    <div class="calculator-results" id="difference-results" style="display: none;">
+      <h2>{t('date.results.title', lang)}</h2>
+
+      <div class="result-card">
+        <h3>{t('date.results.timeDifference', lang)}</h3>
+        <p class="value" id="diff-formatted">-</p>
+      </div>
+
+      <div class="result-grid">
+        <div class="result-item">
+          <strong>{t('date.results.totalDays', lang)}:</strong>
+          <span id="total-days">-</span>
+        </div>
+        <div class="result-item">
+          <strong>{t('date.results.totalWeeks', lang)}:</strong>
+          <span id="total-weeks">-</span>
+        </div>
+        <div class="result-item">
+          <strong>{t('date.results.totalHours', lang)}:</strong>
+          <span id="total-hours">-</span>
+        </div>
+        <div class="result-item">
+          <strong>{t('date.results.totalMinutes', lang)}:</strong>
+          <span id="total-minutes">-</span>
+        </div>
+        <div class="result-item">
+          <strong>{t('date.results.businessDays', lang)}:</strong>
+          <span id="business-days">-</span>
+        </div>
+        <div class="result-item">
+          <strong>{t('date.results.weekdays', lang)}:</strong>
+          <span id="weekdays">-</span>
+        </div>
+        <div class="result-item">
+          <strong>{t('date.results.weekends', lang)}:</strong>
+          <span id="weekends">-</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="calculator-info">
+    <h2>{t('date.info.title', lang)}</h2>
+    <p>{t('date.info.description', lang)}</p>
+    <h3>{t('date.info.useCasesTitle', lang)}</h3>
+    <ul>
+      <li>{t('date.info.useCase1', lang)}</li>
+      <li>{t('date.info.useCase2', lang)}</li>
+      <li>{t('date.info.useCase3', lang)}</li>
+      <li>{t('date.info.useCase4', lang)}</li>
+    </ul>
+  </div>
+</div>
+
+<style>
+  .date-calculator {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .calculator-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .tab-button {
+    flex: 1;
+    padding: 1rem;
+    border: none;
+    background: #f5f5f5;
+    border-radius: 8px 8px 0 0;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #666;
+    transition: all 0.3s;
+  }
+
+  .tab-button:hover {
+    background: #e0e0e0;
+  }
+
+  .tab-button.active {
+    background: white;
+    color: #4CAF50;
+    box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
+  }
+
+  .tab-content {
+    display: none;
+  }
+
+  .tab-content.active {
+    display: block;
+  }
+
+  .calculator-form, .calculator-results, .calculator-info {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  h2 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  h3 {
+    color: #333;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #555;
+  }
+
+  .form-group input[type="date"],
+  .form-group input[type="number"] {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+
+  .form-group input:focus {
+    outline: none;
+    border-color: #4CAF50;
+  }
+
+  .mode-toggle {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    background: #f5f5f5;
+    border-radius: 4px;
+  }
+
+  .mode-toggle label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    margin: 0;
+  }
+
+  .checkbox-group label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+  }
+
+  .checkbox-group input[type="checkbox"] {
+    width: auto;
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+
+  .form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .btn-primary, .btn-secondary {
+    flex: 1;
+    padding: 0.875rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-primary {
+    background: #4CAF50;
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: #45a049;
+  }
+
+  .btn-secondary {
+    background: #f5f5f5;
+    color: #333;
+  }
+
+  .btn-secondary:hover {
+    background: #e0e0e0;
+  }
+
+  .result-card {
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+
+  .result-card h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1.2rem;
+    color: white;
+  }
+
+  .result-card .value {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  .result-card .detail {
+    font-size: 1.2rem;
+    margin: 0.5rem 0 0 0;
+    opacity: 0.9;
+  }
+
+  .result-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .result-item {
+    padding: 1rem;
+    background: #f9f9f9;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .result-item strong {
+    color: #555;
+    font-size: 0.9rem;
+  }
+
+  .result-item span {
+    color: #333;
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+
+  .calculator-info {
+    background: #f9f9f9;
+  }
+
+  .calculator-info p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: #555;
+  }
+
+  .calculator-info ul {
+    list-style: disc;
+    margin-left: 1.5rem;
+    color: #555;
+    line-height: 1.8;
+  }
+
+  @media (max-width: 768px) {
+    .date-calculator {
+      padding: 1rem;
+    }
+
+    .result-card .value {
+      font-size: 1.5rem;
+    }
+
+    .result-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  import type { DateAddSubtractInput, DateDifferenceInput, DateAddSubtractResult, DateDifferenceResult } from '@/utils/calculators/date';
+  import {
+    addSubtractDate,
+    calculateDateDifference,
+    formatDateForInput,
+    formatDateForDisplay,
+    parseDateString
+  } from '@/utils/calculators/date';
+
+  // Tab switching
+  const tabButtons = document.querySelectorAll('.tab-button');
+  const tabContents = document.querySelectorAll('.tab-content');
+
+  tabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const targetTab = button.getAttribute('data-tab');
+
+      tabButtons.forEach(btn => btn.classList.remove('active'));
+      tabContents.forEach(content => content.classList.remove('active'));
+
+      button.classList.add('active');
+      document.getElementById(`${targetTab}-tab`)?.classList.add('active');
+    });
+  });
+
+  // Set default dates
+  const today = new Date();
+  (document.getElementById('start-date') as HTMLInputElement).value = formatDateForInput(today);
+  (document.getElementById('diff-start-date') as HTMLInputElement).value = formatDateForInput(today);
+  const tomorrow = new Date(today);
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  (document.getElementById('diff-end-date') as HTMLInputElement).value = formatDateForInput(tomorrow);
+
+  // Get locale from HTML lang attribute
+  const locale = document.documentElement.lang || 'en';
+  const localeMap: Record<string, string> = {
+    'es': 'es-ES',
+    'en': 'en-US',
+    'pt': 'pt-BR',
+    'fr': 'fr-FR',
+    'hi': 'hi-IN',
+    'de': 'de-DE',
+    'it': 'it-IT',
+  };
+  const displayLocale = localeMap[locale] || 'en-US';
+
+  // Translation for "Yes" and "No"
+  const yesNoTranslations: Record<string, { yes: string; no: string }> = {
+    'es': { yes: 'Sí', no: 'No' },
+    'en': { yes: 'Yes', no: 'No' },
+    'pt': { yes: 'Sim', no: 'Não' },
+    'fr': { yes: 'Oui', no: 'Non' },
+    'hi': { yes: 'हाँ', no: 'नहीं' },
+    'de': { yes: 'Ja', no: 'Nein' },
+    'it': { yes: 'Sì', no: 'No' },
+  };
+
+  // Add/Subtract Form
+  const addSubtractForm = document.getElementById('add-subtract-form') as HTMLFormElement;
+  const addSubtractResults = document.getElementById('add-subtract-results') as HTMLDivElement;
+
+  addSubtractForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(addSubtractForm);
+    const startDateStr = formData.get('startDate') as string;
+    const mode = formData.get('mode') as 'add' | 'subtract';
+    const years = parseInt(formData.get('years') as string) || 0;
+    const months = parseInt(formData.get('months') as string) || 0;
+    const weeks = parseInt(formData.get('weeks') as string) || 0;
+    const days = parseInt(formData.get('days') as string) || 0;
+
+    const input: DateAddSubtractInput = {
+      startDate: parseDateString(startDateStr),
+      mode,
+      years,
+      months,
+      weeks,
+      days,
+    };
+
+    try {
+      const result = addSubtractDate(input);
+      displayAddSubtractResults(result);
+    } catch (error) {
+      alert('Error calculating date. Please check your inputs.');
+      console.error(error);
+    }
+  });
+
+  addSubtractForm.addEventListener('reset', () => {
+    addSubtractResults.style.display = 'none';
+  });
+
+  function displayAddSubtractResults(result: DateAddSubtractResult) {
+    const resultDate = document.getElementById('result-date') as HTMLParagraphElement;
+    const resultDayOfWeek = document.getElementById('result-day-of-week') as HTMLParagraphElement;
+    const dayOfYear = document.getElementById('day-of-year') as HTMLSpanElement;
+    const weekOfYear = document.getElementById('week-of-year') as HTMLSpanElement;
+    const isLeapYear = document.getElementById('is-leap-year') as HTMLSpanElement;
+
+    resultDate.textContent = formatDateForDisplay(result.resultDate, displayLocale);
+    resultDayOfWeek.textContent = result.dayOfWeek;
+    dayOfYear.textContent = result.dayOfYear.toString();
+    weekOfYear.textContent = result.weekOfYear.toString();
+
+    const yesNo = yesNoTranslations[locale] || yesNoTranslations['en'];
+    isLeapYear.textContent = result.isLeapYear ? yesNo.yes : yesNo.no;
+
+    addSubtractResults.style.display = 'block';
+    addSubtractResults.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  // Difference Form
+  const differenceForm = document.getElementById('difference-form') as HTMLFormElement;
+  const differenceResults = document.getElementById('difference-results') as HTMLDivElement;
+
+  differenceForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(differenceForm);
+    const startDateStr = formData.get('startDate') as string;
+    const endDateStr = formData.get('endDate') as string;
+    const includeEndDate = formData.get('includeEndDate') === 'on';
+
+    const input: DateDifferenceInput = {
+      startDate: parseDateString(startDateStr),
+      endDate: parseDateString(endDateStr),
+      includeEndDate,
+    };
+
+    try {
+      const result = calculateDateDifference(input);
+      displayDifferenceResults(result);
+    } catch (error) {
+      alert('Error calculating date difference. Please check your inputs.');
+      console.error(error);
+    }
+  });
+
+  differenceForm.addEventListener('reset', () => {
+    differenceResults.style.display = 'none';
+  });
+
+  function displayDifferenceResults(result: DateDifferenceResult) {
+    const diffFormatted = document.getElementById('diff-formatted') as HTMLParagraphElement;
+    const totalDays = document.getElementById('total-days') as HTMLSpanElement;
+    const totalWeeks = document.getElementById('total-weeks') as HTMLSpanElement;
+    const totalHours = document.getElementById('total-hours') as HTMLSpanElement;
+    const totalMinutes = document.getElementById('total-minutes') as HTMLSpanElement;
+    const businessDays = document.getElementById('business-days') as HTMLSpanElement;
+    const weekdays = document.getElementById('weekdays') as HTMLSpanElement;
+    const weekends = document.getElementById('weekends') as HTMLSpanElement;
+
+    // Format as "X years, Y months, Z days"
+    const parts = [];
+    if (result.years > 0) parts.push(`${result.years} ${result.years === 1 ? 'year' : 'years'}`);
+    if (result.months > 0) parts.push(`${result.months} ${result.months === 1 ? 'month' : 'months'}`);
+    if (result.days > 0) parts.push(`${result.days} ${result.days === 1 ? 'day' : 'days'}`);
+    diffFormatted.textContent = parts.join(', ') || '0 days';
+
+    totalDays.textContent = result.totalDays.toLocaleString();
+    totalWeeks.textContent = result.weeks.toLocaleString();
+    totalHours.textContent = result.hours.toLocaleString();
+    totalMinutes.textContent = result.minutes.toLocaleString();
+    businessDays.textContent = result.businessDays.toLocaleString();
+    weekdays.textContent = result.weekdays.toLocaleString();
+    weekends.textContent = result.weekends.toLocaleString();
+
+    differenceResults.style.display = 'block';
+    differenceResults.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+</script>

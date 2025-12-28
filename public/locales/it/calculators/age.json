@@ -1,0 +1,27 @@
+{
+  "title": "Calcolatore di Età",
+  "description": "Calcola la tua età esatta in anni, mesi, giorni, ore e minuti",
+  "metaDescription": "Calcolatore di età gratuito - Calcola la tua età esatta in anni, mesi, giorni, ore e minuti. Scopri quando è il tuo prossimo compleanno e in che giorno della settimana cade.",
+  "form": {
+    "title": "Inserisci la tua data di nascita",
+    "birthDateLabel": "Data di Nascita",
+    "targetDateLabel": "Calcola età al (opzionale)",
+    "targetDateHint": "Lascia la data corrente per calcolare la tua età oggi"
+  },
+  "results": {
+    "title": "I Tuoi Risultati",
+    "yourAge": "La Tua Età",
+    "totalYears": "Anni Totali",
+    "totalMonths": "Mesi Totali",
+    "totalWeeks": "Settimane Totali",
+    "totalDays": "Giorni Totali",
+    "totalHours": "Ore Totali",
+    "totalMinutes": "Minuti Totali",
+    "nextBirthday": "Prossimo Compleanno"
+  },
+  "info": {
+    "title": "Informazioni sul Calcolatore di Età",
+    "description": "Questo calcolatore ti permette di determinare la tua età esatta in anni, mesi e giorni. Calcola anche la tua età in settimane, giorni, ore e minuti totali, fornendo una visione completa del tempo trascorso dalla tua nascita.",
+    "usage": "Puoi utilizzare il campo opzionale 'Calcola età al' per determinare quanti anni avevi o avrai in una data specifica. Questo è utile per calcolare la tua età in date storiche o future."
+  }
+}

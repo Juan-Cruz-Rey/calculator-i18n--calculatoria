@@ -1,0 +1,27 @@
+{
+  "title": "Calculateur d'Âge",
+  "description": "Calculez votre âge exact en années, mois, jours, heures et minutes",
+  "metaDescription": "Calculateur d'âge gratuit - Calculez votre âge exact en années, mois, jours, heures et minutes. Découvrez quand est votre prochain anniversaire et quel jour de la semaine il tombe.",
+  "form": {
+    "title": "Entrez votre date de naissance",
+    "birthDateLabel": "Date de Naissance",
+    "targetDateLabel": "Calculer l'âge à (optionnel)",
+    "targetDateHint": "Laissez la date actuelle pour calculer votre âge aujourd'hui"
+  },
+  "results": {
+    "title": "Vos Résultats",
+    "yourAge": "Votre Âge",
+    "totalYears": "Années Totales",
+    "totalMonths": "Mois Totaux",
+    "totalWeeks": "Semaines Totales",
+    "totalDays": "Jours Totaux",
+    "totalHours": "Heures Totales",
+    "totalMinutes": "Minutes Totales",
+    "nextBirthday": "Prochain Anniversaire"
+  },
+  "info": {
+    "title": "À Propos du Calculateur d'Âge",
+    "description": "Ce calculateur vous permet de déterminer votre âge exact en années, mois et jours. Il calcule également votre âge en semaines, jours, heures et minutes totales, offrant une vue complète du temps écoulé depuis votre naissance.",
+    "usage": "Vous pouvez utiliser le champ optionnel 'Calculer l'âge à' pour déterminer quel âge vous aviez ou aurez à une date spécifique. Ceci est utile pour calculer votre âge à des dates historiques ou futures."
+  }
+}

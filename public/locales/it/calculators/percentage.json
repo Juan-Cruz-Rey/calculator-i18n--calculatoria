@@ -1,0 +1,56 @@
+{
+  "title": "Calcolatore di Percentuale",
+  "description": "Calcolare percentuali, variazione percentuale e differenza percentuale",
+  "metaDescription": "Calcolatore di Percentuale Gratuito - Calcola percentuali, variazione percentuale e differenza percentuale. Risolvi cos'è X% di Y, X è quale % di Y e altro.",
+  "form": {
+    "title": "Scegli il Tipo di Calcolo"
+  },
+  "tabs": {
+    "percentOf": "X% di Y",
+    "isWhatPercent": "X è quale % di Y",
+    "isPercentOfWhat": "X è Y% di cosa",
+    "percentageChange": "Variazione %",
+    "percentageDifference": "Differenza %"
+  },
+  "forms": {
+    "percentOf": {
+      "title": "Cos'è X% di Y?",
+      "label1": "Percentuale (X)",
+      "label2": "Valore (Y)"
+    },
+    "isWhatPercent": {
+      "title": "X è quale % di Y?",
+      "label1": "Valore (X)",
+      "label2": "Totale (Y)"
+    },
+    "isPercentOfWhat": {
+      "title": "X è Y% di cosa?",
+      "label1": "Valore (X)",
+      "label2": "Percentuale (Y)"
+    },
+    "percentageChange": {
+      "title": "Variazione Percentuale da X a Y",
+      "label1": "Valore Vecchio",
+      "label2": "Valore Nuovo"
+    },
+    "percentageDifference": {
+      "title": "Differenza Percentuale tra X e Y",
+      "label1": "Primo Valore",
+      "label2": "Secondo Valore"
+    }
+  },
+  "results": {
+    "title": "Risultato",
+    "resultLabel": "Risposta",
+    "formulaLabel": "Calcolo"
+  },
+  "info": {
+    "title": "Informazioni sul Calcolatore di Percentuale",
+    "description": "Le percentuali sono un modo per esprimere un numero come frazione di 100. Questo calcolatore ti aiuta a risolvere vari problemi percentuali, inclusi trovare percentuali, calcolare variazioni percentuali e determinare differenze percentuali.",
+    "commonUses": "Usi Comuni",
+    "use1": "Calcolare sconti e prezzi di vendita",
+    "use2": "Determinare importi fiscali e mance",
+    "use3": "Analizzare cambiamenti finanziari e tassi di crescita",
+    "use4": "Confrontare valori e statistiche"
+  }
+}

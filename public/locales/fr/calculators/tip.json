@@ -1,0 +1,33 @@
+{
+  "title": "Calculateur de Pourboire",
+  "description": "Calculez les pourboires et partagez l'addition",
+  "metaDescription": "Calculateur de pourboire gratuit - Calculez le montant de pourboire approprié et partagez l'addition entre plusieurs personnes. Inclut des suggestions de pourcentages courants.",
+  "form": {
+    "title": "Entrez les détails de l'addition",
+    "billAmountLabel": "Montant de l'addition",
+    "billAmountPlaceholder": "Entrez le montant total",
+    "tipPercentageLabel": "Pourcentage de pourboire",
+    "customTipPlaceholder": "Personnalisé",
+    "numberOfPeopleLabel": "Nombre de personnes",
+    "numberOfPeoplePlaceholder": "Combien de personnes?",
+    "currencySymbol": "€",
+    "peopleUnit": "personnes"
+  },
+  "results": {
+    "title": "Résumé",
+    "tipAmount": "Pourboire",
+    "totalAmount": "Total avec pourboire",
+    "tipPerPerson": "Pourboire par personne",
+    "totalPerPerson": "Total par personne"
+  },
+  "info": {
+    "title": "Guide des Pourboires",
+    "description": "Le pourboire est une façon de montrer son appréciation pour un bon service. Bien que les coutumes varient selon les pays et le type de service, voici quelques directives générales:",
+    "guidelinesTitle": "Directives courantes pour les pourboires:",
+    "guideline1": "Service de base ou correct",
+    "guideline2": "Bon service standard",
+    "guideline3": "Service excellent ou exceptionnel",
+    "guideline4": "Service extraordinaire ou grands groupes",
+    "note": "Note: Les coutumes de pourboire varient considérablement selon la région et le type d'établissement. Dans certains pays, le pourboire est inclus dans l'addition ou il n'est pas coutume de donner un pourboire."
+  }
+}

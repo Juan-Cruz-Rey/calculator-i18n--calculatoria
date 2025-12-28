@@ -1,0 +1,51 @@
+{
+  "title": "Calculadora de Datas",
+  "description": "Calcule diferenças entre datas e adicione ou subtraia dias, meses e anos",
+  "metaDescription": "Calculadora de datas gratuita - Adicione ou subtraia dias, meses e anos de uma data. Calcule diferenças entre datas, dias úteis e mais.",
+  "tabs": {
+    "addSubtract": "Adicionar/Subtrair",
+    "difference": "Diferença"
+  },
+  "addSubtract": {
+    "title": "Adicionar ou Subtrair Tempo",
+    "startDate": "Data inicial",
+    "add": "Adicionar",
+    "subtract": "Subtrair"
+  },
+  "difference": {
+    "title": "Calcular Diferença entre Datas",
+    "startDate": "Data inicial",
+    "endDate": "Data final",
+    "includeEndDate": "Incluir data final no cálculo"
+  },
+  "units": {
+    "years": "Anos",
+    "months": "Meses",
+    "weeks": "Semanas",
+    "days": "Dias"
+  },
+  "results": {
+    "title": "Resultados",
+    "resultDate": "Data Resultante",
+    "dayOfYear": "Dia do ano",
+    "weekOfYear": "Semana do ano",
+    "leapYear": "Ano bissexto",
+    "timeDifference": "Diferença de Tempo",
+    "totalDays": "Total de dias",
+    "totalWeeks": "Total de semanas",
+    "totalHours": "Total de horas",
+    "totalMinutes": "Total de minutos",
+    "businessDays": "Dias úteis",
+    "weekdays": "Dias de semana",
+    "weekends": "Fins de semana"
+  },
+  "info": {
+    "title": "Sobre a Calculadora de Datas",
+    "description": "Esta calculadora de datas permite adicionar ou subtrair tempo de uma data específica, ou calcular a diferença entre duas datas. É útil para planejamento de projetos, cálculo de prazos e muito mais.",
+    "useCasesTitle": "Casos de uso:",
+    "useCase1": "Calcular datas de vencimento e prazos de entrega",
+    "useCase2": "Determinar a duração de projetos em dias úteis",
+    "useCase3": "Planejar eventos e calcular datas futuras",
+    "useCase4": "Calcular idade, aniversários e tempo decorrido"
+  }
+}

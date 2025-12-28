@@ -1,0 +1,35 @@
+{
+  "title": "Calcolatore del Sonno",
+  "description": "Calcola i tuoi orari ideali per dormire basati sui cicli del sonno",
+  "metaDescription": "Calcolatore del sonno gratuito - Scopri quando dovresti andare a dormire o svegliarti per ottimizzare i tuoi cicli del sonno. Calcola gli orari ideali basati su cicli di 90 minuti.",
+  "form": {
+    "title": "Pianifica il tuo sonno",
+    "modeWakeup": "Quando dovrei svegliarmi?",
+    "modeBedtime": "Quando dovrei andare a dormire?",
+    "bedtimeLabel": "Ora di andare a letto",
+    "bedtimeHelper": "Seleziona l'ora in cui prevedi di andare a letto",
+    "wakeupLabel": "Ora di sveglia",
+    "wakeupHelper": "Seleziona l'ora in cui devi svegliarti"
+  },
+  "results": {
+    "title": "Il tuo programma del sonno",
+    "wakeupTitle": "Orari suggeriti per svegliarsi",
+    "wakeupSubtitle": "Se vai a letto alle {time}, dovresti svegliarti in uno di questi orari:",
+    "bedtimeTitle": "Orari suggeriti per andare a letto",
+    "bedtimeSubtitle": "Se vuoi svegliarti alle {time}, dovresti andare a letto in uno di questi orari:",
+    "cycles": "{count} cicli",
+    "totalSleep": "{hours} ore di sonno",
+    "recommended": "CONSIGLIATO"
+  },
+  "info": {
+    "title": "Informazioni sui Cicli del Sonno",
+    "description": "Il sonno avviene in cicli di circa 90 minuti. Svegliarsi alla fine di un ciclo del sonno ti aiuta a sentirti più riposato e vigile. Questo calcolatore ti aiuta a trovare i momenti migliori per dormire o svegliarti in base a questi cicli naturali.",
+    "cycleTitle": "Come funzionano i cicli del sonno?",
+    "cycleDescription": "Durante la notte, attraversi 4-6 cicli del sonno. Ogni ciclo ha diverse fasi: sonno leggero, sonno profondo e sonno REM. Svegliarsi durante il sonno profondo può farti sentire intontito e stanco. Questo calcolatore tiene conto di 14 minuti per addormentarsi e suggerisce orari di sveglia alla fine di cicli del sonno completi.",
+    "tipsTitle": "Consigli per dormire meglio",
+    "tip1": "Gli adulti hanno generalmente bisogno di 7-9 ore di sonno (5-6 cicli completi)",
+    "tip2": "Mantieni un programma del sonno regolare, anche nei fine settimana",
+    "tip3": "Evita caffeina e schermi almeno 1 ora prima di andare a letto",
+    "tip4": "Crea un ambiente confortevole: buio, silenzioso e fresco (15-19°C)"
+  }
+}

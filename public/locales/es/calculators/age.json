@@ -1,0 +1,27 @@
+{
+  "title": "Calculadora de Edad",
+  "description": "Calcula tu edad exacta en años, meses, días, horas y minutos",
+  "metaDescription": "Calculadora de edad gratuita - Calcula tu edad exacta en años, meses, días, horas y minutos. Descubre cuándo es tu próximo cumpleaños y en qué día de la semana cae.",
+  "form": {
+    "title": "Ingresa tu fecha de nacimiento",
+    "birthDateLabel": "Fecha de Nacimiento",
+    "targetDateLabel": "Calcular edad en (opcional)",
+    "targetDateHint": "Déjalo en la fecha actual para calcular tu edad hoy"
+  },
+  "results": {
+    "title": "Tus Resultados",
+    "yourAge": "Tu Edad",
+    "totalYears": "Años Totales",
+    "totalMonths": "Meses Totales",
+    "totalWeeks": "Semanas Totales",
+    "totalDays": "Días Totales",
+    "totalHours": "Horas Totales",
+    "totalMinutes": "Minutos Totales",
+    "nextBirthday": "Próximo Cumpleaños"
+  },
+  "info": {
+    "title": "Sobre la Calculadora de Edad",
+    "description": "Esta calculadora te permite determinar tu edad exacta en años, meses y días. También calcula tu edad en semanas, días, horas y minutos totales, proporcionando una visión completa del tiempo transcurrido desde tu nacimiento.",
+    "usage": "Puedes usar el campo 'Calcular edad en' opcional para determinar qué edad tenías o tendrás en una fecha específica. Esto es útil para calcular tu edad en fechas históricas o futuras."
+  }
+}

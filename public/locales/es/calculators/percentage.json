@@ -1,0 +1,56 @@
+{
+  "title": "Calculadora de Porcentaje",
+  "description": "Calcular porcentajes, cambio porcentual y diferencia porcentual",
+  "metaDescription": "Calculadora de Porcentaje Gratis - Calcule porcentajes, cambio porcentual y diferencia porcentual. Resuelva qué es X% de Y, X es qué % de Y y más.",
+  "form": {
+    "title": "Elige el Tipo de Cálculo"
+  },
+  "tabs": {
+    "percentOf": "X% de Y",
+    "isWhatPercent": "X es qué % de Y",
+    "isPercentOfWhat": "X es Y% de qué",
+    "percentageChange": "Cambio %",
+    "percentageDifference": "Diferencia %"
+  },
+  "forms": {
+    "percentOf": {
+      "title": "¿Qué es X% de Y?",
+      "label1": "Porcentaje (X)",
+      "label2": "Valor (Y)"
+    },
+    "isWhatPercent": {
+      "title": "¿X es qué % de Y?",
+      "label1": "Valor (X)",
+      "label2": "Total (Y)"
+    },
+    "isPercentOfWhat": {
+      "title": "¿X es Y% de qué?",
+      "label1": "Valor (X)",
+      "label2": "Porcentaje (Y)"
+    },
+    "percentageChange": {
+      "title": "Cambio Porcentual de X a Y",
+      "label1": "Valor Anterior",
+      "label2": "Valor Nuevo"
+    },
+    "percentageDifference": {
+      "title": "Diferencia Porcentual entre X e Y",
+      "label1": "Primer Valor",
+      "label2": "Segundo Valor"
+    }
+  },
+  "results": {
+    "title": "Resultado",
+    "resultLabel": "Respuesta",
+    "formulaLabel": "Cálculo"
+  },
+  "info": {
+    "title": "Acerca de la Calculadora de Porcentaje",
+    "description": "Los porcentajes son una forma de expresar un número como una fracción de 100. Esta calculadora te ayuda a resolver varios problemas de porcentaje, incluidos el cálculo de porcentajes, el cambio porcentual y la determinación de diferencias porcentuales.",
+    "commonUses": "Usos Comunes",
+    "use1": "Calcular descuentos y precios de venta",
+    "use2": "Determinar montos de impuestos y propinas",
+    "use3": "Analizar cambios financieros y tasas de crecimiento",
+    "use4": "Comparar valores y estadísticas"
+  }
+}

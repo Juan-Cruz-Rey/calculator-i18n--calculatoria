@@ -1,0 +1,458 @@
+---
+import { t, type Locale } from '@/utils/i18n';
+
+const { lang } = Astro.props as { lang: Locale };
+---
+
+<div class="sleep-calculator">
+  <div class="calculator-form">
+    <h2>{t('sleep.form.title', lang)}</h2>
+
+    <form id="sleep-form">
+      <!-- Mode Selection -->
+      <div class="form-group mode-toggle">
+        <label>
+          <input type="radio" name="mode" value="wakeup" checked />
+          {t('sleep.form.modeWakeup', lang)}
+        </label>
+        <label>
+          <input type="radio" name="mode" value="bedtime" />
+          {t('sleep.form.modeBedtime', lang)}
+        </label>
+      </div>
+
+      <!-- Time Input for Bedtime Mode -->
+      <div class="form-group time-input bedtime-input">
+        <label for="bedtime">{t('sleep.form.bedtimeLabel', lang)}</label>
+        <input
+          type="time"
+          id="bedtime"
+          name="bedtime"
+          required
+          value="22:00"
+        />
+        <p class="helper-text">{t('sleep.form.bedtimeHelper', lang)}</p>
+      </div>
+
+      <!-- Time Input for Wake Up Mode -->
+      <div class="form-group time-input wakeup-input" style="display: none;">
+        <label for="wakeup">{t('sleep.form.wakeupLabel', lang)}</label>
+        <input
+          type="time"
+          id="wakeup"
+          name="wakeup"
+          value="07:00"
+        />
+        <p class="helper-text">{t('sleep.form.wakeupHelper', lang)}</p>
+      </div>
+
+      <!-- Buttons -->
+      <div class="form-actions">
+        <button type="submit" class="btn-primary">{t('common.calculate', lang)}</button>
+        <button type="reset" class="btn-secondary">{t('common.reset', lang)}</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="calculator-results" id="results" style="display: none;">
+    <h2 id="results-title">{t('sleep.results.title', lang)}</h2>
+    <p class="results-subtitle" id="results-subtitle"></p>
+
+    <div class="sleep-times-grid" id="sleep-times">
+      <!-- Results will be injected here -->
+    </div>
+  </div>
+
+  <div class="calculator-info">
+    <h2>{t('sleep.info.title', lang)}</h2>
+    <p>{t('sleep.info.description', lang)}</p>
+
+    <h3>{t('sleep.info.cycleTitle', lang)}</h3>
+    <p>{t('sleep.info.cycleDescription', lang)}</p>
+
+    <h3>{t('sleep.info.tipsTitle', lang)}</h3>
+    <ul>
+      <li>{t('sleep.info.tip1', lang)}</li>
+      <li>{t('sleep.info.tip2', lang)}</li>
+      <li>{t('sleep.info.tip3', lang)}</li>
+      <li>{t('sleep.info.tip4', lang)}</li>
+    </ul>
+  </div>
+</div>
+
+<style>
+  .sleep-calculator {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .calculator-form, .calculator-results, .calculator-info {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  h2 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  h3 {
+    color: #444;
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #555;
+  }
+
+  .form-group input[type="time"] {
+    width: 100%;
+    max-width: 200px;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1.2rem;
+  }
+
+  .form-group input[type="time"]:focus {
+    outline: none;
+    border-color: #667eea;
+  }
+
+  .helper-text {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: #888;
+  }
+
+  .mode-toggle {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    background: #f5f5f5;
+    border-radius: 4px;
+  }
+
+  .mode-toggle label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    margin: 0;
+  }
+
+  .form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .btn-primary, .btn-secondary {
+    flex: 1;
+    padding: 0.875rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-primary {
+    background: #667eea;
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: #5568d3;
+  }
+
+  .btn-secondary {
+    background: #f5f5f5;
+    color: #333;
+  }
+
+  .btn-secondary:hover {
+    background: #e0e0e0;
+  }
+
+  .results-subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+  }
+
+  .sleep-times-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+
+  .sleep-time-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.2s;
+  }
+
+  .sleep-time-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .sleep-time-card.recommended {
+    background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+    position: relative;
+    border: 3px solid #1e8449;
+  }
+
+  .sleep-time-card.recommended::before {
+    content: attr(data-recommended);
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1e8449;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .time-display {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 0.5rem 0;
+  }
+
+  .time-12hr {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 1rem;
+  }
+
+  .cycle-info {
+    font-size: 0.95rem;
+    opacity: 0.95;
+    margin: 0.5rem 0;
+  }
+
+  .total-sleep {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-top: 0.5rem;
+  }
+
+  .calculator-info ul {
+    padding-left: 1.5rem;
+  }
+
+  .calculator-info li {
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+    color: #555;
+  }
+
+  .calculator-info p {
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 1rem;
+  }
+</style>
+
+<script>
+  import type { SleepInput, SleepResult, CalculationMode } from '@/utils/calculators/sleep';
+  import { calculateSleepTimes, formatTime12Hour } from '@/utils/calculators/sleep';
+
+  const form = document.getElementById('sleep-form') as HTMLFormElement;
+  const results = document.getElementById('results') as HTMLDivElement;
+  const resultsTitle = document.getElementById('results-title') as HTMLHeadingElement;
+  const resultsSubtitle = document.getElementById('results-subtitle') as HTMLParagraphElement;
+  const sleepTimesContainer = document.getElementById('sleep-times') as HTMLDivElement;
+  const modeInputs = document.querySelectorAll('input[name="mode"]');
+  const bedtimeInput = document.querySelector('.bedtime-input') as HTMLDivElement;
+  const wakeupInput = document.querySelector('.wakeup-input') as HTMLDivElement;
+
+  // Get current language
+  const lang = document.documentElement.lang || 'es';
+
+  // Translations
+  const translations: Record<string, any> = {
+    es: {
+      wakeupTitle: 'Horarios sugeridos para despertar',
+      wakeupSubtitle: 'Si te acuestas a las {time}, deberías despertar a una de estas horas:',
+      bedtimeTitle: 'Horarios sugeridos para acostarte',
+      bedtimeSubtitle: 'Si quieres despertar a las {time}, deberías acostarte a una de estas horas:',
+      cycles: '{count} ciclos',
+      totalSleep: '{hours} horas de sueño',
+      recommended: 'RECOMENDADO',
+    },
+    en: {
+      wakeupTitle: 'Suggested wake up times',
+      wakeupSubtitle: 'If you go to bed at {time}, you should wake up at one of these times:',
+      bedtimeTitle: 'Suggested bedtimes',
+      bedtimeSubtitle: 'If you want to wake up at {time}, you should go to bed at one of these times:',
+      cycles: '{count} cycles',
+      totalSleep: '{hours} hours of sleep',
+      recommended: 'RECOMMENDED',
+    },
+    pt: {
+      wakeupTitle: 'Horários sugeridos para acordar',
+      wakeupSubtitle: 'Se você for dormir às {time}, deve acordar em um destes horários:',
+      bedtimeTitle: 'Horários sugeridos para dormir',
+      bedtimeSubtitle: 'Se você quer acordar às {time}, deve ir dormir em um destes horários:',
+      cycles: '{count} ciclos',
+      totalSleep: '{hours} horas de sono',
+      recommended: 'RECOMENDADO',
+    },
+    fr: {
+      wakeupTitle: 'Heures de réveil suggérées',
+      wakeupSubtitle: 'Si vous vous couchez à {time}, vous devriez vous réveiller à l\'une de ces heures:',
+      bedtimeTitle: 'Heures de coucher suggérées',
+      bedtimeSubtitle: 'Si vous voulez vous réveiller à {time}, vous devriez vous coucher à l\'une de ces heures:',
+      cycles: '{count} cycles',
+      totalSleep: '{hours} heures de sommeil',
+      recommended: 'RECOMMANDÉ',
+    },
+    hi: {
+      wakeupTitle: 'जागने के लिए सुझाए गए समय',
+      wakeupSubtitle: 'यदि आप {time} बजे सोते हैं, तो आपको इन समयों में से किसी एक पर जागना चाहिए:',
+      bedtimeTitle: 'सोने के लिए सुझाए गए समय',
+      bedtimeSubtitle: 'यदि आप {time} बजे जागना चाहते हैं, तो आपको इन समयों में से किसी एक पर सोना चाहिए:',
+      cycles: '{count} चक्र',
+      totalSleep: '{hours} घंटे की नींद',
+      recommended: 'अनुशंसित',
+    },
+    de: {
+      wakeupTitle: 'Vorgeschlagene Aufwachzeiten',
+      wakeupSubtitle: 'Wenn Sie um {time} Uhr ins Bett gehen, sollten Sie zu einer dieser Zeiten aufwachen:',
+      bedtimeTitle: 'Vorgeschlagene Schlafenszeiten',
+      bedtimeSubtitle: 'Wenn Sie um {time} Uhr aufwachen möchten, sollten Sie zu einer dieser Zeiten ins Bett gehen:',
+      cycles: '{count} Zyklen',
+      totalSleep: '{hours} Stunden Schlaf',
+      recommended: 'EMPFOHLEN',
+    },
+    it: {
+      wakeupTitle: 'Orari suggeriti per svegliarsi',
+      wakeupSubtitle: 'Se vai a letto alle {time}, dovresti svegliarti in uno di questi orari:',
+      bedtimeTitle: 'Orari suggeriti per andare a letto',
+      bedtimeSubtitle: 'Se vuoi svegliarti alle {time}, dovresti andare a letto in uno di questi orari:',
+      cycles: '{count} cicli',
+      totalSleep: '{hours} ore di sonno',
+      recommended: 'CONSIGLIATO',
+    },
+  };
+
+  const t = translations[lang] || translations.es;
+
+  // Handle mode change
+  modeInputs.forEach(input => {
+    input.addEventListener('change', (e) => {
+      const target = e.target as HTMLInputElement;
+      const mode = target.value;
+
+      bedtimeInput.style.display = mode === 'wakeup' ? 'block' : 'none';
+      wakeupInput.style.display = mode === 'bedtime' ? 'block' : 'none';
+
+      const bedtimeField = document.getElementById('bedtime') as HTMLInputElement;
+      const wakeupField = document.getElementById('wakeup') as HTMLInputElement;
+
+      if (mode === 'wakeup') {
+        bedtimeField.required = true;
+        wakeupField.required = false;
+      } else {
+        bedtimeField.required = false;
+        wakeupField.required = true;
+      }
+    });
+  });
+
+  // Handle form submission
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const mode = formData.get('mode') as CalculationMode;
+    const time = mode === 'wakeup'
+      ? (formData.get('bedtime') as string)
+      : (formData.get('wakeup') as string);
+
+    const input: SleepInput = {
+      mode,
+      time,
+    };
+
+    try {
+      const result = calculateSleepTimes(input);
+      displayResults(result);
+    } catch (error) {
+      alert('Error calculating sleep times. Please check your inputs.');
+      console.error(error);
+    }
+  });
+
+  function displayResults(result: SleepResult) {
+    const { mode, inputTime, suggestions } = result;
+
+    // Update title and subtitle
+    if (mode === 'wakeup') {
+      resultsTitle.textContent = t.wakeupTitle;
+      resultsSubtitle.textContent = t.wakeupSubtitle.replace('{time}', formatTime12Hour(inputTime));
+    } else {
+      resultsTitle.textContent = t.bedtimeTitle;
+      resultsSubtitle.textContent = t.bedtimeSubtitle.replace('{time}', formatTime12Hour(inputTime));
+    }
+
+    // Clear previous results
+    sleepTimesContainer.innerHTML = '';
+
+    // Add new results
+    suggestions.forEach((suggestion, index) => {
+      const card = document.createElement('div');
+      card.className = 'sleep-time-card';
+
+      // Mark the middle option (5 cycles) as recommended
+      if (index === 1) {
+        card.classList.add('recommended');
+        card.setAttribute('data-recommended', t.recommended);
+      }
+
+      card.innerHTML = `
+        <div class="time-display">${suggestion.time}</div>
+        <div class="time-12hr">${formatTime12Hour(suggestion.time)}</div>
+        <div class="cycle-info">${t.cycles.replace('{count}', suggestion.cycles.toString())}</div>
+        <div class="total-sleep">${t.totalSleep.replace('{hours}', suggestion.totalHours.toString())}</div>
+      `;
+
+      sleepTimesContainer.appendChild(card);
+    });
+
+    // Show results
+    results.style.display = 'block';
+    results.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  // Handle form reset
+  form.addEventListener('reset', () => {
+    results.style.display = 'none';
+  });
+</script>

@@ -1,0 +1,51 @@
+{
+  "title": "Datumsrechner",
+  "description": "Berechnen Sie Datumsunterschiede und addieren oder subtrahieren Sie Tage, Monate und Jahre",
+  "metaDescription": "Kostenloser Datumsrechner - Addieren oder subtrahieren Sie Tage, Monate und Jahre von einem Datum. Berechnen Sie Unterschiede zwischen Daten, Arbeitstage und mehr.",
+  "tabs": {
+    "addSubtract": "Addieren/Subtrahieren",
+    "difference": "Unterschied"
+  },
+  "addSubtract": {
+    "title": "Zeit Addieren oder Subtrahieren",
+    "startDate": "Startdatum",
+    "add": "Addieren",
+    "subtract": "Subtrahieren"
+  },
+  "difference": {
+    "title": "Datumsunterschied Berechnen",
+    "startDate": "Startdatum",
+    "endDate": "Enddatum",
+    "includeEndDate": "Enddatum in die Berechnung einbeziehen"
+  },
+  "units": {
+    "years": "Jahre",
+    "months": "Monate",
+    "weeks": "Wochen",
+    "days": "Tage"
+  },
+  "results": {
+    "title": "Ergebnisse",
+    "resultDate": "Ergebnisdatum",
+    "dayOfYear": "Tag des Jahres",
+    "weekOfYear": "Woche des Jahres",
+    "leapYear": "Schaltjahr",
+    "timeDifference": "Zeitunterschied",
+    "totalDays": "Gesamttage",
+    "totalWeeks": "Gesamtwochen",
+    "totalHours": "Gesamtstunden",
+    "totalMinutes": "Gesamtminuten",
+    "businessDays": "Arbeitstage",
+    "weekdays": "Wochentage",
+    "weekends": "Wochenenden"
+  },
+  "info": {
+    "title": "Über den Datumsrechner",
+    "description": "Dieser Datumsrechner ermöglicht es Ihnen, Zeit von einem bestimmten Datum zu addieren oder zu subtrahieren oder den Unterschied zwischen zwei Daten zu berechnen. Er ist nützlich für Projektplanung, Fristenberechnung und vieles mehr.",
+    "useCasesTitle": "Anwendungsfälle:",
+    "useCase1": "Fälligkeitstermine und Lieferfristen berechnen",
+    "useCase2": "Projektdauer in Arbeitstagen bestimmen",
+    "useCase3": "Veranstaltungen planen und zukünftige Daten berechnen",
+    "useCase4": "Alter, Jahrestage und verstrichene Zeit berechnen"
+  }
+}

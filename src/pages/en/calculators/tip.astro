@@ -1,0 +1,37 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import TipCalculator from '@/components/calculators/TipCalculator.astro';
+import { t } from '@/utils/i18n';
+
+const title = t('tip.title', 'en') + ' - ' + t('site.title', 'en');
+const description = t('tip.metaDescription', 'en');
+---
+
+<BaseLayout title={title} description={description} lang="en">
+  <div class="container">
+    <div class="page-header">
+      <h1>{t('tip.title', 'en')}</h1>
+      <p class="page-description">{t('tip.description', 'en')}</p>
+    </div>
+
+    <TipCalculator lang="en" />
+  </div>
+
+  <style>
+    .page-header {
+      text-align: center;
+      padding: 2rem 0;
+    }
+
+    .page-header h1 {
+      font-size: 2.5rem;
+      color: #333;
+      margin-bottom: 0.5rem;
+    }
+
+    .page-description {
+      font-size: 1.25rem;
+      color: #666;
+    }
+  </style>
+</BaseLayout>

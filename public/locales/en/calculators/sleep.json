@@ -1,0 +1,35 @@
+{
+  "title": "Sleep Calculator",
+  "description": "Calculate your ideal sleep schedule based on sleep cycles",
+  "metaDescription": "Free sleep calculator - Find out when you should go to bed or wake up to optimize your sleep cycles. Calculate ideal sleep times based on 90-minute cycles.",
+  "form": {
+    "title": "Plan your sleep",
+    "modeWakeup": "When should I wake up?",
+    "modeBedtime": "When should I go to bed?",
+    "bedtimeLabel": "Bedtime",
+    "bedtimeHelper": "Select the time you plan to go to bed",
+    "wakeupLabel": "Wake up time",
+    "wakeupHelper": "Select the time you need to wake up"
+  },
+  "results": {
+    "title": "Your sleep schedule",
+    "wakeupTitle": "Suggested wake up times",
+    "wakeupSubtitle": "If you go to bed at {time}, you should wake up at one of these times:",
+    "bedtimeTitle": "Suggested bedtimes",
+    "bedtimeSubtitle": "If you want to wake up at {time}, you should go to bed at one of these times:",
+    "cycles": "{count} cycles",
+    "totalSleep": "{hours} hours of sleep",
+    "recommended": "RECOMMENDED"
+  },
+  "info": {
+    "title": "About Sleep Cycles",
+    "description": "Sleep occurs in cycles of approximately 90 minutes. Waking up at the end of a sleep cycle helps you feel more rested and alert. This calculator helps you find the best times to sleep or wake up based on these natural cycles.",
+    "cycleTitle": "How do sleep cycles work?",
+    "cycleDescription": "Throughout the night, you go through 4-6 sleep cycles. Each cycle has different stages: light sleep, deep sleep, and REM sleep. Waking up during deep sleep can make you feel groggy and tired. This calculator accounts for 14 minutes to fall asleep and suggests wake times at the end of complete sleep cycles.",
+    "tipsTitle": "Tips for better sleep",
+    "tip1": "Adults typically need 7-9 hours of sleep (5-6 complete cycles)",
+    "tip2": "Keep a consistent sleep schedule, even on weekends",
+    "tip3": "Avoid caffeine and screens at least 1 hour before bed",
+    "tip4": "Create a comfortable environment: dark, quiet, and cool (60-67°F)"
+  }
+}

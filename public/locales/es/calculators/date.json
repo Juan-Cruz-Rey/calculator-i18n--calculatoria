@@ -1,0 +1,51 @@
+{
+  "title": "Calculadora de Fechas",
+  "description": "Calcula diferencias entre fechas y suma o resta días, meses y años",
+  "metaDescription": "Calculadora de fechas gratuita - Suma o resta días, meses y años de una fecha. Calcula diferencias entre fechas, días laborables y más.",
+  "tabs": {
+    "addSubtract": "Sumar/Restar",
+    "difference": "Diferencia"
+  },
+  "addSubtract": {
+    "title": "Sumar o Restar Tiempo",
+    "startDate": "Fecha inicial",
+    "add": "Sumar",
+    "subtract": "Restar"
+  },
+  "difference": {
+    "title": "Calcular Diferencia entre Fechas",
+    "startDate": "Fecha inicial",
+    "endDate": "Fecha final",
+    "includeEndDate": "Incluir fecha final en el cálculo"
+  },
+  "units": {
+    "years": "Años",
+    "months": "Meses",
+    "weeks": "Semanas",
+    "days": "Días"
+  },
+  "results": {
+    "title": "Resultados",
+    "resultDate": "Fecha Resultante",
+    "dayOfYear": "Día del año",
+    "weekOfYear": "Semana del año",
+    "leapYear": "Año bisiesto",
+    "timeDifference": "Diferencia de Tiempo",
+    "totalDays": "Total de días",
+    "totalWeeks": "Total de semanas",
+    "totalHours": "Total de horas",
+    "totalMinutes": "Total de minutos",
+    "businessDays": "Días laborables",
+    "weekdays": "Días de semana",
+    "weekends": "Fines de semana"
+  },
+  "info": {
+    "title": "Acerca de la Calculadora de Fechas",
+    "description": "Esta calculadora de fechas te permite sumar o restar tiempo de una fecha específica, o calcular la diferencia entre dos fechas. Es útil para planificación de proyectos, cálculo de plazos, y mucho más.",
+    "useCasesTitle": "Casos de uso:",
+    "useCase1": "Calcular fechas de vencimiento y plazos de entrega",
+    "useCase2": "Determinar la duración de proyectos en días laborables",
+    "useCase3": "Planificar eventos y calcular fechas futuras",
+    "useCase4": "Calcular edad, aniversarios y tiempo transcurrido"
+  }
+}

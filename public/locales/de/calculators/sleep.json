@@ -1,0 +1,35 @@
+{
+  "title": "Schlafrechner",
+  "description": "Berechnen Sie Ihren idealen Schlafplan basierend auf Schlafzyklen",
+  "metaDescription": "Kostenloser Schlafrechner - Finden Sie heraus, wann Sie ins Bett gehen oder aufwachen sollten, um Ihre Schlafzyklen zu optimieren. Berechnen Sie ideale Schlafzeiten basierend auf 90-Minuten-Zyklen.",
+  "form": {
+    "title": "Planen Sie Ihren Schlaf",
+    "modeWakeup": "Wann soll ich aufwachen?",
+    "modeBedtime": "Wann soll ich ins Bett gehen?",
+    "bedtimeLabel": "Schlafenszeit",
+    "bedtimeHelper": "Wählen Sie die Zeit aus, zu der Sie ins Bett gehen möchten",
+    "wakeupLabel": "Aufwachzeit",
+    "wakeupHelper": "Wählen Sie die Zeit aus, zu der Sie aufwachen müssen"
+  },
+  "results": {
+    "title": "Ihr Schlafplan",
+    "wakeupTitle": "Vorgeschlagene Aufwachzeiten",
+    "wakeupSubtitle": "Wenn Sie um {time} Uhr ins Bett gehen, sollten Sie zu einer dieser Zeiten aufwachen:",
+    "bedtimeTitle": "Vorgeschlagene Schlafenszeiten",
+    "bedtimeSubtitle": "Wenn Sie um {time} Uhr aufwachen möchten, sollten Sie zu einer dieser Zeiten ins Bett gehen:",
+    "cycles": "{count} Zyklen",
+    "totalSleep": "{hours} Stunden Schlaf",
+    "recommended": "EMPFOHLEN"
+  },
+  "info": {
+    "title": "Über Schlafzyklen",
+    "description": "Der Schlaf erfolgt in Zyklen von etwa 90 Minuten. Das Aufwachen am Ende eines Schlafzyklus hilft Ihnen, sich ausgeruhter und wacher zu fühlen. Dieser Rechner hilft Ihnen, die besten Zeiten zum Schlafen oder Aufwachen basierend auf diesen natürlichen Zyklen zu finden.",
+    "cycleTitle": "Wie funktionieren Schlafzyklen?",
+    "cycleDescription": "Im Laufe der Nacht durchlaufen Sie 4-6 Schlafzyklen. Jeder Zyklus hat verschiedene Phasen: Leichtschlaf, Tiefschlaf und REM-Schlaf. Das Aufwachen während des Tiefschlafs kann dazu führen, dass Sie sich benommen und müde fühlen. Dieser Rechner berücksichtigt 14 Minuten zum Einschlafen und schlägt Weckzeiten am Ende vollständiger Schlafzyklen vor.",
+    "tipsTitle": "Tipps für besseren Schlaf",
+    "tip1": "Erwachsene benötigen normalerweise 7-9 Stunden Schlaf (5-6 vollständige Zyklen)",
+    "tip2": "Halten Sie einen konsistenten Schlafplan ein, auch am Wochenende",
+    "tip3": "Vermeiden Sie Koffein und Bildschirme mindestens 1 Stunde vor dem Schlafengehen",
+    "tip4": "Schaffen Sie eine komfortable Umgebung: dunkel, ruhig und kühl (15-19°C)"
+  }
+}

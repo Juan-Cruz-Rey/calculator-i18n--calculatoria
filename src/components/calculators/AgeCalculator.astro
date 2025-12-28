@@ -1,0 +1,502 @@
+---
+import { t, type Locale } from '@/utils/i18n';
+
+const { lang } = Astro.props as { lang: Locale };
+---
+
+<div class="age-calculator">
+  <div class="calculator-form">
+    <h2>{t('age:form.title', lang)}</h2>
+
+    <form id="age-form">
+      <!-- Birth Date -->
+      <div class="form-group">
+        <label for="birthDate">{t('age:form.birthDateLabel', lang)}</label>
+        <input
+          type="date"
+          id="birthDate"
+          name="birthDate"
+          required
+          max={new Date().toISOString().split('T')[0]}
+        />
+      </div>
+
+      <!-- Calculate Age At (Optional) -->
+      <div class="form-group">
+        <label for="targetDate">{t('age:form.targetDateLabel', lang)}</label>
+        <input
+          type="date"
+          id="targetDate"
+          name="targetDate"
+          value={new Date().toISOString().split('T')[0]}
+        />
+        <small class="hint">{t('age:form.targetDateHint', lang)}</small>
+      </div>
+
+      <!-- Buttons -->
+      <div class="form-actions">
+        <button type="submit" class="btn-primary">{t('common.calculate', lang)}</button>
+        <button type="reset" class="btn-secondary">{t('common.reset', lang)}</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="calculator-results" id="results" style="display: none;">
+    <h2>{t('age:results.title', lang)}</h2>
+
+    <div class="result-card main-age">
+      <h3>{t('age:results.yourAge', lang)}</h3>
+      <p class="value" id="age-value">-</p>
+      <p class="detail" id="age-detail">-</p>
+    </div>
+
+    <div class="result-grid">
+      <div class="result-item">
+        <strong>{t('age:results.totalYears', lang)}:</strong>
+        <span id="total-years">-</span>
+      </div>
+      <div class="result-item">
+        <strong>{t('age:results.totalMonths', lang)}:</strong>
+        <span id="total-months">-</span>
+      </div>
+      <div class="result-item">
+        <strong>{t('age:results.totalWeeks', lang)}:</strong>
+        <span id="total-weeks">-</span>
+      </div>
+      <div class="result-item">
+        <strong>{t('age:results.totalDays', lang)}:</strong>
+        <span id="total-days">-</span>
+      </div>
+      <div class="result-item">
+        <strong>{t('age:results.totalHours', lang)}:</strong>
+        <span id="total-hours">-</span>
+      </div>
+      <div class="result-item">
+        <strong>{t('age:results.totalMinutes', lang)}:</strong>
+        <span id="total-minutes">-</span>
+      </div>
+    </div>
+
+    <div class="next-birthday">
+      <h3>{t('age:results.nextBirthday', lang)}</h3>
+      <p id="next-birthday-info">-</p>
+    </div>
+  </div>
+
+  <div class="calculator-info">
+    <h2>{t('age:info.title', lang)}</h2>
+    <p>{t('age:info.description', lang)}</p>
+    <p>{t('age:info.usage', lang)}</p>
+  </div>
+</div>
+
+<style>
+  .age-calculator {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .calculator-form, .calculator-results, .calculator-info {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  h2 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  h3 {
+    color: #555;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #555;
+  }
+
+  .form-group input[type="date"] {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: inherit;
+  }
+
+  .form-group input[type="date"]:focus {
+    outline: none;
+    border-color: #667eea;
+  }
+
+  .hint {
+    display: block;
+    margin-top: 0.5rem;
+    color: #888;
+    font-size: 0.875rem;
+  }
+
+  .form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .btn-primary, .btn-secondary {
+    flex: 1;
+    padding: 0.875rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-primary {
+    background: #667eea;
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: #5568d3;
+  }
+
+  .btn-secondary {
+    background: #f5f5f5;
+    color: #333;
+  }
+
+  .btn-secondary:hover {
+    background: #e0e0e0;
+  }
+
+  .result-card {
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+
+  .result-card h3 {
+    margin: 0 0 1rem 0;
+    color: white;
+    font-size: 1.2rem;
+  }
+
+  .result-card .value {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  .result-card .detail {
+    font-size: 1.1rem;
+    margin: 0.5rem 0 0 0;
+    opacity: 0.9;
+  }
+
+  .result-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .result-item {
+    padding: 1rem;
+    background: #f9f9f9;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .result-item strong {
+    color: #555;
+    font-size: 0.9rem;
+  }
+
+  .result-item span {
+    color: #333;
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+
+  .next-birthday {
+    background: #f0f4ff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid #667eea;
+  }
+
+  .next-birthday h3 {
+    margin-top: 0;
+    color: #667eea;
+  }
+
+  .next-birthday p {
+    margin: 0;
+    color: #555;
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+
+  .calculator-info {
+    background: #f9f9f9;
+  }
+
+  .calculator-info p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: #555;
+  }
+
+  .calculator-info p:last-child {
+    margin-bottom: 0;
+  }
+</style>
+
+<script>
+  import type { AgeInput, AgeResult } from '@/utils/calculators/age';
+  import { calculateAge, formatNumber } from '@/utils/calculators/age';
+
+  const form = document.getElementById('age-form') as HTMLFormElement;
+  const results = document.getElementById('results') as HTMLDivElement;
+
+  // Get current language from document
+  const lang = document.documentElement.lang || 'en';
+
+  // Weekday translations
+  const weekdayTranslations: Record<string, Record<string, string>> = {
+    en: {
+      Sunday: 'Sunday',
+      Monday: 'Monday',
+      Tuesday: 'Tuesday',
+      Wednesday: 'Wednesday',
+      Thursday: 'Thursday',
+      Friday: 'Friday',
+      Saturday: 'Saturday',
+    },
+    es: {
+      Sunday: 'Domingo',
+      Monday: 'Lunes',
+      Tuesday: 'Martes',
+      Wednesday: 'Miércoles',
+      Thursday: 'Jueves',
+      Friday: 'Viernes',
+      Saturday: 'Sábado',
+    },
+    pt: {
+      Sunday: 'Domingo',
+      Monday: 'Segunda-feira',
+      Tuesday: 'Terça-feira',
+      Wednesday: 'Quarta-feira',
+      Thursday: 'Quinta-feira',
+      Friday: 'Sexta-feira',
+      Saturday: 'Sábado',
+    },
+    fr: {
+      Sunday: 'Dimanche',
+      Monday: 'Lundi',
+      Tuesday: 'Mardi',
+      Wednesday: 'Mercredi',
+      Thursday: 'Jeudi',
+      Friday: 'Vendredi',
+      Saturday: 'Samedi',
+    },
+    hi: {
+      Sunday: 'रविवार',
+      Monday: 'सोमवार',
+      Tuesday: 'मंगलवार',
+      Wednesday: 'बुधवार',
+      Thursday: 'गुरुवार',
+      Friday: 'शुक्रवार',
+      Saturday: 'शनिवार',
+    },
+    de: {
+      Sunday: 'Sonntag',
+      Monday: 'Montag',
+      Tuesday: 'Dienstag',
+      Wednesday: 'Mittwoch',
+      Thursday: 'Donnerstag',
+      Friday: 'Freitag',
+      Saturday: 'Samstag',
+    },
+    it: {
+      Sunday: 'Domenica',
+      Monday: 'Lunedì',
+      Tuesday: 'Martedì',
+      Wednesday: 'Mercoledì',
+      Thursday: 'Giovedì',
+      Friday: 'Venerdì',
+      Saturday: 'Sabato',
+    },
+  };
+
+  // Handle form submission
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const birthDateStr = formData.get('birthDate') as string;
+    const targetDateStr = formData.get('targetDate') as string;
+
+    if (!birthDateStr) {
+      alert('Please enter a birth date');
+      return;
+    }
+
+    const birthDate = new Date(birthDateStr);
+    const targetDate = targetDateStr ? new Date(targetDateStr) : new Date();
+
+    const input: AgeInput = {
+      birthDate,
+      targetDate,
+    };
+
+    try {
+      const result = calculateAge(input);
+      displayResults(result);
+    } catch (error) {
+      alert('Error calculating age. Please check your inputs.');
+      console.error(error);
+    }
+  });
+
+  function displayResults(result: AgeResult) {
+    const ageValue = document.getElementById('age-value') as HTMLParagraphElement;
+    const ageDetail = document.getElementById('age-detail') as HTMLParagraphElement;
+    const totalYears = document.getElementById('total-years') as HTMLSpanElement;
+    const totalMonths = document.getElementById('total-months') as HTMLSpanElement;
+    const totalWeeks = document.getElementById('total-weeks') as HTMLSpanElement;
+    const totalDays = document.getElementById('total-days') as HTMLSpanElement;
+    const totalHours = document.getElementById('total-hours') as HTMLSpanElement;
+    const totalMinutes = document.getElementById('total-minutes') as HTMLSpanElement;
+    const nextBirthdayInfo = document.getElementById('next-birthday-info') as HTMLParagraphElement;
+
+    // Display main age
+    ageValue.textContent = `${result.years}`;
+
+    // Build detail text based on language
+    let detailText = '';
+    if (result.months > 0 || result.days > 0) {
+      if (lang === 'es') {
+        detailText = `${result.years} ${result.years === 1 ? 'año' : 'años'}`;
+        if (result.months > 0) {
+          detailText += `, ${result.months} ${result.months === 1 ? 'mes' : 'meses'}`;
+        }
+        if (result.days > 0) {
+          detailText += `, ${result.days} ${result.days === 1 ? 'día' : 'días'}`;
+        }
+      } else if (lang === 'pt') {
+        detailText = `${result.years} ${result.years === 1 ? 'ano' : 'anos'}`;
+        if (result.months > 0) {
+          detailText += `, ${result.months} ${result.months === 1 ? 'mês' : 'meses'}`;
+        }
+        if (result.days > 0) {
+          detailText += `, ${result.days} ${result.days === 1 ? 'dia' : 'dias'}`;
+        }
+      } else if (lang === 'fr') {
+        detailText = `${result.years} ${result.years === 1 ? 'an' : 'ans'}`;
+        if (result.months > 0) {
+          detailText += `, ${result.months} mois`;
+        }
+        if (result.days > 0) {
+          detailText += `, ${result.days} ${result.days === 1 ? 'jour' : 'jours'}`;
+        }
+      } else if (lang === 'de') {
+        detailText = `${result.years} ${result.years === 1 ? 'Jahr' : 'Jahre'}`;
+        if (result.months > 0) {
+          detailText += `, ${result.months} ${result.months === 1 ? 'Monat' : 'Monate'}`;
+        }
+        if (result.days > 0) {
+          detailText += `, ${result.days} ${result.days === 1 ? 'Tag' : 'Tage'}`;
+        }
+      } else if (lang === 'it') {
+        detailText = `${result.years} ${result.years === 1 ? 'anno' : 'anni'}`;
+        if (result.months > 0) {
+          detailText += `, ${result.months} ${result.months === 1 ? 'mese' : 'mesi'}`;
+        }
+        if (result.days > 0) {
+          detailText += `, ${result.days} ${result.days === 1 ? 'giorno' : 'giorni'}`;
+        }
+      } else if (lang === 'hi') {
+        detailText = `${result.years} वर्ष`;
+        if (result.months > 0) {
+          detailText += `, ${result.months} महीने`;
+        }
+        if (result.days > 0) {
+          detailText += `, ${result.days} दिन`;
+        }
+      } else {
+        // Default to English
+        detailText = `${result.years} ${result.years === 1 ? 'year' : 'years'}`;
+        if (result.months > 0) {
+          detailText += `, ${result.months} ${result.months === 1 ? 'month' : 'months'}`;
+        }
+        if (result.days > 0) {
+          detailText += `, ${result.days} ${result.days === 1 ? 'day' : 'days'}`;
+        }
+      }
+    }
+    ageDetail.textContent = detailText;
+
+    // Display totals
+    totalYears.textContent = result.years.toString();
+    totalMonths.textContent = formatNumber(result.totalMonths);
+    totalWeeks.textContent = formatNumber(result.totalWeeks);
+    totalDays.textContent = formatNumber(result.totalDays);
+    totalHours.textContent = formatNumber(result.totalHours);
+    totalMinutes.textContent = formatNumber(result.totalMinutes);
+
+    // Display next birthday
+    const weekday = weekdayTranslations[lang]?.[result.nextBirthday.weekday] || result.nextBirthday.weekday;
+    const birthdayDate = result.nextBirthday.date.toLocaleDateString(lang);
+
+    let birthdayText = '';
+    if (lang === 'es') {
+      birthdayText = `Tu próximo cumpleaños es el ${weekday}, ${birthdayDate} (en ${result.nextBirthday.daysUntil} ${result.nextBirthday.daysUntil === 1 ? 'día' : 'días'})`;
+    } else if (lang === 'pt') {
+      birthdayText = `Seu próximo aniversário é ${weekday}, ${birthdayDate} (em ${result.nextBirthday.daysUntil} ${result.nextBirthday.daysUntil === 1 ? 'dia' : 'dias'})`;
+    } else if (lang === 'fr') {
+      birthdayText = `Votre prochain anniversaire est le ${weekday}, ${birthdayDate} (dans ${result.nextBirthday.daysUntil} ${result.nextBirthday.daysUntil === 1 ? 'jour' : 'jours'})`;
+    } else if (lang === 'de') {
+      birthdayText = `Ihr nächster Geburtstag ist am ${weekday}, ${birthdayDate} (in ${result.nextBirthday.daysUntil} ${result.nextBirthday.daysUntil === 1 ? 'Tag' : 'Tagen'})`;
+    } else if (lang === 'it') {
+      birthdayText = `Il tuo prossimo compleanno è ${weekday}, ${birthdayDate} (tra ${result.nextBirthday.daysUntil} ${result.nextBirthday.daysUntil === 1 ? 'giorno' : 'giorni'})`;
+    } else if (lang === 'hi') {
+      birthdayText = `आपका अगला जन्मदिन ${weekday}, ${birthdayDate} है (${result.nextBirthday.daysUntil} दिनों में)`;
+    } else {
+      // Default to English
+      birthdayText = `Your next birthday is on ${weekday}, ${birthdayDate} (in ${result.nextBirthday.daysUntil} ${result.nextBirthday.daysUntil === 1 ? 'day' : 'days'})`;
+    }
+
+    nextBirthdayInfo.textContent = birthdayText;
+
+    // Show results
+    results.style.display = 'block';
+    results.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  // Handle form reset
+  form.addEventListener('reset', () => {
+    results.style.display = 'none';
+  });
+</script>

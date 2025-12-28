@@ -1,0 +1,56 @@
+{
+  "title": "Prozentrechner",
+  "description": "Prozentsätze, prozentuale Änderungen und prozentuale Differenzen berechnen",
+  "metaDescription": "Kostenloser Prozentrechner - Berechnen Sie Prozentsätze, prozentuale Änderungen und prozentuale Differenzen. Lösen Sie was ist X% von Y, X ist wieviel % von Y und mehr.",
+  "form": {
+    "title": "Wählen Sie den Berechnungstyp"
+  },
+  "tabs": {
+    "percentOf": "X% von Y",
+    "isWhatPercent": "X ist wieviel % von Y",
+    "isPercentOfWhat": "X ist Y% von was",
+    "percentageChange": "% Änderung",
+    "percentageDifference": "% Differenz"
+  },
+  "forms": {
+    "percentOf": {
+      "title": "Was ist X% von Y?",
+      "label1": "Prozentsatz (X)",
+      "label2": "Wert (Y)"
+    },
+    "isWhatPercent": {
+      "title": "X ist wieviel % von Y?",
+      "label1": "Wert (X)",
+      "label2": "Gesamt (Y)"
+    },
+    "isPercentOfWhat": {
+      "title": "X ist Y% von was?",
+      "label1": "Wert (X)",
+      "label2": "Prozentsatz (Y)"
+    },
+    "percentageChange": {
+      "title": "Prozentuale Änderung von X zu Y",
+      "label1": "Alter Wert",
+      "label2": "Neuer Wert"
+    },
+    "percentageDifference": {
+      "title": "Prozentuale Differenz zwischen X und Y",
+      "label1": "Erster Wert",
+      "label2": "Zweiter Wert"
+    }
+  },
+  "results": {
+    "title": "Ergebnis",
+    "resultLabel": "Antwort",
+    "formulaLabel": "Berechnung"
+  },
+  "info": {
+    "title": "Über den Prozentrechner",
+    "description": "Prozentsätze sind eine Möglichkeit, eine Zahl als Bruchteil von 100 auszudrücken. Dieser Rechner hilft Ihnen, verschiedene Prozentprobleme zu lösen, einschließlich des Findens von Prozentsätzen, der Berechnung prozentualer Änderungen und der Bestimmung prozentualer Differenzen.",
+    "commonUses": "Häufige Verwendungen",
+    "use1": "Rabatte und Verkaufspreise berechnen",
+    "use2": "Steuerbeträge und Trinkgelder bestimmen",
+    "use3": "Finanzielle Änderungen und Wachstumsraten analysieren",
+    "use4": "Werte und Statistiken vergleichen"
+  }
+}

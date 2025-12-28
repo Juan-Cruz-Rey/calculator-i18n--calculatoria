@@ -363,7 +363,6 @@ const translations: Record<Locale, Translations> = {
     age: ptAge,
     tip: ptTip,
     date: ptDate,
-    percentage: ptPercentage,
   },
   fr: {
     ...frCommon,
@@ -397,7 +396,6 @@ const translations: Record<Locale, Translations> = {
     age: frAge,
     tip: frTip,
     date: frDate,
-    percentage: frPercentage,
   },
   hi: {
     ...hiCommon,
@@ -431,7 +429,6 @@ const translations: Record<Locale, Translations> = {
     tip: hiTip,
     waistHip: hiWaistHip,
     date: hiDate,
-    percentage: hiPercentage,
   },
   de: {
     ...deCommon,
@@ -465,7 +462,6 @@ const translations: Record<Locale, Translations> = {
     tip: deTip,
     waistHip: deWaistHip,
     date: deDate,
-    percentage: dePercentage,
   },
   it: {
     ...itCommon,
@@ -499,7 +495,6 @@ const translations: Record<Locale, Translations> = {
     tip: itTip,
     waistHip: itWaistHip,
     date: itDate,
-    percentage: itPercentage,
   },
 };
 
@@ -843,15 +838,6 @@ export function getAlternatePath(currentPath: string, targetLocale: Locale, calc
       hi: '/hi/calculators/age/',
       de: '/de/rechner/alter/',
       it: '/it/calcolatrici/eta/',
-    },
-    percentage: {
-      es: '/es/calculadoras/porcentaje/',
-      en: '/calculators/percentage/',
-      pt: '/pt/calculadoras/porcentagem/',
-      fr: '/fr/calculatrices/pourcentage/',
-      hi: '/hi/calculators/percentage/',
-      de: '/de/rechner/prozent/',
-      it: '/it/calcolatrici/percentuale/',
     },
   };
 

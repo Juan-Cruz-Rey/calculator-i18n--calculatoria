@@ -1,0 +1,27 @@
+{
+  "title": "Calculadora de Idade",
+  "description": "Calcule sua idade exata em anos, meses, dias, horas e minutos",
+  "metaDescription": "Calculadora de idade gratuita - Calcule sua idade exata em anos, meses, dias, horas e minutos. Descubra quando é seu próximo aniversário e em que dia da semana cai.",
+  "form": {
+    "title": "Digite sua data de nascimento",
+    "birthDateLabel": "Data de Nascimento",
+    "targetDateLabel": "Calcular idade em (opcional)",
+    "targetDateHint": "Deixe como data atual para calcular sua idade hoje"
+  },
+  "results": {
+    "title": "Seus Resultados",
+    "yourAge": "Sua Idade",
+    "totalYears": "Anos Totais",
+    "totalMonths": "Meses Totais",
+    "totalWeeks": "Semanas Totais",
+    "totalDays": "Dias Totais",
+    "totalHours": "Horas Totais",
+    "totalMinutes": "Minutos Totais",
+    "nextBirthday": "Próximo Aniversário"
+  },
+  "info": {
+    "title": "Sobre a Calculadora de Idade",
+    "description": "Esta calculadora permite que você determine sua idade exata em anos, meses e dias. Ela também calcula sua idade em semanas, dias, horas e minutos totais, fornecendo uma visão abrangente do tempo decorrido desde seu nascimento.",
+    "usage": "Você pode usar o campo opcional 'Calcular idade em' para determinar quantos anos você tinha ou terá em uma data específica. Isso é útil para calcular sua idade em datas históricas ou futuras."
+  }
+}

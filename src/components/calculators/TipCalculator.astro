@@ -1,0 +1,443 @@
+---
+import { t, type Locale } from '@/utils/i18n';
+
+const { lang } = Astro.props as { lang: Locale };
+---
+
+<div class="tip-calculator">
+  <div class="calculator-form">
+    <h2>{t('tip.form.title', lang)}</h2>
+
+    <form id="tip-form">
+      <!-- Bill Amount -->
+      <div class="form-group">
+        <label for="billAmount">{t('tip.form.billAmountLabel', lang)}</label>
+        <input
+          type="number"
+          id="billAmount"
+          name="billAmount"
+          min="0.01"
+          step="0.01"
+          required
+          placeholder={t('tip.form.billAmountPlaceholder', lang)}
+        />
+        <span class="unit">{t('tip.form.currencySymbol', lang)}</span>
+      </div>
+
+      <!-- Tip Percentage -->
+      <div class="form-group">
+        <label for="tipPercentage">{t('tip.form.tipPercentageLabel', lang)}</label>
+
+        <!-- Preset Buttons -->
+        <div class="tip-preset-buttons">
+          <button type="button" class="tip-preset" data-tip="10">10%</button>
+          <button type="button" class="tip-preset" data-tip="15">15%</button>
+          <button type="button" class="tip-preset" data-tip="18">18%</button>
+          <button type="button" class="tip-preset" data-tip="20">20%</button>
+          <button type="button" class="tip-preset" data-tip="25">25%</button>
+        </div>
+
+        <!-- Custom Input -->
+        <div class="custom-tip-input">
+          <input
+            type="number"
+            id="tipPercentage"
+            name="tipPercentage"
+            min="0"
+            max="100"
+            step="0.1"
+            required
+            placeholder={t('tip.form.customTipPlaceholder', lang)}
+          />
+          <span class="unit">%</span>
+        </div>
+      </div>
+
+      <!-- Number of People -->
+      <div class="form-group">
+        <label for="numberOfPeople">{t('tip.form.numberOfPeopleLabel', lang)}</label>
+        <input
+          type="number"
+          id="numberOfPeople"
+          name="numberOfPeople"
+          min="1"
+          max="100"
+          value="1"
+          required
+          placeholder={t('tip.form.numberOfPeoplePlaceholder', lang)}
+        />
+        <span class="unit">{t('tip.form.peopleUnit', lang)}</span>
+      </div>
+
+      <!-- Buttons -->
+      <div class="form-actions">
+        <button type="submit" class="btn-primary">{t('common.calculate', lang)}</button>
+        <button type="reset" class="btn-secondary">{t('common.reset', lang)}</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="calculator-results" id="results" style="display: none;">
+    <h2>{t('tip.results.title', lang)}</h2>
+
+    <div class="result-card tip-summary">
+      <div class="summary-row">
+        <span class="label">{t('tip.results.tipAmount', lang)}</span>
+        <span class="value" id="tip-amount">$0.00</span>
+      </div>
+      <div class="summary-row total">
+        <span class="label">{t('tip.results.totalAmount', lang)}</span>
+        <span class="value" id="total-amount">$0.00</span>
+      </div>
+    </div>
+
+    <div class="result-grid" id="split-results">
+      <div class="result-item">
+        <strong>{t('tip.results.tipPerPerson', lang)}:</strong>
+        <span id="tip-per-person">$0.00</span>
+      </div>
+      <div class="result-item">
+        <strong>{t('tip.results.totalPerPerson', lang)}:</strong>
+        <span id="total-per-person">$0.00</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="calculator-info">
+    <h2>{t('tip.info.title', lang)}</h2>
+    <p>{t('tip.info.description', lang)}</p>
+
+    <h3>{t('tip.info.guidelinesTitle', lang)}</h3>
+    <ul>
+      <li><strong>10-15%:</strong> {t('tip.info.guideline1', lang)}</li>
+      <li><strong>15-20%:</strong> {t('tip.info.guideline2', lang)}</li>
+      <li><strong>20-25%:</strong> {t('tip.info.guideline3', lang)}</li>
+      <li><strong>25%+:</strong> {t('tip.info.guideline4', lang)}</li>
+    </ul>
+
+    <p class="note">{t('tip.info.note', lang)}</p>
+  </div>
+</div>
+
+<style>
+  .tip-calculator {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .calculator-form, .calculator-results, .calculator-info {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  h2 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  h3 {
+    color: #444;
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #555;
+  }
+
+  .form-group input[type="number"] {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+
+  .form-group input[type="number"]:focus {
+    outline: none;
+    border-color: #4CAF50;
+  }
+
+  .unit {
+    display: inline-block;
+    margin-left: 0.5rem;
+    color: #888;
+    font-size: 0.9rem;
+  }
+
+  .tip-preset-buttons {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .tip-preset {
+    padding: 0.75rem;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    background: white;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .tip-preset:hover {
+    border-color: #4CAF50;
+    background: #f0f9f0;
+  }
+
+  .tip-preset.active {
+    background: #4CAF50;
+    color: white;
+    border-color: #4CAF50;
+  }
+
+  .custom-tip-input {
+    display: flex;
+    align-items: center;
+  }
+
+  .custom-tip-input input {
+    flex: 1;
+  }
+
+  .form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .btn-primary, .btn-secondary {
+    flex: 1;
+    padding: 0.875rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-primary {
+    background: #4CAF50;
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: #45a049;
+  }
+
+  .btn-secondary {
+    background: #f5f5f5;
+    color: #333;
+  }
+
+  .btn-secondary:hover {
+    background: #e0e0e0;
+  }
+
+  .result-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+  }
+
+  .summary-row.total {
+    border-top: 2px solid rgba(255,255,255,0.3);
+    margin-top: 0.5rem;
+    padding-top: 1rem;
+  }
+
+  .summary-row .label {
+    font-size: 1.1rem;
+  }
+
+  .summary-row .value {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .summary-row.total .value {
+    font-size: 2rem;
+  }
+
+  .result-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .result-item {
+    padding: 1rem;
+    background: #f9f9f9;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .result-item strong {
+    color: #555;
+    font-size: 0.9rem;
+  }
+
+  .result-item span {
+    color: #333;
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+
+  .calculator-info {
+    background: #f9f9f9;
+  }
+
+  .calculator-info p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: #555;
+  }
+
+  .calculator-info ul {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+  }
+
+  .calculator-info li {
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+    color: #555;
+  }
+
+  .note {
+    font-size: 0.9rem;
+    font-style: italic;
+    color: #666;
+    margin-top: 1.5rem;
+  }
+
+  @media (max-width: 600px) {
+    .tip-preset-buttons {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .summary-row .value {
+      font-size: 1.2rem;
+    }
+
+    .summary-row.total .value {
+      font-size: 1.5rem;
+    }
+  }
+</style>
+
+<script>
+  import type { TipInput, TipResult } from '@/utils/calculators/tip';
+  import { calculateTip, formatCurrency } from '@/utils/calculators/tip';
+
+  const form = document.getElementById('tip-form') as HTMLFormElement;
+  const results = document.getElementById('results') as HTMLDivElement;
+  const tipPercentageInput = document.getElementById('tipPercentage') as HTMLInputElement;
+  const presetButtons = document.querySelectorAll('.tip-preset') as NodeListOf<HTMLButtonElement>;
+
+  // Handle preset button clicks
+  presetButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const tipValue = button.dataset.tip;
+      if (tipValue) {
+        tipPercentageInput.value = tipValue;
+
+        // Update active state
+        presetButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+      }
+    });
+  });
+
+  // Clear active state when custom input is used
+  tipPercentageInput.addEventListener('input', () => {
+    const currentValue = tipPercentageInput.value;
+    let matchFound = false;
+
+    presetButtons.forEach(btn => {
+      if (btn.dataset.tip === currentValue) {
+        btn.classList.add('active');
+        matchFound = true;
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+  });
+
+  // Handle form submission
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const billAmount = parseFloat(formData.get('billAmount') as string);
+    const tipPercentage = parseFloat(formData.get('tipPercentage') as string);
+    const numberOfPeople = parseInt(formData.get('numberOfPeople') as string);
+
+    const input: TipInput = {
+      billAmount,
+      tipPercentage,
+      numberOfPeople,
+    };
+
+    try {
+      const result = calculateTip(input);
+      displayResults(result);
+    } catch (error) {
+      alert('Error calculating tip. Please check your inputs.');
+      console.error(error);
+    }
+  });
+
+  function displayResults(result: TipResult) {
+    const currencySymbol = document.querySelector('.form-group .unit')?.textContent || '$';
+
+    const tipAmount = document.getElementById('tip-amount') as HTMLSpanElement;
+    const totalAmount = document.getElementById('total-amount') as HTMLSpanElement;
+    const tipPerPerson = document.getElementById('tip-per-person') as HTMLSpanElement;
+    const totalPerPerson = document.getElementById('total-per-person') as HTMLSpanElement;
+
+    tipAmount.textContent = `${currencySymbol}${formatCurrency(result.tipAmount)}`;
+    totalAmount.textContent = `${currencySymbol}${formatCurrency(result.totalAmount)}`;
+    tipPerPerson.textContent = `${currencySymbol}${formatCurrency(result.tipPerPerson)}`;
+    totalPerPerson.textContent = `${currencySymbol}${formatCurrency(result.totalPerPerson)}`;
+
+    // Show results
+    results.style.display = 'block';
+    results.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  // Handle form reset
+  form.addEventListener('reset', () => {
+    results.style.display = 'none';
+    presetButtons.forEach(btn => btn.classList.remove('active'));
+  });
+</script>

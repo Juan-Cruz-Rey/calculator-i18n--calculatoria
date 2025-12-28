@@ -1,0 +1,549 @@
+---
+import { t, type Locale } from '@/utils/i18n';
+
+const { lang } = Astro.props as { lang: Locale };
+---
+
+<div class="percentage-calculator">
+  <div class="calculator-form">
+    <h2>{t('percentage.form.title', lang)}</h2>
+
+    <!-- Calculation Type Selector -->
+    <div class="calculation-tabs">
+      <button class="tab-btn active" data-type="percentOf">
+        {t('percentage.tabs.percentOf', lang)}
+      </button>
+      <button class="tab-btn" data-type="isWhatPercent">
+        {t('percentage.tabs.isWhatPercent', lang)}
+      </button>
+      <button class="tab-btn" data-type="isPercentOfWhat">
+        {t('percentage.tabs.isPercentOfWhat', lang)}
+      </button>
+      <button class="tab-btn" data-type="percentageChange">
+        {t('percentage.tabs.percentageChange', lang)}
+      </button>
+      <button class="tab-btn" data-type="percentageDifference">
+        {t('percentage.tabs.percentageDifference', lang)}
+      </button>
+    </div>
+
+    <!-- Form 1: What is X% of Y? -->
+    <form id="form-percentOf" class="calc-form active">
+      <h3>{t('percentage.forms.percentOf.title', lang)}</h3>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="percentOf-percent">{t('percentage.forms.percentOf.label1', lang)}</label>
+          <input
+            type="number"
+            id="percentOf-percent"
+            name="value1"
+            step="0.01"
+            required
+            placeholder="20"
+          />
+          <span class="unit">%</span>
+        </div>
+        <div class="form-group">
+          <label for="percentOf-value">{t('percentage.forms.percentOf.label2', lang)}</label>
+          <input
+            type="number"
+            id="percentOf-value"
+            name="value2"
+            step="0.01"
+            required
+            placeholder="100"
+          />
+        </div>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn-primary">{t('common.calculate', lang)}</button>
+        <button type="reset" class="btn-secondary">{t('common.reset', lang)}</button>
+      </div>
+    </form>
+
+    <!-- Form 2: X is what % of Y? -->
+    <form id="form-isWhatPercent" class="calc-form">
+      <h3>{t('percentage.forms.isWhatPercent.title', lang)}</h3>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="isWhatPercent-value">{t('percentage.forms.isWhatPercent.label1', lang)}</label>
+          <input
+            type="number"
+            id="isWhatPercent-value"
+            name="value1"
+            step="0.01"
+            required
+            placeholder="20"
+          />
+        </div>
+        <div class="form-group">
+          <label for="isWhatPercent-total">{t('percentage.forms.isWhatPercent.label2', lang)}</label>
+          <input
+            type="number"
+            id="isWhatPercent-total"
+            name="value2"
+            step="0.01"
+            required
+            placeholder="100"
+          />
+        </div>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn-primary">{t('common.calculate', lang)}</button>
+        <button type="reset" class="btn-secondary">{t('common.reset', lang)}</button>
+      </div>
+    </form>
+
+    <!-- Form 3: X is Y% of what? -->
+    <form id="form-isPercentOfWhat" class="calc-form">
+      <h3>{t('percentage.forms.isPercentOfWhat.title', lang)}</h3>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="isPercentOfWhat-value">{t('percentage.forms.isPercentOfWhat.label1', lang)}</label>
+          <input
+            type="number"
+            id="isPercentOfWhat-value"
+            name="value1"
+            step="0.01"
+            required
+            placeholder="20"
+          />
+        </div>
+        <div class="form-group">
+          <label for="isPercentOfWhat-percent">{t('percentage.forms.isPercentOfWhat.label2', lang)}</label>
+          <input
+            type="number"
+            id="isPercentOfWhat-percent"
+            name="value2"
+            step="0.01"
+            required
+            placeholder="50"
+          />
+          <span class="unit">%</span>
+        </div>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn-primary">{t('common.calculate', lang)}</button>
+        <button type="reset" class="btn-secondary">{t('common.reset', lang)}</button>
+      </div>
+    </form>
+
+    <!-- Form 4: Percentage Change -->
+    <form id="form-percentageChange" class="calc-form">
+      <h3>{t('percentage.forms.percentageChange.title', lang)}</h3>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="percentageChange-old">{t('percentage.forms.percentageChange.label1', lang)}</label>
+          <input
+            type="number"
+            id="percentageChange-old"
+            name="value1"
+            step="0.01"
+            required
+            placeholder="100"
+          />
+        </div>
+        <div class="form-group">
+          <label for="percentageChange-new">{t('percentage.forms.percentageChange.label2', lang)}</label>
+          <input
+            type="number"
+            id="percentageChange-new"
+            name="value2"
+            step="0.01"
+            required
+            placeholder="120"
+          />
+        </div>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn-primary">{t('common.calculate', lang)}</button>
+        <button type="reset" class="btn-secondary">{t('common.reset', lang)}</button>
+      </div>
+    </form>
+
+    <!-- Form 5: Percentage Difference -->
+    <form id="form-percentageDifference" class="calc-form">
+      <h3>{t('percentage.forms.percentageDifference.title', lang)}</h3>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="percentageDifference-value1">{t('percentage.forms.percentageDifference.label1', lang)}</label>
+          <input
+            type="number"
+            id="percentageDifference-value1"
+            name="value1"
+            step="0.01"
+            required
+            placeholder="100"
+          />
+        </div>
+        <div class="form-group">
+          <label for="percentageDifference-value2">{t('percentage.forms.percentageDifference.label2', lang)}</label>
+          <input
+            type="number"
+            id="percentageDifference-value2"
+            name="value2"
+            step="0.01"
+            required
+            placeholder="120"
+          />
+        </div>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn-primary">{t('common.calculate', lang)}</button>
+        <button type="reset" class="btn-secondary">{t('common.reset', lang)}</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="calculator-results" id="results" style="display: none;">
+    <h2>{t('percentage.results.title', lang)}</h2>
+
+    <div class="result-card">
+      <h3>{t('percentage.results.resultLabel', lang)}</h3>
+      <p class="value" id="result-value">-</p>
+      <p class="explanation" id="result-explanation">-</p>
+    </div>
+
+    <div class="result-details">
+      <h3>{t('percentage.results.formulaLabel', lang)}</h3>
+      <p class="formula" id="result-formula">-</p>
+    </div>
+  </div>
+
+  <div class="calculator-info">
+    <h2>{t('percentage.info.title', lang)}</h2>
+    <p>{t('percentage.info.description', lang)}</p>
+
+    <div class="info-section">
+      <h3>{t('percentage.info.commonUses', lang)}</h3>
+      <ul>
+        <li>{t('percentage.info.use1', lang)}</li>
+        <li>{t('percentage.info.use2', lang)}</li>
+        <li>{t('percentage.info.use3', lang)}</li>
+        <li>{t('percentage.info.use4', lang)}</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<style>
+  .percentage-calculator {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .calculator-form, .calculator-results, .calculator-info {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  h2 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  h3 {
+    color: #555;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  /* Tabs */
+  .calculation-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 0.5rem;
+  }
+
+  .tab-btn {
+    padding: 0.75rem 1rem;
+    border: none;
+    background: #f5f5f5;
+    color: #666;
+    border-radius: 4px 4px 0 0;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+    border-bottom: 3px solid transparent;
+  }
+
+  .tab-btn:hover {
+    background: #e8e8e8;
+  }
+
+  .tab-btn.active {
+    background: white;
+    color: #4CAF50;
+    border-bottom-color: #4CAF50;
+    font-weight: 500;
+  }
+
+  /* Forms */
+  .calc-form {
+    display: none;
+  }
+
+  .calc-form.active {
+    display: block;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group {
+    position: relative;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #555;
+  }
+
+  .form-group input[type="number"] {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+
+  .form-group input[type="number"]:focus {
+    outline: none;
+    border-color: #4CAF50;
+  }
+
+  .unit {
+    position: absolute;
+    right: 1rem;
+    top: 2.5rem;
+    color: #888;
+    font-size: 0.9rem;
+    pointer-events: none;
+  }
+
+  .form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .btn-primary, .btn-secondary {
+    flex: 1;
+    padding: 0.875rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-primary {
+    background: #4CAF50;
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: #45a049;
+  }
+
+  .btn-secondary {
+    background: #f5f5f5;
+    color: #333;
+  }
+
+  .btn-secondary:hover {
+    background: #e0e0e0;
+  }
+
+  /* Results */
+  .result-card {
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+
+  .result-card h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1.2rem;
+    color: white;
+  }
+
+  .result-card .value {
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  .result-card .explanation {
+    font-size: 1.2rem;
+    margin: 1rem 0 0 0;
+    opacity: 0.9;
+  }
+
+  .result-details {
+    background: #f9f9f9;
+    padding: 1.5rem;
+    border-radius: 4px;
+  }
+
+  .result-details h3 {
+    margin-top: 0;
+    color: #555;
+  }
+
+  .formula {
+    font-family: 'Courier New', monospace;
+    background: white;
+    padding: 1rem;
+    border-left: 4px solid #4CAF50;
+    margin: 0;
+    word-break: break-all;
+  }
+
+  /* Info Section */
+  .calculator-info {
+    background: #f9f9f9;
+  }
+
+  .calculator-info p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: #555;
+  }
+
+  .info-section {
+    margin-top: 1.5rem;
+  }
+
+  .info-section h3 {
+    color: #333;
+    margin-bottom: 0.5rem;
+  }
+
+  .info-section ul {
+    list-style: disc;
+    padding-left: 1.5rem;
+    color: #555;
+  }
+
+  .info-section li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    .calculation-tabs {
+      flex-direction: column;
+    }
+
+    .tab-btn {
+      width: 100%;
+      border-radius: 4px;
+    }
+
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  import type { PercentageCalculationType, PercentageInput, PercentageResult } from '@/utils/calculators/percentage';
+  import { calculatePercentage } from '@/utils/calculators/percentage';
+
+  const tabs = document.querySelectorAll('.tab-btn');
+  const forms = document.querySelectorAll('.calc-form');
+  const results = document.getElementById('results') as HTMLDivElement;
+
+  let currentType: PercentageCalculationType = 'percentOf';
+
+  // Handle tab switching
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const type = tab.getAttribute('data-type') as PercentageCalculationType;
+
+      // Update tabs
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      // Update forms
+      forms.forEach(f => f.classList.remove('active'));
+      const targetForm = document.getElementById(`form-${type}`);
+      if (targetForm) {
+        targetForm.classList.add('active');
+      }
+
+      currentType = type;
+      results.style.display = 'none';
+    });
+  });
+
+  // Handle form submissions
+  forms.forEach(form => {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(form as HTMLFormElement);
+      const value1 = parseFloat(formData.get('value1') as string);
+      const value2String = formData.get('value2') as string;
+      const value2 = value2String ? parseFloat(value2String) : undefined;
+
+      const input: PercentageInput = {
+        calculationType: currentType,
+        value1,
+        value2,
+      };
+
+      try {
+        const result = calculatePercentage(input);
+        displayResults(result);
+      } catch (error) {
+        alert('Error calculating percentage. Please check your inputs.');
+        console.error(error);
+      }
+    });
+
+    form.addEventListener('reset', () => {
+      results.style.display = 'none';
+    });
+  });
+
+  function displayResults(result: PercentageResult) {
+    const resultValue = document.getElementById('result-value') as HTMLParagraphElement;
+    const resultExplanation = document.getElementById('result-explanation') as HTMLParagraphElement;
+    const resultFormula = document.getElementById('result-formula') as HTMLParagraphElement;
+
+    // Format the result value
+    let displayValue = result.result.toString();
+    if (currentType === 'isWhatPercent' || currentType === 'percentageChange' || currentType === 'percentageDifference') {
+      displayValue += '%';
+    }
+
+    resultValue.textContent = displayValue;
+    resultExplanation.textContent = result.explanation;
+    resultFormula.textContent = result.formula;
+
+    // Show results
+    results.style.display = 'block';
+    results.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+</script>
