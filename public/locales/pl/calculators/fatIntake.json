@@ -27,6 +27,14 @@
     "maintain": "Utrzymać Wagę",
     "gainMuscle": "Zbudować Mięśnie"
   },
+  "units": {
+    "metric": "System Metryczny",
+    "imperial": "System Imperialny",
+    "cm": "cm",
+    "kg": "kg",
+    "ft": "ft",
+    "in": "in"
+  },
   "results": {
     "title": "Twoje Zalecenia Dotyczące Spożycia Tłuszczu",
     "recommendedIntake": "Zalecane Dzienne Spożycie Tłuszczu",

@@ -1,5 +1,6 @@
 {
   "title": "Calculadora de Alcoolemia",
+  "description": "Calcule sua concentração de álcool no sangue (BAC) com base nas bebidas consumidas, peso, sexo e tempo",
   "metaDescription": "Calcule sua concentração de álcool no sangue (BAC) com base nas bebidas consumidas, peso, sexo e tempo. Estime o nível de comprometimento e o tempo até ficar sóbrio.",
   "disclaimer": {
     "title": "Aviso Importante",

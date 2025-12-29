@@ -3,7 +3,13 @@
     "allow": [
       "Bash(for file in BACCalculator.astro GFRCalculator.astro WeightWatchersCalculator.astro OneRepMaxCalculator.astro FatIntakeCalculator.astro)",
       "Bash(do sed -i \"s/''[a-z]*:/''/\" \"$file\")",
-      "Bash(do sed -i \"s/import { t } from/import { t, type Locale } from/g; s/lang: string/lang: Locale/g\" \"$file\")"
+      "Bash(do sed -i \"s/import { t } from/import { t, type Locale } from/g; s/lang: string/lang: Locale/g\" \"$file\")",
+      "Bash(git reset:*)",
+      "Bash(cat:*)",
+      "Bash(ls:*)",
+      "Bash(powershell -Command \"Get-Content ''public/locales/tr/calculators/gfr.json'' | Select-String '':\\s*\"\"\"\"'' | Measure-Object\")",
+      "Bash(for file in public/locales/de/calculators/{gfr,bac,oneRepMax,fatIntake,weightWatchers}.json)",
+      "Bash(do echo \"=== $file ===\")"
     ],
     "deny": [],
     "ask": []

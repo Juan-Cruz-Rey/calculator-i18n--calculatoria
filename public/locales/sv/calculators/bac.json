@@ -1,5 +1,6 @@
 {
   "title": "BAC-kalkylator",
+  "description": "Beräkna din blodalkoholhalt (BAC) baserat på druckna drycker, vikt, kön och tid",
   "metaDescription": "Beräkna din blodalkoholhalt (BAC) baserat på druckna drycker, vikt, kön och tid. Uppskatta försämringsnivå och tid tills nykter.",
   "disclaimer": {
     "title": "Viktig Varning",

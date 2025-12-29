@@ -27,6 +27,14 @@
     "maintain": "Gewicht Halten",
     "gainMuscle": "Muskeln Aufbauen"
   },
+  "units": {
+    "metric": "Metrisch",
+    "imperial": "Imperial",
+    "cm": "cm",
+    "kg": "kg",
+    "ft": "ft",
+    "in": "in"
+  },
   "results": {
     "title": "Ihre Fettaufnahme-Empfehlungen",
     "recommendedIntake": "Empfohlene Tägliche Fettaufnahme",

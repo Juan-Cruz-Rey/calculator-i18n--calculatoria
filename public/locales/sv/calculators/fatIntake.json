@@ -27,6 +27,14 @@
     "maintain": "Bibehålla Vikt",
     "gainMuscle": "Bygga Muskler"
   },
+  "units": {
+    "metric": "Metriskt",
+    "imperial": "Imperial",
+    "cm": "cm",
+    "kg": "kg",
+    "ft": "ft",
+    "in": "in"
+  },
   "results": {
     "title": "Dina Fettintag Rekommendationer",
     "recommendedIntake": "Rekommenderat Dagligt Fettintag",

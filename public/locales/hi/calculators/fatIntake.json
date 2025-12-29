@@ -27,6 +27,14 @@
     "maintain": "वजन बनाए रखें",
     "gainMuscle": "मांसपेशियां बढ़ाएं"
   },
+  "units": {
+    "metric": "मीट्रिक",
+    "imperial": "इम्पीरियल",
+    "cm": "cm",
+    "kg": "kg",
+    "ft": "ft",
+    "in": "in"
+  },
   "results": {
     "title": "आपकी वसा सेवन सिफारिशें",
     "recommendedIntake": "अनुशंसित दैनिक वसा सेवन",

@@ -1,5 +1,6 @@
 {
   "title": "BAC Calculator",
+  "description": "Bereken je bloedalcoholgehalte (BAC) op basis van gedronken drankjes, gewicht, geslacht en tijd",
   "metaDescription": "Bereken je bloedalcoholgehalte (BAC) op basis van gedronken drankjes, gewicht, geslacht en tijd. Schat het niveau van beperking en de tijd tot nuchter.",
   "disclaimer": {
     "title": "Belangrijke Waarschuwing",

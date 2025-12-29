@@ -1,5 +1,6 @@
 ---
 import { getAlternatePath, languageConfig, type Locale } from '@/utils/i18n';
+import LanguageSelector from '@/components/LanguageSelector.astro';
 
 interface Props {
   title: string;
@@ -185,23 +186,6 @@ const structuredData = {
           <a href={calculatorsPath}>
             {navText.calculators}
           </a>
-          <nav class="lang-switch" aria-label="Language switcher">
-            {locales.map((locale, index) => (
-              <>
-                <a
-                  href={getAlternatePath(Astro.url.pathname, locale, calculator)}
-                  class={lang === locale ? 'active' : ''}
-                  lang={locale}
-                  hreflang={locale}
-                  aria-label={`Switch to ${languageConfig[locale].name}`}
-                  aria-current={lang === locale ? 'page' : undefined}
-                >
-                  {locale.toUpperCase()}
-                </a>
-                {index < locales.length - 1 && <span aria-hidden="true">|</span>}
-              </>
-            ))}
-          </nav>
         </div>
       </nav>
     </header>
@@ -212,6 +196,11 @@ const structuredData = {
 
     <footer>
       <div class="container">
+        <LanguageSelector
+          currentPath={Astro.url.pathname}
+          currentLang={lang as Locale}
+          calculator={calculator}
+        />
         <p>&copy; {new Date().getFullYear()} {navText.siteName} Online</p>
       </div>
     </footer>
@@ -337,27 +326,6 @@ const structuredData = {
         color: var(--primary-color);
       }
 
-      .lang-switch {
-        display: flex;
-        gap: 0.5rem;
-        align-items: center;
-        padding: 0.25rem 0.75rem;
-        background: var(--bg-color);
-        border-radius: 4px;
-      }
-
-      .lang-switch a {
-        font-weight: 500;
-      }
-
-      .lang-switch a.active {
-        color: var(--primary-color);
-      }
-
-      .lang-switch span {
-        color: #ccc;
-      }
-
       main {
         min-height: calc(100vh - 140px);
         padding: 2rem 0;
@@ -369,6 +337,17 @@ const structuredData = {
         padding: 2rem 0;
         text-align: center;
         color: #777;
+      }
+
+      footer .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      footer p {
+        margin: 0;
       }
 
       /* Accessibility improvements for forms and buttons */

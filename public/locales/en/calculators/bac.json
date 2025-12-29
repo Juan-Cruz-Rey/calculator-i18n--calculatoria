@@ -1,5 +1,6 @@
 {
   "title": "BAC Calculator",
+  "description": "Calculate your Blood Alcohol Content (BAC) based on drinks consumed, weight, gender, and time",
   "metaDescription": "Calculate your Blood Alcohol Content (BAC) based on drinks consumed, weight, gender, and time. Estimate impairment level and time until sober.",
   "disclaimer": {
     "title": "Important Disclaimer",

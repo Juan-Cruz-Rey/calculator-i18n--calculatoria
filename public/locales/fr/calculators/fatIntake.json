@@ -27,6 +27,14 @@
     "maintain": "Maintenir le Poids",
     "gainMuscle": "Gagner du Muscle"
   },
+  "units": {
+    "metric": "Système Métrique",
+    "imperial": "Système Impérial",
+    "cm": "cm",
+    "kg": "kg",
+    "ft": "ft",
+    "in": "in"
+  },
   "results": {
     "title": "Vos Recommandations d'Apport en Graisses",
     "recommendedIntake": "Apport Quotidien Recommandé en Graisses",

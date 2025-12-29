@@ -67,7 +67,7 @@ const { lang } = Astro.props;
       <!-- Custom Drink Settings (hidden by default) -->
       <div id="custom-drink-settings" class="custom-settings" style="display: none;">
         <div class="form-group">
-          <label for="drink-volume">{t('drinkVolume.label', lang)}</label>
+          <label for="drink-volume">{t('bac.drinkVolume.label', lang)}</label>
           <div class="input-with-unit">
             <input
               type="number"
@@ -84,7 +84,7 @@ const { lang } = Astro.props;
         </div>
 
         <div class="form-group">
-          <label for="alcohol-content">{t('alcoholContent.label', lang)}</label>
+          <label for="alcohol-content">{t('bac.alcoholContent.label', lang)}</label>
           <div class="input-with-unit">
             <input
               type="number"
@@ -101,7 +101,7 @@ const { lang } = Astro.props;
 
       <!-- Number of Drinks -->
       <div class="form-group">
-        <label for="drinks">{t('drinks.label', lang)}</label>
+        <label for="drinks">{t('bac.drinks.label', lang)}</label>
         <input
           type="number"
           id="drinks"

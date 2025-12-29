@@ -6,13 +6,13 @@ const { lang } = Astro.props as { lang: Locale };
 
 <div class="calculator-container">
   <div class="calculator-card">
-    <h2>{t('title', lang)}</h2>
-    <p class="calculator-description">{t('description', lang)}</p>
+    <h2>{t('gfr.title', lang)}</h2>
+    <p class="calculator-description">{t('gfr.description', lang)}</p>
 
     <form id="gfr-form" class="calculator-form">
       <!-- Age Input -->
       <div class="form-group">
-        <label for="age">{t('inputs.age', lang)}</label>
+        <label for="age">{t('gfr.inputs.age', lang)}</label>
         <input
           type="number"
           id="age"
@@ -23,27 +23,27 @@ const { lang } = Astro.props as { lang: Locale };
           required
           aria-describedby="age-help"
         />
-        <small id="age-help" class="form-help">{t('inputs.ageHelp', lang)}</small>
+        <small id="age-help" class="form-help">{t('gfr.inputs.ageHelp', lang)}</small>
       </div>
 
       <!-- Gender Selection -->
       <div class="form-group">
-        <label>{t('inputs.gender', lang)}</label>
+        <label>{t('gfr.inputs.gender', lang)}</label>
         <div class="radio-group">
           <label class="radio-label">
             <input type="radio" name="gender" value="male" required />
-            <span>{t('inputs.male', lang)}</span>
+            <span>{t('gfr.inputs.male', lang)}</span>
           </label>
           <label class="radio-label">
             <input type="radio" name="gender" value="female" required />
-            <span>{t('inputs.female', lang)}</span>
+            <span>{t('gfr.inputs.female', lang)}</span>
           </label>
         </div>
       </div>
 
       <!-- Serum Creatinine Input -->
       <div class="form-group">
-        <label for="creatinine">{t('inputs.serumCreatinine', lang)}</label>
+        <label for="creatinine">{t('gfr.inputs.serumCreatinine', lang)}</label>
         <div class="input-with-unit">
           <input
             type="number"
@@ -60,66 +60,66 @@ const { lang } = Astro.props as { lang: Locale };
             <option value="μmol/L">μmol/L</option>
           </select>
         </div>
-        <small id="creatinine-help" class="form-help">{t('inputs.creatinineHelp', lang)}</small>
+        <small id="creatinine-help" class="form-help">{t('gfr.inputs.creatinineHelp', lang)}</small>
       </div>
 
       <!-- Equation Selection -->
       <div class="form-group">
-        <label>{t('inputs.equation', lang)}</label>
+        <label>{t('gfr.inputs.equation', lang)}</label>
         <div class="radio-group">
           <label class="radio-label">
             <input type="radio" name="equation" value="ckd-epi-2021" checked />
-            <span>{t('inputs.equation2021', lang)}</span>
+            <span>{t('gfr.inputs.equation2021', lang)}</span>
           </label>
           <label class="radio-label">
             <input type="radio" name="equation" value="ckd-epi-2009" />
-            <span>{t('inputs.equation2009', lang)}</span>
+            <span>{t('gfr.inputs.equation2009', lang)}</span>
           </label>
         </div>
-        <small class="form-help">{t('inputs.equationHelp', lang)}</small>
+        <small class="form-help">{t('gfr.inputs.equationHelp', lang)}</small>
       </div>
 
       <!-- Race Option (only for 2009 equation) -->
       <div class="form-group" id="race-group" style="display: none;">
-        <label>{t('inputs.race', lang)}</label>
+        <label>{t('gfr.inputs.race', lang)}</label>
         <div class="checkbox-group">
           <label class="checkbox-label">
             <input type="checkbox" id="african-american" name="africanAmerican" />
-            <span>{t('inputs.africanAmerican', lang)}</span>
+            <span>{t('gfr.inputs.africanAmerican', lang)}</span>
           </label>
         </div>
-        <small class="form-help">{t('inputs.raceHelp', lang)}</small>
+        <small class="form-help">{t('gfr.inputs.raceHelp', lang)}</small>
       </div>
 
       <!-- Calculate Button -->
       <button type="submit" class="btn btn-primary">
-        {t('calculate', lang)}
+        {t('gfr.calculate', lang)}
       </button>
     </form>
 
     <!-- Results Section -->
     <div id="results" class="results" style="display: none;">
-      <h3>{t('results.title', lang)}</h3>
+      <h3>{t('gfr.results.title', lang)}</h3>
 
       <div class="result-card">
         <div class="result-primary">
-          <span class="result-label">{t('results.gfrValue', lang)}</span>
+          <span class="result-label">{t('gfr.results.gfrValue', lang)}</span>
           <span class="result-value" id="gfr-value">--</span>
         </div>
 
         <div class="result-secondary">
           <div class="result-item">
-            <span class="result-label">{t('results.stage', lang)}</span>
+            <span class="result-label">{t('gfr.results.stage', lang)}</span>
             <span class="result-value" id="stage-value">--</span>
           </div>
 
           <div class="result-item">
-            <span class="result-label">{t('results.interpretation', lang)}</span>
+            <span class="result-label">{t('gfr.results.interpretation', lang)}</span>
             <span class="result-value" id="interpretation-value">--</span>
           </div>
 
           <div class="result-item">
-            <span class="result-label">{t('results.equation', lang)}</span>
+            <span class="result-label">{t('gfr.results.equation', lang)}</span>
             <span class="result-value" id="equation-value">--</span>
           </div>
         </div>
@@ -127,42 +127,42 @@ const { lang } = Astro.props as { lang: Locale };
 
       <!-- Stage Information -->
       <div class="stage-info" id="stage-info">
-        <h4>{t('stageInfo.title', lang)}</h4>
+        <h4>{t('gfr.stageInfo.title', lang)}</h4>
         <ul class="stage-list">
-          <li><strong>{t('stageInfo.stage1', lang)}</strong> {t('gfr.stageInfo.stage1Desc', lang)}</li>
-          <li><strong>{t('stageInfo.stage2', lang)}</strong> {t('gfr.stageInfo.stage2Desc', lang)}</li>
-          <li><strong>{t('stageInfo.stage3a', lang)}</strong> {t('gfr.stageInfo.stage3aDesc', lang)}</li>
-          <li><strong>{t('stageInfo.stage3b', lang)}</strong> {t('gfr.stageInfo.stage3bDesc', lang)}</li>
-          <li><strong>{t('stageInfo.stage4', lang)}</strong> {t('gfr.stageInfo.stage4Desc', lang)}</li>
-          <li><strong>{t('stageInfo.stage5', lang)}</strong> {t('gfr.stageInfo.stage5Desc', lang)}</li>
+          <li><strong>{t('gfr.stageInfo.stage1', lang)}</strong> {t('gfr.stageInfo.stage1Desc', lang)}</li>
+          <li><strong>{t('gfr.stageInfo.stage2', lang)}</strong> {t('gfr.stageInfo.stage2Desc', lang)}</li>
+          <li><strong>{t('gfr.stageInfo.stage3a', lang)}</strong> {t('gfr.stageInfo.stage3aDesc', lang)}</li>
+          <li><strong>{t('gfr.stageInfo.stage3b', lang)}</strong> {t('gfr.stageInfo.stage3bDesc', lang)}</li>
+          <li><strong>{t('gfr.stageInfo.stage4', lang)}</strong> {t('gfr.stageInfo.stage4Desc', lang)}</li>
+          <li><strong>{t('gfr.stageInfo.stage5', lang)}</strong> {t('gfr.stageInfo.stage5Desc', lang)}</li>
         </ul>
       </div>
 
       <!-- Medical Disclaimer -->
       <div class="disclaimer">
-        <p><strong>{t('disclaimer.title', lang)}</strong></p>
-        <p>{t('disclaimer.text', lang)}</p>
+        <p><strong>{t('gfr.disclaimer.title', lang)}</strong></p>
+        <p>{t('gfr.disclaimer.text', lang)}</p>
       </div>
     </div>
   </div>
 
   <!-- About Section -->
   <div class="info-section">
-    <h3>{t('about.title', lang)}</h3>
-    <p>{t('about.description', lang)}</p>
+    <h3>{t('gfr.about.title', lang)}</h3>
+    <p>{t('gfr.about.description', lang)}</p>
 
-    <h4>{t('about.whatIsGFR', lang)}</h4>
-    <p>{t('about.gfrExplanation', lang)}</p>
+    <h4>{t('gfr.about.whatIsGFR', lang)}</h4>
+    <p>{t('gfr.about.gfrExplanation', lang)}</p>
 
-    <h4>{t('about.ckdEpiEquation', lang)}</h4>
-    <p>{t('about.equationExplanation', lang)}</p>
+    <h4>{t('gfr.about.ckdEpiEquation', lang)}</h4>
+    <p>{t('gfr.about.equationExplanation', lang)}</p>
 
-    <h4>{t('about.importantNotes', lang)}</h4>
+    <h4>{t('gfr.about.importantNotes', lang)}</h4>
     <ul>
-      <li>{t('about.note1', lang)}</li>
-      <li>{t('about.note2', lang)}</li>
-      <li>{t('about.note3', lang)}</li>
-      <li>{t('about.note4', lang)}</li>
+      <li>{t('gfr.about.note1', lang)}</li>
+      <li>{t('gfr.about.note2', lang)}</li>
+      <li>{t('gfr.about.note3', lang)}</li>
+      <li>{t('gfr.about.note4', lang)}</li>
     </ul>
   </div>
 </div>

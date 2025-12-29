@@ -1,5 +1,6 @@
 {
   "title": "Calcolatore di Alcolemia",
+  "description": "Calcola il tuo tasso alcolemico (BAC) in base alle bevande consumate, peso, sesso e tempo",
   "metaDescription": "Calcola il tuo tasso alcolemico (BAC) in base alle bevande consumate, peso, sesso e tempo. Stima il livello di compromissione e il tempo fino alla sobrietà.",
   "disclaimer": {
     "title": "Avviso Importante",

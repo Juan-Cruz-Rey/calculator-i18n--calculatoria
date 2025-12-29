@@ -1,5 +1,6 @@
 {
   "title": "Calculateur d'Alcoolémie",
+  "description": "Calculez votre taux d'alcoolémie (BAC) en fonction des boissons consommées, du poids, du sexe et du temps",
   "metaDescription": "Calculez votre taux d'alcoolémie (BAC) en fonction des boissons consommées, du poids, du sexe et du temps. Estimez le niveau d'altération et le temps jusqu'à la sobriété.",
   "disclaimer": {
     "title": "Avertissement Important",

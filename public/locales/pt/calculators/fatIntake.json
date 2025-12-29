@@ -27,6 +27,14 @@
     "maintain": "Manter Peso",
     "gainMuscle": "Ganhar Músculo"
   },
+  "units": {
+    "metric": "Sistema Métrico",
+    "imperial": "Sistema Imperial",
+    "cm": "cm",
+    "kg": "kg",
+    "ft": "ft",
+    "in": "in"
+  },
   "results": {
     "title": "Suas Recomendações de Ingestão de Gordura",
     "recommendedIntake": "Ingestão Diária Recomendada de Gordura",

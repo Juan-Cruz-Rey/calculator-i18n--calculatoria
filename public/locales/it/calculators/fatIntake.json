@@ -27,6 +27,14 @@
     "maintain": "Mantenere il Peso",
     "gainMuscle": "Aumentare la Massa Muscolare"
   },
+  "units": {
+    "metric": "Sistema Metrico",
+    "imperial": "Sistema Imperiale",
+    "cm": "cm",
+    "kg": "kg",
+    "ft": "ft",
+    "in": "in"
+  },
   "results": {
     "title": "Le Tue Raccomandazioni di Assunzione di Grassi",
     "recommendedIntake": "Assunzione Giornaliera Raccomandata di Grassi",

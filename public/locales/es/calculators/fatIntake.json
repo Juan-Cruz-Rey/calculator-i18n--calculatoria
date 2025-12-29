@@ -27,6 +27,14 @@
     "maintain": "Mantener Peso",
     "gainMuscle": "Ganar Músculo"
   },
+  "units": {
+    "metric": "Sistema Métrico",
+    "imperial": "Sistema Imperial",
+    "cm": "cm",
+    "kg": "kg",
+    "ft": "ft",
+    "in": "in"
+  },
   "results": {
     "title": "Tus Recomendaciones de Ingesta de Grasas",
     "recommendedIntake": "Ingesta Diaria Recomendada de Grasas",

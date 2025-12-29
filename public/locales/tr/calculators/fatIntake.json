@@ -27,6 +27,14 @@
     "maintain": "Kiloyu Korumak",
     "gainMuscle": "Kas Kazanmak"
   },
+  "units": {
+    "metric": "Metrik",
+    "imperial": "İngiliz",
+    "cm": "cm",
+    "kg": "kg",
+    "ft": "ft",
+    "in": "in"
+  },
   "results": {
     "title": "Yağ Alımı Önerileriniz",
     "recommendedIntake": "Önerilen Günlük Yağ Alımı",

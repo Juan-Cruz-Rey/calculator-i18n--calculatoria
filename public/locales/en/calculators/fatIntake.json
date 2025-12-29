@@ -27,6 +27,14 @@
     "maintain": "Maintain Weight",
     "gainMuscle": "Gain Muscle"
   },
+  "units": {
+    "metric": "Metric",
+    "imperial": "Imperial",
+    "cm": "cm",
+    "kg": "kg",
+    "ft": "ft",
+    "in": "in"
+  },
   "results": {
     "title": "Your Fat Intake Recommendations",
     "recommendedIntake": "Recommended Daily Fat Intake",

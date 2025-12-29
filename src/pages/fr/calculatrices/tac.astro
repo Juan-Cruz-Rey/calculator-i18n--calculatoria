@@ -3,7 +3,7 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 import BACCalculator from '@components/calculators/BACCalculator.astro';
 import { t } from '@utils/i18n';
 
-const lang = 'tr';
+const lang = 'fr';
 const title = t('bac:title', lang);
 const description = t('bac:metaDescription', lang);
 ---
@@ -12,6 +12,7 @@ const description = t('bac:metaDescription', lang);
   title={`${title} - ${t('site.title', lang)}`}
   description={description}
   lang={lang}
+  calculator="bac"
 >
   <main class="calculator-page">
     <div class="container">

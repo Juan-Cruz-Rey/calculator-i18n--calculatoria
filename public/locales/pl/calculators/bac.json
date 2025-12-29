@@ -1,5 +1,6 @@
 {
   "title": "Kalkulator Poziomu Alkoholu we Krwi",
+  "description": "Oblicz poziom alkoholu we krwi (BAC) na podstawie wypitych napojów, wagi, płci i czasu",
   "metaDescription": "Oblicz poziom alkoholu we krwi (BAC) na podstawie wypitych napojów, wagi, płci i czasu. Oszacuj poziom upośledzenia i czas do wytrzeźwienia.",
   "disclaimer": {
     "title": "Ważne Ostrzeżenie",

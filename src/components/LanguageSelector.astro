@@ -1,0 +1,56 @@
+---
+import { getAlternatePath, languageConfig, type Locale } from '@/utils/i18n';
+
+interface Props {
+  currentPath: string;
+  currentLang: Locale;
+  calculator?: string;
+}
+
+const { currentPath, currentLang, calculator } = Astro.props;
+
+const locales: Locale[] = ['es', 'en', 'pt', 'fr', 'hi', 'de', 'it', 'pl', 'nl', 'tr', 'sv', 'ru'];
+---
+
+<nav class="lang-switch" aria-label="Language switcher">
+  {locales.map((locale, index) => (
+    <>
+      <a
+        href={getAlternatePath(currentPath, locale, calculator)}
+        class={currentLang === locale ? 'active' : ''}
+        lang={locale}
+        hreflang={locale}
+        aria-label={`Switch to ${languageConfig[locale].name}`}
+        aria-current={currentLang === locale ? 'page' : undefined}
+      >
+        {locale.toUpperCase()}
+      </a>
+      {index < locales.length - 1 && <span aria-hidden="true">|</span>}
+    </>
+  ))}
+</nav>
+
+<style>
+  .lang-switch {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    background: var(--bg-color);
+    border-radius: 4px;
+  }
+
+  .lang-switch a {
+    font-weight: 500;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .lang-switch a.active {
+    color: var(--primary-color);
+  }
+
+  .lang-switch span {
+    color: #ccc;
+  }
+</style>

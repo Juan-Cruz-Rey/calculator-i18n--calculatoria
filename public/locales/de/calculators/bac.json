@@ -1,5 +1,6 @@
 {
   "title": "Promillerechner",
+  "description": "Berechnen Sie Ihren Blutalkoholgehalt (BAK) basierend auf konsumierten Getränken, Gewicht, Geschlecht und Zeit",
   "metaDescription": "Berechnen Sie Ihren Blutalkoholgehalt (BAK) basierend auf konsumierten Getränken, Gewicht, Geschlecht und Zeit. Schätzen Sie das Beeinträchtigungsniveau und die Zeit bis zur Nüchternheit.",
   "disclaimer": {
     "title": "Wichtiger Hinweis",

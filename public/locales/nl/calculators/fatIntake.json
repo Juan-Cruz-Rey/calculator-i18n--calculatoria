@@ -27,6 +27,14 @@
     "maintain": "Gewicht Behouden",
     "gainMuscle": "Spieren Opbouwen"
   },
+  "units": {
+    "metric": "Metrisch",
+    "imperial": "Imperiaal",
+    "cm": "cm",
+    "kg": "kg",
+    "ft": "ft",
+    "in": "in"
+  },
   "results": {
     "title": "Je Vetinname Aanbevelingen",
     "recommendedIntake": "Aanbevolen Dagelijkse Vetinname",
