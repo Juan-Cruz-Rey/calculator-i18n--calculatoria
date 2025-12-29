@@ -20,7 +20,8 @@
     "years": "yıl",
     "week": "hafta",
     "search": "Hesap makinesi ara...",
-    "noResults": "Aramanızla eşleşen hesap makinesi bulunamadı"
+    "noResults": "Aramanızla eşleşen hesap makinesi bulunamadı",
+    "featuredCalculators": "Öne Çıkan Hesap Makineleri"
   },
   "units": {
     "metric": "Metrik",

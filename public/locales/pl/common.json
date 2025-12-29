@@ -20,7 +20,8 @@
     "years": "lat",
     "week": "tydzień",
     "search": "Szukaj kalkulatorów...",
-    "noResults": "Nie znaleziono kalkulatorów pasujących do wyszukiwania"
+    "noResults": "Nie znaleziono kalkulatorów pasujących do wyszukiwania",
+    "featuredCalculators": "Polecane Kalkulatory"
   },
   "units": {
     "metric": "Metryczny",

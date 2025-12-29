@@ -20,7 +20,8 @@
     "years": "anos",
     "week": "semana",
     "search": "Buscar calculadoras...",
-    "noResults": "Nenhuma calculadora encontrada correspondente à sua pesquisa"
+    "noResults": "Nenhuma calculadora encontrada correspondente à sua pesquisa",
+    "featuredCalculators": "Calculadoras em Destaque"
   },
   "units": {
     "metric": "Métrico",

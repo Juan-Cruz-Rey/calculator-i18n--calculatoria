@@ -1,5 +1,9 @@
 export type Locale = 'es' | 'en' | 'pt' | 'fr' | 'hi' | 'de' | 'it' | 'pl' | 'nl' | 'tr' | 'sv' | 'ru';
 
+// Import routing configuration
+import { getSlug } from '@/config/routes';
+import { languages, defaultLocale } from '@/config/languages';
+
 // Import common translations
 import esCommon from '../../public/locales/es/common.json';
 import enCommon from '../../public/locales/en/common.json';
@@ -275,6 +279,15 @@ import frPercentage from '../../public/locales/fr/calculators/percentage.json';
 import hiPercentage from '../../public/locales/hi/calculators/percentage.json';
 import dePercentage from '../../public/locales/de/calculators/percentage.json';
 import itPercentage from '../../public/locales/it/calculators/percentage.json';
+
+import esSleep from '../../public/locales/es/calculators/sleep.json';
+import enSleep from '../../public/locales/en/calculators/sleep.json';
+import ptSleep from '../../public/locales/pt/calculators/sleep.json';
+import frSleep from '../../public/locales/fr/calculators/sleep.json';
+import hiSleep from '../../public/locales/hi/calculators/sleep.json';
+import deSleep from '../../public/locales/de/calculators/sleep.json';
+import itSleep from '../../public/locales/it/calculators/sleep.json';
+
 import esGFR from '../../public/locales/es/calculators/gfr.json';
 import enGFR from '../../public/locales/en/calculators/gfr.json';
 import ptGFR from '../../public/locales/pt/calculators/gfr.json';
@@ -532,6 +545,7 @@ const translations: Record<Locale, Translations> = {
     weightWatchers: esWeightWatchers,
     date: esDate,
     percentage: esPercentage,
+    sleep: esSleep,
     gfr: esGFR,
     oneRepMax: esOneRepMax,
     fatIntake: esFatIntake,
@@ -571,6 +585,7 @@ const translations: Record<Locale, Translations> = {
     tip: enTip,
     date: enDate,
     percentage: enPercentage,
+    sleep: enSleep,
     gfr: enGFR,
     oneRepMax: enOneRepMax,
     fatIntake: enFatIntake,
@@ -610,6 +625,7 @@ const translations: Record<Locale, Translations> = {
     tip: ptTip,
     date: ptDate,
     percentage: ptPercentage,
+    sleep: ptSleep,
     gfr: ptGFR,
     oneRepMax: ptOneRepMax,
     fatIntake: ptFatIntake,
@@ -649,6 +665,7 @@ const translations: Record<Locale, Translations> = {
     tip: frTip,
     date: frDate,
     percentage: frPercentage,
+    sleep: frSleep,
     gfr: frGFR,
     oneRepMax: frOneRepMax,
     fatIntake: frFatIntake,
@@ -688,6 +705,7 @@ const translations: Record<Locale, Translations> = {
     waistHip: hiWaistHip,
     date: hiDate,
     percentage: hiPercentage,
+    sleep: hiSleep,
     gfr: hiGFR,
     oneRepMax: hiOneRepMax,
     fatIntake: hiFatIntake,
@@ -727,6 +745,7 @@ const translations: Record<Locale, Translations> = {
     waistHip: deWaistHip,
     date: deDate,
     percentage: dePercentage,
+    sleep: deSleep,
     gfr: deGFR,
     oneRepMax: deOneRepMax,
     fatIntake: deFatIntake,
@@ -766,6 +785,7 @@ const translations: Record<Locale, Translations> = {
     waistHip: itWaistHip,
     date: itDate,
     percentage: itPercentage,
+    sleep: itSleep,
     gfr: itGFR,
     oneRepMax: itOneRepMax,
     fatIntake: itFatIntake,
@@ -1548,50 +1568,27 @@ export function getLocalizedPath(path: string, locale: Locale): string {
 
 /**
  * Get alternate locale path for a given calculator
+ * Uses the new routing system from @/config/routes and @/config/languages
  */
 export function getAlternatePath(currentPath: string, targetLocale: Locale, calculator?: string): string {
-  // Remove leading/trailing slashes for processing
-  const normalized = currentPath.replace(/^\/|\/$/g, '');
+  // If we have a calculator ID, build the URL using the new routing system
+  if (calculator) {
+    const slug = getSlug(calculator, targetLocale);
+    const langConfig = languages[targetLocale];
 
-  // Base paths mapping
-  const basePaths: Record<string, Record<Locale, string>> = {
-    '': {
-      es: '/es/',
-      en: '/',
-      pt: '/pt/',
-      fr: '/fr/',
-      hi: '/hi/',
-      de: '/de/',
-      it: '/it/',
-      pl: '/pl/',
-      sv: '/sv/',
-      nl: '/nl/',
-      tr: '/tr/',
-      ru: '/ru/',
-    },
-  };
-
-  // Use the globally exported calculatorPaths object defined above
-
-  // Check if it's a calculator page
-  if (calculator && calculatorPaths[calculator as keyof typeof calculatorPaths]) {
-    const paths = calculatorPaths[calculator as keyof typeof calculatorPaths] as Record<Locale, string>;
-    return paths[targetLocale];
+    if (targetLocale === defaultLocale) {
+      // English (default) has no language prefix
+      return `/${langConfig.folder}/${slug}/`;
+    } else {
+      // Other languages include language code
+      return `/${targetLocale}/${langConfig.folder}/${slug}/`;
+    }
   }
 
-  // Check base paths
-  if (basePaths[normalized]) {
-    return basePaths[normalized][targetLocale];
+  // For homepage/language root
+  if (targetLocale === defaultLocale) {
+    return '/';
+  } else {
+    return `/${targetLocale}/`;
   }
-
-  // Check if normalized path is a language code (homepage of a language)
-  const allLocales: Locale[] = ['es', 'en', 'pt', 'fr', 'hi', 'de', 'it', 'pl', 'nl', 'tr', 'sv', 'ru'];
-  if (allLocales.includes(normalized as Locale)) {
-    // It's a language homepage, return the target language homepage
-    return basePaths[''][targetLocale];
-  }
-
-  // Fallback to language root with trailing slash
-  const langPath = languageConfig[targetLocale].path;
-  return langPath ? `${langPath}/` : '/';
 }

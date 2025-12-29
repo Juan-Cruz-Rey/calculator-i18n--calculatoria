@@ -20,7 +20,8 @@
     "years": "years",
     "week": "week",
     "search": "Search calculators...",
-    "noResults": "No calculators found matching your search"
+    "noResults": "No calculators found matching your search",
+    "featuredCalculators": "Featured Calculators"
   },
   "units": {
     "metric": "Metric",

@@ -20,7 +20,8 @@
     "years": "Jahre",
     "week": "Woche",
     "search": "Rechner suchen...",
-    "noResults": "Keine Rechner gefunden, die Ihrer Suche entsprechen"
+    "noResults": "Keine Rechner gefunden, die Ihrer Suche entsprechen",
+    "featuredCalculators": "Empfohlene Rechner"
   },
   "units": {
     "metric": "Metrisch",

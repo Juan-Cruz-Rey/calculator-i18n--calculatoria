@@ -20,7 +20,8 @@
     "years": "år",
     "week": "vecka",
     "search": "Sök kalkylatorer...",
-    "noResults": "Inga kalkylatorer hittades som matchar din sökning"
+    "noResults": "Inga kalkylatorer hittades som matchar din sökning",
+    "featuredCalculators": "Utvalda Kalkylatorer"
   },
   "units": {
     "metric": "Metrisk",

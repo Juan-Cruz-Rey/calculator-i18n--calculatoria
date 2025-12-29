@@ -20,7 +20,8 @@
     "years": "jaar",
     "week": "week",
     "search": "Zoek rekenmachines...",
-    "noResults": "Geen rekenmachines gevonden die overeenkomen met uw zoekopdracht"
+    "noResults": "Geen rekenmachines gevonden die overeenkomen met uw zoekopdracht",
+    "featuredCalculators": "Aanbevolen Rekenmachines"
   },
   "units": {
     "metric": "Metrisch",

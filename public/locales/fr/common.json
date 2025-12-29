@@ -20,7 +20,8 @@
     "years": "ans",
     "week": "semaine",
     "search": "Rechercher des calculatrices...",
-    "noResults": "Aucune calculatrice ne correspond à votre recherche"
+    "noResults": "Aucune calculatrice ne correspond à votre recherche",
+    "featuredCalculators": "Calculatrices en Vedette"
   },
   "units": {
     "metric": "Métrique",
