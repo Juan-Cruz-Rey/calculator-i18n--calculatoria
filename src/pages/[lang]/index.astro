@@ -3,10 +3,10 @@
  * Dynamic homepage for all languages
  *
  * This file generates the homepage (calculator listing) for all languages
- * except Spanish (which is in the root index.astro).
+ * except English (which is in the root index.astro).
  *
  * URLs generated:
- * - /en/ (English)
+ * - /es/ (Spanish)
  * - /de/ (German)
  * - /fr/ (French)
  * - /pt/ (Portuguese)
@@ -27,9 +27,9 @@ import { getSupportedLocales, type Locale } from '@/config/languages';
 export const getStaticPaths = (async () => {
   const locales = getSupportedLocales();
 
-  // Generate paths for all languages except Spanish (default)
+  // Generate paths for all languages except English (default)
   return locales
-    .filter(locale => locale !== 'es')
+    .filter(locale => locale !== 'en')
     .map(locale => ({
       params: { lang: locale },
       props: { locale }

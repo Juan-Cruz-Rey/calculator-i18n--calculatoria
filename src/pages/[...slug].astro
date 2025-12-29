@@ -39,7 +39,7 @@ export const getStaticPaths = (async () => {
       // Build the full path based on language
       let fullPath: string;
       if (lang === defaultLocale) {
-        // Spanish (default) has no language prefix
+        // English (default) has no language prefix
         fullPath = `${langConfig.folder}/${slug}`;
       } else {
         // Other languages include language code

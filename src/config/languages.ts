@@ -91,7 +91,7 @@ export const languages: Record<Locale, LanguageConfig> = {
   }
 };
 
-export const defaultLocale: Locale = 'es';
+export const defaultLocale: Locale = 'en';
 
 /**
  * Get list of all supported locale codes
