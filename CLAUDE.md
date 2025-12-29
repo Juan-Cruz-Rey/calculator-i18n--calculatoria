@@ -68,23 +68,38 @@ TypeScript path aliases are configured in `tsconfig.json`:
 
 ## Internationalization
 
+**⚠️ CRITICAL RULE:** All URLs MUST be fully localized. See `.claude/url-localization-rules.md` for complete guidelines.
+
 **Library:** astro-i18next
 
 **Supported Languages:**
 - Spanish (es) - Default language
 - English (en)
+- Portuguese (pt)
+- French (fr)
+- Hindi (hi)
+- German (de)
+- Italian (it)
+- Polish (pl)
 
 **Configuration:** `astro-i18next.config.mjs`
 
 **Translation Files Location:** `public/locales/{lang}/*.json`
 
-**URL Structure:**
-- Spanish: `/` (root), `/calculadoras/imc`
-- English: `/en`, `/en/calculators/bmi`
+**URL Structure (ALWAYS use translated paths):**
+- Spanish: `/calculadoras/imc`
+- English: `/calculators/bmi`
+- Portuguese: `/pt/calculadoras/bmi`
+- French: `/fr/calculatrices/bmi`
+- Hindi: `/hi/calculators/bmi`
+- German: `/de/rechner/bmi`
+- Italian: `/it/calcolatrici/bmi`
+- Polish: `/pl/kalkulatory/bmi`
 
 **Route Mapping:**
-- The `routes` object in `astro-i18next.config.mjs` maps Spanish URLs to English equivalents
+- The `routes` object in `astro-i18next.config.mjs` maps Spanish URLs to localized equivalents for each language
 - Spanish is the default locale (`showDefaultLocale: false`)
+- **NEVER** use `/calculators/` for non-English languages - always use translated folder names
 
 **Using Translations:**
 ```astro

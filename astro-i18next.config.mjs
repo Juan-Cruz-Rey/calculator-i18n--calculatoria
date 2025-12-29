@@ -1,13 +1,30 @@
 /** @type {import('astro-i18next').AstroI18nextConfig} */
 export default {
   defaultLocale: "es",
-  locales: ["es", "en", "pl"],
+  locales: ["es", "en", "pt", "fr", "hi", "de", "it", "pl"],
   namespaces: ["common", "calculators"],
   defaultNamespace: "common",
   routes: {
     en: {
       "calculadoras": "calculators",
-      "calculadoras/imc": "calculators/bmi",
+    },
+    pt: {
+      "calculadoras": "calculadoras",
+    },
+    fr: {
+      "calculadoras": "calculatrices",
+    },
+    hi: {
+      "calculadoras": "calculators",
+    },
+    de: {
+      "calculadoras": "rechner",
+    },
+    it: {
+      "calculadoras": "calcolatrici",
+    },
+    pl: {
+      "calculadoras": "kalkulatory",
     }
   },
   showDefaultLocale: false,
