@@ -1,0 +1,56 @@
+{
+  "title": "Kropp Fett Kalkylator",
+  "description": "Beräkna your body fat percentage",
+  "metaDescription": "Gratis body fat calculator - Estimate your body fat percentage using the U.S. Navy Method or BMI-based method.",
+  "form": {
+    "title": "Ange Din Information",
+    "methodLabel": "Calculation Method",
+    "ageLabel": "Ålder",
+    "agePlaceholder": "Ange din ålder (15-80)",
+    "genderLabel": "Kön",
+    "heightLabel": "Längd",
+    "heightPlaceholder": "Ange din längd",
+    "weightLabel": "Vikt",
+    "weightPlaceholder": "Ange din vikt",
+    "measurementsTitle": "Kropp Measurements",
+    "neckLabel": "Neck Circumference",
+    "neckPlaceholder": "Ange neck circumference",
+    "neckHelp": "Measure below the larynx, sloping downward",
+    "waistLabel": "Midja Circumference",
+    "waistPlaceholder": "Ange waist circumference",
+    "waistHelpMale": "Measure horizontally around the navel",
+    "waistHelpFemale": "Measure at the narrowest part of the torso",
+    "hipLabel": "Höft Circumference",
+    "hipPlaceholder": "Ange hip circumference",
+    "hipHelp": "Measure at the widest part of the hips"
+  },
+  "method": {
+    "navy": "U.S. Navy Method",
+    "bmi": "BMI Method",
+    "navyDesc": "Requires neck, waist, and hip (women) measurements",
+    "bmiDesc": "Estimation baserat på age, weight, and height"
+  },
+  "results": {
+    "title": "Din Resultat",
+    "bodyFatPercentage": "Kropp Fett Percentage",
+    "bodyFatMass": "Kropp Fett Massa",
+    "leanBodyMass": "Fettfri Kropp Massa",
+    "idealBodyFat": "Ideal Kropp Fett",
+    "fatToLose": "Fett to Lose",
+    "method": "Method Used"
+  },
+  "info": {
+    "title": "Om the Kropp Fett Kalkylator",
+    "description": "This calculator estimates your body fat percentage using the U.S. Navy Method or BMI-based method. The Navy method uses body circumference measurements, while the BMI method is baserat på din ålder, weight, and height.",
+    "categoriesTitle": "Kropp Fett Categories (American Council on Exercise)",
+    "categoryLabel": "Category",
+    "menLabel": "Men",
+    "womenLabel": "Women",
+    "essentialFat": "Essential Fett",
+    "athletes": "Athletes",
+    "fitness": "Fitness",
+    "average": "Average",
+    "obese": "Obese",
+    "limitations": "These results are only an estimate. For more accurate body fat measurement, consider using instruments like bioelectric impedance analysis or consult with a healthcare professional."
+  }
+}

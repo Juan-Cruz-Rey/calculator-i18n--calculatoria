@@ -1,0 +1,56 @@
+{
+  "title": "Lichaamsvet Rekenmachine",
+  "description": "Bereken uw lichaamsvetpercentage",
+  "metaDescription": "Gratis lichaamsvet rekenmachine - Schat uw lichaamsvetpercentage met behulp van de U.S. Navy Methode of BMI-gebaseerde methode.",
+  "form": {
+    "title": "Voer Uw Gegevens In",
+    "methodLabel": "Berekenings Methode",
+    "ageLabel": "Leeftijd",
+    "agePlaceholder": "Voer uw leeftijd in (15-80)",
+    "genderLabel": "Geslacht",
+    "heightLabel": "Lengte",
+    "heightPlaceholder": "Voer uw lengte in",
+    "weightLabel": "Gewicht",
+    "weightPlaceholder": "Voer uw gewicht in",
+    "measurementsTitle": "Lichaamsmaten",
+    "neckLabel": "Nekomtrek",
+    "neckPlaceholder": "Voer nekomtrek in",
+    "neckHelp": "Meet onder het strottenhoofd, schuin naar beneden",
+    "waistLabel": "Tailleomtrek",
+    "waistPlaceholder": "Voer tailleomtrek in",
+    "waistHelpMale": "Meet horizontaal rond de navel",
+    "waistHelpFemale": "Meet op het smalste deel van de romp",
+    "hipLabel": "Heupomtrek",
+    "hipPlaceholder": "Voer heupomtrek in",
+    "hipHelp": "Meet op het breedste deel van de heupen"
+  },
+  "method": {
+    "navy": "U.S. Navy Methode",
+    "bmi": "BMI Methode",
+    "navyDesc": "Vereist nek, taille en heup (vrouwen) metingen",
+    "bmiDesc": "Schatting gebaseerd op leeftijd, gewicht en lengte"
+  },
+  "results": {
+    "title": "Uw Resultaten",
+    "bodyFatPercentage": "Lichaamsvetpercentage",
+    "bodyFatMass": "Lichaamsvetmassa",
+    "leanBodyMass": "Magere Lichaamsmassa",
+    "idealBodyFat": "Ideaal Lichaamsvet",
+    "fatToLose": "Vet om te Verliezen",
+    "method": "Gebruikte Methode"
+  },
+  "info": {
+    "title": "Over de Lichaamsvet Rekenmachine",
+    "description": "Deze rekenmachine schat uw lichaamsvetpercentage met behulp van de U.S. Navy Methode of BMI-gebaseerde methode. De Navy methode gebruikt lichaamsomtrek metingen, terwijl de BMI methode gebaseerd is op uw leeftijd, gewicht en lengte.",
+    "categoriesTitle": "Lichaamsvet Categorieën (American Council on Exercise)",
+    "categoryLabel": "Categorie",
+    "menLabel": "Mannen",
+    "womenLabel": "Vrouwen",
+    "essentialFat": "Essentieel Vet",
+    "athletes": "Atleten",
+    "fitness": "Fitness",
+    "average": "Gemiddeld",
+    "obese": "Obesitas",
+    "limitations": "Deze resultaten zijn slechts een schatting. Voor een nauwkeurigere lichaamsvetmeting, overweeg het gebruik van instrumenten zoals bio-elektrische impedantie analyse of raadpleeg een zorgprofessional."
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "title": "Slaap Calculator",
+  "description": "Bereken uw ideale slaapschema op basis van slaapfasen",
+  "metaDescription": "Gratis slaap calculator - Ontdek wanneer u moet gaan slapen of wakker moet worden om uw slaapfasen te optimaliseren. Bereken ideale slaaptijden op basis van 90-minutenfasen.",
+  "form": {
+    "title": "Plan uw slaap",
+    "modeWakeup": "Wanneer moet ik wakker worden?",
+    "modeBedtime": "Wanneer moet ik gaan slapen?",
+    "bedtimeLabel": "Slaaptijd",
+    "bedtimeHelper": "Selecteer het moment waarop u van plan bent te gaan slapen",
+    "wakeupLabel": "Wakker wordtijd",
+    "wakeupHelper": "Selecteer het moment waarop u moet wakker worden"
+  },
+  "results": {
+    "title": "Uw slaapschema",
+    "wakeupTitle": "Voorgestelde wakker wordtijden",
+    "wakeupSubtitle": "Als u om {time} gaat slapen, moet u op een van deze momenten wakker worden:",
+    "bedtimeTitle": "Voorgestelde slaaptijden",
+    "bedtimeSubtitle": "Als u om {time} wakker wilt worden, moet u op een van deze momenten gaan slapen:",
+    "cycles": "{count} fasen",
+    "totalSleep": "{hours} uren slaap",
+    "recommended": "AANBEVOLEN"
+  },
+  "info": {
+    "title": "Over Slaapfasen",
+    "description": "Slaap vindt plaats in fasen van ongeveer 90 minuten. Wakker worden aan het einde van een slaapfase helpt u zich meer uitgerust en alert te voelen. Deze calculator helpt u de beste momenten vinden om te slapen of wakker te worden op basis van deze natuurlijke fasen.",
+    "cycleTitle": "Hoe werken slaapfasen?",
+    "cycleDescription": "Door de nacht heen gaat u door 4-6 slaapfasen. Elke fase heeft verschillende stadia: lichte slaap, diepe slaap en REM-slaap. Wakker worden tijdens diepe slaap kan u slaperig en moe maken. Deze calculator houdt rekening met 14 minuten om in slaap te vallen en stelt wakker wordtijden voor aan het einde van volledige slaapfasen.",
+    "tipsTitle": "Tips voor betere slaap",
+    "tip1": "Volwassenen hebben meestal 7-9 uur slaap nodig (5-6 volledige fasen)",
+    "tip2": "Houd een consistent slaapschema aan, ook in het weekend",
+    "tip3": "Vermijd cafeïne en schermen minstens 1 uur voor het slapengaan",
+    "tip4": "Maak een comfortabele omgeving: donker, stil en koel (15-19°C)"
+  }
+}

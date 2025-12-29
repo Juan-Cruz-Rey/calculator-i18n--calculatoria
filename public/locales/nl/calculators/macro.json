@@ -1,0 +1,59 @@
+{
+  "title": "Macronutriënten Calculator",
+  "description": "Bereken uw dagelijkse macronutriënten",
+  "metaDescription": "Gratis macronutriënten calculator - Bereken uw eiwit-, koolhydraat- en vetverdeling op basis van uw doelstelling. Krijg uw persoonlijke voedingsplan.",
+  "form": {
+    "title": "Voer uw gegevens in",
+    "ageLabel": "Leeftijd",
+    "agePlaceholder": "Voer uw leeftijd in",
+    "genderLabel": "Geslacht",
+    "heightLabel": "Lengte",
+    "heightPlaceholder": "Voer uw lengte in",
+    "weightLabel": "Gewicht",
+    "weightPlaceholder": "Voer uw gewicht in",
+    "activityLabel": "Activiteitenniveau",
+    "activityLevels": {
+      "sedentary": "Zittend (weinig of geen oefening)",
+      "light": "Licht (oefening 1-3 keer/week)",
+      "moderate": "Gemiddeld (oefening 4-5 keer/week)",
+      "active": "Actief (dagelijkse oefening of intensief 3-4 keer/week)",
+      "veryActive": "Zeer actief (intensieve oefening 6-7 keer/week)",
+      "extraActive": "Extra actief (zeer intensieve dagelijkse oefening of fysiek werk)"
+    },
+    "goalLabel": "Gewichtsdoel",
+    "goals": {
+      "extremeLoss": "Extreem verlies (2 lbs/week)",
+      "moderateLoss": "Gemiddeld verlies (1 lb/week)",
+      "mildLoss": "Licht verlies (0,5 lb/week)",
+      "maintain": "Gewicht handhaven",
+      "mildGain": "Lichte toename (0,5 lb/week)",
+      "moderateGain": "Gemiddelde toename (1 lb/week)",
+      "extremeGain": "Extreme toename (2 lbs/week)"
+    },
+    "dietTypeLabel": "Diëttype",
+    "dietTypes": {
+      "balanced": "Evenwichtig (30% eiwit, 40% koolhydraten, 30% vetten)",
+      "lowFat": "Laag vet (30% eiwit, 50% koolhydraten, 20% vetten)",
+      "lowCarb": "Laag koolhydraten (35% eiwit, 20% koolhydraten, 45% vetten)",
+      "highProtein": "Hoog eiwit (40% eiwit, 30% koolhydraten, 30% vetten)"
+    }
+  },
+  "results": {
+    "title": "Uw Resultaten",
+    "dailyCalories": "Dagelijkse Calorieën",
+    "toReachGoal": "om uw doel te bereiken",
+    "bmr": "Basismetabolische Snelheid (BMR)",
+    "tdee": "Totale Dagelijkse Energieverbruik (TDEE)",
+    "weeklyChange": "Wekelijkse Gewichtsverandering",
+    "macrosBreakdown": "Macronutriëntenverdeling",
+    "protein": "Eiwit",
+    "carbs": "Koolhydraten",
+    "fats": "Vetten"
+  },
+  "info": {
+    "title": "Over Macronutriënten",
+    "description": "Macronutriënten (eiwit, koolhydraten en vetten) zijn voedingsstoffen die energie leveren aan uw lichaam. Deze calculator bepaalt uw totale dagelijkse energieverbruik en verdeelt calorieën in macronutriënten op basis van uw doel en voorkeurd diëttype.",
+    "formula": "Formule: BMR (Mifflin-St Jeor) × Activiteitsvermenigvuldiger ± Doelaanpassing",
+    "limitations": "Deze calculator biedt schattingen op basis van standaardformules. Individuele vereisten kunnen variëren. Raadpleeg een gezondheidsprofessional of voedingsdeskundige voor een persoonlijk plan."
+  }
+}

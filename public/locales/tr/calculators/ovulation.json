@@ -1,0 +1,30 @@
+{
+  "title": "Ovulation Calculator",
+  "description": "Calculate your ovulation date and fertile window",
+  "metaDescription": "Free ovulation calculator - Predict your ovulation date, fertile window and most fertile days of the month. Ideal for family planning.",
+  "form": {
+    "title": "Enter your information",
+    "lastPeriodLabel": "First day of your last period",
+    "lastPeriodHelp": "Date of the first day of your last menstruation",
+    "cycleLengthLabel": "Menstrual cycle length",
+    "cycleLengthHelp": "Average length of your cycle (typically 28 days)"
+  },
+  "results": {
+    "title": "Your Results",
+    "ovulationDate": "Ovulation Date",
+    "fertileWindowStart": "Fertile Window Start",
+    "fertileWindowEnd": "Fertile Window End",
+    "nextPeriod": "Next Period",
+    "daysUntilOvulation": "Days Until Ovulation",
+    "calendar": "Cycle Calendar",
+    "periodDay": "Period day",
+    "fertileWindow": "Fertile window",
+    "ovulation": "Ovulation"
+  },
+  "info": {
+    "title": "About the Ovulation Calculator",
+    "description": "This calculator predicts your ovulation date and fertile window based on your last period and cycle length. Ovulation typically occurs 14 days before the next period. The fertile window includes the 5 days before ovulation and the day of ovulation.",
+    "formula": "Formula: Ovulation date = First day of last period + (Cycle length - 14 days)",
+    "limitations": "Note: This calculator provides estimates based on averages. Cycles can vary from person to person and month to month. For greater accuracy, consider using ovulation monitoring methods such as basal temperature or ovulation prediction kits. Always consult with your doctor for family planning."
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "title": "Yüzde Hesaplayıcı",
+  "description": "Yüzdeleri, yüzde değişimini ve yüzde farkını hesaplayın",
+  "metaDescription": "Ücretsiz Yüzde Hesaplayıcı - Yüzdeleri, yüzde değişimini ve yüzde farkını hesaplayın. Y'nin X%'si nedir, X, Y'nin yüzde kaçıdır ve daha fazlasını çözün.",
+  "form": {
+    "title": "Hesaplama Türünü Seçin"
+  },
+  "tabs": {
+    "percentOf": "Y'nin X%'si",
+    "isWhatPercent": "X, Y'nin %kaçıdır",
+    "isPercentOfWhat": "X, neyin Y%'sidir",
+    "percentageChange": "% Değişim",
+    "percentageDifference": "% Fark"
+  },
+  "forms": {
+    "percentOf": {
+      "title": "Y'nin X%'si nedir?",
+      "label1": "Yüzde (X)",
+      "label2": "Değer (Y)"
+    },
+    "isWhatPercent": {
+      "title": "X, Y'nin yüzde kaçıdır?",
+      "label1": "Değer (X)",
+      "label2": "Toplam (Y)"
+    },
+    "isPercentOfWhat": {
+      "title": "X, neyin Y%'sidir?",
+      "label1": "Değer (X)",
+      "label2": "Yüzde (Y)"
+    },
+    "percentageChange": {
+      "title": "X'ten Y'ye Yüzde Değişim",
+      "label1": "Eski Değer",
+      "label2": "Yeni Değer"
+    },
+    "percentageDifference": {
+      "title": "X ve Y Arasındaki Yüzde Fark",
+      "label1": "İlk Değer",
+      "label2": "İkinci Değer"
+    }
+  },
+  "results": {
+    "title": "Sonuç",
+    "resultLabel": "Cevap",
+    "formulaLabel": "Hesaplama"
+  },
+  "info": {
+    "title": "Yüzde Hesaplayıcı Hakkında",
+    "description": "Yüzdeler, bir sayıyı 100'ün kesri olarak ifade etmenin bir yoludur. Bu hesaplayıcı, yüzde bulma, yüzde değişimini hesaplama ve yüzde farklarını belirleme dahil olmak üzere çeşitli yüzde sorunlarını çözmenize yardımcı olur.",
+    "commonUses": "Yaygın Kullanımlar",
+    "use1": "İndirimleri ve satış fiyatlarını hesaplayın",
+    "use2": "Vergi tutarlarını ve bahşişleri belirleyin",
+    "use3": "Finansal değişimleri ve büyüme oranlarını analiz edin",
+    "use4": "Değerleri ve istatistikleri karşılaştırın"
+  }
+}

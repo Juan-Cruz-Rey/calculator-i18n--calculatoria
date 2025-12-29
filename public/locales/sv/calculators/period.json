@@ -1,0 +1,30 @@
+{
+  "title": "Menstruation Kalkylator",
+  "description": "Predict your next period and ovulation dates",
+  "metaDescription": "Gratis period calculator - Predict your next period, ovulation dates, and fertile window. Track your menstrual cycle easily.",
+  "form": {
+    "title": "Ange Din Information",
+    "lastPeriodLabel": "First day of last period",
+    "lastPeriodHelp": "Datum when your last menstruation started",
+    "cycleLengthLabel": "Cycle length",
+    "cycleLengthHelp": "Average number of days between periods (typically 28 days)",
+    "periodLengthLabel": "Menstruation length",
+    "periodLengthHelp": "Number of days your period lasts (typically 5 days)"
+  },
+  "results": {
+    "title": "Din Resultat",
+    "nextPeriod": "Next Menstruation",
+    "daysUntil": "In",
+    "cycleDay": "Cycle Day",
+    "currentPhase": "Current Phase",
+    "ovulationDate": "Ägglossning Datum",
+    "fertilityWindow": "Fertility Window",
+    "upcomingPeriods": "Upcoming Periods"
+  },
+  "info": {
+    "title": "Om the Menstruation Kalkylator",
+    "description": "This calculator predicts your upcoming menstrual periods and ovulation dates baserat på your last period and average cycle length. Ägglossning typically occurs 14 days before the next period.",
+    "formula": "Formel: Next period = Last period + Cycle length. Ägglossning = Next period - 14 days",
+    "limitations": "Note: This calculator provides estimates baserat på regular cycles. Menstrual cycles can vary naturally. For medical concerns or cycle irregularities, please consult with a healthcare professional."
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "title": "Carbohydrate Calculator",
+  "description": "Calculate your recommended daily carbohydrate intake",
+  "metaDescription": "Free carbohydrate calculator - Calculate your recommended daily carb intake based on your TDEE, activity level, and goals. Personalized recommendations for low-carb, moderate-carb, and high-carb diets.",
+  "form": {
+    "title": "Enter Your Information",
+    "ageLabel": "Age",
+    "agePlaceholder": "Enter your age",
+    "genderLabel": "Gender",
+    "heightLabel": "Height",
+    "heightPlaceholder": "Enter your height",
+    "weightLabel": "Weight",
+    "weightPlaceholder": "Enter your weight",
+    "activityLevelLabel": "Activity Level",
+    "activityLevels": {
+      "sedentary": "Sedentary - Little or no exercise",
+      "light": "Light - Light exercise 1-3 days/week",
+      "moderate": "Moderate - Moderate exercise 3-5 days/week",
+      "active": "Active - Hard exercise 6-7 days/week",
+      "extra": "Very Active - Very hard exercise, physical job"
+    },
+    "goalLabel": "Goal",
+    "goals": {
+      "loss": "Weight loss",
+      "maintain": "Maintain weight",
+      "gain": "Muscle gain"
+    }
+  },
+  "results": {
+    "title": "Your Results",
+    "bmr": "BMR (Basal Metabolic Rate)",
+    "tdee": "TDEE (Total Daily Energy Expenditure)",
+    "targetCalories": "Target Calories",
+    "recommendationsTitle": "Carbohydrate Recommendations",
+    "levels": {
+      "low": "Low Carbohydrate",
+      "moderate": "Moderate Carbohydrate",
+      "high": "High Carbohydrate"
+    },
+    "descriptions": {
+      "low": "Ideal for rapid weight loss and blood sugar control. May be difficult to maintain long-term.",
+      "moderate": "Balanced approach for most people. Good for maintenance and gradual weight loss.",
+      "high": "Optimal for athletes and very active individuals. Provides energy for intense workouts."
+    },
+    "note": "Note: The minimum recommended carbohydrate intake is 130g per day for adults. Consult with a healthcare professional before making significant dietary changes."
+  },
+  "info": {
+    "title": "About Carbohydrates",
+    "description": "Carbohydrates are one of the three main macronutrients (along with protein and fat) and the body's primary source of energy. The optimal amount of carbohydrates varies based on your activity level, goals, and personal preferences.",
+    "formula": "Formula: Carbohydrate grams = (Target calories × % carbs) ÷ 4 calories/g",
+    "recommendations": "Carbohydrate recommendations are based on percentages of your total caloric intake: Low (10-30%), Moderate (30-50%), High (50-70%). The choice depends on your goals, activity level, and individual metabolic response."
+  }
+}

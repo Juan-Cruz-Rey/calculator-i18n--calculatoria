@@ -1,0 +1,36 @@
+{
+  "title": "Army Body Fat Calculator",
+  "description": "Calculate your body fat percentage using the US Army formula",
+  "metaDescription": "Free Army Body Fat Calculator - Calculate your body fat percentage using the official US Army formula. Check if you meet Army body composition standards.",
+  "form": {
+    "title": "Enter your measurements",
+    "ageLabel": "Age",
+    "agePlaceholder": "Enter your age",
+    "genderLabel": "Gender",
+    "heightLabel": "Height",
+    "heightPlaceholder": "Enter your height",
+    "neckLabel": "Neck Circumference",
+    "neckPlaceholder": "Measure below larynx",
+    "waistLabel": "Waist Circumference",
+    "waistPlaceholder": "Measure at belly button level",
+    "hipLabel": "Hip Circumference (Females Only)",
+    "hipPlaceholder": "Measure at widest point"
+  },
+  "results": {
+    "title": "Your Results",
+    "bodyFatValue": "Body Fat Percentage",
+    "ageGroup": "Age Group",
+    "maxAllowed": "Max Allowed",
+    "status": "Army Standard"
+  },
+  "info": {
+    "title": "About Army Body Fat Calculator",
+    "description": "The Army Body Fat Calculator uses the official US Army formula from Army Regulation 600-9. This calculator determines if you meet the body composition standards required for military service. The formula uses circumference measurements of the neck, waist, and (for females) hips to estimate body fat percentage.",
+    "standardsTitle": "US Army Body Fat Standards",
+    "ageRange": "Age Range",
+    "maleMax": "Male Max %",
+    "femaleMax": "Female Max %",
+    "formula": "Male Formula: % BF = 86.010 × log10(waist - neck) - 70.041 × log10(height) + 36.76 | Female Formula: % BF = 163.205 × log10(waist + hip - neck) - 97.684 × log10(height) - 78.387",
+    "limitations": "This calculator uses the official US Army tape test method. For the most accurate measurement, take the average of at least three measurements rounded to the nearest 0.5 inch or cm. Soldiers who fail may request supplemental testing using DXA, InBody 770, or Bod Pod systems."
+  }
+}

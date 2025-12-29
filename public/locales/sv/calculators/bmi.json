@@ -1,0 +1,36 @@
+{
+  "title": "BMI-kalkylator",
+  "description": "Beräkna ditt kroppsmasseindex",
+  "metaDescription": "Gratis BMI-kalkylator - Beräkna ditt kroppsmasseindex med metriskt eller imperial system. Ta reda på din ideala hälsosamma vikt.",
+  "form": {
+    "title": "Ange dina uppgifter",
+    "ageLabel": "Ålder",
+    "agePlaceholder": "Ange din ålder",
+    "genderLabel": "Kön",
+    "heightLabel": "Längd",
+    "heightPlaceholder": "Ange din längd",
+    "weightLabel": "Vikt",
+    "weightPlaceholder": "Ange din vikt"
+  },
+  "results": {
+    "title": "Dina resultat",
+    "bmiValue": "Ditt BMI",
+    "bmiPrime": "BMI Prime",
+    "ponderalIndex": "Ponderalindex",
+    "category": "Kategori",
+    "healthyRange": "Hälsosamt BMI-område",
+    "healthyWeight": "Hälsosamt viktområde",
+    "categories": {
+      "underweight": "Undervikt",
+      "normal": "Normal",
+      "overweight": "Övervikt",
+      "obese": "Fetma"
+    }
+  },
+  "info": {
+    "title": "Om BMI",
+    "description": "Kroppsmasseindex (BMI) är ett mått på kroppsvikt baserat på en persons vikt och längd. Det beräknas genom att dividera vikten i kilogram med kvadraten av längden i meter.",
+    "formula": "Formel: BMI = vikt (kg) / längd² (m)",
+    "limitations": "BMI är ett användbart screeningverktyg, men det diagnostiserar inte kroppsfett eller en individs hälsa. Personer med större muskelmassa kan ha ett högt BMI utan överskott av fett."
+  }
+}

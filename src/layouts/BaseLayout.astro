@@ -12,7 +12,7 @@ const { title, description, lang = 'es', calculator } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 // Generate hreflang URLs for all languages
-const locales: Locale[] = ['es', 'en', 'pt', 'fr', 'hi', 'de', 'it', 'pl'];
+const locales: Locale[] = ['es', 'en', 'pt', 'fr', 'hi', 'de', 'it', 'pl', 'nl', 'tr', 'sv', 'ru'];
 const hreflangURLs = Object.fromEntries(
   locales.map(locale => [
     locale,
@@ -23,11 +23,23 @@ const hreflangURLs = Object.fromEntries(
 // Get language-specific paths
 const homePathBase = languageConfig[lang as Locale].path;
 const homePath = homePathBase !== '' ? `${homePathBase}/` : '/';
-const calculatorsPath = lang === 'es'
-  ? '/es/calculadoras/'
-  : homePathBase !== ''
-  ? `${homePathBase}/calculators/`
-  : '/calculators/';
+
+// Calculator index page paths for each language
+const calculatorsIndexPaths: Record<Locale, string> = {
+  es: '/es/calculadoras/',
+  en: '/calculators/',
+  pt: '/pt/calculadoras/',
+  fr: '/fr/calculatrices/',
+  hi: '/hi/calculators/',
+  de: '/de/rechner/',
+  it: '/it/calcolatrici/',
+  pl: '/pl/kalkulatory/',
+  nl: '/nl/rekenmachines/',
+  tr: '/tr/hesap-makineleri/',
+  sv: '/sv/kalkylatorer/',
+  ru: '/ru/kalkulyatory/',
+};
+const calculatorsPath = calculatorsIndexPaths[lang as Locale] || '/calculators/';
 
 // Translations for nav
 const navTranslations = {
@@ -39,6 +51,10 @@ const navTranslations = {
   de: { home: 'Startseite', calculators: 'Rechner', siteName: 'Rechner' },
   it: { home: 'Home', calculators: 'Calcolatrici', siteName: 'Calcolatrici' },
   pl: { home: 'Start', calculators: 'Kalkulatory', siteName: 'Kalkulatory' },
+  nl: { home: 'Home', calculators: 'Rekenmachines', siteName: 'Rekenmachines' },
+  tr: { home: 'Ana Sayfa', calculators: 'Hesap Makineleri', siteName: 'Hesap Makineleri' },
+  sv: { home: 'Hem', calculators: 'Kalkylatorer', siteName: 'Kalkylatorer' },
+  ru: { home: 'Главная', calculators: 'Калькуляторы', siteName: 'Калькуляторы' },
 };
 const navText = navTranslations[lang as Locale] || navTranslations.es;
 ---
@@ -64,6 +80,10 @@ const navText = navTranslations[lang as Locale] || navTranslations.es;
     <link rel="alternate" hreflang="de" href={hreflangURLs.de} />
     <link rel="alternate" hreflang="it" href={hreflangURLs.it} />
     <link rel="alternate" hreflang="pl" href={hreflangURLs.pl} />
+    <link rel="alternate" hreflang="nl" href={hreflangURLs.nl} />
+    <link rel="alternate" hreflang="tr" href={hreflangURLs.tr} />
+    <link rel="alternate" hreflang="sv" href={hreflangURLs.sv} />
+    <link rel="alternate" hreflang="ru" href={hreflangURLs.ru} />
     <link rel="alternate" hreflang="x-default" href={hreflangURLs.en} />
 
     <!-- Open Graph / Facebook -->
@@ -94,6 +114,9 @@ const navText = navTranslations[lang as Locale] || navTranslations.es;
         <div class="nav-links">
           <a href={homePath}>
             {navText.home}
+          </a>
+          <a href={calculatorsPath}>
+            {navText.calculators}
           </a>
           <div class="lang-switch">
             {locales.map((locale, index) => (

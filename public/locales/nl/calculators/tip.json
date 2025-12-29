@@ -1,0 +1,33 @@
+{
+  "title": "Fooi Calculator",
+  "description": "Bereken fooien en verdeel de rekening",
+  "metaDescription": "Gratis fooi calculator - Bereken het juiste fooibedrag en verdeel de rekening onder meerdere personen. Bevat suggesties voor veelvoorkomende fooipercentages.",
+  "form": {
+    "title": "Voer rekeningdetails in",
+    "billAmountLabel": "Rekeningbedrag",
+    "billAmountPlaceholder": "Voer totaalbedrag in",
+    "tipPercentageLabel": "Fooipercentage",
+    "customTipPlaceholder": "Aangepast",
+    "numberOfPeopleLabel": "Aantal Personen",
+    "numberOfPeoplePlaceholder": "Hoeveel personen?",
+    "currencySymbol": "EUR",
+    "peopleUnit": "personen"
+  },
+  "results": {
+    "title": "Samenvatting",
+    "tipAmount": "Fooibedrag",
+    "totalAmount": "Totaal met Fooi",
+    "tipPerPerson": "Fooi per Persoon",
+    "totalPerPerson": "Totaal per Persoon"
+  },
+  "info": {
+    "title": "Fooigids",
+    "description": "Fooien geven is een manier om waardering voor goed service te tonen. Hoewel gebruiken per land en servicetype variëren, hier zijn enkele algemene richtlijnen:",
+    "guidelinesTitle": "Veelvoorkomende fooirichtlijnen:",
+    "guideline1": "Basisof redelijk service",
+    "guideline2": "Goed standaardservice",
+    "guideline3": "Uitstekend of uitzonderlijk service",
+    "guideline4": "Buitengewoon service of grote groepen",
+    "note": "Opmerking: Fooigebruiken variëren aanzienlijk per regio en type inrichting. In sommige landen zijn fooien in de rekening inbegrepen of is fooi niet gebruikelijk."
+  }
+}

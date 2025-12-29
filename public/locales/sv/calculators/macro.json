@@ -1,0 +1,59 @@
+{
+  "title": "Makro Kalkylator",
+  "description": "Beräkna your daily macronutrients",
+  "metaDescription": "Gratis macro calculator - Beräkna your protein, carbohydrate, and fat distribution baserat på your goal. Get your personalized nutrition plan.",
+  "form": {
+    "title": "Ange your details",
+    "ageLabel": "Ålder",
+    "agePlaceholder": "Ange din ålder",
+    "genderLabel": "Kön",
+    "heightLabel": "Längd",
+    "heightPlaceholder": "Ange din längd",
+    "weightLabel": "Vikt",
+    "weightPlaceholder": "Ange din vikt",
+    "activityLabel": "Aktivitet level",
+    "activityLevels": {
+      "sedentary": "Stillasittande (lite eller ingen träning)",
+      "light": "Lätt (träning 1-3 gånger/vecka)",
+      "moderate": "Måttlig (träning 4-5 gånger/vecka)",
+      "active": "Active (daily träning or intense 3-4 gånger/vecka)",
+      "veryActive": "Very active (intense träning 6-7 gånger/vecka)",
+      "extraActive": "Extra active (very intense daily träning or physical job)"
+    },
+    "goalLabel": "Vikt goal",
+    "goals": {
+      "extremeLoss": "Extreme loss (2 lbs/week)",
+      "moderateLoss": "Måttlig loss (1 lb/week)",
+      "mildLoss": "Mild loss (0.5 lb/week)",
+      "maintain": "Maintain weight",
+      "mildGain": "Mild gain (0.5 lb/week)",
+      "moderateGain": "Måttlig gain (1 lb/week)",
+      "extremeGain": "Extreme gain (2 lbs/week)"
+    },
+    "dietTypeLabel": "Diet type",
+    "dietTypes": {
+      "balanced": "Balanced (30% protein, 40% carbs, 30% fats)",
+      "lowFat": "Low fat (30% protein, 50% carbs, 20% fats)",
+      "lowCarb": "Low carb (35% protein, 20% carbs, 45% fats)",
+      "highProtein": "High protein (40% protein, 30% carbs, 30% fats)"
+    }
+  },
+  "results": {
+    "title": "Din Resultat",
+    "dailyCalories": "Daglig Kalorier",
+    "toReachGoal": "to reach your goal",
+    "bmr": "Basal Metabolisk Hastighet (BMR)",
+    "tdee": "Totalt Daglig Energy Expenditure (TDEE)",
+    "weeklyChange": "Weekly Vikt Change",
+    "macrosBreakdown": "Macronutrient Breakdown",
+    "protein": "Protein",
+    "carbs": "Kolhydrater",
+    "fats": "Fats"
+  },
+  "info": {
+    "title": "Om Macronutrients",
+    "description": "Macronutrients (protein, carbohydrates, and fats) are the nutrients that provide energy to your body. This calculator determines your total daily energy expenditure and distributes calories into macronutrients baserat på your goal and preferred diet type.",
+    "formula": "Formel: BMR (Mifflin-St Jeor) × Aktivitet Multiplier ± Goal Adjustment",
+    "limitations": "This calculator provides estimates baserat på standard formulas. Individual requirements may vary. Consult with a healthcare professional or nutritionist for a personalized plan."
+  }
+}

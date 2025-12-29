@@ -1,0 +1,46 @@
+{
+  "title": "Protein Calculator",
+  "description": "Calculate your daily protein intake",
+  "metaDescription": "Free Protein Calculator - Calculate your daily protein intake based on your weight, activity level, and goals. Optimize your nutrition.",
+  "form": {
+    "title": "Enter your details",
+    "weightLabel": "Weight",
+    "weightPlaceholder": "Enter your weight",
+    "activityLabel": "Activity Level",
+    "activityLevels": {
+      "sedentary": "Sedentary (little or no exercise)",
+      "light": "Light (exercise 1-3 days/week)",
+      "moderate": "Moderate (exercise 3-5 days/week)",
+      "active": "Active (exercise 6-7 days/week)",
+      "veryActive": "Very Active (intense daily exercise or physical job)"
+    },
+    "goalLabel": "Goal",
+    "goals": {
+      "maintain": "Maintain weight",
+      "lose": "Lose weight",
+      "gain": "Gain muscle mass"
+    }
+  },
+  "results": {
+    "title": "Your Results",
+    "dailyProtein": "Recommended Daily Protein",
+    "gramsPerDay": "grams per day",
+    "proteinPerKg": "Protein per kg of weight",
+    "caloriesFromProtein": "Calories from protein",
+    "percentageOfDiet": "Percentage of diet (2000 kcal base)"
+  },
+  "info": {
+    "title": "About Protein",
+    "description": "Proteins are essential macronutrients that play a crucial role in building and repairing tissues, producing enzymes and hormones, and maintaining muscle mass. The amount of protein you need depends on your body weight, physical activity level, and health goals.",
+    "recommendationsTitle": "General Recommendations",
+    "recommendations": {
+      "sedentary": "Sedentary individuals",
+      "sedentaryValue": "0.8g per kg of body weight",
+      "active": "Active individuals",
+      "activeValue": "1.2-1.5g per kg of body weight",
+      "athlete": "Athletes and muscle building",
+      "athleteValue": "1.6-2.2g per kg of body weight"
+    },
+    "note": "Note: This calculator provides general estimates. Consult a healthcare professional or nutritionist for personalized recommendations, especially if you have specific medical conditions."
+  }
+}

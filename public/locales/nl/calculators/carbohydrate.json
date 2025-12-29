@@ -1,0 +1,53 @@
+{
+  "title": "Koolhydraten Calculator",
+  "description": "Bereken uw aanbevolen dagelijkse koolhydraateninname",
+  "metaDescription": "Gratis koolhydraten calculator - Bereken uw aanbevolen dagelijkse koolhydraateninname op basis van uw TDEE, activiteitenniveau en doelen. Persoonlijke aanbevelingen voor laag-, gemiddeld- en hoog-koolhydraatdiëten.",
+  "form": {
+    "title": "Voer Uw Informatie In",
+    "ageLabel": "Leeftijd",
+    "agePlaceholder": "Voer uw leeftijd in",
+    "genderLabel": "Geslacht",
+    "heightLabel": "Lengte",
+    "heightPlaceholder": "Voer uw lengte in",
+    "weightLabel": "Gewicht",
+    "weightPlaceholder": "Voer uw gewicht in",
+    "activityLevelLabel": "Activiteitenniveau",
+    "activityLevels": {
+      "sedentary": "Zittend - Weinig of geen beweging",
+      "light": "Licht - Lichte oefening 1-3 dagen/week",
+      "moderate": "Gemiddeld - Gemiddelde oefening 3-5 dagen/week",
+      "active": "Actief - Intensieve oefening 6-7 dagen/week",
+      "extra": "Zeer Actief - Zeer intensieve oefening, fysiek werk"
+    },
+    "goalLabel": "Doel",
+    "goals": {
+      "loss": "Gewichtsverlies",
+      "maintain": "Gewicht handhaven",
+      "gain": "Spieropbouw"
+    }
+  },
+  "results": {
+    "title": "Uw Resultaten",
+    "bmr": "BMR (Basismetabolische Snelheid)",
+    "tdee": "TDEE (Totale Dagelijkse Energieverbruik)",
+    "targetCalories": "Doel Calorieën",
+    "recommendationsTitle": "Aanbevelingen Koolhydraten",
+    "levels": {
+      "low": "Lage Koolhydraten",
+      "moderate": "Gemiddelde Koolhydraten",
+      "high": "Hoge Koolhydraten"
+    },
+    "descriptions": {
+      "low": "Ideaal voor snel gewichtsverlies en bloedsuikercontrole. Kan op lange termijn moeilijk vol te houden zijn.",
+      "moderate": "Evenwichtige benadering voor de meeste mensen. Goed voor onderhoud en geleidelijk gewichtsverlies.",
+      "high": "Optimaal voor atleten en zeer actieve personen. Biedt energie voor intensieve trainingen."
+    },
+    "note": "Opmerking: De minimaal aanbevolen koolhydraatinname is 130g per dag voor volwassenen. Raadpleeg een gezondheidsprofessional voordat u grote voedingsveranderingen doorvoert."
+  },
+  "info": {
+    "title": "Over Koolhydraten",
+    "description": "Koolhydraten zijn een van de drie belangrijkste macronutriënten (samen met eiwitten en vet) en de primaire energiebron van het lichaam. De optimale hoeveelheid koolhydraten varieert op basis van uw activiteitenniveau, doelen en persoonlijke voorkeur.",
+    "formula": "Formule: Koolhydraatgrammen = (Doel calorieën × % koolhydraten) ÷ 4 calorieën/g",
+    "recommendations": "Koolhydraataanbevelingen zijn gebaseerd op percentages van uw totale calorieënbezuinging: Laag (10-30%), Gemiddeld (30-50%), Hoog (50-70%). De keuze hangt af van uw doelen, activiteitenniveau en individuele metabole reactie."
+  }
+}

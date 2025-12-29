@@ -1,0 +1,36 @@
+{
+  "title": "Lichaamsvettabel Calculator (Leger)",
+  "description": "Bereken uw lichaamsvetpercentage met behulp van de formule van het Amerikaanse leger",
+  "metaDescription": "Gratis Lichaamsvettabel Calculator - Bereken uw lichaamsvetpercentage met behulp van de officiële formule van het Amerikaanse leger. Controleer of u voldoet aan de legerstandaarden voor lichaamssamenstelling.",
+  "form": {
+    "title": "Voer uw afmetingen in",
+    "ageLabel": "Leeftijd",
+    "agePlaceholder": "Voer uw leeftijd in",
+    "genderLabel": "Geslacht",
+    "heightLabel": "Lengte",
+    "heightPlaceholder": "Voer uw lengte in",
+    "neckLabel": "Halscirkelomtrek",
+    "neckPlaceholder": "Meet onder het strottenhoofd",
+    "waistLabel": "Tailleomtrek",
+    "waistPlaceholder": "Meet ter hoogte van de navel",
+    "hipLabel": "Heupomtrek (Alleen vrouwen)",
+    "hipPlaceholder": "Meet op het breedste punt"
+  },
+  "results": {
+    "title": "Uw Resultaten",
+    "bodyFatValue": "Lichaamsvetpercentage",
+    "ageGroup": "Leeftijdsgroep",
+    "maxAllowed": "Max Toegestaan",
+    "status": "Legerstandaard"
+  },
+  "info": {
+    "title": "Over de Lichaamsvettabel Calculator (Leger)",
+    "description": "De Lichaamsvettabel Calculator van het Leger gebruikt de officiële formule van het Amerikaanse leger uit Army Regulation 600-9. Deze calculator bepaalt of u voldoet aan de voorschriften voor lichaamssamenstelling die vereist zijn voor militaire dienst. De formule gebruikt metingen van de halscirkelomtrek, tailleomtrek en (voor vrouwen) heupomtrek om het lichaamsvetpercentage in te schatten.",
+    "standardsTitle": "Standaarden Lichaamsvetten Amerikaanse Leger",
+    "ageRange": "Leeftijdsbereik",
+    "maleMax": "Mannen Max %",
+    "femaleMax": "Vrouwen Max %",
+    "formula": "Mannenformule: % LV = 86.010 × log10(taille - nek) - 70.041 × log10(lengte) + 36.76 | Vrouwenformule: % LV = 163.205 × log10(taille + heup - nek) - 97.684 × log10(lengte) - 78.387",
+    "limitations": "Deze calculator gebruikt de officiële meetmethode met tape van het Amerikaanse leger. Voor de meest nauwkeurige meting neemt u het gemiddelde van ten minste drie metingen afgerond op de dichtstbijzijnde 0,5 inch of cm. Soldaten die mislukken, kunnen aanvullende testen aanvragen met behulp van DXA-, InBody 770- of Bod Pod-systemen."
+  }
+}

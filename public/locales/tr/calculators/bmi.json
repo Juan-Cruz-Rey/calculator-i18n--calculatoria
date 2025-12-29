@@ -1,0 +1,36 @@
+{
+  "title": "VKİ Hesaplayıcı",
+  "description": "Vücut Kitle İndeksinizi hesaplayın",
+  "metaDescription": "Ücretsiz VKİ Hesaplayıcı - Metrik veya imperial sistem kullanarak vücut kitle indeksinizi hesaplayın. İdeal sağlıklı kilonuzu öğrenin.",
+  "form": {
+    "title": "Bilgilerinizi girin",
+    "ageLabel": "Yaş",
+    "agePlaceholder": "Yaşınızı girin",
+    "genderLabel": "Cinsiyet",
+    "heightLabel": "Boy",
+    "heightPlaceholder": "Boyunuzu girin",
+    "weightLabel": "Kilo",
+    "weightPlaceholder": "Kilonuzu girin"
+  },
+  "results": {
+    "title": "Sonuçlarınız",
+    "bmiValue": "VKİ Değeriniz",
+    "bmiPrime": "VKİ Prime",
+    "ponderalIndex": "Ponderal İndeksi",
+    "category": "Kategori",
+    "healthyRange": "Sağlıklı VKİ Aralığı",
+    "healthyWeight": "Sağlıklı Kilo Aralığı",
+    "categories": {
+      "underweight": "Zayıf",
+      "normal": "Normal",
+      "overweight": "Fazla Kilolu",
+      "obese": "Obez"
+    }
+  },
+  "info": {
+    "title": "VKİ Hakkında",
+    "description": "Vücut Kitle İndeksi (VKİ), bir kişinin kilosu ve boyuna dayanan vücut ağırlığının bir ölçüsüdür. Kilogramcinsinden ağırlığın, metre cinsinden boyun karesine bölünmesiyle hesaplanır.",
+    "formula": "Formül: VKİ = kilo (kg) / boy² (m)",
+    "limitations": "VKİ yararlı bir tarama aracıdır, ancak vücut yağlılığını veya bir bireyin sağlığını teşhis etmez. Daha fazla kas kütlesine sahip kişiler, fazla yağ olmadan yüksek VKİ'ye sahip olabilirler."
+  }
+}

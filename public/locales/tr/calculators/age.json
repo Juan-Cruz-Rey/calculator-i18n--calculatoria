@@ -1,0 +1,27 @@
+{
+  "title": "Yaş Hesaplayıcı",
+  "description": "Tam yaşınızı yıl, ay, gün, saat ve dakika olarak hesaplayın",
+  "metaDescription": "Ücretsiz yaş hesaplayıcı - Tam yaşınızı yıl, ay, gün, saat ve dakika olarak hesaplayın. Bir sonraki doğum gününüzün ne zaman olduğunu ve haftanın hangi gününe denk geldiğini öğrenin.",
+  "form": {
+    "title": "Doğum tarihinizi girin",
+    "birthDateLabel": "Doğum Tarihi",
+    "targetDateLabel": "Şu tarihte yaşı hesapla (isteğe bağlı)",
+    "targetDateHint": "Bugün yaşınızı hesaplamak için geçerli tarih olarak bırakın"
+  },
+  "results": {
+    "title": "Sonuçlarınız",
+    "yourAge": "Yaşınız",
+    "totalYears": "Toplam Yıl",
+    "totalMonths": "Toplam Ay",
+    "totalWeeks": "Toplam Hafta",
+    "totalDays": "Toplam Gün",
+    "totalHours": "Toplam Saat",
+    "totalMinutes": "Toplam Dakika",
+    "nextBirthday": "Sonraki Doğum Günü"
+  },
+  "info": {
+    "title": "Yaş Hesaplayıcı Hakkında",
+    "description": "Bu hesaplayıcı, tam yaşınızı yıl, ay ve gün olarak belirlemenize olanak tanır. Ayrıca yaşınızı toplam hafta, gün, saat ve dakika olarak hesaplayarak doğumunuzdan bu yana geçen zamanın kapsamlı bir görünümünü sağlar.",
+    "usage": "Belirli bir tarihte kaç yaşında olduğunuzu veya olacağınızı belirlemek için isteğe bağlı 'Şu tarihte yaşı hesapla' alanını kullanabilirsiniz. Bu, geçmiş veya gelecek tarihlerde yaşınızı hesaplamak için kullanışlıdır."
+  }
+}

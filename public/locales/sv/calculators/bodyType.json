@@ -1,0 +1,44 @@
+{
+  "title": "Kropp Typ Kalkylator",
+  "description": "Determine your body type (Ectomorph/Mesomorph/Endomorph)",
+  "metaDescription": "Gratis body type calculator - Discover if you are an ectomorph, mesomorph, or endomorph baserat på your body measurements. Know your somatotype.",
+  "form": {
+    "title": "Ange your measurements",
+    "genderLabel": "Kön",
+    "heightLabel": "Längd",
+    "heightPlaceholder": "Ange din längd",
+    "wristLabel": "Wrist Circumference",
+    "wristPlaceholder": "Measure your wrist at the narrowest point",
+    "wristHint": "Measure at the narrowest point, just above the wrist bone",
+    "ankleLabel": "Ankle Circumference",
+    "anklePlaceholder": "Measure your ankle at the narrowest point",
+    "ankleHint": "Measure at the narrowest point, just above the ankle bone"
+  },
+  "results": {
+    "title": "Din Resultat",
+    "bodyTypeLabel": "Din Kropp Typ",
+    "frameSize": "Struktur Size",
+    "wristRatio": "Längd/Wrist Ratio",
+    "ankleRatio": "Längd/Ankle Ratio",
+    "characteristics": "Characteristics"
+  },
+  "info": {
+    "title": "Om Kropp Types",
+    "description": "Somatotypes or body types were developed by psychologist William Sheldon in the 1940s. This classification divides body types into three main categories baserat på skeletal structure and body composition.",
+    "types": {
+      "ectomorph": {
+        "name": "Ectomorph",
+        "description": "Ectomorphs have a lean body with long limbs, fast metabolism, and difficulty gaining weight or muscle mass. They typically have narrow shoulders and low body fat."
+      },
+      "mesomorph": {
+        "name": "Mesomorph",
+        "description": "Mesomorphs have a naturally athletic build with broad shoulders, narrow waist, and ease in gaining muscle. They have an efficient metabolism and respond well to training."
+      },
+      "endomorph": {
+        "name": "Endomorph",
+        "description": "Endomorphs have a larger bone structure, rounded body shape, and tendency to store fat. They have a slower metabolism and gain weight easily, but can also build muscle."
+      }
+    },
+    "limitations": "This calculator provides a general estimate baserat på skeletal measurements. Most people are a combination of body types. Resultat should be used as a general guide and not as a medical diagnosis."
+  }
+}

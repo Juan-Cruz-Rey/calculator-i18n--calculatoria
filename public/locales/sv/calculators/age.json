@@ -1,0 +1,27 @@
+{
+  "title": "Ålderskalkylator",
+  "description": "Beräkna din exakta ålder i år, månader, dagar, timmar och minuter",
+  "metaDescription": "Gratis ålderskalkylator - Beräkna din exakta ålder i år, månader, dagar, timmar och minuter. Ta reda på när din nästa födelsedag är och vilken veckodag den infaller.",
+  "form": {
+    "title": "Ange ditt födelsedatum",
+    "birthDateLabel": "Födelsedatum",
+    "targetDateLabel": "Beräkna ålder vid (valfritt)",
+    "targetDateHint": "Lämna som dagens datum för att beräkna din ålder idag"
+  },
+  "results": {
+    "title": "Dina resultat",
+    "yourAge": "Din ålder",
+    "totalYears": "Totalt antal år",
+    "totalMonths": "Totalt antal månader",
+    "totalWeeks": "Totalt antal veckor",
+    "totalDays": "Totalt antal dagar",
+    "totalHours": "Totalt antal timmar",
+    "totalMinutes": "Totalt antal minuter",
+    "nextBirthday": "Nästa födelsedag"
+  },
+  "info": {
+    "title": "Om ålderskalkylatorn",
+    "description": "Denna kalkylator låter dig bestämma din exakta ålder i år, månader och dagar. Den beräknar även din ålder i totalt antal veckor, dagar, timmar och minuter, vilket ger en omfattande översikt av tiden som förflutit sedan din födelse.",
+    "usage": "Du kan använda det valfria fältet 'Beräkna ålder vid' för att bestämma hur gammal du var eller kommer att vara på ett specifikt datum. Detta är användbart för att beräkna din ålder på historiska eller framtida datum."
+  }
+}

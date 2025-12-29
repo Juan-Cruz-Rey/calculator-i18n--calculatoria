@@ -1,0 +1,56 @@
+{
+  "title": "Kalorier Förbrända Kalkylator",
+  "description": "Beräkna calories burned during different activities",
+  "metaDescription": "Gratis calories burned calculator - Discover how many calories you burn during träning and daily activities using accurate MET values.",
+  "form": {
+    "title": "Ange Din Information",
+    "activityLabel": "Aktivitet Typ",
+    "durationLabel": "Duration",
+    "durationPlaceholder": "Ange duration in minutes",
+    "weightLabel": "Vikt",
+    "weightPlaceholder": "Ange din vikt"
+  },
+  "activities": {
+    "walking": "Walking",
+    "walking_slow": "Walking Slow (< 2 mph)",
+    "walking_moderate": "Walking Måttlig (3.0 mph)",
+    "walking_brisk": "Walking Brisk (3.5 mph)",
+    "running": "Running",
+    "running_slow": "Jogging (5 mph)",
+    "running_moderate": "Running Måttlig (6.7 mph)",
+    "running_fast": "Running Fast (8 mph)",
+    "cycling": "Cycling",
+    "cycling_leisure": "Cycling Leisure (< 10 mph)",
+    "cycling_moderate": "Cycling Måttlig (12-14 mph)",
+    "cycling_vigorous": "Cycling Vigorous (14-16 mph)",
+    "swimming": "Swimming",
+    "swimming_leisure": "Swimming Leisure",
+    "swimming_moderate": "Swimming Måttlig",
+    "swimming_vigorous": "Swimming Vigorous",
+    "other": "Other Activities",
+    "weightlifting": "Weightlifting",
+    "yoga": "Yoga",
+    "aerobics": "Aerobics",
+    "dancing": "Dancing",
+    "hiking": "Hiking",
+    "rowing": "Rowing",
+    "basketball": "Basketball",
+    "soccer": "Soccer",
+    "tennis": "Tennis",
+    "golf": "Golf"
+  },
+  "results": {
+    "title": "Din Resultat",
+    "totalCalories": "Totalt Kalorier Förbrända",
+    "caloriesUnit": "calories",
+    "metValue": "MET Value",
+    "caloriesPerMinute": "Kalorier per Minute",
+    "caloriesPerHour": "Kalorier per Hour"
+  },
+  "info": {
+    "title": "Om Kalorier Förbrända",
+    "description": "This calculator estimates calories burned during different physical activities using MET (Metabolisk Equivalent of Task) values. MET is a unit that estimates the amount of energy your body uses during physical activity.",
+    "formula": "Formel: Kalorier/minute = (MET × weight in kg × 3.5) / 200",
+    "limitations": "Resultat are estimates baserat på average MET values. Actual calorie expenditure may vary baserat på träning intensity, body composition, age, gender, and fitness level."
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "title": "BMR Rekenmachine (Basaal Metabolisme)",
+  "description": "Bereken uw basaal metabolisme",
+  "metaDescription": "Gratis BMR Rekenmachine - Bereken uw Basaal Metabolisme (calorieën verbrand in rust) met behulp van Mifflin-St Jeor, Harris-Benedict en Katch-McArdle formules.",
+  "form": {
+    "title": "Voer uw gegevens in",
+    "ageLabel": "Leeftijd",
+    "agePlaceholder": "Voer uw leeftijd in (15-80)",
+    "genderLabel": "Geslacht",
+    "heightLabel": "Lengte",
+    "heightPlaceholder": "Voer uw lengte in",
+    "weightLabel": "Gewicht",
+    "weightPlaceholder": "Voer uw gewicht in",
+    "bodyFatLabel": "Lichaamsvetpercentage (Optioneel)",
+    "bodyFatPlaceholder": "bijv. 20",
+    "bodyFatHelp": "Optioneel: Voer uw lichaamsvet % in voor een nauwkeurigere berekening"
+  },
+  "activity": {
+    "sedentary": "Zittend (weinig of geen beweging)",
+    "light": "Licht (beweging 1-3 keer/week)",
+    "moderate": "Matig (beweging 4-5 keer/week)",
+    "active": "Actief (dagelijkse beweging of intensieve beweging 3-4 keer/week)",
+    "veryActive": "Zeer actief (intensieve beweging 6-7 keer/week)",
+    "extraActive": "Extra actief (zeer intensieve dagelijkse beweging & fysiek werk)"
+  },
+  "results": {
+    "title": "Uw Resultaten",
+    "yourBMR": "Uw BMR",
+    "bmrDesc": "Calorieën die uw lichaam in rust verbrandt",
+    "formulas": "Formule Vergelijking",
+    "calorieNeeds": "Caloriebehoefte per Activiteitenniveau",
+    "calorieNeedsDesc": "Dagelijkse calorieën nodig op basis van uw fysieke activiteitenniveau"
+  },
+  "info": {
+    "title": "Over de BMR Rekenmachine",
+    "description": "Basaal Metabolisme (BMR) is de hoeveelheid energie (calorieën) die uw lichaam nodig heeft om te functioneren in volledige rust. Het vertegenwoordigt ongeveer 60-75% van uw totale dagelijkse energieverbruik. Deze rekenmachine gebruikt drie wetenschappelijk gevalideerde formules om uw BMR te schatten.",
+    "formulasTitle": "Gebruikte Formules",
+    "recommended": "Aanbevolen",
+    "mifflinFormula": "Mannen: BMR = 10 × gewicht(kg) + 6,25 × lengte(cm) - 5 × leeftijd + 5\nVrouwen: BMR = 10 × gewicht(kg) + 6,25 × lengte(cm) - 5 × leeftijd - 161",
+    "harrisFormula": "Mannen: BMR = 13,397 × gewicht(kg) + 4,799 × lengte(cm) - 5,677 × leeftijd + 88,362\nVrouwen: BMR = 9,247 × gewicht(kg) + 3,098 × lengte(cm) - 4,330 × leeftijd + 447,593",
+    "katchFormula": "BMR = 370 + 21,6 × magere lichaamsmassa(kg)\nMagere lichaamsmassa = gewicht × (1 - lichaamsvet%/100)",
+    "katchNote": "Vereist kennis van uw lichaamsvetpercentage. Nauwkeuriger voor atletische individuen.",
+    "limitations": "Deze schattingen zijn algemene richtlijnen. Individuele metabolische behoeften kunnen variëren op basis van genetische factoren, lichaamssamenstelling, medicijnen en gezondheidscondities. Raadpleeg een zorgprofessional voor een gepersonaliseerd plan."
+  }
+}

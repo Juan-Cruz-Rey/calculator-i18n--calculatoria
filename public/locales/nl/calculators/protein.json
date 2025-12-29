@@ -1,0 +1,46 @@
+{
+  "title": "Eiwit Calculator",
+  "description": "Bereken uw dagelijkse eiwitinname",
+  "metaDescription": "Gratis Eiwit Calculator - Bereken uw dagelijkse eiwitinname op basis van uw gewicht, activiteitenniveau en doelen. Optimaliseer uw voeding.",
+  "form": {
+    "title": "Voer uw gegevens in",
+    "weightLabel": "Gewicht",
+    "weightPlaceholder": "Voer uw gewicht in",
+    "activityLabel": "Activiteitenniveau",
+    "activityLevels": {
+      "sedentary": "Zittend (weinig of geen oefening)",
+      "light": "Licht (oefening 1-3 dagen/week)",
+      "moderate": "Gemiddeld (oefening 3-5 dagen/week)",
+      "active": "Actief (oefening 6-7 dagen/week)",
+      "veryActive": "Zeer Actief (intensieve dagelijkse oefening of fysiek werk)"
+    },
+    "goalLabel": "Doel",
+    "goals": {
+      "maintain": "Gewicht handhaven",
+      "lose": "Gewicht verliezen",
+      "gain": "Spiermassa winnen"
+    }
+  },
+  "results": {
+    "title": "Uw Resultaten",
+    "dailyProtein": "Aanbevolen Dagelijkse Eiwit",
+    "gramsPerDay": "gram per dag",
+    "proteinPerKg": "Eiwit per kg gewicht",
+    "caloriesFromProtein": "Calorieën uit eiwit",
+    "percentageOfDiet": "Percentage van dieet (2000 kcal basis)"
+  },
+  "info": {
+    "title": "Over Eiwit",
+    "description": "Eiwitten zijn essentiële macronutriënten die een cruciale rol spelen bij het bouwen en repareren van weefsels, het produceren van enzymen en hormonen en het behouden van spiermassa. De hoeveelheid eiwit die u nodig hebt, hangt af van uw lichaamsgewicht, fysieke activiteitenniveau en gezondheidsdoelen.",
+    "recommendationsTitle": "Algemene Aanbevelingen",
+    "recommendations": {
+      "sedentary": "Zittende personen",
+      "sedentaryValue": "0,8g per kg lichaamsgewicht",
+      "active": "Actieve personen",
+      "activeValue": "1,2-1,5g per kg lichaamsgewicht",
+      "athlete": "Atleten en spieropbouw",
+      "athleteValue": "1,6-2,2g per kg lichaamsgewicht"
+    },
+    "note": "Opmerking: Deze calculator biedt algemene schattingen. Raadpleeg een gezondheidsprofessional of voedingsdeskundige voor persoonlijke aanbevelingen, vooral als u specifieke medische aandoeningen hebt."
+  }
+}

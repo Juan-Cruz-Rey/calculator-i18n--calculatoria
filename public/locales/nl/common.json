@@ -1,0 +1,40 @@
+{
+  "site": {
+    "title": "Online Rekenmachines",
+    "description": "Verzameling van gratis en gebruiksvriendelijke rekenmachines"
+  },
+  "nav": {
+    "home": "Home",
+    "calculators": "Rekenmachines"
+  },
+  "common": {
+    "calculate": "Berekenen",
+    "reset": "Resetten",
+    "result": "Resultaat",
+    "age": "Leeftijd",
+    "gender": "Geslacht",
+    "male": "Man",
+    "female": "Vrouw",
+    "height": "Lengte",
+    "weight": "Gewicht",
+    "years": "jaar",
+    "week": "week",
+    "search": "Zoek rekenmachines...",
+    "noResults": "Geen rekenmachines gevonden die overeenkomen met uw zoekopdracht"
+  },
+  "units": {
+    "metric": "Metrisch",
+    "imperial": "Imperiaal",
+    "cm": "cm",
+    "m": "m",
+    "km": "km",
+    "mi": "mijl",
+    "yd": "yard",
+    "kg": "kg",
+    "ft": "voet",
+    "in": "inch",
+    "lbs": "lbs",
+    "minPerKm": "min/km",
+    "minPerMi": "min/mijl"
+  }
+}

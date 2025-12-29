@@ -1,0 +1,44 @@
+{
+  "title": "Kalori Hesaplayıcı",
+  "description": "Günlük kalori ihtiyacınızı hesaplayın",
+  "metaDescription": "Ücretsiz kalori hesaplayıcı - Yaşınıza, kilonuza, boyunuza ve aktivite seviyenize göre günlük kaç kaloriye ihtiyacınız olduğunu hesaplayın.",
+  "form": {
+    "title": "Bilgilerinizi Girin",
+    "ageLabel": "Yaş",
+    "agePlaceholder": "Yaşınızı girin (15-80)",
+    "genderLabel": "Cinsiyet",
+    "heightLabel": "Boy",
+    "heightPlaceholder": "Boyunuzu girin",
+    "weightLabel": "Kilo",
+    "weightPlaceholder": "Kilonuzu girin",
+    "activityLabel": "Aktivite Seviyesi"
+  },
+  "activity": {
+    "sedentary": "Hareketsiz (az veya hiç egzersiz yok)",
+    "light": "Hafif (haftada 1-3 kez egzersiz)",
+    "moderate": "Orta (haftada 4-5 kez egzersiz)",
+    "active": "Aktif (günlük egzersiz veya haftada 3-4 kez yoğun egzersiz)",
+    "veryActive": "Çok Aktif (haftada 6-7 kez yoğun egzersiz)",
+    "extraActive": "Ekstra Aktif (çok yoğun günlük egzersiz ve fiziksel iş)"
+  },
+  "results": {
+    "title": "Kalori İhtiyacınız",
+    "maintenance": "Koruma",
+    "maintenanceDesc": "Mevcut kilonuzu korumak için kalori",
+    "goalsTitle": "Hedefe Göre Kalori",
+    "weightLoss": "Kilo Kaybı",
+    "weightGain": "Kilo Alımı",
+    "mild": "Hafif",
+    "moderate": "Orta",
+    "extreme": "Aşırı",
+    "bmr": "BMR (Bazal Metabolizma Hızı)",
+    "bmrDesc": "Vücudunuzun dinlenme halinde ihtiyaç duyduğu kalori"
+  },
+  "info": {
+    "title": "Kalori Hesaplayıcı Hakkında",
+    "description": "Bu hesaplayıcı, yaşınıza, cinsiyetinize, kilonuza, boyunuza ve aktivite seviyenize göre günlük kaç kaloriye ihtiyacınız olduğunu tahmin eder. Bazal metabolizma hızını (BMR) hesaplamak için en doğru yöntemlerden biri olarak kabul edilen Mifflin-St Jeor denklemini kullanır.",
+    "formulasTitle": "Kullanılan Formüller",
+    "mifflinFormula": "Erkekler: BMR = 10 × kilo(kg) + 6.25 × boy(cm) - 5 × yaş + 5\nKadınlar: BMR = 10 × kilo(kg) + 6.25 × boy(cm) - 5 × yaş - 161",
+    "limitations": "Bu tahminler genel yönergelerdir. Bireysel kalori ihtiyaçları metabolizmaya, vücut bileşimine ve diğer sağlık faktörlerine göre değişebilir. Kişiselleştirilmiş bir plan için bir sağlık uzmanına danışın."
+  }
+}

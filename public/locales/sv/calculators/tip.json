@@ -1,0 +1,33 @@
+{
+  "title": "Drickskalkylator",
+  "description": "Beräkna dricks och dela notan",
+  "metaDescription": "Gratis drickskalkylator - Beräkna rätt dricksbelopp och dela notan mellan flera personer. Inkluderar vanliga förslag på dricksprocent.",
+  "form": {
+    "title": "Ange notauppgifter",
+    "billAmountLabel": "Notabelopp",
+    "billAmountPlaceholder": "Ange totalt belopp",
+    "tipPercentageLabel": "Dricksprocent",
+    "customTipPlaceholder": "Anpassad",
+    "numberOfPeopleLabel": "Antal personer",
+    "numberOfPeoplePlaceholder": "Hur många personer?",
+    "currencySymbol": "kr",
+    "peopleUnit": "personer"
+  },
+  "results": {
+    "title": "Sammanfattning",
+    "tipAmount": "Dricksbelopp",
+    "totalAmount": "Totalt med dricks",
+    "tipPerPerson": "Dricks per person",
+    "totalPerPerson": "Totalt per person"
+  },
+  "info": {
+    "title": "Dricksguide",
+    "description": "Dricks är ett sätt att visa uppskattning för god service. Medan sedvänjor varierar per land och typ av service, här är några allmänna riktlinjer:",
+    "guidelinesTitle": "Vanliga riktlinjer för dricks:",
+    "guideline1": "Grundläggande eller acceptabel service",
+    "guideline2": "Bra standardservice",
+    "guideline3": "Utmärkt eller exceptionell service",
+    "guideline4": "Extraordinär service eller stora grupper",
+    "note": "Obs: Drickssedvänjor varierar betydligt efter region och typ av etablissemang. I vissa länder ingår dricks i notan eller så är dricks inte sedvanligt."
+  }
+}

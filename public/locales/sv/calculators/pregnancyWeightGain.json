@@ -1,0 +1,34 @@
+{
+  "title": "Graviditet Vikt Ökning Kalkylator",
+  "description": "Beräkna recommended weight gain during pregnancy",
+  "metaDescription": "Gratis pregnancy weight gain calculator - Get personalized recommendations baserat på IOM guidelines according to your pre-pregnancy BMI.",
+  "form": {
+    "title": "Ange Din Information",
+    "currentWeekLabel": "Current Graviditet Week",
+    "currentWeekPlaceholder": "1-40",
+    "weeksUnit": "weeks",
+    "isTwinsLabel": "Twin Graviditet",
+    "heightLabel": "Längd",
+    "heightPlaceholder": "Ange din längd",
+    "prePregnancyWeightLabel": "Pre-Graviditet Vikt",
+    "prePregnancyWeightPlaceholder": "Ange your pre-pregnancy weight",
+    "currentWeightLabel": "Current Vikt",
+    "currentWeightPlaceholder": "Ange your current weight"
+  },
+  "results": {
+    "title": "Din Resultat",
+    "currentGainValue": "Current Vikt Ökning",
+    "prePregnancyBMI": "Pre-Graviditet BMI",
+    "bmiCategory": "BMI Category",
+    "trimester": "Trimester",
+    "recommendedTotalGain": "Rekommenderad Totalt Ökning",
+    "recommendedAtWeek": "Rekommenderad at This Week",
+    "weeklyGainTarget": "Weekly Ökning Target (2nd/3rd Trimester)"
+  },
+  "info": {
+    "title": "Om Graviditet Vikt Ökning",
+    "description": "Vikt gain during pregnancy is essential for the health of both mother and baby. The Institute of Medicine (IOM) recommendations vary baserat på pre-pregnancy BMI and whether it's a twin pregnancy.",
+    "guidelines": "General guidelines: During the first trimester, weight gain is minimal (1-4 lbs). In the second and third trimesters, weight gain is steady and progressive baserat på BMI category.",
+    "limitations": "This calculator provides general estimates baserat på IOM guidelines. Always consult with your doctor or healthcare provider for personalized recommendations baserat på your individual situation."
+  }
+}

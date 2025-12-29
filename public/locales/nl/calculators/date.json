@@ -1,0 +1,51 @@
+{
+  "title": "Datumcalculator",
+  "description": "Bereken datumverschillen en voeg of trek dagen, maanden en jaren af",
+  "metaDescription": "Gratis datumcalculator - Voeg of trek dagen, maanden en jaren van een datum af. Bereken verschillen tussen datums, werkdagen en meer.",
+  "tabs": {
+    "addSubtract": "Optellen/Aftrekken",
+    "difference": "Verschil"
+  },
+  "addSubtract": {
+    "title": "Voeg of Trek Tijd Af",
+    "startDate": "Startdatum",
+    "add": "Optellen",
+    "subtract": "Aftrekken"
+  },
+  "difference": {
+    "title": "Bereken Datumverschil",
+    "startDate": "Startdatum",
+    "endDate": "Einddatum",
+    "includeEndDate": "Einddatum in berekening opnemen"
+  },
+  "units": {
+    "years": "Jaren",
+    "months": "Maanden",
+    "weeks": "Weken",
+    "days": "Dagen"
+  },
+  "results": {
+    "title": "Resultaten",
+    "resultDate": "Resultaatdatum",
+    "dayOfYear": "Dag van het jaar",
+    "weekOfYear": "Week van het jaar",
+    "leapYear": "Schrikkeljaar",
+    "timeDifference": "Tijdsverschil",
+    "totalDays": "Totaal dagen",
+    "totalWeeks": "Totaal weken",
+    "totalHours": "Totaal uren",
+    "totalMinutes": "Totaal minuten",
+    "businessDays": "Werkdagen",
+    "weekdays": "Weekdagen",
+    "weekends": "Weekends"
+  },
+  "info": {
+    "title": "Over de Datumcalculator",
+    "description": "Deze datumcalculator stelt u in staat tijd van een specifieke datum op te tellen of af te trekken, of het verschil tussen twee datums te berekenen. Dit is handig voor projectplanning, deadline berekening en nog veel meer.",
+    "useCasesTitle": "Gebruikszaken:",
+    "useCase1": "Bereken vervaldatums en afleveringstermijnen",
+    "useCase2": "Bepaal projectduur in werkdagen",
+    "useCase3": "Plan evenementen en bereken toekomstige datums",
+    "useCase4": "Bereken leeftijd, jubilea en verstreken tijd"
+  }
+}

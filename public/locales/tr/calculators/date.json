@@ -1,0 +1,51 @@
+{
+  "title": "Tarih Hesaplayıcı",
+  "description": "Tarih farklarını hesaplayın ve gün, ay ve yıl ekleyin veya çıkarın",
+  "metaDescription": "Ücretsiz tarih hesaplayıcı - Bir tarihten gün, ay ve yıl ekleyin veya çıkarın. Tarihler arasındaki farkları, iş günlerini ve daha fazlasını hesaplayın.",
+  "tabs": {
+    "addSubtract": "Ekle/Çıkar",
+    "difference": "Fark"
+  },
+  "addSubtract": {
+    "title": "Zaman Ekle veya Çıkar",
+    "startDate": "Başlangıç tarihi",
+    "add": "Ekle",
+    "subtract": "Çıkar"
+  },
+  "difference": {
+    "title": "Tarih Farkını Hesapla",
+    "startDate": "Başlangıç tarihi",
+    "endDate": "Bitiş tarihi",
+    "includeEndDate": "Hesaplamaya bitiş tarihini dahil et"
+  },
+  "units": {
+    "years": "Yıl",
+    "months": "Ay",
+    "weeks": "Hafta",
+    "days": "Gün"
+  },
+  "results": {
+    "title": "Sonuçlar",
+    "resultDate": "Sonuç Tarihi",
+    "dayOfYear": "Yılın günü",
+    "weekOfYear": "Yılın haftası",
+    "leapYear": "Artık yıl",
+    "timeDifference": "Zaman Farkı",
+    "totalDays": "Toplam gün",
+    "totalWeeks": "Toplam hafta",
+    "totalHours": "Toplam saat",
+    "totalMinutes": "Toplam dakika",
+    "businessDays": "İş günleri",
+    "weekdays": "Hafta içi",
+    "weekends": "Hafta sonu"
+  },
+  "info": {
+    "title": "Tarih Hesaplayıcı Hakkında",
+    "description": "Bu tarih hesaplayıcı, belirli bir tarihe zaman eklemenize veya çıkarmanıza veya iki tarih arasındaki farkı hesaplamanıza olanak tanır. Proje planlama, son tarih hesaplama ve çok daha fazlası için kullanışlıdır.",
+    "useCasesTitle": "Kullanım durumları:",
+    "useCase1": "Son tarihleri ve teslimat sürelerini hesaplayın",
+    "useCase2": "Proje süresini iş günü cinsinden belirleyin",
+    "useCase3": "Etkinlikleri planlayın ve gelecek tarihleri hesaplayın",
+    "useCase4": "Yaş, yıldönümleri ve geçen zamanı hesaplayın"
+  }
+}

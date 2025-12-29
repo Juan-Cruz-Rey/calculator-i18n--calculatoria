@@ -1,0 +1,53 @@
+{
+  "title": "Kolhydrat Kalkylator",
+  "description": "Beräkna your recommended daily carbohydrate intake",
+  "metaDescription": "Gratis carbohydrate calculator - Beräkna your recommended daily carb intake baserat på your TDEE, activity level, and goals. Personalized recommendations for low-carb, moderate-carb, and high-carb diets.",
+  "form": {
+    "title": "Ange Din Information",
+    "ageLabel": "Ålder",
+    "agePlaceholder": "Ange din ålder",
+    "genderLabel": "Kön",
+    "heightLabel": "Längd",
+    "heightPlaceholder": "Ange din längd",
+    "weightLabel": "Vikt",
+    "weightPlaceholder": "Ange din vikt",
+    "activityLevelLabel": "Aktivitet Nivå",
+    "activityLevels": {
+      "sedentary": "Stillasittande - Little or no träning",
+      "light": "Lätt - Lätt träning 1-3 days/week",
+      "moderate": "Måttlig - Måttlig träning 3-5 days/week",
+      "active": "Active - Hard träning 6-7 days/week",
+      "extra": "Very Active - Very hard träning, physical job"
+    },
+    "goalLabel": "Goal",
+    "goals": {
+      "loss": "Vikt loss",
+      "maintain": "Maintain weight",
+      "gain": "Muscle gain"
+    }
+  },
+  "results": {
+    "title": "Din Resultat",
+    "bmr": "BMR (Basal Metabolisk Hastighet)",
+    "tdee": "TDEE (Totalt Daglig Energy Expenditure)",
+    "targetCalories": "Target Kalorier",
+    "recommendationsTitle": "Kolhydrat Recommendations",
+    "levels": {
+      "low": "Low Kolhydrat",
+      "moderate": "Måttlig Kolhydrat",
+      "high": "High Kolhydrat"
+    },
+    "descriptions": {
+      "low": "Ideal for rapid weight loss and blood sugar control. May be difficult to maintain long-term.",
+      "moderate": "Balanced approach for most people. Good for maintenance and gradual weight loss.",
+      "high": "Optimal for athletes and very active individuals. Provides energy for intense workouts."
+    },
+    "note": "Note: The minimum recommended carbohydrate intake is 130g per day for adults. Consult with a healthcare professional before making significant dietary changes."
+  },
+  "info": {
+    "title": "Om Kolhydrater",
+    "description": "Kolhydrater are one of the three main macronutrients (along with protein and fat) and the body's primary source of energy. The optimal amount of carbohydrates varies baserat på your activity level, goals, and personal preferences.",
+    "formula": "Formel: Kolhydrat grams = (Target calories × % carbs) ÷ 4 calories/g",
+    "recommendations": "Kolhydrat recommendations are baserat på percentages of your total caloric intake: Low (10-30%), Måttlig (30-50%), High (50-70%). The choice depends on your goals, activity level, and individual metabolic response."
+  }
+}

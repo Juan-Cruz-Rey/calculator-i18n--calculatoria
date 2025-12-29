@@ -1,0 +1,30 @@
+{
+  "title": "Menstruatie Calculator",
+  "description": "Voorspel uw volgende periode en ovulatiedatums",
+  "metaDescription": "Gratis menstruatie calculator - Voorspel uw volgende periode, ovulatiedatums en vruchtbaar venster. Volg uw menstruatiecyclus eenvoudig.",
+  "form": {
+    "title": "Voer Uw Informatie In",
+    "lastPeriodLabel": "Eerste dag van laatste periode",
+    "lastPeriodHelp": "Datum waarop uw laatste menstruatie begon",
+    "cycleLengthLabel": "Cyclushoofdlijn",
+    "cycleLengthHelp": "Gemiddeld aantal dagen tussen periodes (meestal 28 dagen)",
+    "periodLengthLabel": "Periododuur",
+    "periodLengthHelp": "Aantal dagen dat uw periode duurt (meestal 5 dagen)"
+  },
+  "results": {
+    "title": "Uw Resultaten",
+    "nextPeriod": "Volgende Periode",
+    "daysUntil": "In",
+    "cycleDay": "Cyclusdag",
+    "currentPhase": "Huidige Fase",
+    "ovulationDate": "Ovulatiedatum",
+    "fertilityWindow": "Vruchtbaarheidsvenster",
+    "upcomingPeriods": "Komende Periodes"
+  },
+  "info": {
+    "title": "Over de Menstruatie Calculator",
+    "description": "Deze calculator voorspelt uw aankomende menstruatieperiodes en ovulatiedatums op basis van uw laatste periode en gemiddelde cyclushoofdlijn. Ovulatie vindt meestal 14 dagen voor de volgende periode plaats.",
+    "formula": "Formule: Volgende periode = Laatste periode + Cyclushoofdlijn. Ovulatie = Volgende periode - 14 dagen",
+    "limitations": "Opmerking: Deze calculator biedt schattingen op basis van reguliere cyclen. Menstruatiecyclen kunnen natuurlijk variëren. Voor medische zorgen of cyclus onregelmatigheden, raadpleeg alstublieft een gezondheidsprofessional."
+  }
+}

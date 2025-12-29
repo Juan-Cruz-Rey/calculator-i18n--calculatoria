@@ -1,0 +1,34 @@
+{
+  "title": "Hardlooptempo Calculator",
+  "description": "Bereken uw hardlooptempo, tijd of afstand",
+  "metaDescription": "Gratis hardlooptempo calculator - Bereken uw tempo per kilometer of mijl, geschatte racetijd of afstand. Bevat tijden voor 5K, 10K, halve marathon en marathon.",
+  "form": {
+    "title": "Voer Uw Gegevens In",
+    "modeLabel": "Wat wilt u berekenen?",
+    "calculatePace": "Bereken Tempo",
+    "calculateTime": "Bereken Tijd",
+    "calculateDistance": "Bereken Afstand",
+    "distanceLabel": "Afstand",
+    "distancePlaceholder": "Voer afstand in",
+    "timeLabel": "Tijd",
+    "timeHint": "Format: uren:minuten:seconden",
+    "paceLabel": "Tempo",
+    "paceHint": "Format: minuten:seconden per km/mijl",
+    "halfMarathon": "Halve Marathon",
+    "marathon": "Marathon"
+  },
+  "results": {
+    "title": "Uw Resultaten",
+    "yourPace": "Uw Tempo",
+    "yourTime": "Uw Tijd",
+    "yourDistance": "Uw Afstand",
+    "commonRaces": "Veelvoorkomende Racetijden",
+    "splits": "Gesplitste Tijden"
+  },
+  "info": {
+    "title": "Over Hardlooptempo",
+    "description": "Hardlooptempo is de tijd die nodig is om een specifieke afstandseenheid (kilometer of mijl) af te leggen. Het is een essentieel gegeven voor hardlopers die trainingen willen plannen en racedeals willen stellen.",
+    "formula": "Formule: Tempo = Totale Tijd / Afstand",
+    "tip": "Tip: Een consistent tempo is de sleutel tot succes in lange afstandsraces. Gebruik deze calculator om uw racestrategie in te plannen en een duurzaam tempo te handhaven."
+  }
+}

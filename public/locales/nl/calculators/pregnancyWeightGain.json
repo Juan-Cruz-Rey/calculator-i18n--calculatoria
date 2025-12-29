@@ -1,0 +1,34 @@
+{
+  "title": "Zwangerschap Gewichtstoename Calculator",
+  "description": "Bereken aanbevolen gewichtstoename tijdens zwangerschap",
+  "metaDescription": "Gratis zwangerschap gewichtstoename calculator - Krijg persoonlijke aanbevelingen op basis van IOM-richtlijnen volgens uw voor-zwangerschap BMI.",
+  "form": {
+    "title": "Voer Uw Informatie In",
+    "currentWeekLabel": "Huidige Zwangerschapsweek",
+    "currentWeekPlaceholder": "1-40",
+    "weeksUnit": "weken",
+    "isTwinsLabel": "Zwangerschap van Tweelingen",
+    "heightLabel": "Lengte",
+    "heightPlaceholder": "Voer uw lengte in",
+    "prePregnancyWeightLabel": "Voor-zwangerschap Gewicht",
+    "prePregnancyWeightPlaceholder": "Voer uw voor-zwangerschap gewicht in",
+    "currentWeightLabel": "Huidig Gewicht",
+    "currentWeightPlaceholder": "Voer uw huidige gewicht in"
+  },
+  "results": {
+    "title": "Uw Resultaten",
+    "currentGainValue": "Huidige Gewichtstoename",
+    "prePregnancyBMI": "Voor-zwangerschap BMI",
+    "bmiCategory": "BMI Categorie",
+    "trimester": "Trimester",
+    "recommendedTotalGain": "Aanbevolen Totale Toename",
+    "recommendedAtWeek": "Aanbevolen op Deze Week",
+    "weeklyGainTarget": "Wekelijkse Toename Doel (2e/3e Trimester)"
+  },
+  "info": {
+    "title": "Over Zwangerschap Gewichtstoename",
+    "description": "Gewichtstoename tijdens zwangerschap is essentieel voor de gezondheid van zowel moeder als baby. De aanbevelingen van het Institute of Medicine (IOM) variëren op basis van voor-zwangerschap BMI en of het een zwangerschap van tweelingen is.",
+    "guidelines": "Algemene richtlijnen: In het eerste trimester is gewichtstoename minimaal (1-4 lbs). In het tweede en derde trimester is gewichtstoename gestag en progressief op basis van BMI-categorie.",
+    "limitations": "Deze calculator biedt algemene schattingen op basis van IOM-richtlijnen. Raadpleeg altijd uw arts of zorgverlener voor persoonlijke aanbevelingen op basis van uw individuele situatie."
+  }
+}

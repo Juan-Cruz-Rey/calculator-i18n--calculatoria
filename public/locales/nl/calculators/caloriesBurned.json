@@ -1,0 +1,56 @@
+{
+  "title": "Verbrande Calorieën Calculator",
+  "description": "Bereken verbrande calorieën tijdens verschillende activiteiten",
+  "metaDescription": "Gratis calorieën verbrande calculator - Ontdek hoeveel calorieën u verbrandt tijdens oefening en dagelijkse activiteiten met behulp van nauwkeurige MET-waarden.",
+  "form": {
+    "title": "Voer Uw Informatie In",
+    "activityLabel": "Activiteitstype",
+    "durationLabel": "Duur",
+    "durationPlaceholder": "Voer duur in minuten in",
+    "weightLabel": "Gewicht",
+    "weightPlaceholder": "Voer uw gewicht in"
+  },
+  "activities": {
+    "walking": "Wandelen",
+    "walking_slow": "Langzaam Wandelen (< 2 mph)",
+    "walking_moderate": "Gemiddeld Wandelen (3.0 mph)",
+    "walking_brisk": "Stevig Wandelen (3.5 mph)",
+    "running": "Hardlopen",
+    "running_slow": "Joggen (5 mph)",
+    "running_moderate": "Gemiddeld Hardlopen (6.7 mph)",
+    "running_fast": "Snel Hardlopen (8 mph)",
+    "cycling": "Fietsen",
+    "cycling_leisure": "Vrijetijds Fietsen (< 10 mph)",
+    "cycling_moderate": "Gemiddeld Fietsen (12-14 mph)",
+    "cycling_vigorous": "Intensief Fietsen (14-16 mph)",
+    "swimming": "Zwemmen",
+    "swimming_leisure": "Vrijetijds Zwemmen",
+    "swimming_moderate": "Gemiddeld Zwemmen",
+    "swimming_vigorous": "Intensief Zwemmen",
+    "other": "Andere Activiteiten",
+    "weightlifting": "Gewichtheffen",
+    "yoga": "Yoga",
+    "aerobics": "Aerobics",
+    "dancing": "Dansen",
+    "hiking": "Wandelen in de natuur",
+    "rowing": "Roeien",
+    "basketball": "Basketbal",
+    "soccer": "Voetbal",
+    "tennis": "Tennis",
+    "golf": "Golf"
+  },
+  "results": {
+    "title": "Uw Resultaten",
+    "totalCalories": "Totaal Verbrande Calorieën",
+    "caloriesUnit": "calorieën",
+    "metValue": "MET-waarde",
+    "caloriesPerMinute": "Calorieën per Minuut",
+    "caloriesPerHour": "Calorieën per Uur"
+  },
+  "info": {
+    "title": "Over Verbrande Calorieën",
+    "description": "Deze calculator schat calorieën verbrand tijdens verschillende fysieke activiteiten met behulp van MET (Metabolic Equivalent of Task) waarden. MET is een eenheid die schat hoeveel energie uw lichaam tijdens fysieke activiteit gebruikt.",
+    "formula": "Formule: Calorieën/minuut = (MET × gewicht in kg × 3.5) / 200",
+    "limitations": "De resultaten zijn schattingen op basis van gemiddelde MET-waarden. Werkelijk calorieënverbruik kan variëren op basis van trainingsintensiteit, lichaamssamenstelling, leeftijd, geslacht en fitnessniveau."
+  }
+}

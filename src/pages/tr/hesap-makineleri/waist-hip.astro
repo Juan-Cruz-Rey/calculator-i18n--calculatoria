@@ -1,0 +1,37 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import WaistHipCalculator from '@/components/calculators/WaistHipCalculator.astro';
+import { t } from '@/utils/i18n';
+
+const title = t('waistHip.title', 'tr') + ' - ' + t('site.title', 'tr');
+const description = t('waistHip.metaDescription', 'tr');
+---
+
+<BaseLayout title={title} description={description} lang="tr" calculator="waistHip">
+  <div class="container">
+    <div class="page-header">
+      <h1>{t('waistHip.title', 'tr')}</h1>
+      <p class="page-description">{t('waistHip.description', 'tr')}</p>
+    </div>
+
+    <WaistHipCalculator lang="tr" />
+  </div>
+
+  <style>
+    .page-header {
+      text-align: center;
+      padding: 2rem 0;
+    }
+
+    .page-header h1 {
+      font-size: 2.5rem;
+      color: #333;
+      margin-bottom: 0.5rem;
+    }
+
+    .page-description {
+      font-size: 1.25rem;
+      color: #666;
+    }
+  </style>
+</BaseLayout>

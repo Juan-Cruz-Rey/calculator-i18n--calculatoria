@@ -1,0 +1,31 @@
+{
+  "title": "Ideaal Gewicht Rekenmachine",
+  "description": "Bereken uw ideale gewicht met behulp van meerdere wetenschappelijke formules",
+  "metaDescription": "Gratis ideaal gewicht rekenmachine - Bereken uw ideale gewicht op basis van lengte en geslacht met behulp van meerdere formules: Robinson, Miller, Devine en Hamwi.",
+  "form": {
+    "title": "Voer Uw Gegevens In",
+    "genderLabel": "Geslacht",
+    "ageLabel": "Leeftijd",
+    "agePlaceholder": "Voer uw leeftijd in (optioneel)",
+    "heightLabel": "Lengte",
+    "heightPlaceholder": "Voer uw lengte in"
+  },
+  "results": {
+    "title": "Uw Ideale Gewicht",
+    "average": "Gemiddeld Ideaal Gewicht",
+    "averageDesc": "Gemiddelde van alle wetenschappelijke formules",
+    "formulasTitle": "Resultaten per Formule",
+    "healthyRange": "Gezond Gewicht Bereik (gebaseerd op BMI)",
+    "healthyRangeDesc": "Gebaseerd op een gezonde BMI van 18,5 - 25"
+  },
+  "info": {
+    "title": "Over de Ideaal Gewicht Rekenmachine",
+    "description": "Deze rekenmachine schat uw ideale gewicht op basis van uw lengte en geslacht met behulp van vier erkende wetenschappelijke formules: Robinson (1983), Miller (1983), Devine (1974) en Hamwi (1964). Het berekent ook een gezond gewicht bereik op basis van de Body Mass Index (BMI) aanbevolen door de WHO.",
+    "formulasTitle": "Gebruikte Formules",
+    "robinsonFormula": "Mannen: 52 kg + 1,9 kg per inch boven 5 voet\nVrouwen: 49 kg + 1,7 kg per inch boven 5 voet",
+    "millerFormula": "Mannen: 56,2 kg + 1,41 kg per inch boven 5 voet\nVrouwen: 53,1 kg + 1,36 kg per inch boven 5 voet",
+    "devineFormula": "Mannen: 50 kg + 2,3 kg per inch boven 5 voet\nVrouwen: 45,5 kg + 2,3 kg per inch boven 5 voet",
+    "hamwiFormula": "Mannen: 48 kg + 2,7 kg per inch boven 5 voet\nVrouwen: 45,5 kg + 2,2 kg per inch boven 5 voet",
+    "limitations": "Deze formules bieden algemene schattingen van het ideale gewicht. Het werkelijke ideale gewicht kan variëren op basis van lichaamssamenstelling, botstructuur, spiermassa en andere individuele factoren. Raadpleeg een zorgprofessional voor een gepersonaliseerde beoordeling."
+  }
+}

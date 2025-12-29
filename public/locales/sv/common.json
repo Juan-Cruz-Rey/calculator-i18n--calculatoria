@@ -1,0 +1,40 @@
+{
+  "site": {
+    "title": "Online Kalkylatorer",
+    "description": "Samling av gratis och lättanvända kalkylatorer"
+  },
+  "nav": {
+    "home": "Hem",
+    "calculators": "Kalkylatorer"
+  },
+  "common": {
+    "calculate": "Beräkna",
+    "reset": "Återställ",
+    "result": "Resultat",
+    "age": "Ålder",
+    "gender": "Kön",
+    "male": "Man",
+    "female": "Kvinna",
+    "height": "Längd",
+    "weight": "Vikt",
+    "years": "år",
+    "week": "vecka",
+    "search": "Sök kalkylatorer...",
+    "noResults": "Inga kalkylatorer hittades som matchar din sökning"
+  },
+  "units": {
+    "metric": "Metrisk",
+    "imperial": "Imperial",
+    "cm": "cm",
+    "m": "m",
+    "km": "km",
+    "mi": "miles",
+    "yd": "yards",
+    "kg": "kg",
+    "ft": "fot",
+    "in": "tum",
+    "lbs": "lbs",
+    "minPerKm": "min/km",
+    "minPerMi": "min/mile"
+  }
+}

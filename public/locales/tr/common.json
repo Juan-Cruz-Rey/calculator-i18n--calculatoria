@@ -1,0 +1,40 @@
+{
+  "site": {
+    "title": "Online Hesap Makineleri",
+    "description": "Ücretsiz ve kullanımı kolay hesap makineleri koleksiyonu"
+  },
+  "nav": {
+    "home": "Ana Sayfa",
+    "calculators": "Hesap Makineleri"
+  },
+  "common": {
+    "calculate": "Hesapla",
+    "reset": "Sıfırla",
+    "result": "Sonuç",
+    "age": "Yaş",
+    "gender": "Cinsiyet",
+    "male": "Erkek",
+    "female": "Kadın",
+    "height": "Boy",
+    "weight": "Kilo",
+    "years": "yıl",
+    "week": "hafta",
+    "search": "Hesap makinesi ara...",
+    "noResults": "Aramanızla eşleşen hesap makinesi bulunamadı"
+  },
+  "units": {
+    "metric": "Metrik",
+    "imperial": "İmparatorluk",
+    "cm": "cm",
+    "m": "m",
+    "km": "km",
+    "mi": "mil",
+    "yd": "yarda",
+    "kg": "kg",
+    "ft": "fit",
+    "in": "inç",
+    "lbs": "libre",
+    "minPerKm": "dk/km",
+    "minPerMi": "dk/mil"
+  }
+}

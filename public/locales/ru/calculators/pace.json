@@ -1,0 +1,34 @@
+{
+  "title": "Running Pace Calculator",
+  "description": "Calculate your running pace, time, or distance",
+  "metaDescription": "Free running pace calculator - Calculate your pace per kilometer or mile, estimated race time, or distance. Includes times for 5K, 10K, half marathon, and marathon.",
+  "form": {
+    "title": "Enter Your Data",
+    "modeLabel": "What do you want to calculate?",
+    "calculatePace": "Calculate Pace",
+    "calculateTime": "Calculate Time",
+    "calculateDistance": "Calculate Distance",
+    "distanceLabel": "Distance",
+    "distancePlaceholder": "Enter distance",
+    "timeLabel": "Time",
+    "timeHint": "Format: hours:minutes:seconds",
+    "paceLabel": "Pace",
+    "paceHint": "Format: minutes:seconds per km/mile",
+    "halfMarathon": "Half Marathon",
+    "marathon": "Marathon"
+  },
+  "results": {
+    "title": "Your Results",
+    "yourPace": "Your Pace",
+    "yourTime": "Your Time",
+    "yourDistance": "Your Distance",
+    "commonRaces": "Common Race Times",
+    "splits": "Split Times"
+  },
+  "info": {
+    "title": "About Running Pace",
+    "description": "Running pace is the time it takes you to cover a specific unit of distance (kilometer or mile). It's an essential metric for runners looking to plan training sessions and set race goals.",
+    "formula": "Formula: Pace = Total Time / Distance",
+    "tip": "Tip: A consistent pace is key to success in long-distance races. Use this calculator to plan your race strategy and maintain a sustainable pace."
+  }
+}

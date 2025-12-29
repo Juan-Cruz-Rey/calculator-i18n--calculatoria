@@ -1,0 +1,59 @@
+{
+  "title": "Macro Calculator",
+  "description": "Calculate your daily macronutrients",
+  "metaDescription": "Free macro calculator - Calculate your protein, carbohydrate, and fat distribution based on your goal. Get your personalized nutrition plan.",
+  "form": {
+    "title": "Enter your details",
+    "ageLabel": "Age",
+    "agePlaceholder": "Enter your age",
+    "genderLabel": "Gender",
+    "heightLabel": "Height",
+    "heightPlaceholder": "Enter your height",
+    "weightLabel": "Weight",
+    "weightPlaceholder": "Enter your weight",
+    "activityLabel": "Activity level",
+    "activityLevels": {
+      "sedentary": "Sedentary (little or no exercise)",
+      "light": "Light (exercise 1-3 times/week)",
+      "moderate": "Moderate (exercise 4-5 times/week)",
+      "active": "Active (daily exercise or intense 3-4 times/week)",
+      "veryActive": "Very active (intense exercise 6-7 times/week)",
+      "extraActive": "Extra active (very intense daily exercise or physical job)"
+    },
+    "goalLabel": "Weight goal",
+    "goals": {
+      "extremeLoss": "Extreme loss (2 lbs/week)",
+      "moderateLoss": "Moderate loss (1 lb/week)",
+      "mildLoss": "Mild loss (0.5 lb/week)",
+      "maintain": "Maintain weight",
+      "mildGain": "Mild gain (0.5 lb/week)",
+      "moderateGain": "Moderate gain (1 lb/week)",
+      "extremeGain": "Extreme gain (2 lbs/week)"
+    },
+    "dietTypeLabel": "Diet type",
+    "dietTypes": {
+      "balanced": "Balanced (30% protein, 40% carbs, 30% fats)",
+      "lowFat": "Low fat (30% protein, 50% carbs, 20% fats)",
+      "lowCarb": "Low carb (35% protein, 20% carbs, 45% fats)",
+      "highProtein": "High protein (40% protein, 30% carbs, 30% fats)"
+    }
+  },
+  "results": {
+    "title": "Your Results",
+    "dailyCalories": "Daily Calories",
+    "toReachGoal": "to reach your goal",
+    "bmr": "Basal Metabolic Rate (BMR)",
+    "tdee": "Total Daily Energy Expenditure (TDEE)",
+    "weeklyChange": "Weekly Weight Change",
+    "macrosBreakdown": "Macronutrient Breakdown",
+    "protein": "Protein",
+    "carbs": "Carbohydrates",
+    "fats": "Fats"
+  },
+  "info": {
+    "title": "About Macronutrients",
+    "description": "Macronutrients (protein, carbohydrates, and fats) are the nutrients that provide energy to your body. This calculator determines your total daily energy expenditure and distributes calories into macronutrients based on your goal and preferred diet type.",
+    "formula": "Formula: BMR (Mifflin-St Jeor) × Activity Multiplier ± Goal Adjustment",
+    "limitations": "This calculator provides estimates based on standard formulas. Individual requirements may vary. Consult with a healthcare professional or nutritionist for a personalized plan."
+  }
+}

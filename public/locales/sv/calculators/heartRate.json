@@ -1,0 +1,39 @@
+{
+  "title": "Hjärta Hastighet Kalkylator",
+  "description": "Beräkna your maximum heart rate and training zones",
+  "metaDescription": "Gratis heart rate calculator - Beräkna your maximum heart rate and optimal training zones for different types of träning.",
+  "form": {
+    "title": "Ange Din Information",
+    "ageLabel": "Ålder",
+    "agePlaceholder": "Ange din ålder",
+    "restingHRLabel": "Resting Hjärta Hastighet",
+    "restingHRPlaceholder": "Ange your resting heart rate",
+    "bpm": "bpm",
+    "restingHRInfo": "To measure your resting heart rate, count your pulse for 60 seconds upon waking in the morning before getting out of bed."
+  },
+  "results": {
+    "title": "Din Resultat",
+    "maxHR": "Maximum Hjärta Hastighet",
+    "restingHR": "Resting HR",
+    "hrReserve": "HR Reserve",
+    "zonesTitle": "Training Zones"
+  },
+  "zones": {
+    "resting": "Resting",
+    "warmup": "Warm Up",
+    "fatburn": "Fett Burn",
+    "cardio": "Cardio",
+    "peak": "Peak"
+  },
+  "info": {
+    "title": "Om Hjärta Hastighet",
+    "description": "Maximum heart rate is the highest number of times your heart can beat per minute during maximum physical exertion. It's generally calculated using the formula 220 - age. Training zones help you optimize your workouts baserat på your goals.",
+    "formula": "Formel: Max HR = 220 - age | Target HR = ((Max HR - Resting HR) × % Intensity) + Resting HR",
+    "zonesExplained": "Training Zones Explained",
+    "warmupDesc": "Ideal for warming up and cooling down. Improves overall health and aids in recovery.",
+    "fatburnDesc": "Optimal zone for burning fat. At this intensity, your body uses fat as the primary energy source.",
+    "cardioDesc": "Improves cardiovascular capacity and endurance. Ideal for improving aerobic performance.",
+    "peakDesc": "High-intensity training. Develops speed and power. Only for short sessions.",
+    "limitations": "The 220 - age formula is a general estimate. Actual maximum heart rate can vary baserat på individual factors such as genetics, fitness level, and medications. Consult with a healthcare professional before starting an intense träning program."
+  }
+}
