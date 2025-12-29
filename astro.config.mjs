@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config';
 import astroI18next from 'astro-i18next';
 import sitemap from '@astrojs/sitemap';
+import indexNow from 'astro-indexnow';
 
 // https://astro.build/config
 export default defineConfig({
@@ -72,6 +73,9 @@ export default defineConfig({
         // Excluir páginas de desarrollo o test si las hay
         return !page.includes('/test/') && !page.includes('/dev/');
       },
+    }),
+    indexNow({
+      key: ' b5d9013e886b4d85a331366e6bb88d45'
     }),
   ],
 });
