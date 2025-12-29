@@ -78,7 +78,7 @@ try {
     frontmatter = entry.data;
   }
 } catch (error) {
-  console.warn(`No MDX content found for ${entryId}, will render fallback`);
+  // No MDX content found - this is expected, will use fallback template
 }
 
 // Dynamic import of the calculator component
@@ -89,7 +89,8 @@ try {
   const module = await import(`@/components/calculators/${componentName}.astro`);
   CalculatorComponent = module.default;
 } catch (error) {
-  console.error(`Calculator component not found: ${componentName}`, error);
+  // Component not found - this is expected for calculators without MDX content yet
+  // Will use fallback template instead
 }
 
 // Fallback to loading translations from JSON if no MDX content
