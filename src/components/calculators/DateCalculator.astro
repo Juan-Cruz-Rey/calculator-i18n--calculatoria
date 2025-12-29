@@ -256,7 +256,7 @@ const { lang } = Astro.props as { lang: Locale };
 
   .tab-button.active {
     background: white;
-    color: #4CAF50;
+    color: var(--primary-color);
     box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
   }
 
@@ -310,8 +310,7 @@ const { lang } = Astro.props as { lang: Locale };
   }
 
   .form-group input:focus {
-    outline: none;
-    border-color: #4CAF50;
+    border-color: var(--primary-color);
   }
 
   .mode-toggle {
@@ -365,12 +364,12 @@ const { lang } = Astro.props as { lang: Locale };
   }
 
   .btn-primary {
-    background: #4CAF50;
+    background: var(--primary-color);
     color: white;
   }
 
   .btn-primary:hover {
-    background: #45a049;
+    background: #2d6a2f;
   }
 
   .btn-secondary {
@@ -385,7 +384,7 @@ const { lang } = Astro.props as { lang: Locale };
   .result-card {
     text-align: center;
     padding: 2rem;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #5568d3 0%, #6a4199 100%);
     color: white;
     border-radius: 8px;
     margin-bottom: 2rem;

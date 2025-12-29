@@ -51,7 +51,7 @@ const { lang } = Astro.props as { lang: Locale };
     </form>
   </div>
 
-  <div class="calculator-results" id="results" style="display: none;">
+  <div class="calculator-results" id="results" style="display: none;" role="region" aria-live="polite" aria-atomic="true">
     <h2>{t('heartRate.results.title', lang)}</h2>
 
     <div class="result-card max-hr">
@@ -154,7 +154,6 @@ const { lang } = Astro.props as { lang: Locale };
   }
 
   .form-group input[type="number"]:focus {
-    outline: none;
     border-color: #f43f5e;
   }
 

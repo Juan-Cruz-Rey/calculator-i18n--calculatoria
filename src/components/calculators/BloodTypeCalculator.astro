@@ -63,7 +63,7 @@ const { lang } = Astro.props as { lang: Locale };
     </form>
   </div>
 
-  <div class="calculator-results" id="results" style="display: none;">
+  <div class="calculator-results" id="results" style="display: none;" role="region" aria-live="polite" aria-atomic="true">
     <h2>{t('bloodType.results.title', lang)}</h2>
 
     <div class="result-card">
@@ -157,7 +157,6 @@ const { lang } = Astro.props as { lang: Locale };
   }
 
   .form-group select:focus {
-    outline: none;
     border-color: #dc2626;
   }
 

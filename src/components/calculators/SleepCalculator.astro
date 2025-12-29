@@ -54,7 +54,7 @@ const { lang } = Astro.props as { lang: Locale };
     </form>
   </div>
 
-  <div class="calculator-results" id="results" style="display: none;">
+  <div class="calculator-results" id="results" style="display: none;" role="region" aria-live="polite" aria-atomic="true">
     <h2 id="results-title">{t('sleep.results.title', lang)}</h2>
     <p class="results-subtitle" id="results-subtitle"></p>
 
@@ -130,7 +130,6 @@ const { lang } = Astro.props as { lang: Locale };
   }
 
   .form-group input[type="time"]:focus {
-    outline: none;
     border-color: #667eea;
   }
 
@@ -205,7 +204,7 @@ const { lang } = Astro.props as { lang: Locale };
   }
 
   .sleep-time-card {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #5568d3 0%, #6a4199 100%);
     color: white;
     padding: 1.5rem;
     border-radius: 8px;

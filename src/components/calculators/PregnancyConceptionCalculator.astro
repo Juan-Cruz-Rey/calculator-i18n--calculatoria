@@ -79,7 +79,7 @@ const { lang } = Astro.props as { lang: Locale };
     </form>
   </div>
 
-  <div class="calculator-results" id="results" style="display: none;">
+  <div class="calculator-results" id="results" style="display: none;" role="region" aria-live="polite" aria-atomic="true">
     <h2>{t('pregnancyConception:results.title', lang)}</h2>
 
     <div class="result-card conception-date">
@@ -169,7 +169,6 @@ const { lang } = Astro.props as { lang: Locale };
 
   .form-group input[type="date"]:focus,
   .form-group select:focus {
-    outline: none;
     border-color: #6BA4E7;
   }
 

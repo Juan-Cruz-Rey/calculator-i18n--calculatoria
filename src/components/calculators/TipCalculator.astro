@@ -77,7 +77,7 @@ const { lang } = Astro.props as { lang: Locale };
     </form>
   </div>
 
-  <div class="calculator-results" id="results" style="display: none;">
+  <div class="calculator-results" id="results" style="display: none;" role="region" aria-live="polite" aria-atomic="true">
     <h2>{t('tip.results.title', lang)}</h2>
 
     <div class="result-card tip-summary">
@@ -168,8 +168,7 @@ const { lang } = Astro.props as { lang: Locale };
   }
 
   .form-group input[type="number"]:focus {
-    outline: none;
-    border-color: #4CAF50;
+    border-color: var(--primary-color);
   }
 
   .unit {
@@ -198,14 +197,14 @@ const { lang } = Astro.props as { lang: Locale };
   }
 
   .tip-preset:hover {
-    border-color: #4CAF50;
+    border-color: var(--primary-color);
     background: #f0f9f0;
   }
 
   .tip-preset.active {
-    background: #4CAF50;
+    background: var(--primary-color);
     color: white;
-    border-color: #4CAF50;
+    border-color: var(--primary-color);
   }
 
   .custom-tip-input {
@@ -235,12 +234,12 @@ const { lang } = Astro.props as { lang: Locale };
   }
 
   .btn-primary {
-    background: #4CAF50;
+    background: var(--primary-color);
     color: white;
   }
 
   .btn-primary:hover {
-    background: #45a049;
+    background: #2d6a2f;
   }
 
   .btn-secondary {
@@ -253,7 +252,7 @@ const { lang } = Astro.props as { lang: Locale };
   }
 
   .result-card {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #5568d3 0%, #6a4199 100%);
     color: white;
     border-radius: 8px;
     padding: 2rem;

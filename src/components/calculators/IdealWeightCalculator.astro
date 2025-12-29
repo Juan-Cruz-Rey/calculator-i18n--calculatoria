@@ -93,7 +93,7 @@ const { lang } = Astro.props as { lang: Locale };
     </form>
   </div>
 
-  <div class="calculator-results" id="results" style="display: none;">
+  <div class="calculator-results" id="results" style="display: none;" role="region" aria-live="polite" aria-atomic="true">
     <h2>{t('idealWeight.results.title', lang)}</h2>
 
     <div class="result-card average">
@@ -222,8 +222,7 @@ const { lang } = Astro.props as { lang: Locale };
 
   .form-group input[type="number"]:focus,
   .form-group select:focus {
-    outline: none;
-    border-color: #4CAF50;
+    border-color: var(--primary-color);
   }
 
   .unit {
@@ -277,12 +276,12 @@ const { lang } = Astro.props as { lang: Locale };
   }
 
   .btn-primary {
-    background: #4CAF50;
+    background: var(--primary-color);
     color: white;
   }
 
   .btn-primary:hover {
-    background: #45a049;
+    background: #2d6a2f;
   }
 
   .btn-secondary {
@@ -297,7 +296,7 @@ const { lang } = Astro.props as { lang: Locale };
   .result-card {
     text-align: center;
     padding: 2rem;
-    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+    background: linear-gradient(135deg, var(--primary-color) 0%, #2d6a2f 100%);
     color: white;
     border-radius: 8px;
     margin-bottom: 2rem;
@@ -355,7 +354,7 @@ const { lang } = Astro.props as { lang: Locale };
     padding: 1.5rem;
     background: #e8f5e9;
     border-radius: 4px;
-    border-left: 4px solid #4CAF50;
+    border-left: 4px solid var(--primary-color);
   }
 
   .bmi-range-info h3 {
@@ -397,7 +396,7 @@ const { lang } = Astro.props as { lang: Locale };
   .formula-box {
     background: white;
     padding: 1rem;
-    border-left: 4px solid #4CAF50;
+    border-left: 4px solid var(--primary-color);
     margin: 1rem 0;
     border-radius: 4px;
   }

@@ -195,7 +195,7 @@ const { lang } = Astro.props as { lang: Locale };
     </form>
   </div>
 
-  <div class="calculator-results" id="results" style="display: none;">
+  <div class="calculator-results" id="results" style="display: none;" role="region" aria-live="polite" aria-atomic="true">
     <h2>{t('percentage.results.title', lang)}</h2>
 
     <div class="result-card">
@@ -282,8 +282,8 @@ const { lang } = Astro.props as { lang: Locale };
 
   .tab-btn.active {
     background: white;
-    color: #4CAF50;
-    border-bottom-color: #4CAF50;
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
     font-weight: 500;
   }
 
@@ -323,8 +323,7 @@ const { lang } = Astro.props as { lang: Locale };
   }
 
   .form-group input[type="number"]:focus {
-    outline: none;
-    border-color: #4CAF50;
+    border-color: var(--primary-color);
   }
 
   .unit {
@@ -354,12 +353,12 @@ const { lang } = Astro.props as { lang: Locale };
   }
 
   .btn-primary {
-    background: #4CAF50;
+    background: var(--primary-color);
     color: white;
   }
 
   .btn-primary:hover {
-    background: #45a049;
+    background: #2d6a2f;
   }
 
   .btn-secondary {
@@ -375,7 +374,7 @@ const { lang } = Astro.props as { lang: Locale };
   .result-card {
     text-align: center;
     padding: 2rem;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #5568d3 0%, #6a4199 100%);
     color: white;
     border-radius: 8px;
     margin-bottom: 2rem;
@@ -414,7 +413,7 @@ const { lang } = Astro.props as { lang: Locale };
     font-family: 'Courier New', monospace;
     background: white;
     padding: 1rem;
-    border-left: 4px solid #4CAF50;
+    border-left: 4px solid var(--primary-color);
     margin: 0;
     word-break: break-all;
   }

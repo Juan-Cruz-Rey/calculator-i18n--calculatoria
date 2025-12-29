@@ -41,7 +41,7 @@ const { lang } = Astro.props as { lang: Locale };
     </form>
   </div>
 
-  <div class="calculator-results" id="results" style="display: none;">
+  <div class="calculator-results" id="results" style="display: none;" role="region" aria-live="polite" aria-atomic="true">
     <h2>{t('age:results.title', lang)}</h2>
 
     <div class="result-card main-age">
@@ -139,7 +139,6 @@ const { lang } = Astro.props as { lang: Locale };
   }
 
   .form-group input[type="date"]:focus {
-    outline: none;
     border-color: #667eea;
   }
 
@@ -188,7 +187,7 @@ const { lang } = Astro.props as { lang: Locale };
   .result-card {
     text-align: center;
     padding: 2rem;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #5568d3 0%, #6a4199 100%);
     color: white;
     border-radius: 8px;
     margin-bottom: 2rem;
