@@ -3,6 +3,7 @@ export type Locale = 'es' | 'en' | 'pt' | 'fr' | 'hi' | 'de' | 'it' | 'pl' | 'nl
 // Import routing configuration
 import { getSlug } from '@/config/routes';
 import { languages, defaultLocale } from '@/config/languages';
+import type { CalculatorId } from '@/config/calculators';
 
 // Import common translations
 import esCommon from '../../public/locales/es/common.json';
@@ -1570,7 +1571,7 @@ export function getLocalizedPath(path: string, locale: Locale): string {
  * Get alternate locale path for a given calculator
  * Uses the new routing system from @/config/routes and @/config/languages
  */
-export function getAlternatePath(currentPath: string, targetLocale: Locale, calculator?: string): string {
+export function getAlternatePath(currentPath: string, targetLocale: Locale, calculator?: CalculatorId): string {
   // If we have a calculator ID, build the URL using the new routing system
   if (calculator) {
     const slug = getSlug(calculator, targetLocale);

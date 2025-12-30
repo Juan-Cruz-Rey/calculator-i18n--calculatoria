@@ -1,12 +1,13 @@
 ---
 import { getAlternatePath, languageConfig, type Locale } from '@/utils/i18n';
 import LanguageSelector from '@/components/LanguageSelector.astro';
+import type { CalculatorId } from '@/config/calculators';
 
 interface Props {
   title: string;
   description: string;
   lang?: string;
-  calculator?: string;
+  calculator?: CalculatorId;
   image?: string;
   noindex?: boolean;
 }

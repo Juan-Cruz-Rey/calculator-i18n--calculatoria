@@ -1,10 +1,11 @@
 ---
 import { getAlternatePath, languageConfig, type Locale } from '@/utils/i18n';
+import type { CalculatorId } from '@/config/calculators';
 
 interface Props {
   currentPath: string;
   currentLang: Locale;
-  calculator?: string;
+  calculator?: CalculatorId;
 }
 
 const { currentPath, currentLang, calculator } = Astro.props;
