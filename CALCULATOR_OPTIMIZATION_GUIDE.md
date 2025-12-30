@@ -158,8 +158,6 @@ title: [Título Optimizado con Año 2025 y Keywords]
 metaDescription: [155 caracteres max, benefit-focused, keywords naturales]
 keywords: [keyword1, keyword2, keyword3, ...]
 canonical: /[idioma-prefix]/[folder]/[slug]/
-showCalculatorFirst: true
-hideCalculator: true
 ---
 
 import [CalculatorName]Calculator from '@/components/calculators/[CalculatorName]Calculator.astro';
@@ -282,13 +280,14 @@ keywords: [
 
 ## Posicionamiento de la Calculadora
 
-### Regla de Oro: showCalculatorFirst = true
+### Regla de Oro: Calculadora después de breve introducción
 
-**SIEMPRE usar:**
-```yaml
-showCalculatorFirst: true
-hideCalculator: true
-```
+**La calculadora se posiciona manualmente en el MDX** insertando el componente donde desees que aparezca. El patrón recomendado es:
+1. H1 con título principal
+2. Breve introducción (1-2 párrafos)
+3. Sección "¿Qué es...?" con definición concisa
+4. **Componente de calculadora** `<CalculatorComponent lang="xx" />`
+5. Resto del contenido educativo
 
 ### Estructura de Contenido
 
@@ -345,46 +344,54 @@ hideCalculator: true
 
 ### ⚠️ CRÍTICO: Una Calculadora, Una Vez
 
-**Problema Común:**
+**Regla simple:** Incluye el componente de calculadora **solo una vez** en tu archivo MDX.
+
+**Correcto:**
 ```mdx
 ---
-hideCalculator: false  ❌ MAL
+title: Calculadora de IMC...
+metaDescription: ...
+keywords: [...]
+canonical: /calculadoras/imc/
 ---
 
-<Calculator lang="es" />  <!-- Primera vez -->
+import BMICalculator from '@/components/calculators/BMICalculator.astro';
 
-[Sistema automático renderiza de nuevo]  <!-- Segunda vez - DUPLICADO -->
+# Título
+
+[Introducción breve]
+
+## ¿Qué es el IMC?
+
+[Definición]
+
+<BMICalculator lang="es" />  <!-- ✅ Una sola vez -->
+
+## Categorías del IMC
+
+[Más contenido...]
 ```
 
-**Solución Correcta:**
+**Incorrecto:**
 ```mdx
----
-showCalculatorFirst: true
-hideCalculator: true  ✅ CORRECTO
----
+<BMICalculator lang="es" />  <!-- Primera vez -->
 
-<Calculator lang="es" />  <!-- Única instancia, control manual -->
+[... contenido ...]
+
+<BMICalculator lang="es" />  <!-- ❌ Segunda vez - DUPLICADO -->
 ```
-
-### Explicación Técnica
-
-El archivo `src/pages/[...slug].astro` tiene lógica que automáticamente renderiza la calculadora si:
-- `frontmatter.hideCalculator` es `false` o `undefined`
-
-Si en el MDX **también** renderizas manualmente la calculadora con `<Calculator />`, aparecerá **DOS VECES**.
 
 ### Verificación
 
 **Antes de hacer commit:**
-1. Abrir la página en el navegador
-2. Inspeccionar elemento
-3. Buscar el componente de calculadora
-4. **Debe aparecer solo una vez en el DOM**
+1. Abrir la página en el navegador (`npm run dev`)
+2. Inspeccionar elemento (F12)
+3. Buscar el componente de calculadora en el DOM
+4. **Debe aparecer solo una vez**
 
-**Comando de verificación:**
+**Comando de verificación en DevTools Console:**
 ```bash
-# En DevTools Console:
-document.querySelectorAll('.calculator-wrapper').length
+document.querySelectorAll('.calculator').length
 // Debe retornar: 1 (no 2, no 0)
 ```
 
@@ -421,7 +428,7 @@ Ya implementado automáticamente en `BaseLayout.astro` con CSS responsive:
 }
 ```
 
-Con `showCalculatorFirst: true`, la calculadora aparece inmediatamente después del H1 en mobile.
+Al posicionar la calculadora temprano en el MDX (después de breve introducción), aparece above-the-fold en mobile, permitiendo a los usuarios interactuar inmediatamente.
 
 ### Testing Mobile
 
@@ -567,8 +574,6 @@ title: [Optimizado según investigación]
 metaDescription: [155 chars, keywords naturales]
 keywords: [10-15 keywords del análisis]
 canonical: /[path-correcto]/
-showCalculatorFirst: true
-hideCalculator: true
 ---
 ```
 
@@ -576,7 +581,6 @@ hideCalculator: true
 - ✅ Title < 60 caracteres
 - ✅ Meta description 145-155 caracteres
 - ✅ Canonical correcto según `src/config/routes.ts`
-- ✅ hideCalculator: true (CRÍTICO)
 
 #### Paso 3: Estructura de Contenido (60-90 min)
 
@@ -743,11 +747,10 @@ Antes de considerar terminada una calculadora en un idioma:
 
 #### ✅ UX
 
-- [ ] `showCalculatorFirst: true`
-- [ ] `hideCalculator: true`
-- [ ] Calculadora renderizada solo UNA vez
-- [ ] Intro breve antes de calculadora
-- [ ] Contenido educativo después
+- [ ] Calculadora renderizada solo UNA vez en el MDX
+- [ ] Componente posicionado después de breve introducción
+- [ ] Intro breve antes de calculadora (1-2 párrafos)
+- [ ] Contenido educativo después de calculadora
 - [ ] FAQs incluidas (6-8 preguntas)
 - [ ] Conclusión con disclaimer
 - [ ] CTA claro
@@ -803,27 +806,42 @@ Antes de considerar terminada una calculadora en un idioma:
 
 ### Problema: Calculadora aparece DOS veces
 
-**Causa:**
-```yaml
-hideCalculator: false  ❌
+**Causa:** Incluiste el componente dos veces en el MDX:
+```mdx
+<BMICalculator lang="es" />  <!-- Primera vez -->
+...
+<BMICalculator lang="es" />  <!-- Segunda vez ❌ -->
 ```
 
-**Solución:**
-```yaml
-hideCalculator: true  ✅
-```
+**Solución:** Elimina una de las instancias. El componente debe aparecer **solo una vez** en el archivo MDX.
 
 ### Problema: Calculadora no aparece
 
-**Causa:**
+**Causa 1:** Olvidaste importar el componente
 ```mdx
-showCalculatorFirst: false
-hideCalculator: true
-# Y sin <Calculator /> manual
+---
+title: ...
+---
+
+<!-- ❌ Falta el import -->
+
+<BMICalculator lang="es" />  <!-- Error: componente no importado -->
 ```
 
 **Solución:**
-Añadir componente manualmente:
+```mdx
+---
+title: ...
+---
+
+import BMICalculator from '@/components/calculators/BMICalculator.astro';  ✅
+
+<BMICalculator lang="es" />
+```
+
+**Causa 2:** No incluiste el componente en el MDX
+
+**Solución:** Añade el componente donde desees que aparezca:
 ```mdx
 <CalculatorComponent lang="xx" />
 ```
@@ -898,8 +916,6 @@ title: Calculadora de IMC Gratis - Índice de Masa Corporal Online 2025
 metaDescription: Calculadora de IMC 100% gratuita y precisa. Calcula tu índice de masa corporal en segundos. Conoce tu peso ideal, categoría OMS y rango saludable. Sistema métrico e imperial.
 keywords: calculadora IMC, IMC gratis, índice de masa corporal, peso ideal, peso saludable, obesidad, sobrepeso, bajo peso, calculadora índice masa corporal, IMC online, calcular IMC
 canonical: /calculadoras/imc/
-showCalculatorFirst: true
-hideCalculator: true
 ---
 ```
 
@@ -923,8 +939,6 @@ title: Free BMI Calculator - बॉडी मास इंडेक्स कै
 metaDescription: Free BMI calculator for Indians. Calculate your body mass index with Asian-Indian thresholds. Know your healthy weight, WHO category and ideal range.
 keywords: BMI calculator, बॉडी मास इंडेक्स, BMI कैलकुलेटर, स्वस्थ वजन, Indian BMI calculator, Asian Indian BMI
 canonical: /hi/calculators/bmi/
-showCalculatorFirst: true
-hideCalculator: true
 ---
 ```
 
