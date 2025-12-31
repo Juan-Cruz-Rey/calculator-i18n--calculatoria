@@ -1,0 +1,197 @@
+---
+title: BMH Hesaplayıcı Ücretsiz - Bazal Metabolizma Hızı Hesaplama Harris-Benedict 2025
+metaDescription: Ücretsiz BMH hesaplayıcımızla bazal metabolizma hızınızı hesaplayın. Mifflin-St Jeor ve Harris-Benedict formüllerini kullanarak aktivite seviyenize göre günlük kalori ihtiyacınızı belirleyin.
+keywords: BMH hesaplayıcı, bazal metabolizma hızı, bazal metabolizma hesaplama, kalori ihtiyacı hesaplama, dinlenme metabolizma hızı, enerji harcaması, Harris-Benedict formülü, BMH hesaplama ücretsiz, bazal metabolizma hızı nasıl hesaplanır, BMH hesaplayıcı online
+canonical: /tr/hesap-makineleri/bmh/
+lang: "tr"
+---
+
+import BMRCalculator from '@/components/calculators/BMRCalculator.astro';
+
+# BMH Hesaplayıcı - Bazal Metabolizma Hızı
+
+Ücretsiz ve bilimsel olarak doğru hesaplayıcımızla bazal metabolizma hızınızı (BMH) hesaplayın. BMH'niz, toplam günlük enerji harcamanızın %60-75'ini temsil eder ve kilo vermek, korumak veya kas kütlesi kazanmak için diyetinizi planlamada temeldir.
+
+## Bazal Metabolizma Hızı (BMH) Nedir?
+
+**Bazal metabolizma hızı (BMH)** veya **bazal metabolik oran**, vücudunuzun tam dinlenme halinde temel fizyolojik fonksiyonlarını sürdürmek için ihtiyaç duyduğu minimum enerji (kalori) miktarıdır. Bu, solunum, dolaşım, hücre üretimi, besin işleme ve sıcaklık düzenlemesini içerir.
+
+19. yüzyılda ilk kez kavramsallaştırılan BMH, beslenme bilimi ve spor tıbbında temel bir araç haline gelmiştir.
+
+### BMH Hesaplama Formülleri
+
+BMH'yi hesaplamak için bilimsel olarak doğrulanmış birkaç formül vardır. En yaygın kullanılanlar:
+
+**Mifflin-St Jeor Formülü** (son çalışmalara göre en doğru):
+- **Erkekler:** BMH = (10 × kg cinsinden kilo) + (6,25 × cm cinsinden boy) − (5 × yaş) + 5
+- **Kadınlar:** BMH = (10 × kg cinsinden kilo) + (6,25 × cm cinsinden boy) − (5 × yaş) − 161
+
+**Harris-Benedict Formülü** (klasik, 1984'te revize edilmiş):
+- **Erkekler:** BMH = 88,362 + (13,397 × kg cinsinden kilo) + (4,799 × cm cinsinden boy) − (5,677 × yaş)
+- **Kadınlar:** BMH = 447,593 + (9,247 × kg cinsinden kilo) + (3,098 × cm cinsinden boy) − (4,330 × yaş)
+
+**Katch-McArdle Formülü** (vücut yağ yüzdesini bilenler için):
+- **BMH = 370 + (21,6 × kg cinsinden yağsız vücut kütlesi)**
+- Burada: Yağsız vücut kütlesi = Kilo × (1 − vücut yağ %/100)
+
+**Pratik Örnek:**
+30 yaşında bir erkekseniz, 75 kg ağırlığında ve 175 cm boyundaysanız:
+- BMH = (10 × 75) + (6,25 × 175) − (5 × 30) + 5
+- BMH = 750 + 1093,75 − 150 + 5
+- **BMH = 1698,75 kalori/gün**
+
+<BMRCalculator lang="tr" />
+
+## BMH'nizi Etkileyen Faktörler
+
+BMH'niz sabit bir sayı değildir; birçok faktörden etkilenir:
+
+### 1. Cinsiyet
+Erkekler, daha fazla kas kütlesi ve daha düşük vücut yağ yüzdesi nedeniyle genellikle kadınlardan %5-10 daha yüksek BMH'ye sahiptir.
+
+### 2. Yaş
+BMH, 20 yaşından sonra her on yılda yaklaşık %2 azalır, bu esas olarak kademeli kas kütlesi kaybından kaynaklanır.
+
+### 3. Vücut Kompozisyonu
+Kas dokusu yağ dokusundan metabolik olarak daha aktiftir. Daha fazla kas kütlesine sahip bir kişi, aynı kiloda olsa bile, daha fazla vücut yağına sahip birinden dinlenirken daha fazla kalori yakar.
+
+### 4. Genetik
+Genetik miras, bazal metabolizma hızınızı %20-30'a kadar etkileyebilir, ancak bu metabolizmanızı tamamen belirlemez.
+
+### 5. İklim ve Sıcaklık
+Çok soğuk veya çok sıcak iklimlerde yaşamak, vücudunuzun sıcaklığını düzenlemek için daha fazla enerjiye ihtiyaç duyduğu için BMH'yi hafifçe artırabilir.
+
+### 6. Hormonlar
+Hipotiroidi (yetersiz aktif tiroid) gibi durumlar BMH'yi %30-40 oranında azaltabilirken, hipertiroidi önemli ölçüde artırabilir.
+
+### 7. Beslenme Durumu
+Çok kısıtlayıcı veya uzun süreli diyetler, vücudun enerji tasarrufu yapmak için adaptasyon mekanizması olarak BMH'yi %20'ye kadar azaltabilir.
+
+## Aktivite Seviyeleri ve Toplam Günlük Enerji Harcaması
+
+Tek başına BMH, günlük yaktığınız tüm kalorileri temsil etmez. **Toplam Günlük Enerji Harcamanızı (TDEE)** hesaplamak için BMH'nizi bir aktivite faktörüyle çarpın:
+
+| Aktivite Seviyesi | Faktör | Açıklama |
+|------------------|--------|----------|
+| **Hareketsiz** | 1,2 | Az veya hiç egzersiz yok, masa başı işi |
+| **Hafif aktif** | 1,375 | Hafif egzersiz 1-3 gün/hafta |
+| **Orta düzeyde aktif** | 1,55 | Orta düzeyde egzersiz 3-5 gün/hafta |
+| **Çok aktif** | 1,725 | Yoğun egzersiz 6-7 gün/hafta |
+| **Aşırı aktif** | 1,9 | Çok yoğun günlük egzersiz + fiziksel iş |
+
+**Örnek:** BMH'niz 1700 kalori ve orta düzeyde aktifseniz:
+- TDEE = 1700 × 1,55 = **2635 kalori/gün**
+
+## Hedeflerinize Ulaşmak için BMH'nizi Nasıl Kullanırsınız
+
+### Kilo Vermek İçin (Kalori Açığı)
+TDEE'nizden %15-25 daha az kalori tüketin:
+- TDEE'niz 2500 kcal ise, 1875-2125 kcal/gün tüketin
+- Önerilen kayıp: haftada 0,5-1 kg
+- Metabolizmanızın yavaşlamasını önlemek için **asla BMH'nizin altına düşmeyin**
+
+### Kas Kazanımı İçin (Kalori Fazlası)
+TDEE'nizden %10-20 daha fazla kalori tüketin:
+- TDEE'niz 2500 kcal ise, 2750-3000 kcal/gün tüketin
+- Maksimum kas kazanımı için güç antrenmanı ile birleştirin
+- Önerilen artış: haftada 0,25-0,5 kg
+
+### Koruma İçin
+TDEE'nize eşit kalori tüketin:
+- Mevcut kilonuzu korumak için ideal
+- Hedefler arasındaki dinlenme dönemleri için yararlı
+
+## BMH Doğruluğu ve Sınırlamaları
+
+### Hata Payı
+BMH formülleri genel popülasyonda ±%10-15 hata payına sahiptir çünkü:
+- Bireysel vücut kompozisyonunu dikkate almazlar
+- Standart kas/yağ oranlarını varsayarlar
+- Belirli metabolik durumları hesaba katmazlar
+
+### Standart Formüllerin Geçerli Olmayabileceği Durumlar
+- **Yüksek performanslı sporcular:** Profesyonel değerlendirme gerektirir
+- **Tıbbi durumları olan kişiler:** Diyabet, tiroid sorunları, PCOS
+- **Hamilelik ve emzirme:** Önemli ölçüde artmış kalori ihtiyacı
+- **Çocuklar ve ergenler:** Yaşa özel pediatrik formüller kullanırlar
+- **Yaşlılar (65+):** Kas kaybı nedeniyle daha düşük doğruluğa sahip olabilirler
+
+## BMH'nizi Nasıl Artırırsınız
+
+BMH'nizin büyük bir kısmı genetik olarak belirlenmiş olsa da, onu etkileyebilirsiniz:
+
+### 1. Kas Kütlesi Oluşturun
+- Kas **6 kcal/kg/gün** yakarken, yağ sadece **2 kcal/kg/gün** yakar
+- Haftada 2-3 kez güç antrenmanı
+- Aşamalı aşırı yükleme prensibi
+
+### 2. Aşırı Diyetlerden Kaçının
+- TDEE'nizin %25'inden fazla kalori açığından kaçının
+- Günlük en az BMH'nizi yiyin
+
+### 3. Yeterli Protein Tüketin
+- Vücut ağırlığı kg başına 1,6-2,2 g protein
+- Proteinin %20-30 termik etkisi vardır (vücudunuz onu sindirmek için daha fazla kalori kullanır)
+
+### 4. Gün Boyunca Aktif Kalın
+- NEAT (Egzersiz Dışı Aktivite Termogenezi) günde 300-800 kcal'i temsil edebilir
+- Daha fazla yürüyün, merdivenleri kullanın, mümkün olduğunda ayakta durun
+
+### 5. İyi Uyuyun
+- 7-9 saat kaliteli uyku
+- Uyku yoksunluğu BMH'yi %8'e kadar azaltabilir
+
+## Sık Sorulan Sorular
+
+### BMH ve TDEE arasındaki fark nedir?
+**BMH** sadece dinlenme halinde yakılan kaloridir (yaşamsal fonksiyonlar). **TDEE** (Toplam Günlük Enerji Harcaması) BMH + fiziksel aktivite + sindirim + termogenezi içerir.
+
+### Hangi formül daha doğrudur: Mifflin-St Jeor mi yoksa Harris-Benedict mi?
+**Mifflin-St Jeor** formülü son çalışmalara göre %5 daha doğru kabul edilir (1990'da yayınlandı vs 1919/1984 Harris-Benedict). Vücut yağ yüzdenizi biliyorsanız, **Katch-McArdle** daha da doğrudur.
+
+### BMH'mi ne sıklıkta yeniden hesaplamalıyım?
+BMH'nizi şu durumlarda yeniden hesaplayın:
+- 5 kg'dan fazla kilo kaybettiğinizde veya aldığınızda
+- Fiziksel aktivite seviyeniz önemli ölçüde değiştiğinde
+- Genel kontrol olarak her 6-12 ayda bir
+
+### Metabolizmamı önemli ölçüde hızlandırabilir miyim?
+Takviyeler ve "metabolizma hızlandırıcı" yiyeceklerin minimal etkileri vardır (&lt;%5). En etkili yaklaşım **kas kütlesi oluşturmak** ve **yüksek aktivite seviyelerini korumak**tır.
+
+### Neden BMH'im aynı yaş ve kilodaki arkadaşımdan farklı?
+BMH vücut kompozisyonu, genetik, diyet geçmişi, hormon seviyeleri ve diğer bireysel faktörlere göre değişir. Aynı kiloda iki kişi %20-30 BMH farkına sahip olabilir.
+
+## Profesyonel BMH Ölçüm Yöntemleri
+
+Matematiksel formüllerden daha kesin bir ölçüme ihtiyacınız varsa, profesyonel yöntemler mevcuttur:
+
+### Dolaylı Kalorimetri
+- Dinlenme sırasında tüketilen oksijen ve üretilen CO₂'yi ölçer
+- Doğruluk: ±%3-5
+- Hastanelerde ve uzmanlaşmış spor merkezlerinde mevcuttur
+- Maliyet: Seans başına 200-500₺
+
+### Biyoelektrik Empedans Analizi (BIA)
+- Bazı gelişmiş BIA cihazları dinlenme metabolizma hızını tahmin eder
+- Doğruluk: ±%10-20 (dolaylı kalorimetriden daha az doğru)
+- Daha erişilebilir ve uygun fiyatlı
+
+## Bilimsel Kaynaklar
+
+1. **Mifflin, M.D., et al.** (1990). "A new predictive equation for resting energy expenditure in healthy individuals." *American Journal of Clinical Nutrition*, 51(2), 241-247.
+
+2. **Harris, J.A., & Benedict, F.G.** (1918/1984). "A Biometric Study of Human Basal Metabolism." *Proceedings of the National Academy of Sciences*, 1984'te revize edildi.
+
+3. **Türkiye Sağlık Bakanlığı**. "Bazal Metabolizma ve Enerji İhtiyacı."
+
+## İlgili Hesaplayıcılar
+
+- [VKİ Hesaplayıcı](/tr/hesap-makineleri/vki/) - Vücut Kitle İndeksi
+- [Vücut Yağ Hesaplayıcı](/tr/hesap-makineleri/vucut-yag/) - Vücut yağ yüzdesi
+- [Kalori Hesaplayıcı](/tr/hesap-makineleri/kalori/) - Günlük kalori ihtiyacı
+- [TDEE Hesaplayıcı](/tr/hesap-makineleri/gunluk-enerji-harcamasi/) - Toplam Günlük Enerji Harcaması
+- [İdeal Kilo Hesaplayıcı](/tr/hesap-makineleri/ideal-kilo/) - Sağlıklı kilo aralığı
+
+---
+
+**Tıbbi Sorumluluk Reddi:** Bu hesaplayıcı standart bilimsel formüllere dayalı tahminler sağlar. Kişiselleştirilmiş beslenme planlaması veya belirli tıbbi durumlarınız varsa, kayıtlı bir diyetisyen veya sertifikalı bir doktorla görüşün.
