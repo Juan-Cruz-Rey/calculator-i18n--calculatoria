@@ -47,6 +47,17 @@ This directory contains all core documentation for the calculator-i18n project.
 - Step-by-step process (30-45 min research per language)
 - Quality checklist and troubleshooting
 
+### [BATCH_STRATEGY.md](./BATCH_STRATEGY.md)
+**Batch Creation Strategy** - Systematic approach for creating calculator content at scale
+- What are batches and why use them
+- Current project status (29/36 calculators, 80.6% complete)
+- Completed batches (Batches 1-5) with detailed statistics
+- Pending batches (Batch 6 remaining)
+- Step-by-step process for completing a batch
+- Best practices for parallel agent execution
+- Quality control and validation procedures
+- Commit standards and documentation guidelines
+
 ### [url-localization-rules.md](./url-localization-rules.md)
 **URL Localization Rules** - Critical rules for multilingual URL structure
 - Complete URL localization requirements
@@ -80,6 +91,10 @@ This directory contains all core documentation for the calculator-i18n project.
 **Adding a new calculator?**
 → Follow [ADDING_CALCULATORS.md](./ADDING_CALCULATORS.md)
 → Then optimize with [CALCULATOR_OPTIMIZATION_GUIDE.md](./CALCULATOR_OPTIMIZATION_GUIDE.md)
+
+**Creating multiple calculators at once?**
+→ Use [BATCH_STRATEGY.md](./BATCH_STRATEGY.md) methodology
+→ Launch parallel agents per language for efficiency
 
 **Adding a new language?**
 → Follow [ADDING_CALCULATORS.md](./ADDING_CALCULATORS.md) section "Adding a New Language"
@@ -125,7 +140,8 @@ For questions or issues:
 
 ---
 
-**Last Updated:** December 2025
-**Total Documents:** 6
+**Last Updated:** December 31, 2025
+**Total Documents:** 7
 **Languages Covered:** 12 (es, en, pt, fr, de, it, pl, nl, hi, tr, sv, ru)
 **Calculators Documented:** Complete workflow from creation to optimization
+**Project Status:** 29/36 calculators completed (80.6%) - Batch 5 complete
