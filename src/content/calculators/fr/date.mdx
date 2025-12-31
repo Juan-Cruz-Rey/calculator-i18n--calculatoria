@@ -1,0 +1,449 @@
+---
+title: Calculateur de Date Gratuit - Calcul entre Dates en Ligne 2025
+metaDescription: Calculateur de date 100% gratuit. Calculez la différence entre deux dates, ajoutez ou soustrayez des jours, trouvez la date exacte. Résultats en années, mois, jours, heures.
+keywords: calculateur de date, calcul de date, différence entre deux dates, calculer nombre de jours, ajouter des jours, soustraire des jours, calculatrice de date, jours entre dates, calculer âge, durée entre dates, nombre de jours entre deux dates, calculer délai
+canonical: /fr/calculatrices/date/
+lang: "fr"
+---
+
+import DateCalculator from '@/components/calculators/DateCalculator.astro';
+
+# Calculateur de Date - Différence et Calcul entre Dates
+
+Le calculateur de date est un outil gratuit qui vous permet d'effectuer divers calculs sur les dates : calculer la différence entre deux dates, ajouter ou soustraire des jours à une date, trouver le nombre de jours ouvrables, et bien plus encore. Cet outil est essentiel pour la planification, les délais administratifs, les anniversaires et la gestion de projet.
+
+## Qu'est-ce qu'un calculateur de date ?
+
+Un **calculateur de date** est un outil qui effectue des opérations arithmétiques sur les dates du calendrier grégorien. Il prend en compte les particularités du calendrier : mois de longueurs différentes (28, 29, 30 ou 31 jours), années bissextiles, et permet d'obtenir des résultats précis en années, mois, jours, semaines, heures, minutes et secondes.
+
+### Principales fonctionnalités
+
+1. **Différence entre deux dates** : Calculer le nombre de jours, semaines, mois ou années entre deux dates
+2. **Ajouter/Soustraire des jours** : Trouver une date future ou passée en ajoutant ou soustrayant un nombre de jours
+3. **Jours ouvrables** : Calculer le nombre de jours travaillés entre deux dates (hors week-ends et jours fériés)
+4. **Âge précis** : Calculer l'âge exact en années, mois et jours
+5. **Semaine de l'année** : Identifier le numéro de semaine selon ISO 8601
+6. **Jour de la semaine** : Déterminer quel jour de la semaine correspond à une date donnée
+
+<DateCalculator lang="fr" />
+
+## Le calendrier grégorien
+
+Le **calendrier grégorien** est le système de datation utilisé dans la plupart des pays du monde. Il a été introduit par le pape Grégoire XIII en 1582 pour corriger les erreurs du calendrier julien.
+
+### Structure du calendrier grégorien
+
+**Année commune (365 jours) :**
+- 7 mois de 31 jours : janvier, mars, mai, juillet, août, octobre, décembre
+- 4 mois de 30 jours : avril, juin, septembre, novembre
+- 1 mois de 28 jours : février
+
+**Année bissextile (366 jours) :**
+- Février compte 29 jours au lieu de 28
+
+### Règles des années bissextiles
+
+Une année est **bissextile** si :
+1. Elle est divisible par 4 **ET**
+2. Si elle est divisible par 100, elle doit aussi être divisible par 400
+
+**Exemples :**
+- **2024** : divisible par 4 → **bissextile** ✓
+- **2000** : divisible par 4, 100 et 400 → **bissextile** ✓
+- **1900** : divisible par 4 et 100, mais pas par 400 → **non bissextile** ✗
+- **2100** : divisible par 4 et 100, mais pas par 400 → **non bissextile** ✗
+
+**Fréquence :** Environ **97 années bissextiles tous les 400 ans**.
+
+### Nombre de jours par mois
+
+| Mois | Jours (année commune) | Jours (année bissextile) |
+|------|----------------------|--------------------------|
+| **Janvier** | 31 | 31 |
+| **Février** | 28 | **29** |
+| **Mars** | 31 | 31 |
+| **Avril** | 30 | 30 |
+| **Mai** | 31 | 31 |
+| **Juin** | 30 | 30 |
+| **Juillet** | 31 | 31 |
+| **Août** | 31 | 31 |
+| **Septembre** | 30 | 30 |
+| **Octobre** | 31 | 31 |
+| **Novembre** | 30 | 30 |
+| **Décembre** | 31 | 31 |
+
+**Moyen mnémotechnique pour les mois de 31 jours :**
+Fermez les poings et placez-les côte à côte. Les bosses des phalanges représentent les mois de 31 jours, les creux entre les bosses représentent les mois de 30 jours (sauf février).
+
+## Calculs de date courants
+
+### 1. Différence entre deux dates
+
+C'est l'opération la plus courante : calculer le temps écoulé entre deux dates.
+
+**Exemple : Du 15 janvier 2020 au 31 décembre 2025**
+- **Années** : 5 ans, 11 mois, 16 jours
+- **Mois** : 71 mois, 16 jours
+- **Semaines** : 311 semaines, 1 jour
+- **Jours** : 2 177 jours
+- **Heures** : 52 248 heures
+- **Minutes** : 3 134 880 minutes
+- **Secondes** : 188 092 800 secondes
+
+### 2. Ajouter des jours à une date
+
+**Exemple : 15 janvier 2025 + 100 jours**
+- Résultat : **25 avril 2025**
+
+**Exemple : 28 février 2024 (année bissextile) + 1 jour**
+- Résultat : **29 février 2024** (le 29 février existe en 2024)
+
+**Exemple : 28 février 2025 (année non bissextile) + 1 jour**
+- Résultat : **1er mars 2025** (pas de 29 février en 2025)
+
+### 3. Soustraire des jours à une date
+
+**Exemple : 15 janvier 2025 - 20 jours**
+- Résultat : **26 décembre 2024**
+
+**Exemple : 1er mars 2024 - 1 jour**
+- Résultat : **29 février 2024** (année bissextile)
+
+### 4. Calculer l'âge exact
+
+**Exemple : Personne née le 15 mai 1990, âge au 31 décembre 2025**
+- **Âge** : 35 ans, 7 mois, 16 jours
+- **Total jours** : 13 014 jours
+- **Total mois** : 427 mois
+
+### 5. Jours ouvrables entre deux dates
+
+**Exemple : Du lundi 6 janvier 2025 au vendredi 31 janvier 2025 (France)**
+- **Jours calendaires** : 26 jours
+- **Week-ends** : 4 samedis + 4 dimanches = 8 jours
+- **Jours ouvrables** : 26 - 8 = **18 jours**
+- (Si jours fériés : soustraire également les jours fériés tombant en semaine)
+
+## Applications pratiques du calculateur de date
+
+### 1. Gestion de projet et délais
+
+**Planification de projet :**
+- Calculer la durée totale d'un projet
+- Déterminer les dates limites (deadlines)
+- Estimer les jours de travail disponibles (hors week-ends et jours fériés)
+
+**Exemple :** Un projet commence le 1er février 2025 et doit durer 90 jours ouvrables. Quelle est la date de fin ?
+- 90 jours ouvrables ≈ 126 jours calendaires (incluant week-ends)
+- Date de fin estimée : **7 juin 2025**
+
+### 2. Délais administratifs et juridiques
+
+**Exemples de délais légaux en France :**
+- **Délai de rétractation (achat en ligne)** : 14 jours calendaires
+- **Contestation d'une contravention** : 45 jours
+- **Délai de paiement facture** : 30 jours nets
+- **Préavis location (locataire)** : 3 mois ou 1 mois selon zone tendue
+- **Préavis démission CDI** : 1 à 3 mois selon convention collective
+
+**Utilisation :** Calculez la date limite exacte pour respecter vos obligations légales.
+
+### 3. Voyages et vacances
+
+**Planification de vacances :**
+- Calculer la durée d'un séjour
+- Déterminer le nombre de jours de congés nécessaires
+- Vérifier les périodes de haute/basse saison
+
+**Exemple :** Départ le vendredi 25 juillet 2025, retour le dimanche 10 août 2025
+- Durée totale : **17 jours**
+- Jours ouvrables (à poser) : **12 jours** (du 25/07 au 08/08, hors week-ends)
+
+### 4. Santé et médical
+
+**Grossesse :**
+- Calculer la date d'accouchement prévue (DPA) : +280 jours (40 semaines) à partir de la date des dernières règles
+- Suivre les trimestres de grossesse
+
+**Médicaments et traitements :**
+- Calculer la fin d'un traitement antibiotique
+- Déterminer la date de la prochaine prise de médicament
+
+**Exemple :** Traitement commencé le 10 janvier 2025, durée 14 jours
+- Date de fin : **23 janvier 2025**
+
+### 5. Finance et comptabilité
+
+**Échéances financières :**
+- Calculer les dates de paiement de factures
+- Déterminer les dates d'échéance de prêts
+- Planifier les versements mensuels
+
+**Intérêts et placements :**
+- Calculer la durée exacte d'un placement
+- Déterminer les dates de versement d'intérêts
+
+### 6. Événements et anniversaires
+
+**Calcul d'anniversaires :**
+- Âge exact d'une personne
+- Nombre de jours jusqu'au prochain anniversaire
+- Anniversaires de mariage (noces de...)
+
+**Exemples d'anniversaires de mariage :**
+- 1 an : Noces de coton
+- 5 ans : Noces de bois
+- 10 ans : Noces d'étain
+- 20 ans : Noces de porcelaine
+- 25 ans : Noces d'argent
+- 50 ans : Noces d'or
+- 60 ans : Noces de diamant
+
+## Semaines ISO 8601 et numérotation
+
+La norme **ISO 8601** définit une méthode internationale de numérotation des semaines.
+
+### Règles ISO 8601
+
+1. **Une semaine commence le lundi** et se termine le dimanche
+2. **La semaine 1** de l'année est la première semaine qui contient au moins 4 jours de la nouvelle année
+3. **Alternative** : La semaine 1 est celle qui contient le premier jeudi de l'année
+
+**Conséquences :**
+- Une année peut avoir **52 ou 53 semaines**
+- Les premiers jours de janvier peuvent appartenir à la dernière semaine de l'année précédente
+- Les derniers jours de décembre peuvent appartenir à la semaine 1 de l'année suivante
+
+### Exemples de numérotation ISO 8601
+
+**Année 2025 :**
+- 1er janvier 2025 (mercredi) → **Semaine 01** de 2025
+- 31 décembre 2025 (mercredi) → **Semaine 01** de 2026
+
+**Année 2026 :**
+- 1er janvier 2026 (jeudi) → **Semaine 01** de 2026
+- 31 décembre 2026 (jeudi) → **Semaine 53** de 2026
+
+**Année 2027 :**
+- 1er janvier 2027 (vendredi) → **Semaine 53** de 2026
+- 31 décembre 2027 (vendredi) → **Semaine 52** de 2027
+
+## Jours fériés en France (2025)
+
+Les **jours fériés légaux** en France métropolitaine en 2025 :
+
+| Date | Jour de la semaine | Férié |
+|------|-------------------|-------|
+| 1er janvier | Mercredi | Jour de l'An |
+| 21 avril | Lundi | Lundi de Pâques |
+| 1er mai | Jeudi | Fête du Travail |
+| 8 mai | Jeudi | Victoire 1945 |
+| 29 mai | Jeudi | Ascension |
+| 9 juin | Lundi | Lundi de Pentecôte |
+| 14 juillet | Lundi | Fête Nationale |
+| 15 août | Vendredi | Assomption |
+| 1er novembre | Samedi | Toussaint |
+| 11 novembre | Mardi | Armistice 1918 |
+| 25 décembre | Jeudi | Noël |
+
+**Total :** 11 jours fériés en France métropolitaine
+
+**Particularités régionales :**
+- **Alsace-Moselle** : 2 jours fériés supplémentaires (Vendredi Saint, 26 décembre)
+- **Guadeloupe, Martinique** : Jours fériés locaux supplémentaires
+- **Mayotte, La Réunion** : Jours fériés spécifiques
+
+### Calcul des jours ouvrés vs jours ouvrables
+
+**Jours ouvrés :** Jours travaillés dans la semaine (généralement lundi au vendredi, sauf si samedi travaillé)
+
+**Jours ouvrables :** Tous les jours sauf dimanches et jours fériés (incluent donc les samedis)
+
+**Exemple : Janvier 2025 (France)**
+- **Jours calendaires** : 31 jours
+- **Dimanches** : 5 jours
+- **Samedis** : 4 jours
+- **Jours fériés en semaine** : 1er janvier (mercredi) = 1 jour
+- **Jours ouvrables** : 31 - 5 - 1 = **25 jours**
+- **Jours ouvrés** : 31 - 5 - 4 - 1 = **21 jours**
+
+## Calcul de date dans différents calendriers
+
+Bien que le calendrier grégorien soit le plus utilisé, d'autres calendriers coexistent dans le monde.
+
+### Calendriers principaux
+
+| Calendrier | Utilisé par | Année actuelle (équivalent 2025) | Type |
+|------------|-------------|----------------------------------|------|
+| **Grégorien** | Mondial (civil) | 2025 | Solaire |
+| **Hébraïque** | Judaïsme | 5785-5786 | Luni-solaire |
+| **Islamique (Hijri)** | Islam | 1446-1447 | Lunaire |
+| **Chinois** | Chine (traditionnel) | 4722-4723 | Luni-solaire |
+| **Perse (Jalali)** | Iran | 1403-1404 | Solaire |
+| **Éthiopien** | Éthiopie | 2017-2018 | Solaire |
+| **Indien (Saka)** | Inde (officiel) | 1946-1947 | Solaire |
+
+### Calendrier julien vs grégorien
+
+Le **calendrier julien** (introduit par Jules César en 45 av. J.-C.) a été remplacé par le calendrier grégorien en 1582.
+
+**Différence principale :** Le calendrier julien ajoutait une année bissextile tous les 4 ans sans exception, créant un décalage d'environ **3 jours tous les 400 ans**.
+
+**Décalage actuel (2025) :** 13 jours entre les deux calendriers.
+
+**Utilisation actuelle :** Certaines Églises orthodoxes (Russie, Serbie, Géorgie) utilisent encore le calendrier julien pour les fêtes religieuses.
+
+## Algorithmes de calcul de date
+
+### Formule de Zeller (jour de la semaine)
+
+La **formule de Zeller** permet de déterminer le jour de la semaine pour n'importe quelle date du calendrier grégorien.
+
+**Formule simplifiée :**
+
+h = (q + ⌊13(m+1)/5⌋ + K + ⌊K/4⌋ + ⌊J/4⌋ - 2J) mod 7
+
+Où :
+- **h** : Jour de la semaine (0 = samedi, 1 = dimanche, 2 = lundi, ..., 6 = vendredi)
+- **q** : Jour du mois
+- **m** : Mois (3 = mars, 4 = avril, ..., 14 = février ; janvier et février sont comptés comme mois 13 et 14 de l'année précédente)
+- **K** : Année du siècle (année mod 100)
+- **J** : Siècle (⌊année/100⌋)
+
+**Exemple : 15 janvier 2025**
+- Traiter comme 13 (mois) / 2024 (année)
+- q = 15, m = 13, K = 24, J = 20
+- h = (15 + ⌊14×14/5⌋ + 24 + ⌊24/4⌋ + ⌊20/4⌋ - 2×20) mod 7
+- h = (15 + 39 + 24 + 6 + 5 - 40) mod 7 = 49 mod 7 = 0 mod 7 = **3** (mercredi)
+
+### Algorithme de calcul de différence entre dates
+
+**Méthode simplifiée (nombre de jours) :**
+1. Convertir chaque date en **jour julien** (nombre de jours depuis le 1er janvier 4713 av. J.-C.)
+2. Calculer la différence entre les deux jours juliens
+
+**Formule du jour julien (JD) :**
+
+JD = 367Y - ⌊7(Y + ⌊(M+9)/12⌋)/4⌋ + ⌊275M/9⌋ + D + 1721013,5
+
+Où Y = année, M = mois, D = jour
+
+## Particularités et curiosités du calendrier
+
+### Années bissextiles célèbres
+
+- **2000** : Première année bissextile du XXIe siècle (divisible par 400)
+- **1900** : Année non bissextile (divisible par 100 mais pas par 400)
+- **2100, 2200, 2300** : Prochaines années séculaires non bissextiles
+- **2400** : Prochaine année séculaire bissextile
+
+### Le problème du calendrier perpétuel
+
+Le calendrier grégorien se répète selon un cycle de **400 ans** (146 097 jours exactement).
+
+Cela signifie que le calendrier de l'année **2025** sera identique à celui de :
+- 2025
+- 2025 + 400 = 2425
+- 2025 + 800 = 2825
+- Etc.
+
+### Le 29 février et les « leaplings »
+
+Les personnes nées un **29 février** (environ 1 sur 1 461 naissances) sont appelées **« leaplings »** ou **« leapers »**.
+
+**Particularités :**
+- Célèbrent leur anniversaire le 28 février ou le 1er mars les années non bissextiles
+- À 20 ans réels, n'ont eu que 5 anniversaires « officiels »
+- Probabilité de naître un 29 février : **0,068%**
+
+**Leaplings célèbres :**
+- **Gioacchino Rossini** (compositeur, 29/02/1792)
+- **Ja Rule** (rappeur, 29/02/1976)
+- **Tony Robbins** (coach, 29/02/1960)
+
+### Les dates palindromes
+
+Une **date palindrome** se lit de la même façon de gauche à droite et de droite à gauche.
+
+**Exemples (format JJ/MM/AAAA) :**
+- **02/02/2020** (palindrome parfait)
+- **22/02/2022** (palindrome)
+
+**Prochaines dates palindromes (format DD/MM/YYYY) :**
+- **03/02/2030** (30/02/30)
+
+**Note :** La fréquence des palindromes dépend du format de date utilisé (JJ/MM/AAAA vs MM/JJ/AAAA vs AAAA/MM/JJ).
+
+## Preguntas Frecuentes
+
+### Combien de jours y a-t-il dans une année ?
+
+Une **année commune** compte **365 jours**, tandis qu'une **année bissextile** compte **366 jours** (avec un jour supplémentaire le 29 février). En moyenne, une année compte **365,2425 jours** selon le calendrier grégorien.
+
+### Comment savoir si une année est bissextile ?
+
+Une année est bissextile si :
+1. Elle est divisible par 4, **ET**
+2. Si elle est divisible par 100, elle doit aussi être divisible par 400
+
+**Exemples :** 2024 (bissextile), 2000 (bissextile), 1900 (non bissextile), 2100 (non bissextile).
+
+### Combien de semaines y a-t-il dans une année ?
+
+Une année compte généralement **52 semaines complètes** (52 × 7 = 364 jours). Cependant, selon la norme ISO 8601, certaines années peuvent avoir **53 semaines** lorsque le 1er janvier est un jeudi ou lorsque l'année est bissextile et commence un mercredi.
+
+### Pourquoi février n'a-t-il que 28 jours ?
+
+Dans le calendrier romain d'origine, février était le dernier mois de l'année et servait de "mois d'ajustement". Lorsque Jules César a réformé le calendrier, il a ajouté des jours aux autres mois (pour totaliser 365 jours), mais février est resté le plus court avec 28 jours (29 les années bissextiles).
+
+### Quelle est la date la plus éloignée que l'on puisse calculer ?
+
+Théoriquement, il n'y a pas de limite, mais les calculateurs informatiques ont des contraintes techniques. La plupart des systèmes informatiques peuvent gérer des dates du **1er janvier 1 (année 1)** au **31 décembre 9999**, voire au-delà selon les algorithmes utilisés. Les dates avant l'an 1 (ère commune) nécessitent des calendriers spéciaux.
+
+### Comment calculer rapidement le nombre de jours entre deux dates ?
+
+**Méthode approximative :**
+1. Calculer le nombre d'années complètes × 365
+2. Ajouter 1 jour pour chaque année bissextile
+3. Ajouter/soustraire les jours des mois incomplets
+
+**Exemple : Du 15/03/2023 au 20/10/2025**
+- 2 années complètes (2023-2025) : 2 × 365 = 730 jours
+- 1 année bissextile (2024) : +1 jour = 731 jours
+- Du 15/03 au 31/12/2023 : ~290 jours
+- De 01/01 au 20/10/2025 : ~293 jours
+- **Total approximatif :** 731 + 290 + 293 ≈ **945 jours** (valeur exacte : 949 jours)
+
+Pour plus de précision, utilisez le calculateur de date.
+
+### Qu'est-ce qu'un jour ouvrable vs un jour ouvré ?
+
+- **Jour ouvrable** : Tous les jours sauf dimanches et jours fériés (incluent les samedis)
+- **Jour ouvré** : Jours effectivement travaillés (généralement lundi à vendredi, excluant samedis, dimanches et jours fériés)
+
+**Exemple :** En France, si une semaine compte 7 jours calendaires, elle contient généralement 6 jours ouvrables (lundi-samedi) et 5 jours ouvrés (lundi-vendredi).
+
+### Peut-on calculer des dates avant l'an 0 ?
+
+Le calendrier grégorien n'a **pas d'année 0**. On passe directement de l'année **1 av. J.-C.** à l'année **1 ap. J.-C.** Pour les dates avant l'ère commune, les historiens utilisent des calendriers spéciaux (julien proleptique, calendrier astronomique avec année 0, etc.). Les calculateurs de date standard fonctionnent généralement de l'an 1 à l'an 9999.
+
+## Conclusion
+
+Le calculateur de date est un outil indispensable pour gérer le temps, planifier des événements, respecter des délais et comprendre les particularités du calendrier grégorien. Qu'il s'agisse de calculer l'âge exact d'une personne, de déterminer une date d'échéance, ou de planifier un projet complexe, cet outil vous fournit des résultats précis et fiables.
+
+**Points clés à retenir :**
+- Le calendrier grégorien compte **365 jours** (366 les années bissextiles)
+- Une année bissextile survient tous les **4 ans** (avec exceptions pour les années séculaires)
+- Le calcul de différence entre dates prend en compte les mois de longueurs différentes et les années bissextiles
+- Les jours ouvrables excluent dimanches et jours fériés
+- La norme ISO 8601 définit la numérotation internationale des semaines
+
+**Applications pratiques :**
+- **Professionnel** : Gestion de projet, délais administratifs, planning
+- **Personnel** : Anniversaires, vacances, événements importants
+- **Santé** : Suivi de grossesse, traitements médicaux, rappels
+- **Finance** : Échéances de paiement, intérêts, placements
+
+**Avertissement :** Cet outil est fourni à titre informatif uniquement. Les calculs sont basés sur le calendrier grégorien standard. Pour les calculs impliquant des délais légaux ou contractuels, vérifiez toujours les termes exacts et consultez un professionnel si nécessaire. Les jours fériés varient selon les pays et régions ; assurez-vous d'utiliser les jours fériés appropriés à votre localisation.
+
+**Précision :** Les résultats sont précis pour les dates du calendrier grégorien (après le 15 octobre 1582 en Europe catholique, dates variables selon les pays). Pour les dates antérieures, des calendriers spéciaux (julien, julien proleptique) peuvent être nécessaires.

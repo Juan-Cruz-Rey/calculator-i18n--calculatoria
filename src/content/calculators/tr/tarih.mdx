@@ -1,0 +1,545 @@
+---
+title: Tarih Hesaplama Ücretsiz - Tarih Farkı Hesaplayıcı Online 2025
+metaDescription: "%100 ücretsiz tarih hesaplayıcı. İki tarih arası fark, gün ekleme-çıkarma, yaş hesaplama ve iş günü hesabı. Doğum günü, yıldönümü ve proje takibi."
+keywords: tarih hesaplama, tarih farkı, gün hesaplama, tarih arası gün, iki tarih arası, yaş hesaplama, gün ekleme, iş günü hesaplama, tarih hesaplayıcı, gün sayma, tarih aralığı, doğum günü hesaplama
+canonical: /tr/hesap-makineleri/tarih/
+lang: "tr"
+---
+
+import DateCalculator from '@/components/calculators/DateCalculator.astro';
+
+# Tarih Hesaplama - Tarih Farkı Hesaplayıcı
+
+Ücretsiz **tarih hesaplayıcımız**, iki tarih arasındaki farkı hesaplamanıza, belirli bir tarihe gün eklemenize veya çıkarmanıza ve iş günlerini hesaplamanıza olanak tanır. Bu araç, proje planlaması, yaş hesaplama, yıldönümü takibi ve çeşitli zaman hesaplamaları için idealdir.
+
+## Tarih Hesaplayıcı Nedir?
+
+**Tarih hesaplayıcı**, farklı tarihleri karşılaştırmanıza ve tarih bazlı hesaplamalar yapmanıza yardımcı olan bir araçtır. Şunları yapabilirsiniz:
+
+1. **İki tarih arası farkı hesaplama** (gün, hafta, ay, yıl)
+2. **Belirli bir tarihe gün ekleme** veya çıkarma
+3. **İş günü hesaplama** (hafta sonları hariç)
+4. **Yaş hesaplama** (doğum tarihinden bugüne)
+5. **Özel gün sayaçları** (doğum günü, yıldönümü)
+
+### Neden Tarih Hesaplayıcı Kullanılır?
+
+**Kişisel kullanım:**
+- Yaş hesaplama (gün, ay, yıl olarak)
+- Doğum günü veya yıldönümü geri sayımı
+- Hamilelik takibi ve doğum tarihi hesaplama
+- Tatil planlaması
+
+**İş kullanımı:**
+- Proje süre tahmini ve deadline hesaplama
+- İş günü planlaması (resmi tatiller hariç)
+- Sözleşme bitiş tarihleri
+- Emeklilik hesaplama
+
+**Eğitim ve finans:**
+- Vade tarihleri hesaplama
+- Kredi geri ödeme süreleri
+- Faiz hesaplama dönemleri
+- Akademik takvim planlaması
+
+<DateCalculator lang="tr" />
+
+## İki Tarih Arası Fark Hesaplama
+
+### Nasıl Hesaplanır?
+
+İki tarih arasındaki fark çeşitli birimlerle ifade edilebilir:
+
+**Örnek:** 1 Ocak 2020 - 31 Aralık 2025 arası
+
+| Birim | Hesaplama | Sonuç |
+|-------|-----------|-------|
+| **Toplam gün** | Tam gün sayısı | 2191 gün |
+| **Hafta + Gün** | Gün ÷ 7 | 313 hafta 0 gün |
+| **Ay (yaklaşık)** | Gün ÷ 30,44 | ~72 ay |
+| **Yıl + Ay + Gün** | Kesin hesaplama | 6 yıl 0 ay 0 gün |
+| **Saat** | Gün × 24 | 52.584 saat |
+| **Dakika** | Saat × 60 | 3.155.040 dakika |
+
+### Artık Yıl Etkisi
+
+**Artık yıl kuralları:**
+- 4'e tam bölünebilen yıllar artık yıldır (örn. 2024)
+- **İstisna:** 100'e tam bölünebilen yıllar değildir (örn. 1900)
+- **İstisna istisnası:** 400'e tam bölünebilen yıllar artık yıldır (örn. 2000)
+
+**Artık yıl etkileri:**
+- Şubat ayı 29 gün olur (normal 28 gün)
+- Yıl toplam 366 gün olur (normal 365 gün)
+- Tarih farkı hesaplamalarını etkiler
+
+**Örnek artık yıllar:**
+- 2020, 2024, 2028, 2032 ✅ Artık yıl
+- 2100, 2200, 2300 ❌ Artık yıl değil (100'e bölünür)
+- 2000, 2400 ✅ Artık yıl (400'e bölünür)
+
+## Aya Göre Gün Sayıları
+
+### Gregoryen Takvimi Ay Bilgileri
+
+| Ay | Gün Sayısı | Anımsatıcı | Toplam Gün (Yılbaşından) |
+|----|-----------|-----------|--------------------------|
+| **Ocak** | 31 | 31 gün olur | 31 |
+| **Şubat** | 28/29 | Artık yılda 29 | 59/60 |
+| **Mart** | 31 | 31 gün olur | 90/91 |
+| **Nisan** | 30 | 30 gün olur | 120/121 |
+| **Mayıs** | 31 | 31 gün olur | 151/152 |
+| **Haziran** | 30 | 30 gün olur | 181/182 |
+| **Temmuz** | 31 | 31 gün olur | 212/213 |
+| **Ağustos** | 31 | 31 gün olur | 243/244 |
+| **Eylül** | 30 | 30 gün olur | 273/274 |
+| **Ekim** | 31 | 31 gün olur | 304/305 |
+| **Kasım** | 30 | 30 gün olur | 334/335 |
+| **Aralık** | 31 | 31 gün olur | 365/366 |
+
+**Anımsatıcı şiir:**
+```
+30 gün Eylül, Nisan, Haziran, Kasım'da
+Şubat 28 çeker, artık yılda 29
+Kalanlar hep 31, unutma sakın
+```
+
+### Hangi Aylar 31 Gün?
+
+**31 günlük aylar (7 ay):**
+- Ocak, Mart, Mayıs, Temmuz, Ağustos, Ekim, Aralık
+
+**30 günlük aylar (4 ay):**
+- Nisan, Haziran, Eylül, Kasım
+
+**28/29 günlük ay (1 ay):**
+- Şubat (artık yılda 29 gün)
+
+**El parmakları yöntemi:**
+- Yumruğunuzu yapın
+- Kemikler = 31 gün (Ocak, Mart, Mayıs, Temmuz...)
+- Çukurlar = 30 gün (veya Şubat)
+- Temmuz-Ağustos yan yana 31 günlük
+
+## Tarihe Gün Ekleme/Çıkarma
+
+### Gün Ekleme Örnekleri
+
+**Örnek 1:** 15 Ocak 2025 + 45 gün
+- Ocak kalan: 31 - 15 = 16 gün
+- Şubat: 28 gün
+- Mart: 45 - 16 - 28 = 1 gün
+- **Sonuç: 1 Mart 2025**
+
+**Örnek 2:** 20 Aralık 2025 + 20 gün
+- Aralık kalan: 31 - 20 = 11 gün
+- Ocak 2026: 20 - 11 = 9 gün
+- **Sonuç: 9 Ocak 2026** (yıl değişir)
+
+**Örnek 3:** 1 Ocak 2024 + 366 gün (artık yıl)
+- 2024 tam yıl (366 gün)
+- **Sonuç: 1 Ocak 2025**
+
+### Gün Çıkarma Örnekleri
+
+**Örnek 1:** 15 Mart 2025 - 50 gün
+- Mart baştan: 15 gün
+- Şubat: 28 gün
+- Ocak: 50 - 15 - 28 = 7 gün
+- **Sonuç: 24 Ocak 2025** (31 - 7 = 24)
+
+**Örnek 2:** 10 Ocak 2025 - 30 gün
+- Ocak baştan: 10 gün
+- Aralık 2024: 30 - 10 = 20 gün
+- **Sonuç: 11 Aralık 2024** (31 - 20 = 11)
+
+## İş Günü Hesaplama
+
+### İş Günü Nedir?
+
+**İş günü**, hafta sonu ve resmi tatiller hariç çalışma günleridir:
+
+**Standart iş günleri:**
+- Pazartesi, Salı, Çarşamba, Perşembe, Cuma
+- Toplam: Haftada **5 iş günü**
+
+**Hafta sonu (iş günü değil):**
+- Cumartesi, Pazar
+- Toplam: Haftada **2 gün**
+
+### İş Günü Hesaplama Formülü
+
+**Basit hesaplama (resmi tatil yok):**
+
+```
+İş Günleri = Toplam Gün - (Hafta Sonu Günleri)
+
+Hafta Sonu = (Toplam Gün ÷ 7) × 2
+```
+
+**Örnek:** 1 Ocak 2025 (Çarşamba) - 31 Ocak 2025 (Cuma)
+- Toplam: 31 gün
+- Tam haftalar: 4 hafta = 8 hafta sonu günü
+- Kalan günler: 3 gün (Çarşamba-Perşembe-Cuma) = 3 iş günü
+- **Toplam iş günü: 31 - 8 = 23 iş günü**
+
+### Türkiye Resmi Tatil Günleri (2025)
+
+| Tatil | Tarih | Gün Sayısı | Not |
+|-------|-------|-----------|-----|
+| **Yılbaşı** | 1 Ocak | 1 gün | Resmi tatil |
+| **Ulusal Egemenlik ve Çocuk Bayramı** | 23 Nisan | 1 gün | Resmi tatil |
+| **Emek ve Dayanışma Günü** | 1 Mayıs | 1 gün | Resmi tatil |
+| **Gençlik ve Spor Bayramı** | 19 Mayıs | 1 gün | Resmi tatil |
+| **Ramazan Bayramı** | 30-31 Mart, 1 Nisan | 3,5 gün | Dini bayram (arife yarım gün) |
+| **Kurban Bayramı** | 6-7-8-9 Haziran | 4,5 gün | Dini bayram (arife yarım gün) |
+| **Demokrasi ve Milli Birlik Günü** | 15 Temmuz | 1 gün | Resmi tatil |
+| **Zafer Bayramı** | 30 Ağustos | 1 gün | Resmi tatil |
+| **Cumhuriyet Bayramı** | 29 Ekim | 1 gün | Resmi tatil (yarım gün arife) |
+
+**Toplam resmi tatil 2025:** Yaklaşık 14,5 gün (dini bayramlar hariç)
+
+**Not:** Dini bayram tarihleri Hicri takvime göre değişir, her yıl 10-11 gün öne alınır.
+
+## Yaş Hesaplama
+
+### Tam Yaş Hesaplama
+
+**Doğum tarihi:** 15 Haziran 1990
+**Bugün:** 31 Aralık 2025
+
+**Hesaplama adımları:**
+1. **Yıl farkı:** 2025 - 1990 = 35 yıl
+2. **Ay kontrolü:** Aralık (12) {'>'} Haziran (6) → Yıl tam
+3. **Gün kontrolü:** 31 {'>'} 15 → Ay tam
+4. **Sonuç: 35 yıl 6 ay 16 gün**
+
+**Alternatif detay:**
+- **Toplam gün:** 12.982 gün
+- **Toplam hafta:** 1.854 hafta
+- **Toplam ay:** 426 ay
+- **Toplam saat:** 311.568 saat
+
+### Doğum Günü Hesaplama
+
+**Bir sonraki doğum günü hesaplama:**
+
+**Doğum tarihi:** 15 Haziran 1990
+**Bugün:** 31 Aralık 2025
+- Doğum günü geçti (Haziran {'<'} Aralık)
+- Bir sonraki: **15 Haziran 2026**
+- Kalan gün: 165 gün
+
+**Doğum günü hangi güne denk gelir?**
+- 1990: Cuma
+- 2025: Pazar
+- 2026: Pazartesi
+- 2030: Cumartesi
+
+**İlginç gerçek:** Doğum gününüz her yıl farklı bir güne denk gelir (artık yıl nedeniyle).
+
+## Özel Gün Sayaçları
+
+### Hamilelik ve Doğum Hesaplama
+
+**Normal hamilelik süresi:** 280 gün (40 hafta)
+
+**Hesaplama (Son adet tarihi):**
+- Son adet: 1 Ocak 2025
+- Tahmini doğum: 1 Ocak + 280 gün = **8 Ekim 2025**
+
+**Hafta hesaplama:**
+- Bugün: 31 Ocak 2025
+- Geçen gün: 30 gün
+- Hamilelik haftası: 30 ÷ 7 = **4 hafta 2 gün**
+
+### Evlilik Yıldönümü
+
+**Evlilik yıldönümü isimleri:**
+
+| Yıl | İsim | Geleneksel Hediye |
+|-----|------|-------------------|
+| 1 | Kağıt yıldönümü | Kağıt, kitap |
+| 5 | Ahşap yıldönümü | Ahşap eşya |
+| 10 | Kalay/Alüminyum | Metal eşyalar |
+| 15 | Kristal yıldönümü | Kristal, cam |
+| 20 | Porselen yıldönümü | Porselen, çini |
+| 25 | Gümüş yıldönümü | Gümüş takılar |
+| 30 | İnci yıldönümü | İnci takılar |
+| 40 | Yakut yıldönümü | Yakut taşı |
+| 50 | Altın yıldönümü | Altın eşyalar |
+| 60 | Elmas yıldönümü | Elmas takılar |
+
+### Önemli Tarihlerin Takibi
+
+**Kişisel önemli günler:**
+- Doğum günleri (kendiniz, aile, arkadaşlar)
+- Evlilik yıldönümü
+- İşe başlama yıldönümü
+- İlişki yıldönümü
+- Mezuniyet yıldönümü
+
+**İş ve proje deadline'ları:**
+- Proje teslim tarihleri
+- Sözleşme bitiş tarihleri
+- Ödeme vade tarihleri
+- Sınav tarihleri
+
+## Dünya'da Farklı Takvimler
+
+### Gregoryen Takvim (Standart)
+
+**Kullanım:** Dünya genelinde resmi takvim (1582'den beri)
+
+**Özellikler:**
+- 365 gün (artık yılda 366)
+- 12 ay
+- Başlangıç: 1 Ocak
+- Miladi takvim olarak bilinir
+
+### Hicri Takvim (İslami)
+
+**Kullanım:** İslami ülkelerde dini günler için
+
+**Özellikler:**
+- 354-355 gün (lunar takvim)
+- 12 ay (Muharrem, Safer, Rebiülevvel...)
+- Her yıl 10-11 gün öne alınır
+- Başlangıç: Hz. Muhammed'in Medine'ye hicreti (622 CE)
+
+**Gregoryen vs Hicri:**
+- 2025 CE ≈ 1446-1447 Hicri
+- Hicri takvim Gregoryen'den 11 gün kısadır
+- Ramazan ve Kurban Bayramı her yıl öne alınır
+
+### Çin Takvimi
+
+**Kullanım:** Doğu Asya (Çin, Vietnam, Kore)
+
+**Özellikler:**
+- Lunisolar (ay ve güneş bazlı)
+- 12 yıllık döngü (hayvan burçları)
+- Çin Yeni Yılı değişken (Ocak-Şubat arası)
+
+**2025:** Yılan Yılı (4 Şubat 2025 başlangıç)
+
+### Yahudi Takvimi
+
+**Kullanım:** Yahudi toplulukları
+
+**Özellikler:**
+- Lunisolar takvim
+- Başlangıç: Yaratılış (yaklaşık 3761 BCE)
+- 2025 CE = 5785-5786 Yahudi takvimi
+
+## Proje ve Zaman Yönetimi
+
+### Proje Süresi Hesaplama
+
+**Örnek proje planlaması:**
+
+**Proje başlangıç:** 1 Şubat 2025 (Cumartesi)
+**Tahmini süre:** 90 iş günü
+
+**Hesaplama:**
+- Toplam hafta: 90 ÷ 5 = 18 hafta
+- Takvim günü: 18 × 7 = 126 gün
+- Resmi tatiller: 1-2 gün (Nisan-Mayıs-Haziran)
+- **Tahmini bitiş: 7 Haziran 2025** (yaklaşık)
+
+### Gantt Chart İçin Tarih Hesaplama
+
+**Kritik yol (Critical Path) örneği:**
+
+| Görev | Süre (gün) | Başlangıç | Bitiş |
+|-------|-----------|-----------|-------|
+| A: Planlama | 10 iş günü | 1 Şub | 14 Şub |
+| B: Tasarım | 15 iş günü | 15 Şub | 7 Mar |
+| C: Geliştirme | 30 iş günü | 8 Mar | 21 Nis |
+| D: Test | 10 iş günü | 22 Nis | 6 May |
+| E: Deployment | 5 iş günü | 7 May | 13 May |
+
+**Toplam proje süresi:** 70 iş günü (~14 hafta)
+
+## Pratik İpuçları ve Kullanım Önerileri
+
+### Tarih Hesaplamalarında Dikkat Edilecekler
+
+**1. Artık yıl kontrolü:**
+- ✅ Şubat ayı içeren hesaplamalarda artık yıl kontrol edin
+- ❌ Her 4 yılda bir artık yıl varsaymayın (1900 artık değil)
+
+**2. Zaman dilimi farkları:**
+- ✅ Uluslararası tarihler için UTC/GMT kullanın
+- ❌ Saat değişimi (yaz saati) unutmayın
+
+**3. İş günü hesaplama:**
+- ✅ Resmi tatilleri hesaba katın
+- ✅ Şirket özel tatillerini dahil edin
+- ❌ Sadece hafta sonlarını çıkarmak yeterli değil
+
+**4. Kültürel farklılıklar:**
+- ✅ Bazı ülkelerde hafta sonu farklıdır (örn. Körfez: Cuma-Cumartesi)
+- ✅ Farklı takvimler kullanılabilir (Hicri, Çin, vs.)
+
+### Tarih Formatları
+
+**Türkiye standart formatı:**
+- **Gün/Ay/Yıl:** 31/12/2025
+- **Gün.Ay.Yıl:** 31.12.2025
+
+**ISO 8601 (uluslararası standart):**
+- **YYYY-MM-DD:** 2025-12-31
+- Alfabetik sıralama için ideal
+- Programlama ve veri tabanlarında kullanılır
+
+**ABD formatı:**
+- **MM/DD/YYYY:** 12/31/2025
+- Karışıklığa neden olabilir
+
+**İpucu:** Uluslararası iletişimde ISO 8601 kullanın.
+
+### Dijital Takvim Kullanımı
+
+**Google Takvim / Outlook ipuçları:**
+1. **Tekrarlanan etkinlikler** ayarlayın (doğum günleri, yıldönümleri)
+2. **Hatırlatıcılar** ekleyin (1 hafta önce, 1 gün önce)
+3. **Renkli kategorizasyon** yapın (iş, kişisel, ailevi)
+4. **Paylaşımlı takvimler** kullanın (aile, takım)
+5. **Farklı saat dilimi** görünümü ekleyin (uluslararası iş için)
+
+## Sık Sorulan Sorular (SSS)
+
+### 1. Neden Şubat 28 gündür?
+
+**Tarihsel neden:**
+- Julius Caesar zamanında (MÖ 45) takvim düzenlenmiştir
+- Roma takvimine göre Şubat yılın **son ayıydı**
+- Artık gün Şubat'a eklenmiştir (29 gün)
+- Diğer aylar 30-31 gün olarak dengelenmiştir
+
+**Bilimsel neden:**
+- Dünya'nın güneş etrafındaki dönüş süresi: 365,25 gün
+- 0,25 günlük fark her 4 yılda 1 gün olur (artık gün)
+
+### 2. Artık yıl neden 4 yılda bir olmuyor (2100 neden değil)?
+
+**Kesin hesaplama:**
+- Dünya'nın tam dönüş süresi: **365,2422 gün** (365 gün 5 saat 48 dakika 46 saniye)
+- Her 4 yılda artık yıl: 365,25 gün (fazla: 0,0078 gün/yıl)
+- 100 yılda fark: 0,78 gün
+- **Çözüm:** Her 100 yılda bir artık yıl iptal (1900, 2100, 2200...)
+- **İstisna:** 400'e bölünen yıllar artık (2000, 2400...)
+
+**Sonuç:** 400 yılda 97 artık yıl (100 değil)
+
+### 3. Yaşım gün olarak ne kadar?
+
+**Hesaplama:**
+- Doğum tarihi - Bugün arası gün sayısı
+- **Ortalama:** Her yaş için ~365,25 gün
+- **30 yaş:** ~10.957 gün
+- **50 yaş:** ~18.262 gün
+- **80 yaş:** ~29.220 gün
+
+**İlginç gerçekler:**
+- 10.000 gün = 27,4 yaş
+- 20.000 gün = 54,8 yaş
+- 30.000 gün = 82,1 yaş
+
+### 4. Hangi tarihler aynı gün ismine (Pazartesi, Salı...) denk gelir?
+
+**Kurallar:**
+- Normal yıl: +1 gün (365 gün = 52 hafta + 1 gün)
+- Artık yıl: +2 gün (366 gün = 52 hafta + 2 gün)
+
+**Örnek:**
+- 1 Ocak 2025: Çarşamba
+- 1 Ocak 2026: Perşembe (+1, normal yıl)
+- 1 Ocak 2027: Cuma (+1, normal yıl)
+- 1 Ocak 2028: Cumartesi (+1, normal yıl)
+- 1 Ocak 2029: Pazartesi (+2, artık yıl 2028)
+
+**Aynı güne dönüş:** Genellikle 5, 6 veya 11 yıl sonra
+
+### 5. Dünya'nın en uzun ve en kısa günleri hangileridir?
+
+**Gündüz saati (daylight) anlamında:**
+
+**Türkiye (Kuzey Yarımküre) için:**
+- **En uzun gün:** 21 Haziran (Yaz Gündönümü) - ~15 saat gündüz
+- **En kısa gün:** 21 Aralık (Kış Gündönümü) - ~9 saat gündüz
+
+**Güney Yarımküre (Avustralya, Arjantin):**
+- **En uzun gün:** 21 Aralık
+- **En kısa gün:** 21 Haziran
+
+**Not:** Gün uzunluğu enlem derecesine göre değişir. Ekvator'da her gün ~12 saat.
+
+### 6. Doğum günüm Şubat 29'da, artık yıl dışında ne zaman kutlanır?
+
+**Yaygın uygulamalar:**
+- **28 Şubat:** Resmi kayıt (çoğunluk)
+- **1 Mart:** Mantıksal (29 Şubat'tan sonraki gün)
+
+**Yasal durum (Türkiye):**
+- Nüfus cüzdanında genellikle **28 Şubat** olarak kaydedilir
+- Ehliyet yaş kontrolünde 28 Şubat baz alınır
+
+**İstatistik:** ~1/1461 kişi 29 Şubat doğumludur (çok nadir!)
+
+### 7. İş günü hesaplamalarında neden resmi tatiller dahil değil?
+
+**Neden:**
+- İş günü = **çalışma günü**
+- Resmi tatiller çalışılmadığı için iş günü sayılmaz
+- Proje planlaması ve deadline hesaplamalarında kritik
+
+**Dikkat:**
+- Her ülkenin resmi tatilleri farklı
+- Bazı şirketler ek tatil günleri verir
+- Dini bayramlar her yıl değişir
+
+**İpucu:** Proje planlamada +%10 buffer ekleyin (beklenmedik tatiller için).
+
+### 8. Takvim sistemi hiç değişecek mi?
+
+**Mevcut durum:**
+- Gregoryen takvim **çok doğrudur** (3.300 yılda 1 gün hata)
+- Dünya çapında kabul görmüş
+- Değişiklik olasılığı **çok düşük**
+
+**Alternatif öneriler (kabul görmemiş):**
+- **World Calendar:** 4 çeyrek, her çeyrek 91 gün
+- **International Fixed Calendar:** 13 ay, her ay 28 gün
+- **Holocene Calendar:** Yıl 12.025 (insan uygarlığı başlangıcı baz)
+
+**Sonuç:** Değişiklik pratik değil, mevcut sistem kalacak.
+
+## Sonuç
+
+Tarih hesaplayıcımız, günlük hayatınızda ve iş yaşamınızda zaman yönetimi için güçlü bir araçtır. Şunları unutmayın:
+
+**Doğru hesaplama için:**
+- ✅ Artık yıl kontrolü yapın
+- ✅ İş günü hesaplamalarında resmi tatilleri dahil edin
+- ✅ Zaman dilimi farklılıklarına dikkat edin
+- ✅ Uluslararası iletişimde ISO 8601 formatı kullanın
+
+**Pratik kullanımlar:**
+- 📅 Proje ve deadline takibi
+- 🎂 Doğum günü ve yıldönümü geri sayımı
+- 👶 Hamilelik ve doğum tarihi hesaplama
+- 💼 İş günü ve tatil planlaması
+- 📊 Yaş ve zaman istatistikleri
+
+**Zaman yönetimi ipucu:**
+"Zamanınızı ölçemiyorsanız, yönetemezsiniz." Tarih hesaplayıcı, planlamalarınızı daha hassas yapmanıza olanak tanır.
+
+**Teknik Not:**
+Bu hesaplayıcı Gregoryen takvimi kullanır. Farklı takvim sistemleri (Hicri, Çin, Yahudi) için özel dönüştürme araçları gereklidir.
+
+---
+
+**İlginç Gerçek:**
+Dünyanın en yaşlı kişisi (Jeanne Calment, 122 yaş) yaklaşık **44.724 gün** yaşamıştır. Siz kaç günlüksünüz?
