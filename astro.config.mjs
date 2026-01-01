@@ -74,8 +74,8 @@ export default defineConfig({
         return !page.includes('/test/') && !page.includes('/dev/');
       },
     }),
-    indexNow({
+    /* indexNow({
       key: '55813a23124e4cdc893ca3a9e299afc6'
-    }),
+    }), */
   ],
 });

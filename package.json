@@ -19,14 +19,13 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.13",
-    "astro": "^5.1.5",
-    "astro-indexnow": "^1.0.1",
-    "i18next": "^25.7.3"
+    "astro": "^5.1.5"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.0",
     "@astrojs/sitemap": "^3.6.0",
     "@playwright/test": "^1.57.0",
+    "astro-indexnow": "^1.0.1",
     "typescript": "^5.7.2"
   }
 }
