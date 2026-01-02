@@ -34,17 +34,20 @@ const locales: Locale[] = ['es', 'en', 'pt', 'fr', 'hi', 'de', 'it', 'pl', 'nl',
 <style>
   .lang-switch {
     display: flex;
+    flex-wrap: wrap;
     gap: 0.5rem;
     align-items: center;
     padding: 0.25rem 0.75rem;
     background: var(--bg-color);
     border-radius: 4px;
+    justify-content: center;
   }
 
   .lang-switch a {
     font-weight: 500;
     text-decoration: none;
     color: inherit;
+    white-space: nowrap;
   }
 
   .lang-switch a.active {
@@ -53,5 +56,32 @@ const locales: Locale[] = ['es', 'en', 'pt', 'fr', 'hi', 'de', 'it', 'pl', 'nl',
 
   .lang-switch span {
     color: #ccc;
+  }
+
+  /* Mobile responsive */
+  @media (max-width: 768px) {
+    .lang-switch {
+      gap: 0.35rem;
+      padding: 0.25rem 0.5rem;
+    }
+
+    .lang-switch a {
+      font-size: 0.875rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .lang-switch {
+      gap: 0.25rem;
+      padding: 0.25rem 0.35rem;
+    }
+
+    .lang-switch a {
+      font-size: 0.8rem;
+    }
+
+    .lang-switch span {
+      font-size: 0.8rem;
+    }
   }
 </style>
