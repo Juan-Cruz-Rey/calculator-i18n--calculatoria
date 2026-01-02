@@ -1,9 +1,0 @@
-    bloodType: {
-      es: '/calculadoras/tipo-sangre/',
-      en: '/en/calculators/blood-type/',
-      pt: '/pt/calculators/blood-type/',
-      fr: '/fr/calculators/blood-type/',
-      hi: '/hi/calculators/blood-type/',
-      de: '/de/calculators/blood-type/',
-      it: '/it/calculators/blood-type/',
-    },

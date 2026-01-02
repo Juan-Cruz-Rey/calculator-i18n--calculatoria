@@ -1,9 +1,0 @@
-    bsa: {
-      es: '/calculadoras/superficie-corporal/',
-      en: '/en/calculators/bsa/',
-      pt: '/pt/calculators/bsa/',
-      fr: '/fr/calculators/bsa/',
-      hi: '/hi/calculators/bsa/',
-      de: '/de/calculators/bsa/',
-      it: '/it/calculators/bsa/',
-    },
