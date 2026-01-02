@@ -163,8 +163,6 @@ title: Calculadora de Deudas - Planifica el Pago de tus Deudas
 metaDescription: Calculadora gratuita de deudas. Descubre cuánto tiempo tardarás en pagar tu deuda y cuánto pagarás en intereses.
 keywords: deudas, calculadora deudas, pago deudas, intereses
 canonical: /calculadoras/deudas/
-showCalculatorFirst: false
-hideCalculator: false
 ---
 
 import DebtCalculator from '@/components/calculators/DebtCalculator.astro';
@@ -383,8 +381,6 @@ npm run dev
 
 - Write unique, SEO-optimized content for each language
 - Don't just translate - localize! Adapt examples, statistics, and cultural references
-- Use the `showCalculatorFirst` option to display the calculator before content
-- Use the `hideCalculator` option if you want to embed the calculator manually
 
 ### SEO Optimization
 

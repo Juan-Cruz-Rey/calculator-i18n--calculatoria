@@ -23,10 +23,6 @@ const calculators = defineCollection({
 
     // Optional Schema.org structured data
     schema: z.record(z.any()).optional(),
-
-    // Calculator-specific configuration
-    showCalculatorFirst: z.boolean().default(false), // If true, show calculator before intro content
-    hideCalculator: z.boolean().default(false), // If true, don't include the calculator component automatically
   })
 });
 
