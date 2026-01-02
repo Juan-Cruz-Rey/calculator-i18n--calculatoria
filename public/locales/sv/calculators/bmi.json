@@ -19,12 +19,37 @@
     "ponderalIndex": "Ponderalindex",
     "category": "Kategori",
     "healthyRange": "Hälsosamt BMI-område",
-    "healthyWeight": "Hälsosamt viktområde",
-    "categories": {
-      "underweight": "Undervikt",
-      "normal": "Normal",
-      "overweight": "Övervikt",
-      "obese": "Fetma"
-    }
+    "healthyWeight": "Hälsosamt viktområde"
+  },
+  "categories": {
+    "severeThinness": "Allvarlig undervikt",
+    "moderateThinness": "Måttlig undervikt",
+    "mildThinness": "Lindrig undervikt",
+    "normal": "Normalvikt",
+    "preObese": "Pre-obesitas",
+    "obeseI": "Fetma klass I",
+    "obeseII": "Fetma klass II",
+    "obeseIII": "Fetma klass III",
+    "underweight": "Undervikt",
+    "overweight": "Övervikt",
+    "obese": "Fetma"
+  },
+  "riskLevel": {
+    "veryHigh": "⚠️ Mycket Hög Risk",
+    "high": "⚠️ Hög Risk",
+    "moderate": "⚠️ Måttlig Risk",
+    "low": "✅ Låg Risk"
+  },
+  "disclaimer": {
+    "title": "Viktigt: BMI-begränsningar",
+    "point1": "BMI skiljer inte mellan muskelmassa och kroppsfett",
+    "point2": "Det tar inte hänsyn till fettfördelning eller kroppssammansättning",
+    "point3": "Kan vara felaktigt för idrottare, äldre, gravida kvinnor eller barn",
+    "point4": "Rådfråga en vårdprofessionell för en fullständig och personlig bedömning",
+    "asianNote": "Obs: Asiatiska populationer har lägre BMI-trösklar eftersom de har en högre kroppsfettsprocent vid samma BMI.",
+    "source": "Källa"
+  },
+  "privacy": {
+    "note": "Dina uppgifter lagras inte eller skickas någonstans. Alla beräkningar utförs lokalt i din webbläsare."
   }
 }

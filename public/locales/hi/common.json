@@ -24,6 +24,7 @@
     "featuredCalculators": "विशेष कैलकुलेटर"
   },
   "units": {
+    "system": "इकाई प्रणाली",
     "metric": "मीट्रिक",
     "imperial": "इम्पीरियल",
     "cm": "सेमी",

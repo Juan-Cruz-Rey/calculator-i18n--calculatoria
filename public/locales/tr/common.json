@@ -24,6 +24,7 @@
     "featuredCalculators": "Öne Çıkan Hesap Makineleri"
   },
   "units": {
+    "system": "Birim Sistemi",
     "metric": "Metrik",
     "imperial": "İmparatorluk",
     "cm": "cm",

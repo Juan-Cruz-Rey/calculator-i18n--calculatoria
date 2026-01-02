@@ -24,6 +24,7 @@
     "featuredCalculators": "Empfohlene Rechner"
   },
   "units": {
+    "system": "Einheitensystem",
     "metric": "Metrisch",
     "imperial": "Imperial",
     "cm": "cm",

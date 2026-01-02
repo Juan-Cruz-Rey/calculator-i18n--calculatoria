@@ -19,12 +19,37 @@
     "ponderalIndex": "Indice Pondéral",
     "category": "Catégorie",
     "healthyRange": "Plage d'IMC Saine",
-    "healthyWeight": "Plage de Poids Saine",
-    "categories": {
-      "underweight": "Insuffisance pondérale",
-      "normal": "Normal",
-      "overweight": "Surpoids",
-      "obese": "Obésité"
-    }
+    "healthyWeight": "Plage de Poids Saine"
+  },
+  "categories": {
+    "severeThinness": "Maigreur sévère",
+    "moderateThinness": "Maigreur modérée",
+    "mildThinness": "Maigreur légère",
+    "normal": "Corpulence normale",
+    "preObese": "Surpoids",
+    "obeseI": "Obésité classe I",
+    "obeseII": "Obésité classe II",
+    "obeseIII": "Obésité classe III",
+    "underweight": "Insuffisance pondérale",
+    "overweight": "Surpoids",
+    "obese": "Obésité"
+  },
+  "riskLevel": {
+    "veryHigh": "⚠️ Risque Très Élevé",
+    "high": "⚠️ Risque Élevé",
+    "moderate": "⚠️ Risque Modéré",
+    "low": "✅ Risque Faible"
+  },
+  "disclaimer": {
+    "title": "Important : Limites de l'IMC",
+    "point1": "L'IMC ne fait pas de distinction entre masse musculaire et masse grasse",
+    "point2": "Il ne tient pas compte de la répartition des graisses ni de la composition corporelle",
+    "point3": "Peut ne pas être précis pour les athlètes, personnes âgées, femmes enceintes ou enfants",
+    "point4": "Consultez un professionnel de santé pour une évaluation complète et personnalisée",
+    "asianNote": "Remarque : Les populations asiatiques ont des seuils d'IMC plus bas car elles ont un pourcentage de graisse corporelle plus élevé pour le même IMC.",
+    "source": "Source"
+  },
+  "privacy": {
+    "note": "Vos données ne sont pas stockées ni envoyées nulle part. Tous les calculs sont effectués localement dans votre navigateur."
   }
 }

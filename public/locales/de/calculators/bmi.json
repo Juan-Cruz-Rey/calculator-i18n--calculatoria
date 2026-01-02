@@ -19,12 +19,37 @@
     "ponderalIndex": "Ponderal-Index",
     "category": "Kategorie",
     "healthyRange": "Gesunder BMI-Bereich",
-    "healthyWeight": "Gesunder Gewichtsbereich",
-    "categories": {
-      "underweight": "Untergewicht",
-      "normal": "Normal",
-      "overweight": "Übergewicht",
-      "obese": "Fettleibigkeit"
-    }
+    "healthyWeight": "Gesunder Gewichtsbereich"
+  },
+  "categories": {
+    "severeThinness": "Starkes Untergewicht",
+    "moderateThinness": "Mäßiges Untergewicht",
+    "mildThinness": "Leichtes Untergewicht",
+    "normal": "Normalgewicht",
+    "preObese": "Präadipositas",
+    "obeseI": "Adipositas Grad I",
+    "obeseII": "Adipositas Grad II",
+    "obeseIII": "Adipositas Grad III",
+    "underweight": "Untergewicht",
+    "overweight": "Übergewicht",
+    "obese": "Adipositas"
+  },
+  "riskLevel": {
+    "veryHigh": "⚠️ Sehr Hohes Risiko",
+    "high": "⚠️ Hohes Risiko",
+    "moderate": "⚠️ Mäßiges Risiko",
+    "low": "✅ Geringes Risiko"
+  },
+  "disclaimer": {
+    "title": "Wichtig: BMI-Einschränkungen",
+    "point1": "Der BMI unterscheidet nicht zwischen Muskelmasse und Körperfett",
+    "point2": "Er berücksichtigt nicht die Fettverteilung oder Körperzusammensetzung",
+    "point3": "Kann ungenau sein für Sportler, ältere Menschen, schwangere Frauen oder Kinder",
+    "point4": "Konsultieren Sie einen Arzt für eine vollständige und personalisierte Beurteilung",
+    "asianNote": "Hinweis: Asiatische Populationen haben niedrigere BMI-Schwellenwerte, da sie bei gleichem BMI einen höheren Körperfettanteil haben.",
+    "source": "Quelle"
+  },
+  "privacy": {
+    "note": "Ihre Daten werden nirgendwo gespeichert oder gesendet. Alle Berechnungen werden lokal in Ihrem Browser durchgeführt."
   }
 }

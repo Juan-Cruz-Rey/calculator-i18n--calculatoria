@@ -19,12 +19,37 @@
     "ponderalIndex": "Ponderale Index",
     "category": "Categorie",
     "healthyRange": "Gezond BMI Bereik",
-    "healthyWeight": "Gezond Gewicht Bereik",
-    "categories": {
-      "underweight": "Ondergewicht",
-      "normal": "Normaal",
-      "overweight": "Overgewicht",
-      "obese": "Obesitas"
-    }
+    "healthyWeight": "Gezond Gewicht Bereik"
+  },
+  "categories": {
+    "severeThinness": "Ernstig ondergewicht",
+    "moderateThinness": "Matig ondergewicht",
+    "mildThinness": "Licht ondergewicht",
+    "normal": "Normaal gewicht",
+    "preObese": "Pre-obesitas",
+    "obeseI": "Obesitas klasse I",
+    "obeseII": "Obesitas klasse II",
+    "obeseIII": "Obesitas klasse III",
+    "underweight": "Ondergewicht",
+    "overweight": "Overgewicht",
+    "obese": "Obesitas"
+  },
+  "riskLevel": {
+    "veryHigh": "⚠️ Zeer Hoog Risico",
+    "high": "⚠️ Hoog Risico",
+    "moderate": "⚠️ Matig Risico",
+    "low": "✅ Laag Risico"
+  },
+  "disclaimer": {
+    "title": "Belangrijk: BMI-beperkingen",
+    "point1": "BMI maakt geen onderscheid tussen spiermassa en lichaamsvet",
+    "point2": "Het houdt geen rekening met vetverdeling of lichaamssamenstelling",
+    "point3": "Kan onnauwkeurig zijn voor atleten, ouderen, zwangere vrouwen of kinderen",
+    "point4": "Raadpleeg een zorgprofessional voor een volledige en gepersonaliseerde beoordeling",
+    "asianNote": "Let op: Aziatische populaties hebben lagere BMI-drempels omdat ze een hoger lichaamsvetpercentage hebben bij dezelfde BMI.",
+    "source": "Bron"
+  },
+  "privacy": {
+    "note": "Uw gegevens worden nergens opgeslagen of verzonden. Alle berekeningen worden lokaal in uw browser uitgevoerd."
   }
 }

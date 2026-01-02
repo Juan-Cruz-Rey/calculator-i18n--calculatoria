@@ -19,12 +19,37 @@
     "ponderalIndex": "Wskaźnik Ponderala",
     "category": "Kategoria",
     "healthyRange": "Zdrowy zakres BMI",
-    "healthyWeight": "Zdrowy zakres wagi",
-    "categories": {
-      "underweight": "Niedowaga",
-      "normal": "Normalna",
-      "overweight": "Nadwaga",
-      "obese": "Otyłość"
-    }
+    "healthyWeight": "Zdrowy zakres wagi"
+  },
+  "categories": {
+    "severeThinness": "Wygłodzenie",
+    "moderateThinness": "Znaczna niedowaga",
+    "mildThinness": "Niedowaga",
+    "normal": "Masa prawidłowa",
+    "preObese": "Nadwaga",
+    "obeseI": "Otyłość I stopnia",
+    "obeseII": "Otyłość II stopnia",
+    "obeseIII": "Otyłość III stopnia",
+    "underweight": "Niedowaga",
+    "overweight": "Nadwaga",
+    "obese": "Otyłość"
+  },
+  "riskLevel": {
+    "veryHigh": "⚠️ Bardzo Wysokie Ryzyko",
+    "high": "⚠️ Wysokie Ryzyko",
+    "moderate": "⚠️ Umiarkowane Ryzyko",
+    "low": "✅ Niskie Ryzyko"
+  },
+  "disclaimer": {
+    "title": "Ważne: Ograniczenia BMI",
+    "point1": "BMI nie rozróżnia masy mięśniowej od tkanki tłuszczowej",
+    "point2": "Nie uwzględnia rozkładu tłuszczu ani składu ciała",
+    "point3": "Może być niedokładne dla sportowców, osób starszych, kobiet w ciąży lub dzieci",
+    "point4": "Skonsultuj się z lekarzem w celu pełnej i spersonalizowanej oceny",
+    "asianNote": "Uwaga: Populacje azjatyckie mają niższe progi BMI, ponieważ mają wyższy procent tkanki tłuszczowej przy tym samym BMI.",
+    "source": "Źródło"
+  },
+  "privacy": {
+    "note": "Twoje dane nie są nigdzie przechowywane ani wysyłane. Wszystkie obliczenia są wykonywane lokalnie w Twojej przeglądarce."
   }
 }

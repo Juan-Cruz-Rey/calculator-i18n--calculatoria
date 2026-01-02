@@ -24,6 +24,7 @@
     "featuredCalculators": "Utvalda Kalkylatorer"
   },
   "units": {
+    "system": "Enhetssystem",
     "metric": "Metrisk",
     "imperial": "Imperial",
     "cm": "cm",

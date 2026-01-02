@@ -24,6 +24,7 @@
     "featuredCalculators": "Calcolatrici in Evidenza"
   },
   "units": {
+    "system": "Sistema di Unità",
     "metric": "Metrico",
     "imperial": "Imperiale",
     "cm": "cm",

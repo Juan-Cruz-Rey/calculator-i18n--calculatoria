@@ -24,6 +24,7 @@
     "featuredCalculators": "Aanbevolen Rekenmachines"
   },
   "units": {
+    "system": "Eenhedensysteem",
     "metric": "Metrisch",
     "imperial": "Imperiaal",
     "cm": "cm",

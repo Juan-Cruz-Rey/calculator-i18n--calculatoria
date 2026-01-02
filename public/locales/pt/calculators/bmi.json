@@ -19,12 +19,37 @@
     "ponderalIndex": "Índice Ponderal",
     "category": "Categoria",
     "healthyRange": "Faixa de IMC Saudável",
-    "healthyWeight": "Faixa de Peso Saudável",
-    "categories": {
-      "underweight": "Abaixo do peso",
-      "normal": "Normal",
-      "overweight": "Sobrepeso",
-      "obese": "Obesidade"
-    }
+    "healthyWeight": "Faixa de Peso Saudável"
+  },
+  "categories": {
+    "severeThinness": "Magreza severa",
+    "moderateThinness": "Magreza moderada",
+    "mildThinness": "Magreza leve",
+    "normal": "Peso normal",
+    "preObese": "Sobrepeso",
+    "obeseI": "Obesidade classe I",
+    "obeseII": "Obesidade classe II",
+    "obeseIII": "Obesidade classe III",
+    "underweight": "Abaixo do peso",
+    "overweight": "Acima do peso",
+    "obese": "Obesidade"
+  },
+  "riskLevel": {
+    "veryHigh": "⚠️ Risco Muito Alto",
+    "high": "⚠️ Risco Alto",
+    "moderate": "⚠️ Risco Moderado",
+    "low": "✅ Risco Baixo"
+  },
+  "disclaimer": {
+    "title": "Importante: Limitações do IMC",
+    "point1": "O IMC não distingue entre massa muscular e gordura corporal",
+    "point2": "Não considera a distribuição de gordura ou composição corporal",
+    "point3": "Pode não ser preciso para atletas, idosos, mulheres grávidas ou crianças",
+    "point4": "Consulte um profissional de saúde para uma avaliação completa e personalizada",
+    "asianNote": "Nota: Populações asiáticas têm limiares de IMC mais baixos porque têm uma porcentagem maior de gordura corporal com o mesmo IMC.",
+    "source": "Fonte"
+  },
+  "privacy": {
+    "note": "Seus dados não são armazenados ou enviados para nenhum lugar. Todos os cálculos são realizados localmente no seu navegador."
   }
 }

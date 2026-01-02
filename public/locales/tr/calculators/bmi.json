@@ -19,12 +19,37 @@
     "ponderalIndex": "Ponderal İndeksi",
     "category": "Kategori",
     "healthyRange": "Sağlıklı VKİ Aralığı",
-    "healthyWeight": "Sağlıklı Kilo Aralığı",
-    "categories": {
-      "underweight": "Zayıf",
-      "normal": "Normal",
-      "overweight": "Fazla Kilolu",
-      "obese": "Obez"
-    }
+    "healthyWeight": "Sağlıklı Kilo Aralığı"
+  },
+  "categories": {
+    "severeThinness": "Ciddi zayıflık",
+    "moderateThinness": "Orta derecede zayıflık",
+    "mildThinness": "Hafif zayıflık",
+    "normal": "Normal kilo",
+    "preObese": "Fazla kilolu",
+    "obeseI": "Obezite sınıf I",
+    "obeseII": "Obezite sınıf II",
+    "obeseIII": "Obezite sınıf III",
+    "underweight": "Zayıf",
+    "overweight": "Fazla kilolu",
+    "obese": "Obez"
+  },
+  "riskLevel": {
+    "veryHigh": "⚠️ Çok Yüksek Risk",
+    "high": "⚠️ Yüksek Risk",
+    "moderate": "⚠️ Orta Risk",
+    "low": "✅ Düşük Risk"
+  },
+  "disclaimer": {
+    "title": "Önemli: VKİ Kısıtlamaları",
+    "point1": "VKİ kas kütlesi ile vücut yağı arasında ayrım yapmaz",
+    "point2": "Yağ dağılımı veya vücut kompozisyonunu dikkate almaz",
+    "point3": "Sporcular, yaşlılar, hamile kadınlar veya çocuklar için doğru olmayabilir",
+    "point4": "Tam ve kişiselleştirilmiş bir değerlendirme için bir sağlık uzmanına danışın",
+    "asianNote": "Not: Asya popülasyonları, aynı VKİ'de daha yüksek vücut yağ yüzdesine sahip oldukları için daha düşük VKİ eşiklerine sahiptir.",
+    "source": "Kaynak"
+  },
+  "privacy": {
+    "note": "Verileriniz hiçbir yere kaydedilmez veya gönderilmez. Tüm hesaplamalar tarayıcınızda yerel olarak yapılır."
   }
 }

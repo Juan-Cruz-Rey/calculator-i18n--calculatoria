@@ -19,12 +19,37 @@
     "ponderalIndex": "Ponderal Index",
     "category": "Category",
     "healthyRange": "Healthy BMI Range",
-    "healthyWeight": "Healthy Weight Range",
-    "categories": {
-      "underweight": "Underweight",
-      "normal": "Normal",
-      "overweight": "Overweight",
-      "obese": "Obese"
-    }
+    "healthyWeight": "Healthy Weight Range"
+  },
+  "categories": {
+    "severeThinness": "Severe thinness",
+    "moderateThinness": "Moderate thinness",
+    "mildThinness": "Mild thinness",
+    "normal": "Normal weight",
+    "preObese": "Pre-obese",
+    "obeseI": "Obese class I",
+    "obeseII": "Obese class II",
+    "obeseIII": "Obese class III",
+    "underweight": "Underweight",
+    "overweight": "Overweight",
+    "obese": "Obese"
+  },
+  "riskLevel": {
+    "veryHigh": "⚠️ Very High Risk",
+    "high": "⚠️ High Risk",
+    "moderate": "⚠️ Moderate Risk",
+    "low": "✅ Low Risk"
+  },
+  "disclaimer": {
+    "title": "⚠️ Important: BMI Limitations",
+    "point1": "BMI does not distinguish between muscle mass and body fat",
+    "point2": "It does not consider fat distribution or body composition",
+    "point3": "May not be accurate for athletes, elderly, pregnant women or children",
+    "point4": "Consult with a healthcare professional for a complete and personalized assessment",
+    "asianNote": "Note: Asian populations have lower BMI thresholds because they have a higher body fat percentage at the same BMI.",
+    "source": "Source"
+  },
+  "privacy": {
+    "note": "Your data is not stored or sent anywhere. All calculations are performed locally in your browser."
   }
 }

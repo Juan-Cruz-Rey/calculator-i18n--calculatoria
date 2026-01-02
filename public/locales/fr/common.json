@@ -24,6 +24,7 @@
     "featuredCalculators": "Calculatrices en Vedette"
   },
   "units": {
+    "system": "Système d'Unités",
     "metric": "Métrique",
     "imperial": "Impérial",
     "cm": "cm",

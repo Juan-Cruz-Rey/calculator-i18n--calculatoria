@@ -24,6 +24,7 @@
     "featuredCalculators": "Polecane Kalkulatory"
   },
   "units": {
+    "system": "System Jednostek",
     "metric": "Metryczny",
     "imperial": "Imperialny",
     "cm": "cm",
