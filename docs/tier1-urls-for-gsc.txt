@@ -1,0 +1,304 @@
+# TOP 100 URLs TO SUBMIT TO GOOGLE SEARCH CONSOLE
+# Sorted by Opportunity Score (highest priority first)
+# Send 10-15 URLs per day
+
+# 1. pregnancy (en) - OS: 976.22
+https://tu-dominio.com/en/calculators/pregnancy
+
+# 2. percentage (en) - OS: 965.42
+https://tu-dominio.com/en/calculators/percentage
+
+# 3. bmi (en) - OS: 915.82
+https://tu-dominio.com/en/calculators/bmi
+
+# 4. calorie (hi) - OS: 799.99
+https://tu-dominio.com/hi/calculators/calorie
+
+# 5. ovulation (en) - OS: 730.44
+https://tu-dominio.com/en/calculators/ovulation
+
+# 6. calorie (en) - OS: 711.23
+https://tu-dominio.com/en/calculators/calorie
+
+# 7. bmi (es) - OS: 655.79
+https://tu-dominio.com/calculadoras/bmi
+
+# 8. calorie (es) - OS: 651.45
+https://tu-dominio.com/calculadoras/calorie
+
+# 9. percentage (hi) - OS: 632.37
+https://tu-dominio.com/hi/calculators/percentage
+
+# 10. tip (en) - OS: 603.35
+https://tu-dominio.com/en/calculators/tip
+
+# 11. date (en) - OS: 579.54
+https://tu-dominio.com/en/calculators/date
+
+# 12. bmi (pt) - OS: 577.39
+https://tu-dominio.com/pt/calculadoras/bmi
+
+# 13. age (es) - OS: 562.57
+https://tu-dominio.com/calculadoras/age
+
+# 14. age (hi) - OS: 544.71
+https://tu-dominio.com/hi/calculators/age
+
+# 15. ovulation (pt) - OS: 516.86
+https://tu-dominio.com/pt/calculadoras/ovulation
+
+# 16. tdee (es) - OS: 500.62
+https://tu-dominio.com/calculadoras/tdee
+
+# 17. percentage (pt) - OS: 492.95
+https://tu-dominio.com/pt/calculadoras/percentage
+
+# 18. percentage (es) - OS: 484.77
+https://tu-dominio.com/calculadoras/percentage
+
+# 19. due-date (en) - OS: 476.22
+https://tu-dominio.com/en/calculators/due-date
+
+# 20. pregnancy (pt) - OS: 475.09
+https://tu-dominio.com/pt/calculadoras/pregnancy
+
+# 21. age (en) - OS: 462.75
+https://tu-dominio.com/en/calculators/age
+
+# 22. period (es) - OS: 462.00
+https://tu-dominio.com/calculadoras/period
+
+# 23. calorie (fr) - OS: 456.07
+https://tu-dominio.com/fr/calculatrices/calorie
+
+# 24. bmr (en) - OS: 455.40
+https://tu-dominio.com/en/calculators/bmr
+
+# 25. ideal-weight (en) - OS: 453.20
+https://tu-dominio.com/en/calculators/ideal-weight
+
+# 26. tdee (en) - OS: 450.34
+https://tu-dominio.com/en/calculators/tdee
+
+# 27. bmi (hi) - OS: 450.04
+https://tu-dominio.com/hi/calculators/bmi
+
+# 28. period (en) - OS: 446.75
+https://tu-dominio.com/en/calculators/period
+
+# 29. calorie (pt) - OS: 446.44
+https://tu-dominio.com/pt/calculadoras/calorie
+
+# 30. ideal-weight (pt) - OS: 441.09
+https://tu-dominio.com/pt/calculadoras/ideal-weight
+
+# 31. bmi (fr) - OS: 417.03
+https://tu-dominio.com/fr/calculatrices/bmi
+
+# 32. ideal-weight (hi) - OS: 413.26
+https://tu-dominio.com/hi/calculators/ideal-weight
+
+# 33. calorie (it) - OS: 405.49
+https://tu-dominio.com/it/calcolatrici/calorie
+
+# 34. pregnancy-conception (en) - OS: 377.43
+https://tu-dominio.com/en/calculators/pregnancy-conception
+
+# 35. ovulation (ru) - OS: 360.76
+https://tu-dominio.com/ru/калькуляторы/ovulation
+
+# 36. date (hi) - OS: 359.10
+https://tu-dominio.com/hi/calculators/date
+
+# 37. calorie (de) - OS: 354.38
+https://tu-dominio.com/de/rechner/calorie
+
+# 38. age (pt) - OS: 351.85
+https://tu-dominio.com/pt/calculadoras/age
+
+# 39. bmi (it) - OS: 350.36
+https://tu-dominio.com/it/calcolatrici/bmi
+
+# 40. pregnancy (fr) - OS: 347.85
+https://tu-dominio.com/fr/calculatrices/pregnancy
+
+# 41. bmr (hi) - OS: 343.76
+https://tu-dominio.com/hi/calculators/bmr
+
+# 42. pregnancy-conception (es) - OS: 339.88
+https://tu-dominio.com/calculadoras/pregnancy-conception
+
+# 43. body-fat (es) - OS: 338.50
+https://tu-dominio.com/calculadoras/body-fat
+
+# 44. blood-type (en) - OS: 327.99
+https://tu-dominio.com/en/calculators/blood-type
+
+# 45. calories-burned (en) - OS: 326.98
+https://tu-dominio.com/en/calculators/calories-burned
+
+# 46. percentage (de) - OS: 325.73
+https://tu-dominio.com/de/rechner/percentage
+
+# 47. protein (es) - OS: 320.11
+https://tu-dominio.com/calculadoras/protein
+
+# 48. bmi (de) - OS: 319.43
+https://tu-dominio.com/de/rechner/bmi
+
+# 49. bmi (nl) - OS: 315.19
+https://tu-dominio.com/nl/calculators/bmi
+
+# 50. body-fat (en) - OS: 306.51
+https://tu-dominio.com/en/calculators/body-fat
+
+# 51. ovulation (de) - OS: 303.41
+https://tu-dominio.com/de/rechner/ovulation
+
+# 52. ideal-weight (es) - OS: 302.03
+https://tu-dominio.com/calculadoras/ideal-weight
+
+# 53. pregnancy (es) - OS: 297.94
+https://tu-dominio.com/calculadoras/pregnancy
+
+# 54. heart-rate (en) - OS: 297.46
+https://tu-dominio.com/en/calculators/heart-rate
+
+# 55. period (de) - OS: 295.89
+https://tu-dominio.com/de/rechner/period
+
+# 56. pregnancy (hi) - OS: 293.34
+https://tu-dominio.com/hi/calculators/pregnancy
+
+# 57. pregnancy (de) - OS: 290.25
+https://tu-dominio.com/de/rechner/pregnancy
+
+# 58. period (fr) - OS: 290.19
+https://tu-dominio.com/fr/calculatrices/period
+
+# 59. percentage (fr) - OS: 287.92
+https://tu-dominio.com/fr/calculatrices/percentage
+
+# 60. bmr (pt) - OS: 287.22
+https://tu-dominio.com/pt/calculadoras/bmr
+
+# 61. tdee (pt) - OS: 286.20
+https://tu-dominio.com/pt/calculadoras/tdee
+
+# 62. healthy-weight (en) - OS: 282.82
+https://tu-dominio.com/en/calculators/healthy-weight
+
+# 63. healthy-weight (es) - OS: 282.00
+https://tu-dominio.com/calculadoras/healthy-weight
+
+# 64. percentage (pl) - OS: 277.35
+https://tu-dominio.com/pl/kalkulatory/percentage
+
+# 65. bmr (es) - OS: 275.37
+https://tu-dominio.com/calculadoras/bmr
+
+# 66. weight-watchers (en) - OS: 274.67
+https://tu-dominio.com/en/calculators/weight-watchers
+
+# 67. sleep (en) - OS: 273.54
+https://tu-dominio.com/en/calculators/sleep
+
+# 68. tip (pt) - OS: 273.14
+https://tu-dominio.com/pt/calculadoras/tip
+
+# 69. date (fr) - OS: 271.80
+https://tu-dominio.com/fr/calculatrices/date
+
+# 70. date (pt) - OS: 271.35
+https://tu-dominio.com/pt/calculadoras/date
+
+# 71. ideal-weight (fr) - OS: 268.21
+https://tu-dominio.com/fr/calculatrices/ideal-weight
+
+# 72. waist-hip (en) - OS: 266.21
+https://tu-dominio.com/en/calculators/waist-hip
+
+# 73. heart-rate (hi) - OS: 265.48
+https://tu-dominio.com/hi/calculators/heart-rate
+
+# 74. tdee (fr) - OS: 264.25
+https://tu-dominio.com/fr/calculatrices/tdee
+
+# 75. tip (hi) - OS: 263.22
+https://tu-dominio.com/hi/calculators/tip
+
+# 76. ovulation (it) - OS: 262.78
+https://tu-dominio.com/it/calcolatrici/ovulation
+
+# 77. pregnancy-weight-gain (hi) - OS: 262.40
+https://tu-dominio.com/hi/calculators/pregnancy-weight-gain
+
+# 78. age (de) - OS: 260.69
+https://tu-dominio.com/de/rechner/age
+
+# 79. calorie (pl) - OS: 259.65
+https://tu-dominio.com/pl/kalkulatory/calorie
+
+# 80. healthy-weight (pt) - OS: 255.90
+https://tu-dominio.com/pt/calculadoras/healthy-weight
+
+# 81. bmi (ru) - OS: 255.09
+https://tu-dominio.com/ru/калькуляторы/bmi
+
+# 82. period (pt) - OS: 252.60
+https://tu-dominio.com/pt/calculadoras/period
+
+# 83. sleep (pt) - OS: 252.18
+https://tu-dominio.com/pt/calculadoras/sleep
+
+# 84. protein (hi) - OS: 252.10
+https://tu-dominio.com/hi/calculators/protein
+
+# 85. date (es) - OS: 250.44
+https://tu-dominio.com/calculadoras/date
+
+# 86. bmr (fr) - OS: 249.38
+https://tu-dominio.com/fr/calculatrices/bmr
+
+# 87. period (hi) - OS: 248.92
+https://tu-dominio.com/hi/calculators/period
+
+# 88. calories-burned (es) - OS: 248.57
+https://tu-dominio.com/calculadoras/calories-burned
+
+# 89. body-fat (hi) - OS: 245.66
+https://tu-dominio.com/hi/calculators/body-fat
+
+# 90. calories-burned (hi) - OS: 245.45
+https://tu-dominio.com/hi/calculators/calories-burned
+
+# 91. ovulation (es) - OS: 245.05
+https://tu-dominio.com/calculadoras/ovulation
+
+# 92. protein (pt) - OS: 242.21
+https://tu-dominio.com/pt/calculadoras/protein
+
+# 93. macro (es) - OS: 237.43
+https://tu-dominio.com/calculadoras/macro
+
+# 94. ovulation (fr) - OS: 236.39
+https://tu-dominio.com/fr/calculatrices/ovulation
+
+# 95. bmi (tr) - OS: 236.17
+https://tu-dominio.com/tr/hesap-makineleri/bmi
+
+# 96. pace (en) - OS: 236.02
+https://tu-dominio.com/en/calculators/pace
+
+# 97. pregnancy-weight-gain (en) - OS: 235.69
+https://tu-dominio.com/en/calculators/pregnancy-weight-gain
+
+# 98. age (fr) - OS: 233.08
+https://tu-dominio.com/fr/calculatrices/age
+
+# 99. calorie (ru) - OS: 233.02
+https://tu-dominio.com/ru/калькуляторы/calorie
+
+# 100. body-fat (it) - OS: 229.81
+https://tu-dominio.com/it/calcolatrici/body-fat
+
