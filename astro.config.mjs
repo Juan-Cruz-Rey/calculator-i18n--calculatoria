@@ -3,10 +3,13 @@ import sitemap from '@astrojs/sitemap';
 import indexNow from 'astro-indexnow';
 import mdx from '@astrojs/mdx';
 
+import tailwindcss from '@tailwindcss/vite';
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://calculatoria.net',
   trailingSlash: 'always',
+
   integrations: [
     mdx(),
     sitemap({
@@ -78,4 +81,8 @@ export default defineConfig({
       key: '55813a23124e4cdc893ca3a9e299afc6'
     }), */
   ],
+
+  vite: {
+    plugins: [tailwindcss()],
+  },
 });

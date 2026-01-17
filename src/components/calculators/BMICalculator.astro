@@ -1,12 +1,14 @@
 ---
 /**
- * BMI Calculator Component - Regionally Adapted
+ * BMI Calculator Component - Regionally Adapted with Tailwind & DaisyUI
  *
  * Features:
+ * - Modern design with Tailwind CSS and DaisyUI
  * - Adapts to regional preferences (units, thresholds, categories)
  * - Asian BMI thresholds for Hindi (India)
  * - 8 WHO categories for detailed analysis (most languages)
  * - 4 WHO categories for simplified UI (Dutch, Swedish)
+ * - Responsive and accessible
  */
 import { t, type Locale } from '@/utils/i18n';
 import { getBMIRegionalConfig, usesAsianThresholds, getDefaultUnitSystem, getBMICategoryCount } from '@/config/bmi-regional';
@@ -26,137 +28,180 @@ if (isAsian) {
 }
 ---
 
-<div class="bmi-calculator calculator">
-  <div class="calculator-form">
-    <h2>{t('bmi.form.title', lang)}</h2>
+<div class="max-w-5xl mx-auto">
+  <!-- Calculator Form Card -->
+  <div class="card bg-base-100 shadow-xl mb-8">
+    <div class="card-body">
+      <h2 class="card-title text-2xl mb-6">{t('bmi.form.title', lang)}</h2>
 
-    <form id="bmi-form">
-      <!-- Unit System Toggle -->
-      <fieldset class="form-group unit-toggle">
-        <legend class="sr-only">{t('units.system', lang)}</legend>
-        <label>
-          <input
-            type="radio"
-            name="unitSystem"
-            value="metric"
-            checked={defaultUnit === 'metric'}
-          />
-          {t('units.metric', lang)}
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="unitSystem"
-            value="imperial"
-            checked={defaultUnit === 'imperial'}
-          />
-          {t('units.imperial', lang)}
-        </label>
-      </fieldset>
-
-      <!-- Age -->
-      <div class="form-group">
-        <label for="age">{t('bmi.form.ageLabel', lang)}</label>
-        <input
-          type="number"
-          id="age"
-          name="age"
-          min="2"
-          max="120"
-          required
-          placeholder={t('bmi.form.agePlaceholder', lang)}
-        />
-        <span class="unit">{t('common.years', lang)}</span>
-      </div>
-
-      <!-- Gender -->
-      <div class="form-group">
-        <label for="gender">{t('bmi.form.genderLabel', lang)}</label>
-        <select id="gender" name="gender" required>
-          <option value="male">{t('common.male', lang)}</option>
-          <option value="female">{t('common.female', lang)}</option>
-        </select>
-      </div>
-
-      <!-- Height (Metric) -->
-      <div class="form-group height-metric" style={defaultUnit === 'imperial' ? 'display: none;' : ''}>
-        <label for="height">{t('bmi.form.heightLabel', lang)}</label>
-        <input
-          type="number"
-          id="height"
-          name="height"
-          min="50"
-          max="250"
-          step="0.1"
-          required={defaultUnit === 'metric'}
-          placeholder={t('bmi.form.heightPlaceholder', lang)}
-        />
-        <span class="unit">{t('units.cm', lang)}</span>
-      </div>
-
-      <!-- Height (Imperial) -->
-      <div class="form-group height-imperial" style={defaultUnit === 'metric' ? 'display: none;' : ''}>
-        <label for="heightFt">{t('bmi.form.heightLabel', lang)}</label>
-        <div class="input-group">
-          <input
-            type="number"
-            id="heightFt"
-            name="heightFt"
-            min="1"
-            max="8"
-            required={defaultUnit === 'imperial'}
-            placeholder={t('units.ft', lang)}
-            aria-label={t('units.ft', lang)}
-          />
-          <span class="unit" aria-hidden="true">{t('units.ft', lang)}</span>
-          <input
-            type="number"
-            id="heightIn"
-            name="heightIn"
-            min="0"
-            max="11"
-            required={defaultUnit === 'imperial'}
-            placeholder={t('units.in', lang)}
-            aria-label={t('units.in', lang)}
-          />
-          <span class="unit" aria-hidden="true">{t('units.in', lang)}</span>
+      <form id="bmi-form" class="space-y-6">
+        <!-- Unit System Toggle -->
+        <div class="form-control">
+          <fieldset class="flex gap-4 p-4 bg-base-200 rounded-lg">
+            <legend class="sr-only">{t('units.system', lang)}</legend>
+            <label class="label cursor-pointer gap-2">
+              <input
+                type="radio"
+                name="unitSystem"
+                value="metric"
+                class="radio radio-primary"
+                checked={defaultUnit === 'metric'}
+              />
+              <span class="label-text font-medium">{t('units.metric', lang)}</span>
+            </label>
+            <label class="label cursor-pointer gap-2">
+              <input
+                type="radio"
+                name="unitSystem"
+                value="imperial"
+                class="radio radio-primary"
+                checked={defaultUnit === 'imperial'}
+              />
+              <span class="label-text font-medium">{t('units.imperial', lang)}</span>
+            </label>
+          </fieldset>
         </div>
-      </div>
 
-      <!-- Weight -->
-      <div class="form-group">
-        <label for="weight">{t('bmi.form.weightLabel', lang)}</label>
-        <input
-          type="number"
-          id="weight"
-          name="weight"
-          min="10"
-          max="500"
-          step="0.1"
-          required
-          placeholder={t('bmi.form.weightPlaceholder', lang)}
-        />
-        <span class="unit weight-unit">{defaultUnit === 'imperial' ? t('units.lbs', lang) : t('units.kg', lang)}</span>
-      </div>
+        <!-- Age & Gender Row -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Age -->
+          <div class="form-control">
+            <label class="label" for="age">
+              <span class="label-text font-medium">{t('bmi.form.ageLabel', lang)}</span>
+            </label>
+            <input
+              type="number"
+              id="age"
+              name="age"
+              min="2"
+              max="120"
+              required
+              placeholder={t('bmi.form.agePlaceholder', lang)}
+              class="input input-bordered w-full"
+            />
+            <label class="label">
+              <span class="label-text-alt text-base-content/60">{t('common.years', lang)}</span>
+            </label>
+          </div>
 
-      <!-- Buttons -->
-      <div class="form-actions">
-        <button type="submit" class="btn-primary">{t('common.calculate', lang)}</button>
-        <button type="reset" class="btn-secondary">{t('common.reset', lang)}</button>
-      </div>
-    </form>
+          <!-- Gender -->
+          <div class="form-control">
+            <label class="label" for="gender">
+              <span class="label-text font-medium">{t('bmi.form.genderLabel', lang)}</span>
+            </label>
+            <select id="gender" name="gender" required class="select select-bordered w-full">
+              <option value="male">{t('common.male', lang)}</option>
+              <option value="female">{t('common.female', lang)}</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Height (Metric) -->
+        <div class="form-control height-metric" style={defaultUnit === 'imperial' ? 'display: none;' : ''}>
+          <label class="label" for="height">
+            <span class="label-text font-medium">{t('bmi.form.heightLabel', lang)}</span>
+          </label>
+          <input
+            type="number"
+            id="height"
+            name="height"
+            min="50"
+            max="250"
+            step="0.1"
+            required={defaultUnit === 'metric'}
+            placeholder={t('bmi.form.heightPlaceholder', lang)}
+            class="input input-bordered w-full"
+          />
+          <label class="label">
+            <span class="label-text-alt text-base-content/60">{t('units.cm', lang)}</span>
+          </label>
+        </div>
+
+        <!-- Height (Imperial) -->
+        <div class="form-control height-imperial" style={defaultUnit === 'metric' ? 'display: none;' : ''}>
+          <label class="label" for="heightFt">
+            <span class="label-text font-medium">{t('bmi.form.heightLabel', lang)}</span>
+          </label>
+          <div class="flex gap-3">
+            <div class="flex-1">
+              <input
+                type="number"
+                id="heightFt"
+                name="heightFt"
+                min="1"
+                max="8"
+                required={defaultUnit === 'imperial'}
+                placeholder={t('units.ft', lang)}
+                aria-label={t('units.ft', lang)}
+                class="input input-bordered w-full"
+              />
+              <label class="label">
+                <span class="label-text-alt text-base-content/60">{t('units.ft', lang)}</span>
+              </label>
+            </div>
+            <div class="flex-1">
+              <input
+                type="number"
+                id="heightIn"
+                name="heightIn"
+                min="0"
+                max="11"
+                required={defaultUnit === 'imperial'}
+                placeholder={t('units.in', lang)}
+                aria-label={t('units.in', lang)}
+                class="input input-bordered w-full"
+              />
+              <label class="label">
+                <span class="label-text-alt text-base-content/60">{t('units.in', lang)}</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Weight -->
+        <div class="form-control">
+          <label class="label" for="weight">
+            <span class="label-text font-medium">{t('bmi.form.weightLabel', lang)}</span>
+          </label>
+          <input
+            type="number"
+            id="weight"
+            name="weight"
+            min="10"
+            max="500"
+            step="0.1"
+            required
+            placeholder={t('bmi.form.weightPlaceholder', lang)}
+            class="input input-bordered w-full"
+          />
+          <label class="label">
+            <span class="label-text-alt text-base-content/60 weight-unit">{defaultUnit === 'imperial' ? t('units.lbs', lang) : t('units.kg', lang)}</span>
+          </label>
+        </div>
+
+        <!-- Buttons -->
+        <div class="flex flex-col sm:flex-row gap-3 mt-6">
+          <button type="submit" class="btn btn-primary flex-1 text-lg">
+            {t('common.calculate', lang)}
+          </button>
+          <button type="reset" class="btn btn-outline flex-1 text-lg">
+            {t('common.reset', lang)}
+          </button>
+        </div>
+      </form>
+    </div>
   </div>
 
   <!-- Calculating Animation -->
-  <div id="calculating-animation" class="calculating-animation" style="display: none;">
-    <div class="calculating-content">
-      <div class="animated-gauge">
+  <div id="calculating-animation" class="card bg-base-100 shadow-xl mb-8" style="display: none;">
+    <div class="card-body items-center text-center">
+      <div class="w-48 mb-6">
         <svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
           <!-- Background arc -->
           <path
             d="M 30 100 A 70 70 0 0 1 170 100"
             fill="none"
-            stroke="#e0e0e0"
+            stroke="oklch(var(--bc) / 0.2)"
             stroke-width="12"
             stroke-linecap="round"
           />
@@ -172,390 +217,99 @@ if (isAsian) {
             stroke-dashoffset="220"
           />
           <!-- Center circle pulse -->
-          <circle cx="100" cy="100" r="20" fill="#1976d2" opacity="0.3" class="pulse-circle"/>
-          <circle cx="100" cy="100" r="15" fill="#1976d2" class="pulse-circle-small"/>
+          <circle cx="100" cy="100" r="20" fill="oklch(var(--p))" opacity="0.3" class="pulse-circle"/>
+          <circle cx="100" cy="100" r="15" fill="oklch(var(--p))" class="pulse-circle-small"/>
 
           <!-- Gradient definition -->
           <defs>
             <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" style="stop-color:#1976d2;stop-opacity:1" />
-              <stop offset="50%" style="stop-color:#2e7d32;stop-opacity:1" />
-              <stop offset="100%" style="stop-color:#f57c00;stop-opacity:1" />
+              <stop offset="0%" style="stop-color:oklch(var(--p));stop-opacity:1" />
+              <stop offset="50%" style="stop-color:oklch(var(--s));stop-opacity:1" />
+              <stop offset="100%" style="stop-color:oklch(var(--a));stop-opacity:1" />
             </linearGradient>
           </defs>
         </svg>
       </div>
-      <p class="calculating-text">{t('bmi.results.title', lang)}...</p>
-      <div class="calculating-dots">
-        <span></span>
-        <span></span>
-        <span></span>
+      <p class="text-xl font-semibold text-primary">{t('bmi.results.title', lang)}...</p>
+      <div class="flex gap-2 mt-4">
+        <span class="loading loading-dots loading-lg text-primary"></span>
       </div>
     </div>
   </div>
 
   <!-- Results -->
-  <div class="calculator-results" id="results" style="display: none;" role="region" aria-live="polite" aria-atomic="true">
-    <h2>{t('bmi.results.title', lang)}</h2>
+  <div id="results" style="display: none;" role="region" aria-live="polite" aria-atomic="true">
+    <div class="card bg-base-100 shadow-xl mb-8">
+      <div class="card-body">
+        <h2 class="card-title text-2xl mb-6">{t('bmi.results.title', lang)}</h2>
 
-    <div class="result-card bmi-value" id="result-card">
-      <h3>{t('bmi.results.bmiValue', lang)}</h3>
-      <p class="value" id="bmi-value">-</p>
-      <p class="category" id="bmi-category">-</p>
-      <p class="risk-level" id="risk-level">-</p>
-    </div>
+        <!-- BMI Value Card -->
+        <div id="result-card" class="card bg-primary text-primary-content shadow-lg mb-8">
+          <div class="card-body items-center text-center">
+            <h3 class="card-title text-lg">{t('bmi.results.bmiValue', lang)}</h3>
+            <p id="bmi-value" class="text-6xl font-bold my-4">-</p>
+            <p id="bmi-category" class="text-xl font-semibold mb-2">-</p>
+            <div id="risk-level" class="badge badge-lg badge-outline border-primary-content text-primary-content">-</div>
+          </div>
+        </div>
 
-    <div class="result-grid">
-      <div class="result-item">
-        <strong>{t('bmi.results.bmiPrime', lang)}:</strong>
-        <span id="bmi-prime">-</span>
-      </div>
-      <div class="result-item">
-        <strong>{t('bmi.results.ponderalIndex', lang)}:</strong>
-        <span id="ponderal-index">-</span>
-      </div>
-      <div class="result-item">
-        <strong>{t('bmi.results.healthyRange', lang)}:</strong>
-        <span id="healthy-bmi">-</span>
-      </div>
-      <div class="result-item">
-        <strong>{t('bmi.results.healthyWeight', lang)}:</strong>
-        <span id="healthy-weight">-</span>
-      </div>
-    </div>
+        <!-- Results Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+          <div class="stat bg-base-200 rounded-lg shadow hover:shadow-lg transition-shadow">
+            <div class="stat-title">{t('bmi.results.bmiPrime', lang)}</div>
+            <div id="bmi-prime" class="stat-value text-primary">-</div>
+          </div>
+          <div class="stat bg-base-200 rounded-lg shadow hover:shadow-lg transition-shadow">
+            <div class="stat-title">{t('bmi.results.ponderalIndex', lang)}</div>
+            <div id="ponderal-index" class="stat-value text-primary">-</div>
+          </div>
+          <div class="stat bg-base-200 rounded-lg shadow hover:shadow-lg transition-shadow">
+            <div class="stat-title">{t('bmi.results.healthyRange', lang)}</div>
+            <div id="healthy-bmi" class="stat-value text-secondary text-2xl">-</div>
+          </div>
+          <div class="stat bg-base-200 rounded-lg shadow hover:shadow-lg transition-shadow">
+            <div class="stat-title">{t('bmi.results.healthyWeight', lang)}</div>
+            <div id="healthy-weight" class="stat-value text-secondary text-2xl">-</div>
+          </div>
+        </div>
 
-    <!-- Disclaimer -->
-    <div class="bmi-disclaimer">
-      <h4>⚠️ {t('bmi.disclaimer.title', lang)}</h4>
-      <ul>
-        <li>{t('bmi.disclaimer.point1', lang)}</li>
-        <li>{t('bmi.disclaimer.point2', lang)}</li>
-        <li>{t('bmi.disclaimer.point3', lang)}</li>
-        <li>{t('bmi.disclaimer.point4', lang)}</li>
-        {isAsian && (
-          <li><strong>{t('bmi.disclaimer.asianNote', lang)}</strong></li>
+        <!-- Disclaimer -->
+        <div class="alert alert-warning shadow-lg">
+          <div class="w-full">
+            <div class="flex items-start gap-2 mb-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+              <h4 class="font-bold">{t('bmi.disclaimer.title', lang)}</h4>
+            </div>
+            <ul class="list-disc list-inside space-y-1 ml-8 text-sm">
+              <li>{t('bmi.disclaimer.point1', lang)}</li>
+              <li>{t('bmi.disclaimer.point2', lang)}</li>
+              <li>{t('bmi.disclaimer.point3', lang)}</li>
+              <li>{t('bmi.disclaimer.point4', lang)}</li>
+              {isAsian && (
+                <li><strong>{t('bmi.disclaimer.asianNote', lang)}</strong></li>
+              )}
+            </ul>
+            <p class="text-xs italic mt-3 opacity-80">
+              {t('bmi.disclaimer.source', lang)}: {regionalConfig.healthAuthority}
+            </p>
+          </div>
+        </div>
+
+        <!-- Privacy Note (for Swedish market) -->
+        {regionalConfig.features.privacyNote && (
+          <div class="alert alert-success shadow-lg mt-4">
+            <div>
+              <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              <span class="text-sm">🔒 {t('bmi.privacy.note', lang)}</span>
+            </div>
+          </div>
         )}
-      </ul>
-      <p class="health-authority">
-        {t('bmi.disclaimer.source', lang)}: {regionalConfig.healthAuthority}
-      </p>
-    </div>
-
-    <!-- Privacy Note (for Swedish market) -->
-    {regionalConfig.features.privacyNote && (
-      <div class="privacy-note">
-        <p>🔒 {t('bmi.privacy.note', lang)}</p>
       </div>
-    )}
+    </div>
   </div>
 </div>
 
 <style>
-  .bmi-calculator {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 2rem;
-  }
-
-  .calculator-form, .calculator-results {
-    background: white;
-    border-radius: 8px;
-    padding: 2rem;
-    margin-bottom: 2rem;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  }
-
-  h2 {
-    margin-top: 0;
-    color: #333;
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .form-group {
-    margin-bottom: 1.5rem;
-  }
-
-  .form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-    color: #555;
-  }
-
-  .form-group input[type="number"],
-  .form-group select {
-    width: 100%;
-    padding: 0.75rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1rem;
-  }
-
-  .form-group input[type="number"]:focus,
-  .form-group select:focus {
-    border-color: var(--primary-color);
-    outline: none;
-  }
-
-  .unit {
-    display: inline-block;
-    margin-left: 0.5rem;
-    color: #888;
-    font-size: 0.9rem;
-  }
-
-  .unit-toggle {
-    display: flex;
-    gap: 1rem;
-    padding: 1rem;
-    background: #f5f5f5;
-    border-radius: 4px;
-    border: none;
-  }
-
-  .unit-toggle legend {
-    padding: 0;
-  }
-
-  .unit-toggle label {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    cursor: pointer;
-    margin: 0;
-  }
-
-  .input-group {
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
-  }
-
-  .input-group input {
-    flex: 1;
-  }
-
-  .form-actions {
-    display: flex;
-    gap: 1rem;
-    margin-top: 2rem;
-  }
-
-  .btn-primary, .btn-secondary {
-    flex: 1;
-    padding: 0.875rem;
-    border: none;
-    border-radius: 4px;
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-
-  .btn-primary {
-    background: var(--primary-color);
-    color: white;
-  }
-
-  .btn-primary:hover {
-    background: #2d6a2f;
-  }
-
-  .btn-secondary {
-    background: #f5f5f5;
-    color: #333;
-  }
-
-  .btn-secondary:hover {
-    background: #e0e0e0;
-  }
-
-  .result-card {
-    text-align: center;
-    padding: 2rem;
-    background: #4a5fc1;
-    color: #ffffff !important;
-    border-radius: 8px;
-    margin-bottom: 2rem;
-    transition: background 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  }
-
-  .result-card h3 {
-    margin: 0 0 1rem 0;
-    font-size: 1.2rem;
-    color: #ffffff !important;
-    font-weight: 600;
-  }
-
-  .result-card .value {
-    font-size: 3rem;
-    font-weight: bold;
-    margin: 0;
-    color: #ffffff !important;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-
-  .result-card .category {
-    font-size: 1.2rem;
-    margin: 0.5rem 0;
-    color: #ffffff !important;
-    font-weight: 500;
-  }
-
-  .result-card .risk-level {
-    font-size: 0.9rem;
-    margin: 0.5rem 0 0 0;
-    color: #ffffff !important;
-    background: rgba(0, 0, 0, 0.15);
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    display: inline-block;
-  }
-
-  .result-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    margin-bottom: 2rem;
-  }
-
-  .result-item {
-    padding: 1.25rem;
-    background: #ffffff;
-    border: 2px solid #e0e0e0;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    transition: all 0.2s ease;
-  }
-
-  .result-item:hover {
-    border-color: #1976d2;
-    box-shadow: 0 2px 8px rgba(25, 118, 210, 0.1);
-    transform: translateY(-2px);
-  }
-
-  .result-item strong {
-    color: #616161;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    font-weight: 600;
-  }
-
-  .result-item span {
-    color: #212121;
-    font-size: 1.25rem;
-    font-weight: 600;
-  }
-
-  .bmi-disclaimer {
-    background: #fff8e1;
-    border-left: 4px solid #ff8f00;
-    padding: 1.5rem;
-    border-radius: 8px;
-    margin-top: 2rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  }
-
-  .bmi-disclaimer h4 {
-    margin-top: 0;
-    color: #e65100;
-    font-weight: 600;
-  }
-
-  .bmi-disclaimer ul {
-    margin-bottom: 1rem;
-    color: #5d4037;
-    line-height: 1.8;
-  }
-
-  .bmi-disclaimer li {
-    margin-bottom: 0.75rem;
-  }
-
-  .health-authority {
-    font-size: 0.85rem;
-    color: #6d4c41;
-    font-style: italic;
-    margin: 0;
-    font-weight: 500;
-  }
-
-  .privacy-note {
-    background: #e8f5e9;
-    border-left: 4px solid #43a047;
-    padding: 1rem;
-    border-radius: 8px;
-    margin-top: 1rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  }
-
-  .privacy-note p {
-    margin: 0;
-    color: #2e7d32;
-    font-size: 0.9rem;
-    font-weight: 500;
-  }
-
-  /* Category-specific colors for result card - WCAG AA compliant (4.5:1+ contrast with white text) */
-  /* Underweight categories - Blue tones (concern but not alarm) */
-  .category-severe-thinness,
-  .category-moderate-thinness,
-  .category-mild-thinness,
-  .category-underweight {
-    background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
-  }
-
-  /* Normal weight - Green (healthy and positive) */
-  .category-normal {
-    background: linear-gradient(135deg, #388e3c 0%, #2e7d32 100%);
-  }
-
-  /* Overweight categories - Orange/Amber (warning) */
-  .category-pre-obese,
-  .category-overweight {
-    background: linear-gradient(135deg, #f57c00 0%, #e65100 100%);
-  }
-
-  /* Obese categories - Red (requires attention) */
-  .category-obese-i,
-  .category-obese-ii,
-  .category-obese-iii,
-  .category-obese {
-    background: linear-gradient(135deg, #d32f2f 0%, #c62828 100%);
-  }
-
-  /* Calculating Animation Styles */
-  .calculating-animation {
-    background: white;
-    border-radius: 8px;
-    padding: 3rem 2rem;
-    margin: 2rem 0;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    animation: fadeIn 0.3s ease-in;
-  }
-
-  .calculating-content {
-    text-align: center;
-    max-width: 300px;
-    margin: 0 auto;
-  }
-
-  .animated-gauge {
-    width: 100%;
-    max-width: 200px;
-    margin: 0 auto 2rem;
-  }
-
-  .animated-gauge svg {
-    width: 100%;
-    height: auto;
-  }
-
   /* Progress arc animation */
   #progress-arc {
     animation: fillProgress 2s ease-out forwards;
@@ -601,84 +355,36 @@ if (isAsian) {
     }
   }
 
-  .calculating-text {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: #1976d2;
-    margin: 1rem 0;
+  /* Category-specific colors for result card */
+  .category-severe-thinness,
+  .category-moderate-thinness,
+  .category-mild-thinness,
+  .category-underweight {
+    @apply bg-info text-info-content;
   }
 
-  /* Loading dots animation */
-  .calculating-dots {
-    display: flex;
-    justify-content: center;
-    gap: 0.5rem;
-    margin-top: 1rem;
+  .category-normal {
+    @apply bg-success text-success-content;
   }
 
-  .calculating-dots span {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: #1976d2;
-    animation: dotPulse 1.4s ease-in-out infinite;
+  .category-pre-obese,
+  .category-overweight {
+    @apply bg-warning text-warning-content;
   }
 
-  .calculating-dots span:nth-child(1) {
-    animation-delay: 0s;
+  .category-obese-i,
+  .category-obese-ii,
+  .category-obese-iii,
+  .category-obese {
+    @apply bg-error text-error-content;
   }
 
-  .calculating-dots span:nth-child(2) {
-    animation-delay: 0.2s;
-  }
-
-  .calculating-dots span:nth-child(3) {
-    animation-delay: 0.4s;
-  }
-
-  @keyframes dotPulse {
-    0%, 60%, 100% {
-      transform: scale(1);
-      opacity: 1;
-    }
-    30% {
-      transform: scale(1.4);
-      opacity: 0.7;
-    }
-  }
-
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(-10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  /* Responsive */
-  @media (max-width: 768px) {
-    .bmi-calculator {
-      padding: 1rem;
-    }
-
-    .calculator-form,
-    .calculator-results {
-      padding: 1rem;
-    }
-
-    .result-card .value {
-      font-size: 2rem;
-    }
-
-    .result-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .form-actions {
-      flex-direction: column;
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    #progress-arc,
+    .pulse-circle,
+    .pulse-circle-small {
+      animation: none;
     }
   }
 </style>
@@ -829,7 +535,7 @@ if (isAsian) {
     healthyWeight.textContent = `${result.healthyWeightRange.min} - ${result.healthyWeightRange.max} ${weightUnitText}`;
 
     // Update result card color based on category
-    resultCard.className = `result-card category-${result.category}`;
+    resultCard.className = `card shadow-lg mb-8 category-${result.category}`;
 
     // Show results and scroll to them
     results.style.display = 'block';
